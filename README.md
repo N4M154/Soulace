@@ -60,7 +60,7 @@ Soulace allows users to create a personalized profile to receive tailored recomm
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/N4M154/Technocrats_V.2.git
+    git clone https://github.com/AASani29/Soulace.git
     ```
 
 2. Install dependencies for the backend:
