@@ -477,7 +477,7 @@ Gain valuable insights, strategies, and practical tips for managing stress, anxi
         <div
           className="container mx-auto px-8 text-center py-16 bg-teal-800 rounded-lg shadow-lg"
         >
-          <h2 className="text-4xl font-extrabold text-white tracking-wide">
+          <h2 className="text-4xl font-bold text-white tracking-wide">
             Meet SoulMate: Your Emotional Support Chatbot
           </h2>
           <p className="text-xl text-gray-100 mt-2">
@@ -533,7 +533,7 @@ Gain valuable insights, strategies, and practical tips for managing stress, anxi
       <div
         className="container mx-auto px-8 text-center py-16 bg-purple-900 rounded-lg shadow-lg"
       >
-        <h2 className="text-5xl font-extrabold text-white tracking-wide">
+        <h2 className="text-5xl font-bold text-white tracking-wide">
           Connect with a Specialist
         </h2>
         <p className="text-xl text-gray-100 mt-6">
@@ -580,7 +580,7 @@ Gain valuable insights, strategies, and practical tips for managing stress, anxi
       <div
         className="container mx-auto px-8 text-center py-16 bg-white rounded-lg shadow-lg"
       >
-        <h2 className="text-5xl font-extrabold text-gray-800 tracking-wide">
+        <h2 className="text-5xl font-bold text-gray-800 tracking-wide">
           Track Your Progress
         </h2>
         <p className="text-xl text-gray-600 mt-6">
@@ -620,7 +620,7 @@ Gain valuable insights, strategies, and practical tips for managing stress, anxi
         className="container mx-auto px-8 text-center py-16 rounded-lg shadow-lg"
         style={{ backgroundImage: "url('/achievement-dashboard.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
-        <h2 className="text-5xl font-extrabold text-white tracking-wide">
+        <h2 className="text-5xl font-bold text-white tracking-wide">
           Achievement Dashboard
         </h2>
         <p className="text-xl text-gray-100 mt-6">
