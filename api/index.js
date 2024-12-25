@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.route.js";
 import blogRoutes from "./routes/blog.route.js"; // Import the blog routes
+import journalRoutes from "./routes/journal.route.js"; // Import the journal routes
+import musicRoutes from "./routes/music.route.js"; // Import the music routes
 import cookieParser from "cookie-parser";
 import path from "path";
 import cors from "cors"; // Import CORS
@@ -56,6 +58,8 @@ app.use(cookieParser()); // Parse cookies
 app.use("/api/blog", blogRoutes); // Blog routes
 app.use("/api/user", userRoutes); // User routes
 app.use("/api/auth", authRoutes); // Auth routes
+app.use("/api/journal",journalRoutes); // Journal routes
+app.use("/api/music", musicRoutes); // Music routes
 
 // Serve static files (React frontend)
 app.use(express.static(path.join(__dirname, "/client/dist")));
