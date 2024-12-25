@@ -124,13 +124,13 @@ export default function Home() {
             <h2 className="text-white text-3xl font-extrabold">Track Your Mood and Sleep</h2>
             <div className="space-x-6">
               <Link
-                to="/track-mood"
+                to="/Mood-Tracker"
                 className="bg-white text-teal-600 py-3 px-8 rounded-lg hover:bg-teal-200 transition duration-300"
               >
                 Track Mood
               </Link>
               <Link
-                to="/sleep"
+                to="/Sleep-Tracker"
                 className="bg-white text-teal-600 py-3 px-8 rounded-lg hover:bg-teal-200 transition duration-300"
               >
                 Track Sleep
