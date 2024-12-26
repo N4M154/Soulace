@@ -54,6 +54,9 @@ app.post("/api/blogs", (req, res) => {
 app.use(express.json()); // Parse JSON bodies
 app.use(cookieParser()); // Parse cookies
 
+// Serve static files for the uploads folder
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 // API Routes
 app.use("/api/blog", blogRoutes); // Blog routes
 app.use("/api/user", userRoutes); // User routes
