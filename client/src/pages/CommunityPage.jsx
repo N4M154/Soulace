@@ -116,7 +116,7 @@ const CommunityPage = () => {
   return (
     <div
       className="bg-teal-50 min-h-screen flex flex-col relative bg-cover bg-center"
-      style={{ backgroundImage: "url('/teal.png')" }}
+      style={{ backgroundImage: "url('/teal.jpg')" }}
     >
       {/* Full-Width Header */}
       <header className="p-6 shadow-md bg-white bg-opacity-90">
