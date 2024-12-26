@@ -1,12 +1,12 @@
+import cookieParser from "cookie-parser";
+import cors from "cors"; // Import CORS
+import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
-import userRoutes from "./routes/user.route.js";
+import path from "path";
 import authRoutes from "./routes/auth.route.js";
 import blogRoutes from "./routes/blog.route.js"; // Import the blog routes
-import cookieParser from "cookie-parser";
-import path from "path";
-import cors from "cors"; // Import CORS
+import userRoutes from "./routes/user.route.js";
 
 dotenv.config();
 
@@ -80,3 +80,5 @@ app.use((err, req, res, next) => {
 app.listen(3000, () => {
   console.log("Server listening on port 3000");
 });
+
+
