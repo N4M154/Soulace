@@ -6,6 +6,9 @@ import mongoose from "mongoose";
 import path from "path";
 import authRoutes from "./routes/auth.route.js";
 import blogRoutes from "./routes/blog.route.js"; // Import the blog routes
+import journalRoutes from "./routes/journal.route.js"; // Import the journal routes
+import musicRoutes from "./routes/music.route.js"; // Import the music routes
+import userRoutes from "./routes/user.route.js";
 
 dotenv.config();
 
@@ -81,5 +84,3 @@ app.use((err, req, res, next) => {
 app.listen(3000, () => {
   console.log("Server listening on port 3000");
 });
-
-
