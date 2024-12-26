@@ -163,7 +163,7 @@ const GratitudeGame = () => {
         />
         <button
           onClick={addGratitude}
-          className="ml-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+          className="ml-4 px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-700"
         >
           Add
         </button>
@@ -183,8 +183,24 @@ const AffirmationGame = () => {
     "I am in charge of my happiness.",
     "I believe in myself and my abilities.",
     "Every day is a fresh start.",
-    "I am grateful for the good in my life."
-  ];
+    "I am grateful for the good in my life.",
+    "I am growing and learning every day.",
+    "I am worthy of love and respect.",
+    "I choose to focus on the positive.",
+    "I have the power to create change.",
+    "I trust myself and my decisions.",
+    "I deserve to be happy and successful.",
+    "I am confident in who I am.",
+    "I let go of fear and embrace joy.",
+    "I am surrounded by love and support.",
+    "I have the strength to overcome challenges.",
+    "I am at peace with my past and present.",
+    "I am a magnet for positivity and success.",
+    "I am resilient and can handle life's challenges.",
+    "I choose to see the good in every situation.",
+    "I am aligned with the energy of abundance."
+];
+
 
   const [currentAffirmation, setCurrentAffirmation] = useState(affirmations[0]);
 
@@ -252,7 +268,7 @@ const MemoryGame = () => {
       </div>
       <button
         onClick={generateSequence}
-        className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+        className="mt-4 px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-700"
       >
         Generate Sequence
       </button>
