@@ -84,6 +84,7 @@ Soulace allows users to create a personalized profile to receive tailored recomm
    ```bash
    VITE_FIREBASE_API_KEY=" "
    VITE_LASTFM_API_KEY=" "
+   VITE_GROQ_API_KEY=" "
    ```
 
    

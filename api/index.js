@@ -6,7 +6,6 @@ import mongoose from "mongoose";
 import path from "path";
 import authRoutes from "./routes/auth.route.js";
 import blogRoutes from "./routes/blog.route.js"; // Import the blog routes
-import userRoutes from "./routes/user.route.js";
 
 dotenv.config();
 
@@ -56,6 +55,8 @@ app.use(cookieParser()); // Parse cookies
 app.use("/api/blog", blogRoutes); // Blog routes
 app.use("/api/user", userRoutes); // User routes
 app.use("/api/auth", authRoutes); // Auth routes
+app.use("/api/journal",journalRoutes); // Journal routes
+app.use("/api/music", musicRoutes); // Music routes
 
 // Serve static files (React frontend)
 app.use(express.static(path.join(__dirname, "/client/dist")));
