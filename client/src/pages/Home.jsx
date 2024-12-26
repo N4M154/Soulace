@@ -198,27 +198,37 @@ export default function Home() {
         </div>
 
         {/* Breathing Exercise Section */}
-        <div className="bg-gradient-to-r from-teal-200 to-white rounded-lg shadow-lg overflow-hidden">
+<div className="bg-gradient-to-r from-teal-200 to-white rounded-lg shadow-lg overflow-hidden">
+  <div className="w-full h-48 bg-white flex items-center justify-center space-x-4">
+    <img
+      src="/breath.png"
+      alt="Breathing Exercise Game"
+      className="max-w-[30%] max-h-full object-contain"
+    />
+    <img
+      src="/teal2.png"
+      alt="Teal Image 2"
+      className="max-w-[30%] max-h-full object-contain"
+    />
+    <img
+      src="/teal3.jpg"
+      alt="Teal Image 3"
+      className="max-w-[30%] max-h-full object-contain"
+    />
+  </div>
+  <div className="p-4 text-center">
+    <h2 className="text-lg font-bold text-teal-800 mb-3">
+    So, let's get started !!!
+    </h2>
+    <button
+      onClick={() => navigate("/breathinggame")}
+      className="bg-teal-600 text-white py-2 px-6 rounded-lg hover:bg-teal-500 transition duration-300"
+    >
+      Play Now
+    </button>
+  </div>
+</div>
 
-          <div className="w-full h-48 bg-white flex items-center justify-center">
-            <img
-              src="/breath.png"
-              alt="Breathing Exercise Game"
-              className="max-w-full max-h-full object-contain"
-            />
-          </div>
-          <div className="p-4 text-center">
-            <h2 className="text-lg font-bold text-teal mb-3">
-              Breathing Exercise
-            </h2>
-            <button
-              onClick={() => navigate("/breathinggame")}
-              className="bg-teal-600 text-white py-2 px-6 rounded-lg hover:bg-teal-500 transition duration-300"
-            >
-              Play Now
-            </button>
-          </div>
-        </div>
 
         {/* Music Recommendations */}
         {musicPlaying && (

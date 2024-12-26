@@ -147,7 +147,7 @@ const CommunityPage = () => {
 
         {/* Blog Form */}
         {showForm && (
-          <div className="flex justify-between items-start gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-8">
             <div
               id="create-blog"
               className="flex-1 bg-white p-6 shadow-lg rounded-lg"
@@ -267,13 +267,13 @@ const CommunityPage = () => {
         {/* Blog Posts */}
         <div id="latest-blogs">
           <h2 className="text-4xl font-bold mb-8 text-gray-800">Latest Blogs</h2>
-          <div className="space-y-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {blogs.map((blog) => (
               <div
                 key={blog._id}
-                className="bg-white shadow-lg rounded-lg p-6 flex space-x-6"
+                className="bg-white bg-opacity-80 shadow-lg rounded-lg p-6 flex flex-col items-start space-y-4 hover:shadow-xl hover:bg-opacity-90 transition"
               >
-                <div className="flex-shrink-0 w-1/3">
+                <div className="w-full">
                   {blog.media && blog.media.endsWith(".mp4") ? (
                     <video controls className="w-full rounded-lg">
                       <source src={blog.media} type="video/mp4" />
@@ -288,30 +288,28 @@ const CommunityPage = () => {
                     )
                   )}
                 </div>
-                <div className="flex-grow">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <h3 className="text-2xl font-semibold text-gray-800">{blog.title}</h3>
-                    <span className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
-                      {new Date(blog.createdAt).toLocaleDateString()}
-                    </span>
-                  </div>
-                  <p className="text-gray-700 mb-4 line-clamp-3">{blog.content}</p>
-                  <div className="flex space-x-6">
-                    <button
-                      className="flex items-center space-x-2 text-teal-400 hover:text-teal-500"
-                      onClick={() => handleLike(blog._id)}
-                    >
-                      <span>👍</span>
-                      <span>{blog.likes}</span>
-                    </button>
-                    <button
-                      className="flex items-center space-x-2 text-red-400 hover:text-red-500"
-                      onClick={() => handleLove(blog._id)}
-                    >
-                      <span>❤️</span>
-                      <span>{blog.loves}</span>
-                    </button>
-                  </div>
+                <div className="w-full">
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-2">{blog.title}</h3>
+                  <span className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+                    {new Date(blog.createdAt).toLocaleDateString()}
+                  </span>
+                </div>
+                <p className="text-gray-700 line-clamp-3">{blog.content}</p>
+                <div className="flex space-x-6">
+                  <button
+                    className="flex items-center space-x-2 text-teal-400 hover:text-teal-500"
+                    onClick={() => handleLike(blog._id)}
+                  >
+                    <span>👍</span>
+                    <span>{blog.likes}</span>
+                  </button>
+                  <button
+                    className="flex items-center space-x-2 text-red-400 hover:text-red-500"
+                    onClick={() => handleLove(blog._id)}
+                  >
+                    <span>❤️</span>
+                    <span>{blog.loves}</span>
+                  </button>
                 </div>
               </div>
             ))}
