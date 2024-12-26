@@ -272,178 +272,171 @@ const DailyJournal = () => {
 
   return (
     <div
-      className="container mx-auto p-8 bg-cover bg-center h-screen overflow-hidden flex flex-col items-center"
-      style={{ backgroundImage: "url('/journal-bg.jpg')", backgroundAttachment: "fixed" }}
+  className="container mx-auto p-8 bg-cover bg-center h-screen overflow-hidden flex flex-col items-center"
+  style={{ backgroundImage: "url('/journal-bg.jpg')", backgroundAttachment: "fixed" }}
+>
+  {/* Header */}
+  <header
+    className="bg-transparent text-teal-700 w-full absolute top-0 left-0 z-50 transition-opacity duration-300 opacity-0 hover:opacity-100"
+    
+    
+  >
+    <div className="px-16 flex justify-between items-center py-2 mt-4">
+      {/* Logo */}
+      <div className="flex items-center">
+        <Link to="/home">
+          <img src="/Logo.png" width={100} height={80} alt="Logo" />
+        </Link>
+      </div>
+
+      {/* Navbar */}
+      <nav className="hidden md:flex space-x-8">
+        {currentUser && (
+          <Link
+            to="/community"
+            className="text-teal-700 hover:text-teal-500 transition duration-300 font-semibold mt-2"
+          >
+            Community
+          </Link>
+        )}
+        {currentUser && (
+          <Link
+            to="/analytics"
+            className="text-teal-700 hover:text-teal-500 transition duration-300 font-semibold mt-2"
+          >
+            Analytics
+          </Link>
+        )}
+        {currentUser && (
+          <Link
+            to="/about"
+            className="text-teal-700 hover:text-teal-500 transition duration-300 font-semibold mt-2"
+          >
+            About
+          </Link>
+        )}
+        <Link to="/profile" className="flex items-center space-x-2 font-bold">
+          {currentUser ? (
+            <img
+              src={currentUser.profilePicture}
+              alt="profile"
+              className="h-10 w-10 rounded-full object-cover"
+            />
+          ) : (
+            <span className="text-teal-700 hover:text-teal-500 transition duration-300">
+              Sign In
+            </span>
+          )}
+        </Link>
+      </nav>
+
+      {/* Mobile Menu Button */}
+      <div className="md:hidden">
+        <button className="text-teal-500 focus:outline-none">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div className="mt-16 w-full flex flex-col items-start mb-6 ml-10">
+  <div className="flex items-center justify-between w-full">
+    <h1 className="text-4xl font-bold text-white ml-6">Daily Journal</h1>
+    <img
+      src={musicPlaying ? "/pause-music.gif" : "/playmusic.gif"} // Replace with your actual GIF file paths
+      alt={musicPlaying ? "Pause Music" : "Play Music"}
+      onClick={musicPlaying ? pauseMusic : playMusic}
+      className="w-20 h-20 cursor-pointer transition-transform duration-300 hover:scale-110 mr-12"
+    />
+  </div>
+  <h2 className="text-gray-400 text-lg ml-6">Your Daily Thoughts: Reflect, Release, and Recharge</h2>
+</div>
+
+
+
+
+  
+
+  <div className="flex flex-wrap md:flex-nowrap w-full max-w-6xl gap-20">
+    {/* Journal Writing Section */}
+    <div className="w-full md:w-10/12 bg-transparent backdrop-blur- shadow-lg rounded-xl p-6">
+      <h2 className="text-2xl text-yellow-100 font-bold mb-4">Hey, how was your day?</h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <textarea
+          value={journal}
+          onChange={(e) => setJournal(e.target.value)}
+          rows="5"
+          className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-500 bg-transparent text-white"
+          placeholder="Feel free to jot down what's on your mind, I'm here to listen!"
+          required
+        />
+
+       
+  <div className="flex items-center justify-between w-full">
+  <div className="flex space-x-2">
+    <button
+      type="button"
+      className="py-1 px-2 bg-gray-200 text-gray-600 font-medium rounded-md hover:bg-gray-300 transition duration-200 flex items-center space-x-1 text-sm"
     >
-      <header className="bg-transparent text-teal-700 fixed top-0 left-0 w-full z-50">
-  <div className="px-4 flex justify-between items-center py-4">
-    {/* Logo */}
-    <div className="flex items-center">
-      <Link to="/home">
-        <img src="/Logo.png" width={100} height={80} alt="Logo" />
-      </Link>
+      <img src="/photos.png" alt="Add" className="h-4 w-4" />
+      <span>Add Image</span>
+    </button>
+    <button
+      type="button"
+      className="py-1 px-2 bg-gray-200 text-gray-600 font-medium rounded-md hover:bg-gray-300 transition duration-200 flex items-center space-x-1 text-sm"
+    >
+      <img src="/happy.png" alt="Emoji" className="h-4 w-4" />
+      <span>Add Emoji</span>
+    </button>
+  </div>
+  <button
+    type="submit"
+    className="py-1 px-4 bg-blue-200 text-gray-600 font-medium rounded-md hover:bg-gray-300 transition duration-200 text-sm"
+  >
+    Save
+  </button>
+</div>
+
+
+      </form>
     </div>
 
-    {/* Navbar */}
-    <nav className="hidden md:flex space-x-8">
-      {currentUser && (
-        <Link
-          to="/community"
-          className="text-teal-700 hover:text-teal-500 transition duration-300 font-semibold mt-2"
-        >
-          Community
-        </Link>
-      )}
-      {currentUser && (
-        <Link
-          to="/analytics"
-          className="text-teal-700 hover:text-teal-500 transition duration-300 font-semibold mt-2"
-        >
-          Analytics
-        </Link>
-      )}
-      {currentUser && (
-        <Link
-          to="/about"
-          className="text-teal-700 hover:text-teal-500 transition duration-300 font-semibold mt-2"
-        >
-          About
-        </Link>
-      )}
-      <Link to="/profile" className="flex items-center space-x-2 font-bold">
-        {currentUser ? (
-          <img
-            src={currentUser.profilePicture}
-            alt="profile"
-            className="h-10 w-10 rounded-full object-cover"
-          />
-        ) : (
-          <span className="text-teal-700 hover:text-teal-500 transition duration-300">
-            Sign In
-          </span>
-        )}
-      </Link>
-    </nav>
-
-    {/* Mobile Menu Button */}
-    <div className="md:hidden">
-      <button className="text-teal-500 focus:outline-none">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M4 6h16M4 12h16m-7 6h7"
-          />
-        </svg>
+    {/* Journal Notes Section */}
+    <div className="w-full md:w-6/12 mt-6 md:mt-0 md:ml-6">
+      <h2 className="text-1xl font-bold text-white mb-4">See Older Posts</h2>
+      <div className="space-y-4">
+        {notes.map((note, index) => (
+          <div key={index} className="bg-gray-900 shadow-md rounded-lg p-3">
+            <p className="text-sm text-white">{note.content}</p>
+            <p className="text-sm text-yellow-100 mt-2">
+              {new Date(note.date).toLocaleString()}
+            </p>
+          </div>
+        ))}
+      </div>
+      <button
+        onClick={loadMoreNotes}
+        className="mt-4 w-full py-2 bg-transparent  text-teal-600 font-bold rounded-lg  hover:text-white transition duration-300 text-sm"
+      >
+        Load More
       </button>
     </div>
   </div>
-</header>
+</div>
 
-       
-      <div className="w-full flex justify-between items-center mb-6">
-        <h1 className="text-4xl font-bold text-white">Daily Journal</h1>
-        <button
-          onClick={musicPlaying ? pauseMusic : playMusic}
-          className="py-2 px-4 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition duration-300"
-        >
-          {musicPlaying ? "Pause Music" : "Play Music"}
-        </button>
-      </div>
-      <p className="text-black mb-6 ">
-        Your Daily Thoughts: Reflect, Release, and Recharge
-      </p>
-
-      <div className="flex flex-wrap md:flex-nowrap w-full max-w-6xl gap-20">
-        {/* Journal Writing Section */}
-        <div className="w-full md:w-10/12 bg-transparent backdrop-blur- shadow-lg rounded-xl p-6">
-          <h2 className="text-2xl text-yellow-100 font-bold mb-4">Hey, how was your day?</h2>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <textarea
-              value={journal}
-              onChange={(e) => setJournal(e.target.value)}
-              rows="5"
-              className="w-full p-4 border  border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-500 bg-transparent"
-              placeholder="Feel free to jot down what's on your mind, I'm here to listen!"
-              required
-            />
-            
-            <div className="flex space-x-4 ">
-              <button
-                type="button"
-                className="py-2 px-4 bg-gray-200 text-gray-700 font-bold rounded-lg hover:bg-gray-300 transition duration-300"
-              >
-                Add Image
-              </button>
-              <button
-                type="button"
-                className="py-2 px-4 bg-gray-200 text-gray-700 font-bold rounded-lg hover:bg-gray-300 transition duration-300"
-              >
-                Add Emoji
-              </button>
-              <button
-                type="submit"
-                className="py-2 px-6 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition duration-300"
-              >
-                Save Entry
-              </button>
-            </div>
-          </form>
-        </div>
-
-        {/* Journal Notes Section */}
-        <div
-          className={`w-full md:w-6/12 mt-6 md:mt-0 md:ml-6 ${
-            scrollVisible ? "overflow-y-auto" : "overflow-hidden"
-          } h-96`}
-        >
-          <style>
-  {`
-    .custom-scrollbar-white::-webkit-scrollbar {
-      width: 10px;
-    }
-    .custom-scrollbar-white::-webkit-scrollbar-track {
-      background: #f0f0f0; /* light gray background */
-      border-radius: 10px;
-    }
-    .custom-scrollbar-white::-webkit-scrollbar-thumb {
-      background: #888; /* darker thumb color */
-      border-radius: 10px;
-      border: 2px solid #f0f0f0; /* border color matching track */
-    }
-    .custom-scrollbar-white::-webkit-scrollbar-thumb:hover {
-      background: #555; /* hover state darker thumb */
-    }
-  `}
-</style>
-
-          <h2 className="text-2xl font-bold text-white mb-4">See Older Posts</h2>
-          <div className="space-y-4 custom-scrollbar-white">
-            {notes.map((note, index) => (
-              <div key={index} className="bg-white shadow-md rounded-lg p-4">
-                <p className="text-gray-800">{note.content}</p>
-                <p className="text-sm text-gray-500 mt-2">
-                  {new Date(note.date).toLocaleString()}
-                </p>
-              </div>
-            ))}
-          </div>
-          <button
-            onClick={loadMoreNotes}
-            className="mt-4 w-full py-3 bg-teal-600 text-white font-bold rounded-lg hover:bg-teal-700 transition duration-300"
-          >
-            Load More
-          </button>
-        </div>
-      </div>
-    </div>
   );
 };
 
