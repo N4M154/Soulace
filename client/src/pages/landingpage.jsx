@@ -309,7 +309,7 @@ Gain valuable insights, strategies, and practical tips for managing stress, anxi
     >
       <div className="container mx-auto px-8 text-center py-16 bg-gradient-to-b from-purple-300 to-white rounded-lg shadow-md">
         <h2 className="text-4xl font-bold text-purple-800 tracking-wide">
-          Breathing Exercise: A Relaxing Game
+          Relaxation Games and Exercises
         </h2>
         <p className="text-lg text-gray-600 mt-4">
           Engage in guided breathing exercises to relax and improve focus.
@@ -341,9 +341,9 @@ Gain valuable insights, strategies, and practical tips for managing stress, anxi
           </p>
           <button
             className="mt-4 px-4 py-2 bg-purple-700 text-white rounded-lg hover:bg-purple-500 transition"
-            onClick={() => navigate("/breathing-exercise")}
+            onClick={() => navigate("/breathinggame")}
           >
-            Start Now
+            Play now
           </button>
         </motion.div>
       </div>
