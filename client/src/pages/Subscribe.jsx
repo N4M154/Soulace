@@ -15,7 +15,13 @@ const SubscribePage = () => {
                     to="/daily-journal"
                     className="bg-white text-teal-600 py-3 px-8 rounded-lg hover:bg-teal-200 transition duration-300"
                 >
-                    Subscribe!
+                    Subscribe to daily journal!
+                </Link>
+                <Link
+                    to="/specialist"
+                    className="bg-white text-teal-600 py-3 px-8 rounded-lg hover:bg-teal-200 transition duration-300"
+                >
+                    Subscribe to connect with specialist!
                 </Link>
 
 

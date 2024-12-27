@@ -4,12 +4,12 @@ import About from "./pages/About";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
-import Header from "./components/Header";
+//import Header from "./components/Header";
 import PrivateRoute from "./components/PrivateRoute";
 import Footer from "./components/Footer";
 import BreathingGame from "./pages/BreathingGame";
 import Community from "./pages/CommunityPage";
-import TrackMood from "./pages/MoodLogger";
+//import TrackMood from "./pages/MoodLogger";
 import SleepTracker from "./pages/SleepTracker";
 import AboutPage from "./pages/About";
 import Analytics from "./pages/Analytics";
@@ -18,6 +18,8 @@ import LandingPage from "./pages/landingpage";
 import SubscribePage from "./pages/Subscribe";
 import DailyJournal from "./pages/DailyJournal";
 import Chatbot from "./pages/Chatbot";
+import Specialist from "./pages/Specialist";
+import Recommendation from "./pages/Recommendation";
 export default function App() {
   return (
     <BrowserRouter>
@@ -39,6 +41,8 @@ export default function App() {
 
         <Route path="/subscribe" element={<SubscribePage />} />
         <Route path="/daily-journal" element={<DailyJournal />} />
+        <Route path="/specialist" element={<Specialist />} />
+        <Route path="/recommendation" element={<Recommendation />} />
 
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
