@@ -12,16 +12,16 @@ export default function Header() {
 
   return (
     <header className="bg-white text-teal-700  w-full">
-      <div className="container mx-auto px-4 flex justify-between items-center py-4">
+      <div className="container mx-auto px-4 flex justify-between items-center py-4 ">
         {/* Logo */}
-        <div className="flex items-center">
+        <div className="flex items-center ml-10">
           <Link to="/home">
             <img src="/Logo.png" width={100} height={80} alt="Logo" />
           </Link>
         </div>
 
         {/* Navbar */}
-        <nav className="hidden md:flex space-x-8">
+        <nav className="hidden md:flex space-x-8 mr-10">
           {currentUser && (
             <Link
               to="/community"
