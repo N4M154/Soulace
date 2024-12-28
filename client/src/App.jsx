@@ -33,6 +33,7 @@ import Contents from "./pages/contents";
 import ScheduleConsultation from "./pages/ScheduleConsultation";
 import ChatSpecialist from "./pages/ChatSpecialist";
 import EmergencySupport from "./pages/EmergencySupport";
+import AchievementDashboard from "./pages/Achievements";
 export default function App() {
   return (
     <BrowserRouter>
@@ -48,7 +49,7 @@ export default function App() {
         <Route path="/community" element={<Community />} />
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/Mood-Tracker" element={<MoodLogger />} />
-       
+        <Route path="/achievements" element={<AchievementDashboard />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/meditation" element={<Meditation />} />
