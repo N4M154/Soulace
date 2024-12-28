@@ -20,7 +20,7 @@ export default function Header() {
       <div className="container mx-auto px-4 flex justify-between items-center py-4">
         {/* Logo */}
         <div className="flex items-center ml-10">
-          <Link to="/home">
+          <Link to="/">
             <img src="/Logo.png" width={100} height={80} alt="Logo" />
           </Link>
         </div>
