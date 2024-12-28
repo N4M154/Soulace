@@ -111,11 +111,6 @@ export default function Home() {
   return (
     <div
       className="bg-fixed bg-cover bg-center min-h-screen flex flex-col items-center  "
-      style={{
-        backgroundImage: "url('/teal.jpg')",
-        backgroundSize: "cover",
-        backgroundAttachment: "fixed",
-      }}
     >
       <Header />
 
