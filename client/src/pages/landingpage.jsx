@@ -558,7 +558,7 @@ Gain valuable insights, strategies, and practical tips for managing stress, anxi
         <div className="mt-12">
           <button
             className="px-8 py-4 bg-purple-700 text-white font-bold text-lg rounded-full hover:bg-purple-600 transition-transform transform hover:scale-105 shadow-lg"
-            onClick={() => navigate('/specialist')}
+            onClick={() => navigate('/subscribe')}
           >
             Connect with a Specialist
           </button>
