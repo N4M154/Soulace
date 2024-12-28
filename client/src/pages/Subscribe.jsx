@@ -55,7 +55,7 @@ const SubscribePage = () => {
         </div>
       </main>
 
-      <Footer />
+      
     </div>
   );
 };
