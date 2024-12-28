@@ -119,9 +119,9 @@ const CommunityPage = () => {
       style={{ backgroundImage: "url('/teal.jpg')" }}
     >
       {/* Full-Width Header */}
-      <header className="p-6 shadow-md bg-white bg-opacity-90">
+      
         <Header />
-      </header>
+      
 
       {/* Flag Buttons */}
       <button
