@@ -21,10 +21,8 @@ const MoodLogger = () => {
     quality: 50,
   });
 
-  const [showChart, setShowChart] = useState(false);
   const [mentalHealthRating, setMentalHealthRating] = useState(null);
   const [recommendation, setRecommendation] = useState(null);
-  const [aiRawResponse, setAiRawResponse] = useState("");
   const [loading, setLoading] = useState(false);
 
   const groq = new Groq({
@@ -63,9 +61,7 @@ const MoodLogger = () => {
         messages: inputData,
       });
 
-      const aiResponse = chatCompletion.choices[0]?.message?.content || "{}";
-      setAiRawResponse(aiResponse);
-
+      const aiResponse = chatCompletion.choices[0]?.message?.content || "Unavailable";
       const matches = aiResponse.match(/Rating: (\d+)/i);
       const rating = matches ? parseInt(matches[1], 10) : "Unavailable";
       setMentalHealthRating(rating);
@@ -82,7 +78,7 @@ const MoodLogger = () => {
 
   const fetchRecommendations = async () => {
     const inputData = [
-      { role: "system", content: "You are a mental health analyst. Provide personalized recommendations based on mood and sleep data." },
+      { role: "system", content: "You are a mental health analyst. Provide personalized recommendations based on mood and sleep data. don't write personalised recommendation as headeing. maintain paras in your response. it should be short and authentic" },
       {
         role: "user",
         content: `Mood Data: ${JSON.stringify(mood)}, Sleep Data: ${JSON.stringify(sleep)}`,
@@ -97,7 +93,7 @@ const MoodLogger = () => {
         messages: inputData,
       });
 
-      const aiResponse = chatCompletion.choices[0]?.message?.content || "{}";
+      const aiResponse = chatCompletion.choices[0]?.message?.content || "Unavailable";
       setRecommendation(aiResponse);
     } catch (error) {
       console.error("Error fetching recommendations:", error);
@@ -125,7 +121,6 @@ const MoodLogger = () => {
       return;
     }
 
-    setShowChart(true);
     setLoading(true);
 
     await fetchMentalHealthRating();
@@ -169,177 +164,98 @@ const MoodLogger = () => {
   return (
     <>
       <Header />
-      <div style={{ backgroundColor: "white", minHeight: "100vh" }}>
+      <div style={{ display: "flex", minHeight: "100vh", background: "rgb(255, 255, 255)" }}>
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginTop: "7rem",
-            paddingBottom: "4rem",
+            flex: "1",
+            padding: "40px",
+            backgroundColor: "transparent",
+            borderRadius: "12px",
+            //boxShadow: "0 1px 5px rgba(0, 0, 0, 0.3)",
+            //border: "1px solid #ddd",
+            marginLeft: "60px",
+            marginTop: "10px",
+            
           }}
         >
-          <div
-            style={{
-              width: "100%",
-              maxWidth: "60%",
-              padding: "40px",
-              backgroundColor: "white",
-              borderRadius: "12px",
-              boxShadow: "0 1px 10px rgba(0, 0, 0, 0.3)",
-              border: "1px solid #ddd",
-            }}
-          >
-            <h1
+          <h1 style={{ textAlign: "center", marginBottom: "15px", fontSize: "28px", color: "#333" }}>
+            Mood and Sleep Logger
+          </h1>
+          <form onSubmit={handleSubmit}>
+            <h2 style={{ textAlign: "center", marginBottom: "30px", fontSize: "16px", color: "#555" }}>
+              How do you feel today?
+            </h2>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+              {Object.keys(mood).map((moodType) => (
+                <div key={moodType} style={{ minWidth: "100px" }}>
+                  <label style={{ fontWeight: "bold", display: "block", marginBottom: "5px", color: "#333" }}>
+                    {moodType.charAt(0).toUpperCase() + moodType.slice(1)}
+                  </label>
+                  <DiscreteSliderMarks
+                    value={mood[moodType]}
+                    onChange={(value) => handleMoodChange(moodType, value)}
+                  />
+                </div>
+              ))}
+
+              <div style={{ minWidth: "100px" }}>
+                <label style={{ fontWeight: "bold", display: "block", marginBottom: "5px", color: "#333" }}>
+                  Duration (hours)
+                </label>
+                <DiscreteSliderMarks
+                  value={sleep.duration}
+                  min={0}
+                  max={24}
+                  step={1}
+                  onChange={(value) => handleSleepChange("duration", value)}
+                />
+              </div>
+              <div style={{ minWidth: "100px" }}>
+                <label style={{ fontWeight: "bold", display: "block", marginBottom: "5px", color: "#333" }}>
+                  Quality (%)
+                </label>
+                <DiscreteSliderMarks
+                  value={sleep.quality}
+                  onChange={(value) => handleSleepChange("quality", value)}
+                />
+              </div>
+            </div>
+            <button
+              type="submit"
               style={{
-                textAlign: "center",
-                marginBottom: "15px",
-                fontSize: "28px",
-                color: "#333",
+                marginTop: "20px",
+                padding: "10px 20px",
+                fontSize: "14px",
+                backgroundColor: "#6B46C1",
+                borderRadius: "6px",
+                cursor: "pointer",
+                border: "none",
+                color: "#fff",
               }}
             >
-              Mood and Sleep Logger
-            </h1>
-            <form onSubmit={handleSubmit}>
-              <h2
-                style={{
-                  textAlign: "center",
-                  marginBottom: "15px",
-                  fontSize: "18px",
-                  color: "#555",
-                }}
-              >
-                How do you feel today?
-              </h2>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-around",
-                  gap: "1rem",
-                  flexWrap: "wrap",
-                }}
-              >
-                {Object.keys(mood).map((moodType) => (
-                  <div
-                    key={moodType}
-                    style={{ flex: "1 0 45%", minWidth: "150px" }}
-                  >
-                    <label
-                      style={{
-                        fontWeight: "bold",
-                        display: "block",
-                        marginBottom: "5px",
-                        color: "#333",
-                      }}
-                    >
-                      {moodType.charAt(0).toUpperCase() + moodType.slice(1)}
-                    </label>
-                    <DiscreteSliderMarks
-                      value={mood[moodType]}
-                      onChange={(value) => handleMoodChange(moodType, value)}
-                    />
-                  </div>
-                ))}
+              {loading ? "Analyzing..." : "Log Data"}
+            </button>
+          </form>
 
-                <div style={{ flex: "1 0 45%", minWidth: "150px" }}>
-                  <label
-                    style={{
-                      fontWeight: "bold",
-                      display: "block",
-                      marginBottom: "5px",
-                      color: "#333",
-                    }}
-                  >
-                    Duration (hours)
-                  </label>
-                  <DiscreteSliderMarks
-                    value={sleep.duration}
-                    min={0}
-                    max={24}
-                    step={1}
-                    onChange={(value) => handleSleepChange("duration", value)}
-                  />
-                </div>
-                <div style={{ flex: "1 0 45%", minWidth: "150px" }}>
-                  <label
-                    style={{
-                      fontWeight: "bold",
-                      display: "block",
-                      marginBottom: "5px",
-                      color: "#333",
-                    }}
-                  >
-                    Quality (%)
-                  </label>
-                  <DiscreteSliderMarks
-                    value={sleep.quality}
-                    onChange={(value) => handleSleepChange("quality", value)}
-                  />
-                </div>
-              </div>
-              <button
-                type="submit"
-                style={{
-                  marginTop: "20px",
-                  padding: "12px 24px",
-                  fontSize: "16px",
-                  backgroundColor: "#6B46C1",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                  border: "none",
-                  color: "#fff",
-                }}
-              >
-                {loading ? "Analyzing..." : "Log Data"}
-              </button>
-            </form>
 
-            {showChart && (
-              <>
-                <div
-                  style={{
-                    marginTop: "30px",
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Radar data={moodChartData} options={{ responsive: true }} />
-                </div>
-
-                <div
-                  style={{
-                    marginTop: "30px",
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Bar data={sleepChartData} options={{ responsive: true }} />
-                </div>
-              </>
-            )}
-
+          <div style={{ marginTop: "30px" }}>
             {mentalHealthRating !== null && (
-              <div
-                style={{
-                  marginTop: "30px",
-                  textAlign: "center",
-                  color: "#333",
-                }}
-              >
-                <h3>Mental Health Rating:</h3>
-                <input
-                  type="text"
-                  value={`${mentalHealthRating} / 100`}
+              <div style={{ marginBottom: "20px" }}>
+                <h3>Your Mental Health Rating:</h3>
+                <textarea
                   readOnly
+                  value={mentalHealthRating}
                   style={{
-                    textAlign: "center",
+                    width: "100%",
+                    minHeight: "50px",
+                    padding: "10px",
                     fontSize: "24px",
-                    fontWeight: "bold",
-                    border: "none",
+                    borderRadius: "5px",
+                    resize: "none",
                     background: "transparent",
-                    color: "#333",
+                    color:"purple"
                   }}
-                />
+                ></textarea>
               </div>
             )}
 
@@ -347,26 +263,31 @@ const MoodLogger = () => {
               <div
                 style={{
                   marginTop: "20px",
-                  textAlign: "center",
-                  color: "#333",
+                  padding: "20px",
+                  border: "1px solid #ddd",
+                  borderRadius: "8px",
+                  backgroundColor: "#f9f9f9",
                 }}
               >
-                <h3>Personalized Recommendation:</h3>
-                <textarea
-                  readOnly
-                  value={recommendation}
+                <h3 style={{ marginBottom: "15px", color: "#333", textAlign: "center" }}>Personalized Recommendation:</h3>
+                <p
                   style={{
-                    width: "100%",
-                    minHeight: "100px",
-                    padding: "10px",
-                    border: "1px solid #ddd",
-                    borderRadius: "5px",
-                    resize: "none",
+                    fontSize: "16px",
+                    lineHeight: "1.6",
+                    color: "#555",
                   }}
-                ></textarea>
+                >
+                  {recommendation}
+                </p>
               </div>
             )}
           </div>
+
+        </div>
+
+        <div style={{ flex: "0.5", padding: "20px", marginTop: "7rem", marginRight:"60px"}}>
+          <Radar data={moodChartData} options={{ responsive: true }} />
+          <Bar data={sleepChartData} options={{ responsive: true, marginTop: "30px" }} />
         </div>
       </div>
     </>
