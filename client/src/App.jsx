@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 import BreathingGame from "./pages/BreathingGame";
 import Community from "./pages/CommunityPage";
 //import TrackMood from "./pages/MoodLogger";
-import SleepTracker from "./pages/SleepTracker";
+
 import AboutPage from "./pages/About";
 import Analytics from "./pages/Analytics";
 import MoodLogger from "./pages/MoodLogger";
@@ -45,7 +45,7 @@ export default function App() {
         <Route path="/community" element={<Community />} />
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/Mood-Tracker" element={<MoodLogger />} />
-        <Route path="/Sleep-Tracker" element={<SleepTracker />} />
+       
         <Route path="/about" element={<AboutPage />} />
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/meditation" element={<Meditation />} />
