@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 
 const Specialist = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +23,8 @@ const Specialist = () => {
   };
 
   return (
+    <div>
+      <Header/>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-100 flex flex-col items-center p-6">
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold text-purple-800">Connect with a Specialist</h1>
@@ -93,6 +96,7 @@ const Specialist = () => {
           Submit
         </button>
       </form>
+    </div>
     </div>
   );
 };

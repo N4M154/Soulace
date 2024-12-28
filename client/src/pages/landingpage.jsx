@@ -225,7 +225,7 @@ export default function LandingPage() {
               Explore personalized playlists to suit your mood and energy level. You can choose your mood and get recommendation of music that suits the mood. Helps you boost your mood. 
             </p>
             <button
-              onClick={() => navigate("/music-recommendation")}
+              onClick={() => navigate("/musicrecommendation")}
               className="px-6 py-3 bg-pink-700 text-white rounded-lg hover:bg-pink-500 transition duration-300 ml-10"
             >
               Discover Music
@@ -247,22 +247,22 @@ export default function LandingPage() {
               Learn, Reflect, and Grow
             </h2>
             <p className="text-lg text-gray-600 mb-6">
-              Dive into articles written by experts to nurture your mental well-being.
+              Dive into articles written by experts or the videos to nurture your mental well-being.
 Gain valuable insights, strategies, and practical tips for managing stress, anxiety, and building emotional resilience.
 
             </p>
             <button
-              onClick={() => navigate("/mental-health-articles")}
+              onClick={() => navigate("/contents")}
               className="px-6 py-3 bg-teal-700 text-white rounded-lg hover:bg-teal-500 transition duration-300"
             >
-              Read Articles
+              See Contents
             </button>
           </div>
           <div className="flex-1 ">
             <img
               src="/MindGrowth.png"
               alt="Mind growth concept"
-              className="h-80 w-80 rounded-lg object-cover "
+              className="h-80 w-100 rounded-lg object-cover "
             />
           </div>
         </section>
@@ -277,7 +277,7 @@ Gain valuable insights, strategies, and practical tips for managing stress, anxi
               "Why don’t scientists trust atoms? Because they make up everything!"
             </p>
             <button
-              onClick={() => navigate("/joke-of-the-day")}
+              onClick={() => navigate("/jokeoftheday")}
               className="px-6 py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-500 transition duration-300 ml-10"
             >
               See Another Joke
@@ -508,7 +508,7 @@ Gain valuable insights, strategies, and practical tips for managing stress, anxi
           <div className="mt-6">
             <button
               className="px-8 py-4 bg-teal-600 text-white font-bold text-lg rounded-full hover:bg-teal-500 transition-transform transform hover:scale-105 shadow-lg"
-              onClick={() => navigate('/learn-more-soulmate')}
+              onClick={() => navigate('/chatbot')}
             >
               Chat Now
             </button>
@@ -558,7 +558,7 @@ Gain valuable insights, strategies, and practical tips for managing stress, anxi
         <div className="mt-12">
           <button
             className="px-8 py-4 bg-purple-700 text-white font-bold text-lg rounded-full hover:bg-purple-600 transition-transform transform hover:scale-105 shadow-lg"
-            onClick={() => navigate('/learn-more-specialist')}
+            onClick={() => navigate('/specialist')}
           >
             Connect with a Specialist
           </button>

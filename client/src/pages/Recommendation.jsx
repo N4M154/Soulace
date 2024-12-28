@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 
 const Recommendation = () => {
   return (
+    <div>
+      <Header/>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-100 flex flex-col items-center p-6">
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-3xl w-full text-center">
         <h2 className="text-2xl font-bold text-purple-800 mb-4">Results are here! 🎧</h2>
@@ -34,6 +37,7 @@ const Recommendation = () => {
           </Link>
         </div>
       </div>
+    </div>
     </div>
   );
 };

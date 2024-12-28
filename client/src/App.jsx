@@ -27,7 +27,9 @@ import Break from "./pages/Break";
 import Break1 from "./pages/Break1";
 import Switch from "./pages/Switch";
 import Switch1 from "./pages/Switch1";
-
+import JOTD from "./pages/JOTD";
+import Music from "./pages/Music";
+import Contents from "./pages/contents";
 export default function App() {
   return (
     <BrowserRouter>
@@ -57,6 +59,9 @@ export default function App() {
         <Route path="/break/1" element={<Break1 />} />
         <Route path="/switch" element={<Switch />} />
         <Route path="/switch/1" element={<Switch1 />} />
+        <Route path="/jokeoftheday" element={<JOTD />} />
+        <Route path="/musicrecommendation" element={<Music />} />
+        <Route path="/contents" element={<Contents />} />
 
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
