@@ -1,81 +1,212 @@
-import React from "react";
+import { useSelector } from "react-redux";
+import { useRef, useState, useEffect } from "react";
 import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Legend,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage";
+import { app } from "../firebase";
+import { useDispatch } from "react-redux";
+import {
+  updateUserStart,
+  updateUserSuccess,
+  updateUserFailure,
+  deleteUserStart,
+  deleteUserSuccess,
+  deleteUserFailure,
+  signOut,
+} from "../redux/user/userSlice";
 import Header from "../components/Header";
 
-// Example dummy data for the past 5 days
-const data = [
-  { day: "Day 1", stress: 3, happiness: 4, focus: 2, energy: 5, calmness: 3 },
-  { day: "Day 2", stress: 4, happiness: 3, focus: 3, energy: 4, calmness: 4 },
-  { day: "Day 3", stress: 2, happiness: 5, focus: 4, energy: 3, calmness: 5 },
-  { day: "Day 4", stress: 3, happiness: 2, focus: 4, energy: 4, calmness: 3 },
-  { day: "Day 5", stress: 4, happiness: 3, focus: 5, energy: 2, calmness: 4 },
-];
+export default function Profile() {
+  const dispatch = useDispatch();
+  const fileRef = useRef(null);
+  const [image, setImage] = useState(undefined);
+  const [imagePercent, setImagePercent] = useState(0);
+  const [imageError, setImageError] = useState(false);
+  const [formData, setFormData] = useState({});
+  const [updateSuccess, setUpdateSuccess] = useState(false);
 
-const Analytics = () => {
+  const { currentUser, loading, error } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (image) {
+      handleFileUpload(image);
+    }
+  }, [image]);
+
+  const handleFileUpload = async (image) => {
+    const storage = getStorage(app);
+    const fileName = new Date().getTime() + image.name;
+    const storageRef = ref(storage, fileName);
+    const uploadTask = uploadBytesResumable(storageRef, image);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setImagePercent(Math.round(progress));
+      },
+      (error) => {
+        setImageError(true);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) =>
+          setFormData({ ...formData, profilePicture: downloadURL })
+        );
+      }
+    );
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      dispatch(updateUserStart());
+      const res = await fetch(`/api/user/update/${currentUser._id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(updateUserFailure(data));
+        return;
+      }
+      dispatch(updateUserSuccess(data));
+      setUpdateSuccess(true);
+    } catch (error) {
+      dispatch(updateUserFailure(error));
+    }
+  };
+
+  const handleDeleteAccount = async () => {
+    try {
+      dispatch(deleteUserStart());
+      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(deleteUserFailure(data));
+        return;
+      }
+      dispatch(deleteUserSuccess(data));
+    } catch (error) {
+      dispatch(deleteUserFailure(error));
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await fetch("/api/auth/signout");
+      dispatch(signOut());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <div
-      className="min-h-screen bg-cover bg-center bg-fixed flex flex-col relative"
-    >
-      <header className="p-6 shadow-md bg-white bg-opacity-90">
-        <Header />
-      </header>
+    <div className="bg-gray-50 min-h-screen">
+      {/* Header */}
+      <Header />
 
-      <div className="analytics-container mx-auto py-12 px-6 bg-white bg-opacity-90 rounded-lg shadow-lg w-11/12 max-w-7xl">
-        <h1 className="text-4xl font-bold text-center text-teal-800 mb-8">
-          Analytics
+      <div className="p-6 max-w-4xl mx-auto bg-white shadow-lg rounded-lg mt-10">
+        <h1 className="text-4xl font-bold text-center text-teal-700 mb-8">
+          Edit Your Profile
         </h1>
-        <div className="charts">
-          <ResponsiveContainer width="100%" height={500}>
-            <BarChart
-              data={data}
-              margin={{ top: 20, right: 30, left: 0, bottom: 20 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" stroke="#ddd" />
-              <XAxis
-                dataKey="day"
-                tick={{ fill: "#555", fontSize: 14 }}
-                stroke="#555"
-              />
-              <YAxis
-                tick={{ fill: "#555", fontSize: 14 }}
-                stroke="#555"
-                label={{
-                  value: "Score",
-                  angle: -90,
-                  position: "insideLeft",
-                  fill: "#555",
-                  fontSize: 14,
-                }}
-              />
-              <Tooltip
-                contentStyle={{ backgroundColor: "#fff", borderRadius: "8px" }}
-              />
-              <Legend
-                verticalAlign="top"
-                height={36}
-                wrapperStyle={{ fontSize: "14px" }}
-              />
-              {/* Pastel Colors */}
-              <Bar dataKey="stress" fill="#FAD2E1" name="Stress" /> {/* Pastel Pink */}
-              <Bar dataKey="happiness" fill="#FEF9C7" name="Happiness" /> {/* Pastel Yellow */}
-              <Bar dataKey="focus" fill="#BEE3F8" name="Focus" /> {/* Pastel Blue */}
-              <Bar dataKey="energy" fill="#C6F6D5" name="Energy" /> {/* Pastel Green */}
-              <Bar dataKey="calmness" fill="#E9D8FD" name="Calmness" /> {/* Pastel Purple */}
-            </BarChart>
-          </ResponsiveContainer>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          {/* Profile Picture Upload */}
+          <input
+            type="file"
+            ref={fileRef}
+            hidden
+            accept="image/*"
+            onChange={(e) => setImage(e.target.files[0])}
+          />
+          <div className="flex justify-center">
+            <img
+              src={formData.profilePicture || currentUser.profilePicture}
+              alt="profile"
+              className="h-28 w-28 cursor-pointer rounded-full object-cover border-4 border-teal-500"
+              onClick={() => fileRef.current.click()}
+            />
+          </div>
+          <p className="text-sm text-center">
+            {imageError ? (
+              <span className="text-red-600">
+                Error uploading image (file size must be less than 2 MB)
+              </span>
+            ) : imagePercent > 0 && imagePercent < 100 ? (
+              <span className="text-gray-600">{`Uploading: ${imagePercent}%`}</span>
+            ) : imagePercent === 100 ? (
+              <span className="text-teal-700">Image uploaded successfully</span>
+            ) : (
+              ""
+            )}
+          </p>
+
+          {/* Inputs */}
+          <input
+            defaultValue={currentUser.username}
+            type="text"
+            id="username"
+            placeholder="Username"
+            className="bg-gray-100 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+            onChange={handleChange}
+          />
+          <input
+            defaultValue={currentUser.email}
+            type="email"
+            id="email"
+            placeholder="Email"
+            className="bg-gray-100 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            className="bg-gray-100 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+            onChange={handleChange}
+          />
+          <button className="bg-teal-600 text-white font-semibold p-4 rounded-lg uppercase hover:bg-teal-500">
+            {loading ? "Loading..." : "Update"}
+          </button>
+        </form>
+
+        {/* Actions */}
+        <div className="flex justify-between mt-8">
+          <span
+            onClick={handleDeleteAccount}
+            className="text-red-600 cursor-pointer font-semibold hover:text-red-500"
+          >
+            Delete Account
+          </span>
+          <span
+            onClick={handleSignOut}
+            className="text-teal-600 font-semibold hover:text-teal-500 cursor-pointer"
+          >
+            Sign out
+          </span>
         </div>
+
+        {/* Status Messages */}
+        <p className="text-red-600 mt-6 text-center font-semibold">
+          {error && "Something went wrong!"}
+        </p>
+        <p className="text-teal-600 mt-6 text-center font-semibold">
+          {updateSuccess && "User is updated successfully!"}
+        </p>
       </div>
     </div>
   );
-};
-
-export default Analytics;
+}

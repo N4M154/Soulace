@@ -131,10 +131,10 @@ export default function Header() {
   )}
   {currentUser && (
     <Link
-      to="/analytics"
+      to="/achievements"
       className="text-teal-700 hover:text-teal-500 transition duration-300 font-semibold mt-2"
     >
-      Analytics
+      Achievements
     </Link>
   )}
   {currentUser && (
