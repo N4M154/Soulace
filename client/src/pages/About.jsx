@@ -2,29 +2,25 @@ import Header from "../components/Header.jsx";
 
 const AboutPage = () => {
   return (
-    <div
-      className="min-h-screen bg-cover bg-center bg-fixed"
-    >
-      <header className="p-6 shadow-md bg-white bg-opacity-90">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-100">
+      
         <Header />
-      </header>
+      
 
-      <div className="container mx-auto py-12 px-8 bg-white bg-opacity-90 rounded-lg shadow-lg">
+      <div className="container mx-auto py-12 px-8 bg-white bg-opacity-95 rounded-lg shadow-lg">
         {/* Developers Information */}
-        <section className="mb-12">
-          <h2 className="text-4xl font-bold text-teal-600 mb-6 text-center">
-            Our Developers
+        <section className="mb-16">
+          <h2 className="text-4xl font-extrabold text-teal-700 mb-8 text-center">
+            Meet Our Team
           </h2>
-          <p className="text-lg text-gray-800 mb-8 text-center">
-            Our team is made up of passionate developers committed to creating
-            a meaningful mental health solution. We aim to develop a platform
-            that supports mental well-being and empowers individuals to manage
-            their emotional and psychological health.
+          <p className="text-lg text-gray-700 mb-12 text-center leading-relaxed">
+            Our team of passionate developers is dedicated to creating a
+            meaningful platform that prioritizes mental health and empowers
+            individuals to take control of their emotional well-being.
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
             {/* Developer Cards */}
             {[
-              
               {
                 name: "Alfey Sani",
                 role: "Product Manager & Frontend Developer",
@@ -41,122 +37,113 @@ const AboutPage = () => {
                 name: "Namisa Najah",
                 role: "Backend Developer",
                 description:
-                  "Namisa focuses on building efficient backend systems, ensuring secure and scalable data handling for a growing user base.",
+                  "Namisa builds efficient backend systems, ensuring secure and scalable data handling for a growing user base.",
               },
               {
                 name: "Md H R Alif",
                 role: "Backend Developer",
                 description:
-                  "Alif specializes in backend development and is dedicated to optimizing system performance and database efficiency.",
+                  "Alif specializes in backend development, optimizing system performance and database efficiency.",
               },
             ].map((developer, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-r from-teal-100 to-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+                className="bg-gradient-to-br from-teal-50 to-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
               >
-                <h3 className="text-2xl font-bold text-teal-700 mb-2">
+                <h3 className="text-xl font-semibold text-teal-700 mb-2">
                   {developer.name}
                 </h3>
-                <p className="text-sm text-teal-600 mb-4">{developer.role}</p>
-                <p className="text-gray-800">{developer.description}</p>
+                <p className="text-sm font-medium text-teal-600 mb-4">
+                  {developer.role}
+                </p>
+                <p className="text-gray-700 text-sm">{developer.description}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* Project Motivation */}
-        <section className="mb-12">
-          <h2 className="text-4xl font-bold text-teal-600 mb-6 text-center">
-            Our Motivation
+        <section className="mb-16">
+          <h2 className="text-4xl font-extrabold text-teal-700 mb-8 text-center">
+            Our Vision & Motivation
           </h2>
-          <p className="text-lg text-gray-800 mb-4">
-            Mental health is an essential aspect of overall well-being, yet it
-            is often stigmatized. Our vision is to create a comprehensive
-            solution that helps users track their emotional health and provides
-            tools for mental well-being.
-          </p>
-          <p className="text-lg text-gray-800">
-            Our platform empowers individuals to take control of their mental
-            health, monitor progress, and find comfort and support when needed.
+          <p className="text-lg text-gray-700 leading-relaxed text-center max-w-4xl mx-auto">
+            Mental health is essential for overall well-being, yet it's often
+            stigmatized. Our mission is to create a comprehensive platform that
+            empowers individuals to track their emotional health, access tools
+            for mental well-being, and find the support they need to thrive.
           </p>
         </section>
 
         {/* Solving Societal Problems */}
-        <section className="mb-12">
-          <h2 className="text-4xl font-bold text-teal-600 mb-6 text-center">
-            Solving Societal Problems
+        <section className="mb-16">
+          <h2 className="text-4xl font-extrabold text-teal-700 mb-8 text-center">
+            Making a Difference
           </h2>
-          <p className="text-lg text-gray-800 mb-4">
-            With rising stress and mental health challenges, our platform
-            provides a safe space for users to track their moods, explore mental
-            health-related content, and access tools for improving their
-            well-being.
-          </p>
-          <p className="text-lg text-gray-800">
-            Features like the mood tracker, breathing exercises, and community
-            support aim to reduce the stigma surrounding mental health and
-            encourage proactive steps toward emotional well-being.
+          <p className="text-lg text-gray-700 leading-relaxed text-center max-w-4xl mx-auto">
+            In today’s fast-paced world, stress and mental health challenges are
+            prevalent. Our platform offers tools like mood tracking, breathing
+            exercises, and community support to encourage proactive mental
+            health management and reduce stigma.
           </p>
         </section>
 
         {/* Features Overview */}
-        <section className="mb-12">
-          <h2 className="text-4xl font-bold text-teal-600 mb-6 text-center">
-            Features of Our Mental Health Platform
+        <section>
+          <h2 className="text-4xl font-extrabold text-teal-700 mb-8 text-center">
+            Explore Our Features
           </h2>
-          <ul className="list-disc pl-6 text-lg text-gray-800 space-y-4">
-            <li>
-              <strong>Mood Tracker:</strong> Track your emotions daily to
-              understand your mood patterns.
-            </li>
-            <li>
-              <strong>Sleep Tracker:</strong> Monitor your sleep habits and
-              improve your overall well-being.
-            </li>
-            <li>
-              <strong>Joke Generator:</strong> Lighten your mood with uplifting
-              jokes.
-            </li>
-            <li>
-              <strong>Chatbot (Home):</strong> Receive immediate support when
-              needed.
-            </li>
-            <li>
-              <strong>Daily Journal:</strong> Record your thoughts, feelings,
-              and experiences each day for self-reflection.
-            </li>
-            <li>
-              <strong>Sentiment Analysis:</strong> Get AI-based insights into
-              your emotional state by analyzing your journal entries.
-            </li>
-            <li>
-              <strong>Community:</strong> Connect with others who understand
-              and support your mental health journey.
-            </li>
-            <li>
-              <strong>Breathing Exercise:</strong> Practice breathing techniques
-              to manage stress.
-            </li>
-            <li>
-              <strong>Sleep Map:</strong> Visualize your sleep data to identify
-              patterns.
-            </li>
-            <li>
-              <strong>Mood Map:</strong> Gain insights into your emotional
-              health over time.
-            </li>
-            <li>
-              <strong>Progress Tracker:</strong> Stay motivated by tracking
-              improvements.
-            </li>
-            <li>
-              <strong>Blogs/Articles:</strong> Access mental health content to
-              learn and find support.
-            </li>
-            <li>
-              <strong>Mood-Based Playlist/Podcast:</strong> Listen to content
-              tailored to your emotional state.
-            </li>
+          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 list-none text-center">
+            {[
+              {
+                title: "Mood Tracker",
+                description: "Track your daily emotions to identify patterns.",
+              },
+              {
+                title: "Sleep Tracker",
+                description: "Monitor your sleep for improved health.",
+              },
+              {
+                title: "Daily Journal",
+                description: "Reflect and record your thoughts and experiences.",
+              },
+              {
+                title: "Community",
+                description: "Connect with others on their mental health journey.",
+              },
+              {
+                title: "Sentiment Analysis",
+                description: "Get insights into your emotions with AI tools.",
+              },
+              {
+                title: "Breathing Exercises",
+                description: "Manage stress with guided breathing techniques.",
+              },
+              {
+                title: "Blogs/Articles",
+                description:
+                  "Access mental health content for learning and support.",
+              },
+              {
+                title: "Mood-Based Playlists",
+                description:
+                  "Listen to playlists tailored to your emotional state.",
+              },
+              {
+                title: "Progress Tracker",
+                description: "Stay motivated with personalized progress tracking.",
+              },
+            ].map((feature, index) => (
+              <li
+                key={index}
+                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all"
+              >
+                <h3 className="text-xl font-semibold text-teal-600 mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-700 text-sm">{feature.description}</p>
+              </li>
+            ))}
           </ul>
         </section>
       </div>
