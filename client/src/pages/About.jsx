@@ -1,15 +1,9 @@
-import React from "react";
 import Header from "../components/Header.jsx";
 
 const AboutPage = () => {
   return (
     <div
       className="min-h-screen bg-cover bg-center bg-fixed"
-      style={{
-        backgroundImage: "url('/teal.jpg')",
-        backgroundSize: "cover",
-        backgroundAttachment: "fixed",
-      }}
     >
       <header className="p-6 shadow-md bg-white bg-opacity-90">
         <Header />
