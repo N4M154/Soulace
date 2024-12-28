@@ -30,6 +30,9 @@ import Switch1 from "./pages/Switch1";
 import JOTD from "./pages/JOTD";
 import Music from "./pages/Music";
 import Contents from "./pages/contents";
+import ScheduleConsultation from "./pages/ScheduleConsultation";
+import ChatSpecialist from "./pages/ChatSpecialist";
+import EmergencySupport from "./pages/EmergencySupport";
 export default function App() {
   return (
     <BrowserRouter>
@@ -62,6 +65,10 @@ export default function App() {
         <Route path="/jokeoftheday" element={<JOTD />} />
         <Route path="/musicrecommendation" element={<Music />} />
         <Route path="/contents" element={<Contents />} />
+
+        <Route path="/schedule-consultation" element={<ScheduleConsultation/>} />
+        <Route path="/chat-specialist" element={<ChatSpecialist />} />
+        <Route path="/emergency-support" element={<EmergencySupport />} />
 
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />

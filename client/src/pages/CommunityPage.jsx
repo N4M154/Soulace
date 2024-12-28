@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import{ useEffect, useState } from "react";
 import Header from "../components/Header.jsx";
 
 const CommunityPage = () => {
@@ -141,7 +141,7 @@ const CommunityPage = () => {
       <div className="ml-32 p-8 overflow-y-auto">
         {/* Greeting */}
         <div className="bg-gradient-to-r from-teal-200 to-teal-100 text-teal-900 text-center py-4 rounded-lg shadow-md mb-6">
-          <h1 className="text-4xl font-bold mb-1 italic">Read, Share, and Post Your Thoughts</h1>
+          <h1 className="text-4xl font-bold mb-1">Read, Share, and Post Your Thoughts</h1>
           <p>Explore ideas, share your creativity, and contribute to the community!</p>
         </div>
 
