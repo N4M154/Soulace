@@ -4,7 +4,7 @@ import Footer from "../components/Footer.jsx";
 
 const SubscribePage = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-teal-100 via-white to-teal-50">
+    <div className="flex flex-col min-h-screen  via-white to-teal-50">
       <Header />
 
       <main className="flex-grow">

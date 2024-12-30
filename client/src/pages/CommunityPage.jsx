@@ -114,34 +114,35 @@ const CommunityPage = () => {
   }
 
   return (
-    <div
-    >
+    <div>
       {/* Full-Width Header */}
       
         <Header />
-      
-
-      {/* Flag Buttons */}
-      <button
-        onClick={() => setShowForm(!showForm)}
-        className="fixed top-60 left-2 bg-teal-400 text-white px-6 py-3 rounded-r-lg shadow-lg hover:bg-teal-500 transition z-50"
-      >
-        {showForm ? "Close It" : "Create Blogs"}
-      </button>
-      <a
-        href="#latest-blogs"
-        className="fixed top-40 left-2 bg-teal-400 text-white px-6 py-3 rounded-r-lg shadow-lg hover:bg-teal-500 transition z-50"
-      >
-        Latest Blogs
-      </a>
-
-      {/* Main Content */}
-      <div className="ml-32 p-8 overflow-y-auto">
-        {/* Greeting */}
         <div className="bg-gradient-to-r from-teal-200 to-teal-100 text-teal-900 text-center py-4 rounded-lg shadow-md mb-6">
           <h1 className="text-4xl font-bold mb-1">Read, Share, and Post Your Thoughts</h1>
           <p>Explore ideas, share your creativity, and contribute to the community!</p>
         </div>
+      {/* Main Content */}
+      <div className=" ml-20 overflow-y-auto mr-20">
+        
+        {/* Greeting */}
+        
+        {/* Flag Buttons */}
+      <div className="flex items-center justify-center  w-full space-x-4">
+  <button
+    onClick={() => setShowForm(!showForm)}
+    className="bg-teal-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-teal-500 transition z-50"
+  >
+    {showForm ? "Close It" : "Create Blogs"}
+  </button>
+  <a
+    href="#latest-blogs"
+    className="bg-teal-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-teal-500 transition z-50"
+  >
+    Latest Blogs
+  </a>
+</div>
+
 
         {/* Blog Form */}
         {showForm && (
@@ -269,7 +270,7 @@ const CommunityPage = () => {
             {blogs.map((blog) => (
               <div
                 key={blog._id}
-                className="bg-white bg-opacity-80 shadow-lg rounded-lg p-6 flex flex-col items-start space-y-4 hover:shadow-xl hover:bg-opacity-90 transition"
+                className="bg-gray-50 bg-opacity-80 shadow-lg rounded-lg p-6 flex flex-col items-start space-y-4 hover:shadow-xl hover:bg-opacity-90 transition"
               >
                 <div className="w-full">
                   {blog.media && blog.media.endsWith(".mp4") ? (

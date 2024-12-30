@@ -5,8 +5,8 @@ const Recommendation = () => {
   return (
     <div>
       <Header />
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-100 flex flex-col items-center p-6">
-        <div className="bg-white shadow-lg rounded-lg p-8 max-w-3xl w-full text-center">
+      <div className="min-h-screen bg-white to-purple-100 flex flex-col items-center p-6">
+        <div className="bg-teal-50 shadow-lg rounded-lg p-8 max-w-3xl w-full text-center">
           <h2 className="text-2xl font-bold text-purple-800 mb-4">Results are here! 🎧</h2>
           <p className="text-gray-700 mb-6">
             Hi <span className="font-semibold text-purple-700">Faiza Maliat</span>, based on your

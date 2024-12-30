@@ -715,7 +715,7 @@ const DailyJournal = () => {
 
             {/* Buttons for additional features */}
             <div className="flex items-center justify-between w-full">
-              <div className="flex space-x-2">
+              <div className="flex space-x-2  mb-10">
                 <button
                   type="button"
                   className="py-1 px-2 bg-gray-200 text-gray-600 font-medium rounded-md hover:bg-gray-300 transition duration-200 flex items-center space-x-1 text-sm"
@@ -730,8 +730,7 @@ const DailyJournal = () => {
                   <img src="/happy.png" alt="Emoji" className="h-4 w-4" />
                   <span>Add Emoji</span>
                 </button>
-              </div>
-              <button
+                <button
                 type="submit"
                 className={`py-1 px-4 bg-blue-200 text-gray-600 font-medium rounded-md hover:bg-blue-300 transition duration-200 text-sm ${
                   moodLoading ? "opacity-50 cursor-not-allowed" : ""
@@ -740,8 +739,13 @@ const DailyJournal = () => {
               >
                 {moodLoading ? "Saving..." : "Save"}
               </button>
+              </div>
+              
             </div>
           </form>
+          {/* Mood Timeline Graph */}
+          <MoodTimeline />
+
 
           {/* Display Error Message */}
           {moodError && (
@@ -753,9 +757,7 @@ const DailyJournal = () => {
 
         {/* Journal Notes and Mood Timeline Section */}
         <div className="w-full md:w-6/12 mt-6 md:mt-0 md:ml-6">
-          {/* Mood Timeline Graph */}
-          <MoodTimeline />
-
+          
           {/* Journal Notes */}
           <h2 className="text-1xl font-bold text-white mb-4 mt-6">
             See Older Posts

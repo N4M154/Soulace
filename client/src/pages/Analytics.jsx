@@ -113,11 +113,11 @@ export default function Profile() {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-white min-h-screen">
       {/* Header */}
       <Header />
 
-      <div className="p-6 max-w-4xl mx-auto bg-white shadow-lg rounded-lg mt-10">
+      <div className="p-6 max-w-4xl mx-auto bg-gray-50 shadow-lg rounded-lg mt-10">
         <h1 className="text-4xl font-bold text-center text-teal-700 mb-8">
           Edit Your Profile
         </h1>

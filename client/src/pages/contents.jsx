@@ -58,7 +58,7 @@ const MentalHealthContent = () => {
   return (
     <div>
       <Header />
-      <div style={{ fontFamily: "Arial, sans-serif", backgroundColor: "#f5f5f5", padding: "20px" }}>
+      <div style={{ fontFamily: "Arial, sans-serif", backgroundColor: "white", padding: "20px" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div style={{ backgroundColor: "#d2e9d9", padding: "10px", borderRadius: "5px", marginBottom: "20px" }}>
             <h1 style={{ textAlign: "center", color: "black", margin: "0", fontSize: "24px" }}>

@@ -25,16 +25,16 @@ const Specialist = () => {
   return (
     <div>
       <Header/>
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-100 flex flex-col items-center p-6">
+    <div className="min-h-screen bg-white flex flex-col items-center p-6">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-purple-800">Connect with a Specialist</h1>
+        <h1 className="text-4xl font-bold text-teal-800">Connect with a Specialist</h1>
         <p className="text-lg text-gray-700 mt-2">
           Get personalized guidance from mental health specialists based on your needs.
         </p>
       </div>
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-lg rounded-lg p-8 max-w-2xl w-full"
+        className="bg-gray-100 shadow-lg rounded-lg p-8 max-w-2xl w-full"
       >
         <h2 className="text-2xl font-semibold text-gray-800 mb-6">Take a Test</h2>
         {/* Form Fields */}
@@ -91,7 +91,7 @@ const Specialist = () => {
 
         <button
           type="submit"
-          className="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition"
+          className="w-full bg-black text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition"
         >
           Submit
         </button>

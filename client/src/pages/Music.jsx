@@ -52,7 +52,7 @@ const MusicRecommendation = () => {
           alignItems: "flex-start",
           justifyContent: "space-between",
           minHeight: "100vh",
-          background: "#d2e9d9",
+          background: "white",
           color: "#004d40",
           fontFamily: "'Roboto', sans-serif",
           padding: "20px",
@@ -60,14 +60,15 @@ const MusicRecommendation = () => {
       >
         <div
           style={{
-            backgroundColor: "#ffffff",
+            backgroundColor: "#d2e9d9",
             padding: "30px",
             borderRadius: "15px",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
             maxWidth: "600px",
             width: "100%",
             textAlign: "center",
-            marginTop: "100px"
+            marginTop: "100px",
+            marginLeft: "40px"
           }}
         >
           <h1 style={{ fontSize: "2.5rem", marginBottom: "20px", color: "#004d40" }}>
@@ -85,6 +86,7 @@ const MusicRecommendation = () => {
                 flex: "1",
                 fontSize: "1rem",
                 color: "#004d40",
+                
               }}
               value={selectedMood}
               onChange={(e) => setSelectedMood(e.target.value)}
@@ -120,7 +122,7 @@ const MusicRecommendation = () => {
         </div>
         <div
           style={{
-            
+            backgroundColor: "#d2e9d9",
             padding: "20px",
             borderRadius: "15px",
             maxWidth: "600px",

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faMedal } from "@fortawesome/free-solid-svg-icons";
 import Header from "../components/Header";
 
 const Achievements = () => {
@@ -37,99 +37,108 @@ const Achievements = () => {
       flexDirection: "column",
       alignItems: "center",
       padding: "20px",
-      backgroundColor: "#f4f8fb",
+      backgroundColor: "#fff",
       minHeight: "100vh",
     },
     achievementsTitle: {
-      fontSize: "2rem",
+      fontSize: "2.3rem",
       fontWeight: "bold",
-      color: "#4caf50",
-      marginBottom: "20px",
+      color: "#333",
+      marginBottom: "30px",
+      textAlign: "center",
+      textShadow: "2px 2px 4px rgba(0, 0, 0, 0.1)",
     },
     badgeList: {
       display: "flex",
       flexWrap: "wrap",
-      gap: "20px",
+      gap: "30px",
       justifyContent: "center",
+      maxWidth: "1200px",
+      width: "100%",
     },
     achievementItem: {
       background: "#fff",
       border: "2px solid #ddd",
-      borderRadius: "10px",
-      width: "250px",
-      padding: "20px",
+      borderRadius: "15px",
+      width: "280px",
+      padding: "25px",
       textAlign: "center",
-      boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-      transition: "transform 0.3s ease",
+      boxShadow: "0px 6px 12px rgba(0, 0, 0, 0.1)",
+      transition: "transform 0.3s ease, box-shadow 0.3s ease",
     },
     achievementHeader: {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      marginBottom: "10px",
+      marginBottom: "15px",
     },
     medalIcon: {
-      fontSize: "2rem",
+      fontSize: "2.5rem",
       marginRight: "10px",
-      color: "#ddd",
+      color: "#bbb",
     },
     achievementName: {
-      fontSize: "1.2rem",
+      fontSize: "1.5rem",
       fontWeight: "bold",
-      color: "#333",
+      color: "gray",
     },
     achievementDescription: {
-      fontSize: "1rem",
-      color: "#555",
+      fontSize: "1.1rem",
+      color: "gray",
+      lineHeight: "1.5",
     },
     earned: {
-      color: "#4caf50",
+      color: "teal",
+    },
+    earnedItem: {
+      transform: "translateY(-5px)",
+      boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
     },
   };
 
   return (
-    <div><Header/>
-    <div style={styles.dashboard}>
-        
-      <h1 style={styles.achievementsTitle}>Achievements</h1>
-      <div style={styles.badgeList}>
-        {allBadges.map((badge, index) => (
-          <div
-            key={index}
-            style={{
-              ...styles.achievementItem,
-              ...(isBadgeEarned(badge) ? { transform: "translateY(-5px)" } : {}),
-            }}
-          >
-            <div style={styles.achievementHeader}>
-              <FontAwesomeIcon
-                icon={faHeart}
+    <div>
+      <Header />
+      <div style={styles.dashboard}>
+        <h1 style={styles.achievementsTitle}>Badges Earned</h1>
+        <div style={styles.badgeList}>
+          {allBadges.map((badge, index) => (
+            <div
+              key={index}
+              style={{
+                ...styles.achievementItem,
+                ...(isBadgeEarned(badge) ? styles.earnedItem : {}),
+              }}
+            >
+              <div style={styles.achievementHeader}>
+                <FontAwesomeIcon
+                  icon={faMedal}
+                  style={{
+                    ...styles.medalIcon,
+                    ...(isBadgeEarned(badge) ? styles.earned : {}),
+                  }}
+                />
+                <span
+                  style={{
+                    ...styles.achievementName,
+                    ...(isBadgeEarned(badge) ? styles.earned : {}),
+                  }}
+                >
+                  {badge}
+                </span>
+              </div>
+              <div
                 style={{
-                  ...styles.medalIcon,
-                  ...(isBadgeEarned(badge) ? styles.earned : {}),
-                }}
-              />
-              <span
-                style={{
-                  ...styles.achievementName,
+                  ...styles.achievementDescription,
                   ...(isBadgeEarned(badge) ? styles.earned : {}),
                 }}
               >
-                {badge}
-              </span>
+                {badgeDescriptions[badge]}
+              </div>
             </div>
-            <div
-              style={{
-                ...styles.achievementDescription,
-                ...(isBadgeEarned(badge) ? styles.earned : {}),
-              }}
-            >
-              {badgeDescriptions[badge]}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
     </div>
   );
 };

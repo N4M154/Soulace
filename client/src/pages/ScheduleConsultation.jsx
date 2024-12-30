@@ -6,8 +6,8 @@ const ScheduleConsultation = () => {
   return (
     <div>
       <Header />
-      <div className="min-h-screen bg-blue-50 flex flex-col items-center pt-8 pb-16">
-        <div className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full text-center">
+      <div className="min-h-screen bg-white flex flex-col items-center pt-8 pb-16">
+        <div className="bg-teal-50 shadow-lg rounded-lg p-8 max-w-lg w-full text-center">
           <h1 className="text-3xl font-bold text-teal-800 mb-4">Schedule a Consultation</h1>
           <p className="text-gray-600 mb-6">
             Book a session with a certified mental health specialist to discuss your concerns.
@@ -48,7 +48,7 @@ const ScheduleConsultation = () => {
           Back to Home
         </Link>
       </div>
-      <Footer />
+      
     </div>
   );
 };

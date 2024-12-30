@@ -66,7 +66,7 @@ const App = () => {
   return (
     <div>
       <Header />
-      <div className="min-h-screen bg-teal-100  flex flex-col items-center py-8 px-4">
+      <div className="min-h-screen bg-white  flex flex-col items-center py-8 px-4">
         {/* Chatbot Header */}
         <div className="bg-teal-800 rounded-lg shadow-lg p-8 w-full max-w-3xl mb-6 flex items-center">
           <img

@@ -99,7 +99,7 @@ const MoodTimeline = () => {
   }, [timeframe]); // Re-fetch data when timeframe changes
 
   return (
-    <div className="w-full max-w-4xl bg-white p-6 rounded-lg shadow-md">
+    <div className="w-full max-w-4xl bg-transparent p-6 rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4 text-center">Mood Timeline</h2>
 
       {/* Timeframe Filter Options */}
@@ -117,7 +117,7 @@ const MoodTimeline = () => {
             className={`px-4 py-2 rounded ${
               timeframe === tf
                 ? "bg-teal-500 text-white"
-                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                : "bg-transparent text-white"
             } transition duration-200`}
           >
             {tf}

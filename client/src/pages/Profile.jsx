@@ -146,7 +146,7 @@ const ProfileAnalytics = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-white min-h-screen">
       <Header />
 
       <div className="p-4 max-w-6xl mx-auto ">
@@ -156,7 +156,7 @@ const ProfileAnalytics = () => {
     
 </div>
 
-        <div className="flex flex-col bg-white p-8 rounded-lg shadow-md">
+        <div className="flex flex-col bg-gray-50 p-8 rounded-lg shadow-md">
           <Link
     to="/analytics"
     className="ml-auto flex gap-2 text-black"
