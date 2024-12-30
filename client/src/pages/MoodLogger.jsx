@@ -1,11 +1,10 @@
 // MoodLogger.jsx
+import { Groq } from "groq-sdk";
 import React, { useState } from "react";
-import DiscreteSliderMarks from "../DiscreteSliderMarks";
+import { Bar, Radar } from "react-chartjs-2";
 import Swal from "sweetalert2";
 import Header from "../components/Header";
-import { Radar, Bar } from "react-chartjs-2";
-import { Chart as ChartJS } from "chart.js/auto";
-import { Groq } from "groq-sdk";
+import DiscreteSliderMarks from "../DiscreteSliderMarks";
 
 const MoodLogger = () => {
   const [mood, setMood] = useState({

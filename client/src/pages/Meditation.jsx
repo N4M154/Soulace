@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import SideButtons from "../components/SideButtons";
+
+
 
 const MeditationPage = ({ currentUser }) => {
   return (
@@ -9,7 +12,10 @@ const MeditationPage = ({ currentUser }) => {
         <Header/>
       {/* Header */}
       
+    
 
+{/* Side Buttons */}
+<SideButtons />
       {/* Main Content */}
       <main className="flex flex-col items-center">
         <h1 className="text-3xl font-bold text-gray-700 mb-12">Select your Game</h1>

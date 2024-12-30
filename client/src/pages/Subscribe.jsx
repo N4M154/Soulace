@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 import Header from "../components/Header.jsx";
-import Footer from "../components/Footer.jsx";
+import SideButtons from "../components/SideButtons";
 
 const SubscribePage = () => {
   return (
     <div className="flex flex-col min-h-screen  via-white to-teal-50">
       <Header />
+  
 
+{/* Side Buttons */}
+<SideButtons />
       <main className="flex-grow">
         <div className="max-w-4xl mx-auto mt-16 bg-white shadow-xl rounded-lg overflow-hidden">
           <div className="bg-teal-600 text-white text-center py-8">

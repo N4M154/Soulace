@@ -1,7 +1,10 @@
-import React, { useState } from "react";
 import axios from "axios";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Header from "../components/Header"; // Ensure Header component is correctly imported
+import SideButtons from "../components/SideButtons";
+
+
 
 const MentalHealthForm = () => {
   const [formData, setFormData] = useState({
@@ -64,6 +67,8 @@ const MentalHealthForm = () => {
   return (
     <div>
       <Header />
+       {/* Side Buttons */}
+       <SideButtons />
       <div className="min-h-screen bg-white flex flex-col items-center p-6">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-teal-800">

@@ -5,6 +5,8 @@ const EmergencySupport = () => {
   return (
     <div>
       <Header />
+      {/* Side Buttons */}
+      <SideButtons />
       <div className="min-h-screen bg-white flex flex-col items-center pt-8 pb-16">
         <div className="bg-red-50 shadow-lg rounded-lg p-8 w-full max-w-lg">
           <h1 className="text-3xl font-bold text-red-800 mb-4 text-center">

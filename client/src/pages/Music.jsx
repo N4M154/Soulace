@@ -1,6 +1,7 @@
+import axios from "axios";
 import React, { useState } from "react";
 import Header from "../components/Header";
-import axios from "axios";
+import SideButtons from "../components/SideButtons";
 
 const MusicRecommendation = () => {
   const [selectedMood, setSelectedMood] = useState("");
@@ -45,6 +46,9 @@ const MusicRecommendation = () => {
   return (
     <div>
       <Header />
+
+      {/* Side Buttons */}
+      <SideButtons />
       <div
         style={{
           display: "flex",
@@ -58,6 +62,7 @@ const MusicRecommendation = () => {
           padding: "20px",
         }}
       >
+        {/* Mood Selection Box */}
         <div
           style={{
             backgroundColor: "#d2e9d9",
@@ -68,7 +73,7 @@ const MusicRecommendation = () => {
             width: "100%",
             textAlign: "center",
             marginTop: "100px",
-            marginLeft: "40px"
+            marginLeft: "260px", // Shifted to the right
           }}
         >
           <h1 style={{ fontSize: "2.5rem", marginBottom: "20px", color: "#004d40" }}>
@@ -86,7 +91,6 @@ const MusicRecommendation = () => {
                 flex: "1",
                 fontSize: "1rem",
                 color: "#004d40",
-                
               }}
               value={selectedMood}
               onChange={(e) => setSelectedMood(e.target.value)}
@@ -120,11 +124,14 @@ const MusicRecommendation = () => {
             <p style={{ color: "#d32f2f", marginBottom: "20px" }}>{error}</p>
           )}
         </div>
+
+        {/* Music Recommendations Box */}
         <div
           style={{
             backgroundColor: "#d2e9d9",
             padding: "20px",
             borderRadius: "15px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
             maxWidth: "600px",
             width: "100%",
             marginLeft: "20px",
@@ -155,7 +162,6 @@ const MusicRecommendation = () => {
             <button
               onClick={() => fetchRecommendations()}
               style={{
-                
                 padding: "10px 20px",
                 color: "teal",
                 border: "none",
@@ -164,7 +170,6 @@ const MusicRecommendation = () => {
                 fontSize: "1rem",
                 display: "block",
                 width: "100%",
-                
               }}
             >
               {loading ? "Loading..." : "Load More"}

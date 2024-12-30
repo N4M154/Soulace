@@ -84,6 +84,7 @@ const BreathingGame = () => {
   };
 
   return (
+     
     <div className="text-center">
       <h1 className="text-4xl font-bold mb-4">Breathing Exercise</h1>
       <p className="text-lg">Completed Cycles: {cycles}</p>
@@ -282,6 +283,7 @@ const GameSelector = () => {
   return (
     <div>
       <Header />
+     
       <div className="flex justify-center gap-4 mt-8">
         <button
           onClick={() => setSelectedGame('Breathing')}
@@ -314,7 +316,10 @@ const GameSelector = () => {
         {selectedGame === 'Affirmation' && <AffirmationGame />}
         {selectedGame === 'Memory' && <MemoryGame />}
       </div>
+      
     </div>
+
+    
   );
 };
 

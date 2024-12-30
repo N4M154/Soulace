@@ -329,10 +329,10 @@
 // export default DailyJournal;
 
 // DailyJournal.jsx
-import React, { useState, useEffect } from "react";
+import { Groq } from "groq-sdk"; // Import Groq SDK
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Groq } from "groq-sdk"; // Import Groq SDK
 import MoodTimeline from "./MoodTimeline"; // Import the MoodTimeline component
 
 const DailyJournal = () => {
@@ -604,6 +604,7 @@ const DailyJournal = () => {
       }}
     >
       {/* Header */}
+      
       <header className="bg-transparent text-teal-700 w-full absolute top-0 left-0 z-50 transition-opacity duration-300 opacity-0 hover:opacity-100">
         <div className="px-16 flex justify-between items-center py-2 mt-4">
           {/* Logo */}

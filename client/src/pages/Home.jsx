@@ -1,7 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 
 export default function Home() {
@@ -16,7 +16,8 @@ export default function Home() {
       className=" min-h-screen flex flex-col items-center  "
     >
       <Header/>
-
+{/* Side Buttons */}
+<SideButtons />
       <div className=" space-y-10 w-full max-w-7xl">
         {/* Features Section */}
         <motion.section

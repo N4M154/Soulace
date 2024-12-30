@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
+import SideButtons from "../components/SideButtons";
 
 const MentalHealthContent = () => {
   const [articles, setArticles] = useState([]);
@@ -58,6 +59,7 @@ const MentalHealthContent = () => {
   return (
     <div>
       <Header />
+    
       <div style={{ fontFamily: "Arial, sans-serif", backgroundColor: "white", padding: "20px" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div style={{ backgroundColor: "#d2e9d9", padding: "10px", borderRadius: "5px", marginBottom: "20px" }}>
@@ -68,7 +70,8 @@ const MentalHealthContent = () => {
               Reading can help relax your mind, reduce stress, and improve mental well-being.
             </p>
           </div>
-
+  {/* Side Buttons */}
+  <SideButtons />
           {loadingArticles ? (
             <p style={{ textAlign: "center" }}>Loading articles...</p>
           ) : (
