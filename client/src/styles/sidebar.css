@@ -1,0 +1,145 @@
+/* Circular Navigation Container */
+.sidebar-nav {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    padding: 15px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Navigation Button */
+  .nav-button {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    color: white;
+    text-decoration: none;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeScale 0.6s backwards;
+  }
+  
+  /* Button Icon */
+  .button-icon {
+    font-size: 1.2rem;
+    z-index: 2;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Hover Effects */
+  .nav-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .nav-button:hover .button-icon {
+    transform: scale(1.2);
+  }
+  
+  /* Button Overlay */
+  .button-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.2)
+    );
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .nav-button:hover .button-overlay {
+    opacity: 1;
+  }
+  
+  /* Tooltip */
+  .button-tooltip {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background: #333;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none;
+  }
+  
+  .button-tooltip::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 4px 4px 4px;
+    border-style: solid;
+    border-color: transparent transparent #333 transparent;
+  }
+  
+  .nav-button:hover .button-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+    bottom: -45px;
+  }
+  
+  /* Animations */
+  @keyframes fadeScale {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Animation Delays */
+  .nav-button:nth-child(1) { animation-delay: 0.1s; }
+  .nav-button:nth-child(2) { animation-delay: 0.2s; }
+  .nav-button:nth-child(3) { animation-delay: 0.3s; }
+  .nav-button:nth-child(4) { animation-delay: 0.4s; }
+  .nav-button:nth-child(5) { animation-delay: 0.5s; }
+  .nav-button:nth-child(6) { animation-delay: 0.6s; }
+  .nav-button:nth-child(7) { animation-delay: 0.7s; }
+  .nav-button:nth-child(8) { animation-delay: 0.8s; }
+  .nav-button:nth-child(9) { animation-delay: 0.9s; }
+  .nav-button:nth-child(10) { animation-delay: 1s; }
+  
+  /* Glass Effect */
+  .sidebar-nav::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 2px;
+    background: linear-gradient(45deg, 
+      rgba(255,255,255,0.1), 
+      rgba(255,255,255,0.2)
+    );
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }

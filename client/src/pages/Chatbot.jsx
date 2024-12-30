@@ -1,7 +1,11 @@
-import React, { useState } from "react";
 import { Groq } from "groq-sdk";
+import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import Header from "../components/Header";
+import SideButtons from "../components/SideButtons";
+
+
+
 
 const App = () => {
   const [inputText, setInputText] = useState(""); // Store user input
@@ -64,8 +68,13 @@ const App = () => {
   };
 
   return (
+
+
+
     <div>
       <Header />
+      {/* Side Buttons */}
+      <SideButtons />
       <div className="min-h-screen bg-white  flex flex-col items-center py-8 px-4">
         {/* Chatbot Header */}
         <div className="bg-teal-800 rounded-lg shadow-lg p-8 w-full max-w-3xl mb-6 flex items-center">
