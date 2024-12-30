@@ -1,7 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -14,6 +14,42 @@ export default function LandingPage() {
   const handleDropdownToggle = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+//ashah
+function FAQItem({ question, answer }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div
+      className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300"
+      onClick={() => setIsOpen(!isOpen)}
+    >
+      <div className="flex justify-between items-center cursor-pointer">
+        <h3 className="text-xl font-semibold text-teal-700">{question}</h3>
+        <motion.div
+          className="text-teal-700 transform transition-transform"
+          animate={{ rotate: isOpen ? 90 : 0 }}
+        >
+          ➤
+        </motion.div>
+      </div>
+      <motion.div
+        initial={{ height: 0, opacity: 0 }}
+        animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        className={`overflow-hidden mt-4`}
+      >
+        <p className="text-gray-600 leading-relaxed">{answer}</p>
+      </motion.div>
+    </div>
+  );
+}
+
+//wvwhdvw
+
+
+
+
 
   const handleGetStarted = () => {
     setShowFeatures(!showFeatures);
@@ -645,6 +681,55 @@ Gain valuable insights, strategies, and practical tips for managing stress, anxi
 
 
 
+{/* FAQ Section */}
+<AnimatePresence>
+  {showFeatures && (
+    <motion.section
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 50 }}
+      transition={{ duration: 0.5 }}
+      className="py-20 bg-gray-50"
+    >
+      <div className="container mx-auto px-8">
+        <h2 className="text-4xl font-bold text-teal-800 tracking-wide text-center mb-12">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4 max-w-4xl mx-auto">
+          {[
+            {
+              question: "What is Soulace?",
+              answer:
+                "Soulace is a mental wellness platform designed to help users track their mood, sleep, and emotional well-being through interactive tools and games.",
+            },
+            {
+              question: "Is Soulace free to use?",
+              answer:
+                "Most of our features are free. However, premium features like the Mood-Reflective Daily Journal require a subscription for exclusive access.",
+            },
+            {
+              question: "How does the chatbot work?",
+              answer:
+                "The chatbot, SoulMate, uses AI to provide empathetic responses and emotional support in a judgment-free space.",
+            },
+            {
+              question: "How do I track my progress?",
+              answer:
+                "You can track your progress through the dedicated progress tracker, which visualizes mood ratings, journal entries, and other activities.",
+            },
+            {
+              question: "Is my data secure?",
+              answer:
+                "Absolutely. We prioritize your privacy and ensure all data is stored securely and used only for the intended purposes.",
+            },
+          ].map((faq, index) => (
+            <FAQItem key={index} question={faq.question} answer={faq.answer} />
+          ))}
+        </div>
+      </div>
+    </motion.section>
+  )}
+</AnimatePresence>
 
 
 
