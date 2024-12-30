@@ -4,9 +4,6 @@ import ReactMarkdown from "react-markdown";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
 
-
-
-
 const App = () => {
   const [inputText, setInputText] = useState(""); // Store user input
   const [conversation, setConversation] = useState([]); // Store chat history
@@ -36,8 +33,8 @@ const App = () => {
       // Send message to Groq
       const chatCompletion = await groq.chat.completions.create({
         model: "llama-3.3-70b-versatile", // Specify the Groq model
-        temperature: 0.7,
-        max_tokens: 512,
+        temperature: 0.9,
+        max_tokens: 1024,
         messages: [
           {
             role: "system",
@@ -68,9 +65,6 @@ const App = () => {
   };
 
   return (
-
-
-
     <div>
       <Header />
       {/* Side Buttons */}
@@ -88,7 +82,8 @@ const App = () => {
               SoulMate
             </h1>
             <p className="text-lg text-teal-200 mb-6">
-              A safe space to share your thoughts and feelings without judgment, whenever you need it most.
+              A safe space to share your thoughts and feelings without judgment,
+              whenever you need it most.
             </p>
           </div>
         </div>
@@ -136,7 +131,8 @@ const App = () => {
         {/* Encouraging Message */}
         <div className="mt-6 bg-teal-100 border border-teal-300 p-4 rounded-lg text-center shadow-sm">
           <p className="text-teal-700 font-semibold">
-            Remember, every small step counts. SoulMate is here to help you navigate life's challenges. 🌟
+            Remember, every small step counts. SoulMate is here to help you
+            navigate life's challenges. 🌟
           </p>
         </div>
       </div>
