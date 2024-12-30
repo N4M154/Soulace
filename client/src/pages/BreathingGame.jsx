@@ -1,6 +1,7 @@
 import { Mic, MicOff, Moon, Sun } from 'lucide-react';
 import React, { useState } from 'react';
 import Header from "../components/Header.jsx";
+import SideButtons from "../components/SideButtons";
 
 const BreathingGame = () => {
   const [phase, setPhase] = useState('Inhale');
@@ -283,43 +284,44 @@ const GameSelector = () => {
   return (
     <div>
       <Header />
-     
-      <div className="flex justify-center gap-4 mt-8">
-        <button
-          onClick={() => setSelectedGame('Breathing')}
-          className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600"
-        >
-          Breathing Game
-        </button>
-        <button
-          onClick={() => setSelectedGame('Gratitude')}
-          className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600"
-        >
-          Gratitude Game
-        </button>
-        <button
-          onClick={() => setSelectedGame('Affirmation')}
-          className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600"
-        >
-          Affirmation Game
-        </button>
-        <button
-          onClick={() => setSelectedGame('Memory')}
-          className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600"
-        >
-          Memory Game
-        </button>
+      <SideButtons /> {/* Added SideButtons for navigation */}
+      <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col w-full md:w-[80%] mx-auto p-4">
+          <div className="flex justify-center gap-4 mt-8">
+            <button
+              onClick={() => setSelectedGame('Breathing')}
+              className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600"
+            >
+              Breathing Game
+            </button>
+            <button
+              onClick={() => setSelectedGame('Gratitude')}
+              className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600"
+            >
+              Gratitude Game
+            </button>
+            <button
+              onClick={() => setSelectedGame('Affirmation')}
+              className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600"
+            >
+              Affirmation Game
+            </button>
+            <button
+              onClick={() => setSelectedGame('Memory')}
+              className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600"
+            >
+              Memory Game
+            </button>
+          </div>
+          <div className="mt-8">
+            {selectedGame === 'Breathing' && <BreathingGame />}
+            {selectedGame === 'Gratitude' && <GratitudeGame />}
+            {selectedGame === 'Affirmation' && <AffirmationGame />}
+            {selectedGame === 'Memory' && <MemoryGame />}
+          </div>
+        </div>
       </div>
-      <div className="mt-8">
-        {selectedGame === 'Breathing' && <BreathingGame />}
-        {selectedGame === 'Gratitude' && <GratitudeGame />}
-        {selectedGame === 'Affirmation' && <AffirmationGame />}
-        {selectedGame === 'Memory' && <MemoryGame />}
-      </div>
-      
     </div>
-
-    
   );
 };
 
