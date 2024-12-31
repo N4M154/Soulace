@@ -130,7 +130,7 @@ const Recommendation = () => {
     if (probability > 0.5) {
       return `Based on your inputs, there's a ${percentage}% chance you might benefit from talking to a professional.`;
     } else {
-      return "Based on your inputs, professional help may not be necessary right now.";
+      return "You’re doing great! Based on your inputs, it seems like you’re in a positive mental space right now. You don't need professional help. Keep up the good work, and remember, we’re here if you ever need support!";
     }
   };
 
