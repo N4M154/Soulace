@@ -29,7 +29,7 @@ const AboutPage = () => {
               },
               {
                 name: "Faiza Maliat",
-                role: "Testing and Quality Assurance Developer",
+                role: "UI/UX and Testing-QA Developer ",
                 description:
                   "Faiza focuses on creating seamless user interfaces and conducting quality assurance to ensure the platform runs smoothly.",
               },

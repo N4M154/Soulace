@@ -518,7 +518,7 @@ const SideButtons = () => {
   }, [isExpanded]);
 
   const handleLogout = () => {
-    // navigate to landing
+    // navigate to landing page
     navigate('/');
   };
 
@@ -596,7 +596,7 @@ const SideButtons = () => {
           }
 
           .expanded .logo {
-            height: 80px;
+            height: 75px;
             width: auto;
           }
 
