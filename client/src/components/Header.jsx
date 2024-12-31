@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const { currentUser } = useSelector((state) => state.user);
@@ -18,10 +18,10 @@ export default function Header() {
   return (
     <header className="bg-white text-teal-700 w-full">
       <div className="container mx-auto px-4 flex justify-between items-center py-4">
-        {/* Logo */}
+        
         <div className="flex items-center ml-10">
           <Link to="/">
-            <img src="/Logo.png" width={100} height={80} alt="Logo" />
+            <img src="/Logoo.png" width={100} height={80} alt="." />
           </Link>
         </div>
         {/* Navbar */}
