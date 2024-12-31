@@ -518,8 +518,8 @@ const SideButtons = () => {
   }, [isExpanded]);
 
   const handleLogout = () => {
-    // Add your logout logic here
-    navigate('/login');
+    // navigate to landing
+    navigate('/');
   };
 
   return (
