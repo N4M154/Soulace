@@ -18,10 +18,12 @@ import {
   signOut,
 } from "../redux/user/userSlice";
 import Header from "../components/Header";
+import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const dispatch = useDispatch();
   const fileRef = useRef(null);
+  const navigate = useNavigate();
   const [image, setImage] = useState(undefined);
   const [imagePercent, setImagePercent] = useState(0);
   const [imageError, setImageError] = useState(false);
@@ -98,6 +100,7 @@ export default function Profile() {
         return;
       }
       dispatch(deleteUserSuccess(data));
+      navigate("/");
     } catch (error) {
       dispatch(deleteUserFailure(error));
     }
@@ -107,6 +110,7 @@ export default function Profile() {
     try {
       await fetch("/api/auth/signout");
       dispatch(signOut());
+      navigate("/");
     } catch (error) {
       console.log(error);
     }

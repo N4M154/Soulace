@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { signOut } from "../redux/user/userSlice";
+import { useDispatch } from "react-redux";
 
 const sidebarItems = [
   { name: "Relaxation Games", icon: Gamepad2, route: "/breathinggame" },
@@ -29,6 +31,7 @@ const sidebarItems = [
 ];
 
 const SideButtons = () => {
+  const dispatch = useDispatch();
   const [isExpanded, setIsExpanded] = useState(false); // Sidebar starts collapsed
   const location = useLocation();
   const navigate = useNavigate();
@@ -44,9 +47,14 @@ const SideButtons = () => {
     }
   }, [isExpanded]);
 
-  const handleLogout = () => {
-    // navigate to landing page
-    navigate("/");
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/signout");
+      dispatch(signOut());
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
