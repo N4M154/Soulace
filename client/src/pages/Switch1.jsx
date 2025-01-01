@@ -1,7 +1,7 @@
 // DotsGrid.jsx
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
-
+import SideButtons from "../components/SideButtons";
 const DotsGrid = () => {
   const [switchStates, setSwitchStates] = useState(
     Array.from({ length: 25 }, () => false)
@@ -44,7 +44,9 @@ const DotsGrid = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 flex flex-col items-center relative">
       <Header />
-
+     
+      {/* Side Buttons */}
+      <SideButtons />
       {/* Main Content */}
       <main className="flex flex-col items-center">
         <h1 className="text-3xl font-bold text-gray-700 mb-8">Keep turning the switches on</h1>
