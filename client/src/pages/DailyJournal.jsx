@@ -330,7 +330,7 @@
 
 // DailyJournal.jsx
 import { Groq } from "groq-sdk"; // Import Groq SDK
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import MoodTimeline from "./MoodTimeline"; // Import the MoodTimeline component
