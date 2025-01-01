@@ -185,7 +185,7 @@ const JokeOfTheDay = () => {
       >
         <div
           style={{
-            background: "linear-gradient(135deg, #00777E, #AE9276)",
+            background: "linear-gradient(135deg,rgb(6, 142, 133),rgb(18, 158, 149))",
             borderRadius: "15px",
             boxShadow: "0 6px 15px rgba(0, 0, 0, 0.3)",
             padding: "30px",
