@@ -26,17 +26,18 @@ const PaymentPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
-      <Header />
+    <div><Header />
+    <div className="min-h-screen bg-white">
+      
       <SideButtons/>
-      <div className="container mx-auto p-6">
+      <div className="container mx-auto p-6 ">
         <h2 className="text-4xl font-bold text-center text-teal-600 mb-8">
           Complete Your Payment
         </h2>
         <div className="flex justify-center">
           <form
             onSubmit={handleSubmit}
-            className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full"
+            className="bg-teal-50 shadow-lg rounded-lg p-8 max-w-lg w-full"
           >
             {/* Card Details Section */}
             <div className="mb-6 text-center">
@@ -157,6 +158,7 @@ const PaymentPage = () => {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 };

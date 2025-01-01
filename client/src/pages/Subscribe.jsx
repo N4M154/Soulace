@@ -129,12 +129,16 @@ const SubscribePage = () => {
   };
 
   return (
+    <div>
+<Header />
+
+    
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-green-50 via-white to-teal-50">
       {/* Header */}
-      <Header />
+      
       {/* Side Buttons */}
       <SideButtons />
-      <main className="flex-grow">
+      <main className="flex-grow ml-40">
         <div className="max-w-6xl mx-auto mt-16 bg-white shadow-2xl rounded-xl overflow-hidden">
           <div className="bg-gradient-to-r from-teal-600 to-teal-400 text-white text-center py-8">
             <h2 className="text-4xl font-bold">Choose Your Plan</h2>
@@ -211,6 +215,7 @@ const SubscribePage = () => {
       </main>
       {/* Footer */}
 
+    </div>
     </div>
   );
 };
