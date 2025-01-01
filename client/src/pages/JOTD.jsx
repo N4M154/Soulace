@@ -48,7 +48,7 @@ const JokeOfTheDay = () => {
           alignItems: "center",
           justifyContent: "center",
           marginLeft: "80px", // Adjusted to avoid overlap with side buttons
-          width: "100%",
+          
           minHeight: "84vh",
           fontFamily: "'Comic Sans MS', cursive, sans-serif",
           color: "#333",
