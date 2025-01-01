@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
 const DotsGrid = () => {
   const [switchStates, setSwitchStates] = useState(
-    Array.from({ length: 25 }, () => false)
+    Array.from({ length: 50 }, () => false)
   );
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
@@ -27,7 +27,7 @@ const DotsGrid = () => {
 
   const handleStart = () => {
     setStartTime(new Date());
-    setSwitchStates(Array.from({ length: 25 }, () => false));
+    setSwitchStates(Array.from({ length: 50 }, () => false));
     setEndTime(null);
     setShowModal(false);
     setDuration(0);
@@ -53,7 +53,7 @@ const DotsGrid = () => {
         <div className="flex items-center space-x-4 mb-8">
           <button
             onClick={handleStart}
-            className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
+            className="px-3 py-1 bg-teal-500 text-white rounded hover:bg-blue-600 text-sm"
           >
             Start
           </button>

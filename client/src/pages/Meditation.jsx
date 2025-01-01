@@ -18,9 +18,9 @@ const MeditationPage = ({ currentUser }) => {
           {/* Top Game */}
           <Link
             to="/swirl"
-            className="w-40 h-40 bg-gradient-to-br from-teal-400 to-white rounded-full flex items-center justify-center shadow-lg cursor-pointer transform hover:scale-110 transition-transform mb-8 relative"
+            className="w-40 h-40 bg-gradient-to-br from-teal-600 to-white rounded-full flex items-center justify-center shadow-lg cursor-pointer transform hover:scale-110 transition-transform mb-8 relative"
           >
-            <span className="text-gray-700 text-xl font-semibold">Swirl</span>
+            <span className="text-gray-700 text-xl font-semibold">Spiral Burst</span>
             <div
               className="absolute inset-0 rounded-full border-dashed border-2 border-teal-300 animate-pulse"
               style={{ animationDuration: "2s" }}
@@ -31,9 +31,9 @@ const MeditationPage = ({ currentUser }) => {
           <div className="flex space-x-16">
             <Link
               to="/switch"
-              className="w-40 h-40 bg-gradient-to-br from-teal-400 to-white rounded-full flex items-center justify-center shadow-lg cursor-pointer transform hover:scale-110 transition-transform relative"
+              className="w-40 h-40 bg-gradient-to-br from-teal-600 to-white rounded-full flex items-center justify-center shadow-lg cursor-pointer transform hover:scale-110 transition-transform relative"
             >
-              <span className="text-gray-700 text-xl font-semibold">Switch</span>
+              <span className="text-gray-700 text-xl font-semibold">Flip Flick</span>
               <div
                 className="absolute inset-0 rounded-full border-dashed border-2 border-teal-300 animate-pulse"
                 style={{ animationDuration: "2.5s" }}
@@ -42,9 +42,9 @@ const MeditationPage = ({ currentUser }) => {
 
             <Link
               to="/break"
-              className="w-40 h-40 bg-gradient-to-br from-teal-400 to-white rounded-full flex items-center justify-center shadow-lg cursor-pointer transform hover:scale-110 transition-transform relative"
+              className="w-40 h-40 bg-gradient-to-br from-teal-600 to-white rounded-full flex items-center justify-center shadow-lg cursor-pointer transform hover:scale-110 transition-transform relative"
             >
-              <span className="text-gray-700 text-xl font-semibold">Break</span>
+              <span className="text-gray-700 text-xl font-semibold">Pulse Pop</span>
               <div
                 className="absolute inset-0 rounded-full border-dashed border-2 border-teal-300 animate-pulse"
                 style={{ animationDuration: "3s" }}
@@ -58,3 +58,7 @@ const MeditationPage = ({ currentUser }) => {
 };
 
 export default MeditationPage;
+
+
+
+//changed the name : swirl to Spiral burst , switch to Flip Flick and break to Pulse Pop

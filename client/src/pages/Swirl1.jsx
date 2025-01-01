@@ -105,7 +105,7 @@ const Swirl = () => {
 
       {/* Main Content */}
       <main className="flex flex-col items-center justify-center mt-12">
-        <h1 className="text-3xl font-bold text-gray-700 mb-8">Swirl Game</h1>
+        <h1 className="text-3xl font-bold text-gray-700 mb-8">Spiral Burst</h1>
         <div className="relative w-96 h-96 flex items-center justify-center">
           <svg
             viewBox="0 0 200 200"

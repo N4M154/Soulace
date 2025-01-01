@@ -18,7 +18,7 @@ const Switch = ({ currentUser }) => {
           {/* Top Time Option */}
           <Link
             to="/switch/1"
-            className="w-40 h-40 bg-gradient-to-br from-teal-400 to-white rounded-full flex items-center justify-center shadow-lg cursor-pointer transform hover:scale-110 transition-transform mb-8 relative"
+            className="w-40 h-40 bg-gradient-to-br from-teal-600 to-white rounded-full flex items-center justify-center shadow-lg cursor-pointer transform hover:scale-110 transition-transform mb-8 relative"
           >
             <span className="text-gray-700 text-xl font-semibold">1</span>
             <div
@@ -31,7 +31,7 @@ const Switch = ({ currentUser }) => {
           <div className="flex space-x-16">
             <Link
               to="/switch/3"
-              className="w-40 h-40 bg-gradient-to-br from-teal-400 to-white rounded-full flex items-center justify-center shadow-lg cursor-pointer transform hover:scale-110 transition-transform relative"
+              className="w-40 h-40 bg-gradient-to-br from-teal-600 to-white rounded-full flex items-center justify-center shadow-lg cursor-pointer transform hover:scale-110 transition-transform relative"
             >
               <span className="text-gray-700 text-xl font-semibold">3</span>
               <div
@@ -42,7 +42,7 @@ const Switch = ({ currentUser }) => {
 
             <Link
               to="/switch/5"
-              className="w-40 h-40 bg-gradient-to-br from-teal-400 to-white rounded-full flex items-center justify-center shadow-lg cursor-pointer transform hover:scale-110 transition-transform relative"
+              className="w-40 h-40 bg-gradient-to-br from-teal-600 to-white rounded-full flex items-center justify-center shadow-lg cursor-pointer transform hover:scale-110 transition-transform relative"
             >
               <span className="text-gray-700 text-xl font-semibold">5</span>
               <div

@@ -46,7 +46,7 @@ const ColorGrid = () => {
   const boxSize = 400; // Define the size of the box
   const initialCircle = {
     id: "root",
-    size: boxSize, // Half of the box size
+    size: boxSize, 
     position: { x: boxSize / 2, y: boxSize / 2 }, // Centered in the box
     color: "bg-[#005057]",
   };
@@ -142,7 +142,7 @@ const ColorGrid = () => {
         </div>
 
         {isCompleted && (
-          <div className="mt-8 text-2xl font-bold text-green-600">Congratulations! You've completed the game!</div>
+          <div className="mt-8 text-2xl font-bold text-green-600">Congratulations! You've completed the Pulse Pop!</div>
         )}
       </main>
     </div>
