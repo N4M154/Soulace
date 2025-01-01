@@ -147,9 +147,10 @@ const ProfileAnalytics = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen">
-      <Header />
+    <div><Header />
       <SideButtons/>
+    <div className="bg-white min-h-screen ml-52">
+      
 
       <div className="p-4 max-w-6xl mx-auto ">
         {/* Profile Section */}
@@ -261,6 +262,7 @@ const ProfileAnalytics = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

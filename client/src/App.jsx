@@ -17,7 +17,7 @@ import MoodLogger from "./pages/MoodLogger";
 import LandingPage from "./pages/landingpage";
 import SubscribePage from "./pages/Subscribe";
 import DailyJournal from "./pages/DailyJournal";
-import Chatbot from "./pages/Chatbot";
+// import Chatbot from "./pages/Chatbot";
 import Specialist from "./pages/Specialist";
 import Recommendation from "./pages/Recommendation";
 import Meditation from "./pages/Meditation";
@@ -49,7 +49,7 @@ export default function App() {
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/community" element={<Community />} />
-        <Route path="/chatbot" element={<Chatbot />} />
+        {/* <Route path="/chatbot" element={<Chatbot />} /> */}
         <Route path="/Mood-Tracker" element={<MoodLogger />} />
 
 

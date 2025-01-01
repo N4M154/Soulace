@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
+import FloatingChatbot from "../components/Chatbot";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -13,10 +14,16 @@ export default function Home() {
   const featuresRef = useRef(null);
 
   return (
-    <div className=" min-h-screen flex flex-col items-center  ">
+    <div>
       <Header />
       {/* Side Buttons */}
       <SideButtons />
+
+    
+    <div className=" min-h-screen flex flex-col items-center ml-48  ">
+      
+
+      <FloatingChatbot iconSrc="/chatbot.png"/>
       <div className=" space-y-10 w-full max-w-7xl">
         {/* Features Section */}
         <motion.section
@@ -27,7 +34,7 @@ export default function Home() {
           transition={{ duration: 0.5 }}
           className=" bg-white"
         >
-          <div className="container mx-auto px-8 text-center py-16 bg-gradient-to-b from-teal-100 to-white rounded-lg shadow-md">
+          <div className="container mx-auto px-10 text-center py-16 rounded-lg ">
             <h2 className="text-4xl font-bold text-teal-800 tracking-wide">
               Enhance Your Well-Being with Our Tracking Tools
             </h2>
@@ -107,7 +114,7 @@ export default function Home() {
             Explore tools designed to uplift your spirits and help you find joy
             in small moments.
           </p>
-          <div className="container mx-auto px-8 py-16 space-y-16">
+          <div className="container  px-20  py-16 space-y-16">
             {/* Music Recommendation Feature */}
             <section className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-10 bg-pink-100 p-8 rounded-lg shadow-lg">
               <div className="flex-1 text-left">
@@ -196,18 +203,20 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
           transition={{ duration: 0.5 }}
-          className="py-20 bg-purple-50"
+          className="container  px-20   space-y-12  "
         >
-          <div className="container mx-auto px-8 text-center py-16 bg-gradient-to-b from-purple-300 to-white rounded-lg shadow-md">
-            <h2 className="text-4xl font-bold text-purple-800 tracking-wide">
+          <h2 className="text-4xl font-bold text-purple-800 tracking-wide text-center">
               Relaxation Games and Exercises
             </h2>
-            <p className="text-lg text-gray-600 mt-4">
+            <p className="text-lg text-gray-600  text-center">
               Engage in guided breathing exercises to relax and improve focus.
             </p>
+          <div className="container mt-16 px-12  py-16 bg-gradient-to-b from-purple-300 to-white rounded-lg shadow-md">
+            
+            
 
             <motion.div
-              className="mt-12 mx-auto p-6 bg-white rounded-lg shadow-lg flex flex-col items-center text-center max-w-lg"
+              className="mt-8 mx-auto p-6 bg-white rounded-lg shadow-lg flex flex-col items-center text-center max-w-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -413,6 +422,7 @@ export default function Home() {
           </div>
         </motion.section>
       </div>
+    </div>
     </div>
   );
 }
