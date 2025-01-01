@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header.jsx";
+import SideButtons from "../components/SideButtons.jsx";
 
 const PaymentPage = () => {
   const [cardDetails, setCardDetails] = useState({
@@ -27,6 +28,7 @@ const PaymentPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
       <Header />
+      <SideButtons/>
       <div className="container mx-auto p-6">
         <h2 className="text-4xl font-bold text-center text-teal-600 mb-8">
           Complete Your Payment
