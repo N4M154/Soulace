@@ -32,7 +32,7 @@ const sidebarItems = [
 
 const SideButtons = () => {
   const dispatch = useDispatch();
-  const [isExpanded, setIsExpanded] = useState(false); // Sidebar starts collapsed
+  const [isExpanded, setIsExpanded] = useState(true); // Sidebar starts collapsed
   const location = useLocation();
   const navigate = useNavigate();
   const [hoveredItem, setHoveredItem] = useState(null);

@@ -30,7 +30,7 @@ const Break = ({ currentUser }) => {
           {/* Bottom Two Time Options */}
           <div className="flex space-x-16">
             <Link
-              to="/break/3"
+              to="/break/1"
               className="w-40 h-40 bg-gradient-to-br from-teal-600 to-white rounded-full flex items-center justify-center shadow-lg cursor-pointer transform hover:scale-110 transition-transform relative"
             >
               <span className="text-gray-700 text-xl font-semibold">3</span>
@@ -41,7 +41,7 @@ const Break = ({ currentUser }) => {
             </Link>
 
             <Link
-              to="/break/5"
+              to="/break/1"
               className="w-40 h-40 bg-gradient-to-br from-teal-600 to-white rounded-full flex items-center justify-center shadow-lg cursor-pointer transform hover:scale-110 transition-transform relative"
             >
               <span className="text-gray-700 text-xl font-semibold">5</span>
