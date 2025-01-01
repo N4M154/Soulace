@@ -34,6 +34,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import SideButtons from "../components/SideButtons";
 
 const ProfileAnalytics = () => {
   const dispatch = useDispatch();
@@ -148,6 +149,7 @@ const ProfileAnalytics = () => {
   return (
     <div className="bg-white min-h-screen">
       <Header />
+      <SideButtons/>
 
       <div className="p-4 max-w-6xl mx-auto ">
         {/* Profile Section */}

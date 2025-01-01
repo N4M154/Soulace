@@ -1,3 +1,5 @@
+// MoodLogger.jsx
+import { Groq } from "groq-sdk";
 import React, { useState } from "react";
 import { Bar, Radar } from "react-chartjs-2";
 import Swal from "sweetalert2";
@@ -47,8 +49,12 @@ const MoodLogger = () => {
   const [recommendation, setRecommendation] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Sidebar state management
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(true); // Fix for undefined isExpanded
+
+  const groq = new Groq({
+    apiKey: import.meta.env.VITE_GROQ_API_KEY,
+    dangerouslyAllowBrowser: true,
+  });
 
   const handleMoodChange = (field, value) => {
     setMood((prev) => ({
@@ -62,6 +68,68 @@ const MoodLogger = () => {
       ...prev,
       [field]: value,
     }));
+  };
+
+  const fetchMentalHealthRating = async () => {
+    const inputData = [
+      { role: "system", content: "You are a mental health analyst. Provide a rating for mental health based on mood and sleep data." },
+      {
+        role: "user",
+        content: `Mood Data: ${JSON.stringify(mood)}, Sleep Data: ${JSON.stringify(sleep)}`,
+      },
+    ];
+
+    try {
+      const chatCompletion = await groq.chat.completions.create({
+        model: "llama-3.3-70b-versatile",
+        temperature: 0.7,
+        max_tokens: 512,
+        messages: inputData,
+      });
+
+      const aiResponse = chatCompletion.choices[0]?.message?.content || "Unavailable";
+      const matches = aiResponse.match(/Rating: (\d+)/i);
+      const rating = matches ? parseInt(matches[1], 10) : "Unavailable";
+      setMentalHealthRating(rating);
+    } catch (error) {
+      console.error("Error fetching mental health rating:", error);
+      Swal.fire({
+        title: "Error!",
+        text: "Failed to fetch mental health rating. Please try again.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+    }
+  };
+
+  const fetchRecommendations = async () => {
+    const inputData = [
+      { role: "system", content: "You are a mental health analyst. Provide personalized recommendations based on mood and sleep data. don't write personalised recommendation as heading. maintain paras in your response. it should be short and authentic" },
+      {
+        role: "user",
+        content: `Mood Data: ${JSON.stringify(mood)}, Sleep Data: ${JSON.stringify(sleep)}`,
+      },
+    ];
+
+    try {
+      const chatCompletion = await groq.chat.completions.create({
+        model: "llama-3.3-70b-versatile",
+        temperature: 0.7,
+        max_tokens: 512,
+        messages: inputData,
+      });
+
+      const aiResponse = chatCompletion.choices[0]?.message?.content || "Unavailable";
+      setRecommendation(aiResponse);
+    } catch (error) {
+      console.error("Error fetching recommendations:", error);
+      Swal.fire({
+        title: "Error!",
+        text: "Failed to fetch recommendations. Please try again.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -79,11 +147,11 @@ const MoodLogger = () => {
     }
 
     setLoading(true);
-    setTimeout(() => {
-      setMentalHealthRating(75); // Placeholder value
-      setRecommendation("Stay active, focus on sleep hygiene, and consider mindful practices.");
-      setLoading(false);
-    }, 2000);
+
+    await fetchMentalHealthRating();
+    await fetchRecommendations();
+
+    setLoading(false);
   };
 
   const moodChartData = {
@@ -134,14 +202,12 @@ const MoodLogger = () => {
           transition: "margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
-        {/* Use your provided Header component */}
         <Header />
         <div style={{ paddingTop: "60px", padding: "20px" }}>
           <h1 style={{ textAlign: "center", marginBottom: "15px", fontSize: "28px", color: "#333" }}>
             Mood and Sleep Logger
           </h1>
           <div style={{ display: "flex", gap: "20px", alignItems: "flex-start" }}>
-            {/* Logger Form Section */}
             <div style={{ flex: 1, maxWidth: "60%" }}>
               <form onSubmit={handleSubmit}>
                 <h2 style={{ textAlign: "center", marginBottom: "30px", fontSize: "16px", color: "#555" }}>
@@ -151,9 +217,9 @@ const MoodLogger = () => {
                   style={{
                     display: "grid",
                     gridTemplateColumns: "1fr 1fr",
-                    gap: "0.5rem", // Reduced the gap between columns
+                    gap: "0.5rem",
                     justifyContent: "center",
-                    paddingLeft: "10%", // Slightly shifts to the right
+                    paddingLeft: "10%",
                   }}
                 >
                   {Object.keys(mood).map((moodType) => (
@@ -189,7 +255,6 @@ const MoodLogger = () => {
                     />
                   </div>
                 </div>
-
                 <button
                   type="submit"
                   style={{
@@ -201,20 +266,18 @@ const MoodLogger = () => {
                     cursor: "pointer",
                     border: "none",
                     color: "#fff",
-                    marginLeft: "65px"
+                    marginLeft: "65px",
                   }}
                 >
                   {loading ? "Analyzing..." : "Log Data"}
                 </button>
               </form>
             </div>
-
-            {/* Graph Section */}
-            <div style={{ flex: 0.8, display: "flex", flexDirection: "column", gap: "40px",  }}>
+            <div style={{ flex: 0.8, display: "flex", flexDirection: "column", gap: "40px" }}>
               <div style={{ height: "250px", maxWidth: "100%" }}>
                 <Radar data={moodChartData} options={chartOptions} />
               </div>
-              <div style={{ height: "250px", maxWidth: "80%",  marginLeft:"40px"}}>
+              <div style={{ height: "250px", maxWidth: "80%", marginLeft: "40px" }}>
                 <Bar data={sleepChartData} options={chartOptions} />
               </div>
             </div>
