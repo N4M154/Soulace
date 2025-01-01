@@ -11,9 +11,9 @@ import {
   Music2,
   Smile,
   UserRound,
-} from 'lucide-react';
-import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+} from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const sidebarItems = [
   { name: "Relaxation Games", icon: Gamepad2, route: "/breathinggame" },
@@ -29,23 +29,24 @@ const sidebarItems = [
 ];
 
 const SideButtons = () => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false); // Sidebar starts collapsed
   const location = useLocation();
   const navigate = useNavigate();
   const [hoveredItem, setHoveredItem] = useState(null);
 
   // Update main content margin when sidebar state changes
   useEffect(() => {
-    const mainContent = document.getElementById('main-content');
+    const mainContent = document.getElementById("main-content");
     if (mainContent) {
-      mainContent.style.marginLeft = isExpanded ? '260px' : '80px';
-      mainContent.style.transition = 'margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+      mainContent.style.marginLeft = isExpanded ? "260px" : "80px";
+      mainContent.style.transition =
+        "margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
     }
   }, [isExpanded]);
 
   const handleLogout = () => {
     // navigate to landing page
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -137,9 +138,9 @@ const SideButtons = () => {
             overflow-y: auto;
             flex: 1;
           }
-            .collapsed .menu-items {
-  overflow: hidden; /* Remove scrollbar for collapsed state */
-}
+          .collapsed .menu-items {
+            overflow: hidden; /* Remove scrollbar for collapsed state */
+          }
 
           .menu-item {
             display: flex;
@@ -251,7 +252,7 @@ const SideButtons = () => {
 
           /* Add styles for main content */
           #main-content {
-            margin-left: 260px;
+            margin-left: 80px;
             padding: 20px;
             min-height: 100vh;
             transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -265,12 +266,12 @@ const SideButtons = () => {
       </style>
 
       <div className="side-buttons-container">
-        <div className={`side-menu ${isExpanded ? 'expanded' : 'collapsed'}`}>
+        <div className={`side-menu ${isExpanded ? "expanded" : "collapsed"}`}>
           <button
             className="toggle-button"
             onClick={() => setIsExpanded(!isExpanded)}
             style={{
-              transform: `rotate(${isExpanded ? '0' : '180deg'})`,
+              transform: `rotate(${isExpanded ? "0" : "180deg"})`,
             }}
           >
             <ChevronLeft size={16} />
@@ -289,15 +290,13 @@ const SideButtons = () => {
                 <Link
                   key={item.route}
                   to={item.route}
-                  className={`menu-item ${isActive ? 'active' : ''}`}
+                  className={`menu-item ${isActive ? "active" : ""}`}
                   onMouseEnter={() => setHoveredItem(item.route)}
                   onMouseLeave={() => setHoveredItem(null)}
                 >
                   <div className="item-content">
                     <Icon className="item-icon" />
-                    <span className="item-text">
-                      {item.name}
-                    </span>
+                    <span className="item-text">{item.name}</span>
                   </div>
 
                   {!isExpanded && hoveredItem === item.route && (
