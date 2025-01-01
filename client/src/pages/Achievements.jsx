@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMedal } from "@fortawesome/free-solid-svg-icons";
 import Header from "../components/Header";
+import SideButtons from "../components/SideButtons";
 
 const Achievements = () => {
   // Mock achievements data
@@ -99,6 +100,7 @@ const Achievements = () => {
   return (
     <div>
       <Header />
+      <SideButtons/>
       <div style={styles.dashboard}>
         <h1 style={styles.achievementsTitle}>Badges Earned</h1>
         <div style={styles.badgeList}>

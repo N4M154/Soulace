@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
+import SideButtons from "../components/SideButtons";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -12,12 +13,10 @@ export default function Home() {
   const featuresRef = useRef(null);
 
   return (
-    <div
-      className=" min-h-screen flex flex-col items-center  "
-    >
-      <Header/>
-{/* Side Buttons */}
-<SideButtons />
+    <div className=" min-h-screen flex flex-col items-center  ">
+      <Header />
+      {/* Side Buttons */}
+      <SideButtons />
       <div className=" space-y-10 w-full max-w-7xl">
         {/* Features Section */}
         <motion.section
@@ -43,19 +42,21 @@ export default function Home() {
                 {[
                   {
                     name: "Mood-Tracker",
-                    description: "Track your daily moods to better understand yourself.",
+                    description:
+                      "Track your daily moods to better understand yourself.",
                     image: "/Mood Tracker.png",
                   },
                   {
                     name: "Sleep-Tracker",
-                    description: "Monitor your sleep patterns and improve your rest.",
+                    description:
+                      "Monitor your sleep patterns and improve your rest.",
                     image: "/Sleep Tracker.png",
                   },
                 ].map((feature, index) => (
                   <motion.div
                     key={index}
                     className="p-8 bg-white rounded-lg shadow-lg flex flex-col items-center justify-center h-[400px] cursor-pointer transition-transform"
-                    whileHover={{ scale: 1.05}}
+                    whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => {
                       const isLoggedIn = currentUser != null;
@@ -113,8 +114,10 @@ export default function Home() {
                 <h2 className="text-3xl font-bold text-pink-800 mb-4 ml-10">
                   Music That Matches Your Mood
                 </h2>
-                <p className="text-lg text-gray-700 mb-6 ml-10"> 
-                  Explore personalized playlists to suit your mood and energy level. You can choose your mood and get recommendation of music that suits the mood. Helps you boost your mood. 
+                <p className="text-lg text-gray-700 mb-6 ml-10">
+                  Explore personalized playlists to suit your mood and energy
+                  level. You can choose your mood and get recommendation of
+                  music that suits the mood. Helps you boost your mood.
                 </p>
                 <button
                   onClick={() => navigate("/musicrecommendation")}
@@ -139,8 +142,10 @@ export default function Home() {
                   Learn, Reflect, and Grow
                 </h2>
                 <p className="text-lg text-gray-600 mb-6">
-                  Dive into articles written by experts or the videos to nurture your mental well-being.
-                  Gain valuable insights, strategies, and practical tips for managing stress, anxiety, and building emotional resilience.
+                  Dive into articles written by experts or the videos to nurture
+                  your mental well-being. Gain valuable insights, strategies,
+                  and practical tips for managing stress, anxiety, and building
+                  emotional resilience.
                 </p>
                 <button
                   onClick={() => navigate("/contents")}
@@ -165,7 +170,8 @@ export default function Home() {
                   Smile with the Joke of the Day!
                 </h2>
                 <p className="text-lg text-gray-700 mb-6 italic ml-10">
-                  "Why don’t scientists trust atoms? Because they make up everything!"
+                  "Why don’t scientists trust atoms? Because they make up
+                  everything!"
                 </p>
                 <button
                   onClick={() => navigate("/jokeoftheday")}
@@ -246,7 +252,8 @@ export default function Home() {
               Meditation: Find Your Calm
             </h2>
             <p className="text-lg text-gray-600 mt-4">
-              Engage in minimalistic activities to unwind and rediscover your focus.
+              Engage in minimalistic activities to unwind and rediscover your
+              focus.
             </p>
 
             <motion.div
@@ -259,19 +266,31 @@ export default function Home() {
                 <motion.div
                   className="absolute w-40 h-40 bg-blue-400 rounded-full"
                   animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
-                  transition={{ duration: 2.5, repeat: Infinity, repeatType: "loop" }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                  }}
                 ></motion.div>
 
                 <motion.div
                   className="absolute w-24 h-24 bg-blue-600 rounded-full"
                   animate={{ scale: [1, 1.1, 1], opacity: [0.8, 1, 0.8] }}
-                  transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                  }}
                 ></motion.div>
 
                 <motion.div
                   className="absolute w-12 h-12 bg-blue-800 rounded-full"
                   animate={{ scale: [1, 1.05, 1], opacity: [0.9, 1, 0.9] }}
-                  transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop" }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                  }}
                 ></motion.div>
               </div>
               <p className="text-gray-600 mt-4">
@@ -287,100 +306,112 @@ export default function Home() {
           </div>
         </motion.section>
         <motion.section
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 50 }}
-      transition={{ duration: 0.5 }}
-      className="py-20"
-    >
-      <div
-        className="container mx-auto px-8 text-center py-16 bg-gradient-to-b from-black/70 to-black/30 rounded-lg shadow-md"
-        style={{ backgroundImage: "url('/background-image.gif')", backgroundSize: 'cover', backgroundPosition: 'center' }}
-      >
-        <h2 className="text-4xl font-bold text-white tracking-wide">
-          Mood-Reflective Daily Journal
-        </h2>
-        <p className="text-lg text-gray-300 mt-4">
-          A premium feature to express your thoughts and track emotional growth.
-        </p>
-
-        {/* Feature Description with Image */}
-        <div className="flex flex-col md:flex-row items-center justify-between mt-8 gap-8">
-          {/* Feature Description */}
-          <div className="text-left max-w-md ml-10">
-            <h3 className="text-2xl font-semibold text-white">What is the Mood-Reflective Daily Journal?</h3>
-            <p className="text-gray-300 mt-4">
-              This premium feature allows you to record your daily thoughts, track your emotional growth, and revisit past entries. It’s designed to help you reflect, relax, and recharge.
-            </p>
-            <p className="text-gray-300 mt-4">
-              Unlock the Mood-Reflective Daily Journal by subscribing for just $5-10. Enjoy exclusive access to a personalized journaling experience.
-            </p>
-          </div>
-
-          {/* Feature Image */}
-          <img
-            src="/journal.png" // Replace with the path to your feature image
-            alt="Mood-Reflective Daily Journal"
-            className="rounded-lg shadow-lg max-w-sm mr-10"
-          />
-        </div>
-
-        {/* Subscription Button */}
-        <div className="mt-8">
-          <button
-            className="px-6 py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-400 transition shadow-lg"
-            onClick={() => navigate('/subscribe')}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 50 }}
+          transition={{ duration: 0.5 }}
+          className="py-20"
+        >
+          <div
+            className="container mx-auto px-8 text-center py-16 bg-gradient-to-b from-black/70 to-black/30 rounded-lg shadow-md"
+            style={{
+              backgroundImage: "url('/background-image.gif')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
           >
-            Unlock for $5-10 Subscription
-          </button>
-        </div>
-      </div>
-    </motion.section>
-    <motion.section
-      initial={{ opacity: 0, x: -100 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: -100 }}
-      transition={{ duration: 0.5 }}
-      className="py-20"
-    >
-      <div
-        className="container mx-auto px-8 text-center py-16 bg-purple-900 rounded-lg shadow-lg"
-      >
-        <h2 className="text-5xl font-bold text-white tracking-wide">
-          Connect with a Specialist
-        </h2>
-        <p className="text-xl text-gray-100 mt-6">
-          Get personalized guidance from mental health specialists based on your needs.
-        </p>
-        <div className="flex flex-col md:flex-row items-center justify-between mt-12 gap-12">
-          <div className="text-left max-w-lg ml-10">
-            <h3 className="text-3xl font-semibold text-white mb-4">How It Works</h3>
-            <p className="text-gray-100 leading-relaxed">
-              Using machine learning, we assess your needs and connect you with certified mental health specialists for timely and professional support.
+            <h2 className="text-4xl font-bold text-white tracking-wide">
+              Mood-Reflective Daily Journal
+            </h2>
+            <p className="text-lg text-gray-300 mt-4">
+              A premium feature to express your thoughts and track emotional
+              growth.
             </p>
-            <p className="text-gray-100 leading-relaxed mt-4">
-              Get recommendations tailored to your individual challenges and ensure the care you deserve.
-            </p>
+
+            {/* Feature Description with Image */}
+            <div className="flex flex-col md:flex-row items-center justify-between mt-8 gap-8">
+              {/* Feature Description */}
+              <div className="text-left max-w-md ml-10">
+                <h3 className="text-2xl font-semibold text-white">
+                  What is the Mood-Reflective Daily Journal?
+                </h3>
+                <p className="text-gray-300 mt-4">
+                  This premium feature allows you to record your daily thoughts,
+                  track your emotional growth, and revisit past entries. It’s
+                  designed to help you reflect, relax, and recharge.
+                </p>
+                <p className="text-gray-300 mt-4">
+                  Unlock the Mood-Reflective Daily Journal by subscribing for
+                  just $5-10. Enjoy exclusive access to a personalized
+                  journaling experience.
+                </p>
+              </div>
+
+              {/* Feature Image */}
+              <img
+                src="/journal.png" // Replace with the path to your feature image
+                alt="Mood-Reflective Daily Journal"
+                className="rounded-lg shadow-lg max-w-sm mr-10"
+              />
+            </div>
+
+            {/* Subscription Button */}
+            <div className="mt-8">
+              <button
+                className="px-6 py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-400 transition shadow-lg"
+                onClick={() => navigate("/subscribe")}
+              >
+                Unlock for $5-10 Subscription
+              </button>
+            </div>
           </div>
-          <img
-            src="/doctor.png" // Replace with the path to your feature image
-            alt="Specialist Support"
-            className="max-w-xl "
-          />
-        </div>
-        <div className="mt-12">
-          <button
-            className="px-8 py-4 bg-purple-700 text-white font-bold text-lg rounded-full hover:bg-purple-600 transition-transform transform hover:scale-105 shadow-lg"
-            onClick={() => navigate('/subscribe')}
-          >
-            Connect with a Specialist
-          </button>
-        </div>
-      </div>
-    </motion.section>
-
-
-        
+        </motion.section>
+        <motion.section
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -100 }}
+          transition={{ duration: 0.5 }}
+          className="py-20"
+        >
+          <div className="container mx-auto px-8 text-center py-16 bg-purple-900 rounded-lg shadow-lg">
+            <h2 className="text-5xl font-bold text-white tracking-wide">
+              Connect with a Specialist
+            </h2>
+            <p className="text-xl text-gray-100 mt-6">
+              Get personalized guidance from mental health specialists based on
+              your needs.
+            </p>
+            <div className="flex flex-col md:flex-row items-center justify-between mt-12 gap-12">
+              <div className="text-left max-w-lg ml-10">
+                <h3 className="text-3xl font-semibold text-white mb-4">
+                  How It Works
+                </h3>
+                <p className="text-gray-100 leading-relaxed">
+                  Using machine learning, we assess your needs and connect you
+                  with certified mental health specialists for timely and
+                  professional support.
+                </p>
+                <p className="text-gray-100 leading-relaxed mt-4">
+                  Get recommendations tailored to your individual challenges and
+                  ensure the care you deserve.
+                </p>
+              </div>
+              <img
+                src="/doctor.png" // Replace with the path to your feature image
+                alt="Specialist Support"
+                className="max-w-xl "
+              />
+            </div>
+            <div className="mt-12">
+              <button
+                className="px-8 py-4 bg-purple-700 text-white font-bold text-lg rounded-full hover:bg-purple-600 transition-transform transform hover:scale-105 shadow-lg"
+                onClick={() => navigate("/subscribe")}
+              >
+                Connect with a Specialist
+              </button>
+            </div>
+          </div>
+        </motion.section>
       </div>
     </div>
   );
