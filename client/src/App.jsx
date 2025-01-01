@@ -34,6 +34,7 @@ import ScheduleConsultation from "./pages/ScheduleConsultation";
 import ChatSpecialist from "./pages/ChatSpecialist";
 import EmergencySupport from "./pages/EmergencySupport";
 import AchievementDashboard from "./pages/Achievements";
+import PremiumRoute from "./components/PremiumRoute";
 export default function App() {
   return (
     <BrowserRouter>
@@ -49,13 +50,38 @@ export default function App() {
         <Route path="/community" element={<Community />} />
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/Mood-Tracker" element={<MoodLogger />} />
-        <Route path="/achievements" element={<AchievementDashboard />} />
+
+
+        <Route
+          path="/achievements"
+          element={
+            <PremiumRoute><AchievementDashboard />
+            </PremiumRoute>
+          }
+        />
+
+
         <Route path="/about" element={<AboutPage />} />
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/meditation" element={<Meditation />} />
         <Route path="/subscribe" element={<SubscribePage />} />
-        <Route path="/daily-journal" element={<DailyJournal />} />
-        <Route path="/specialist" element={<Specialist />} />
+
+        <Route
+          path="/daily-journal"
+          element={
+            <PremiumRoute><DailyJournal />
+            </PremiumRoute>
+          } />
+
+
+        <Route
+          path="/specialist"
+          element={
+            <PremiumRoute><Specialist />
+            </PremiumRoute>}
+        />
+
+
         <Route path="/recommendation" element={<Recommendation />} />
         <Route path="/swirl" element={<Swirl />} />
         <Route path="/swirl/1" element={<Swirl1 />} />
@@ -65,9 +91,26 @@ export default function App() {
         <Route path="/switch/1" element={<Switch1 />} />
         <Route path="/jokeoftheday" element={<JOTD />} />
         <Route path="/musicrecommendation" element={<Music />} />
-        <Route path="/contents" element={<Contents />} />
 
-        <Route path="/schedule-consultation" element={<ScheduleConsultation/>} />
+        <Route
+          path="/contents"
+          element={
+            <PremiumRoute><Contents />
+            </PremiumRoute>
+          }
+        />
+
+
+
+        <Route
+          path="/chat-specialist"
+          element={
+            <PremiumRoute>
+              <ChatSpecialist />
+            </PremiumRoute>
+          }
+        />
+        <Route path="/schedule-consultation" element={<ScheduleConsultation />} />
         <Route path="/chat-specialist" element={<ChatSpecialist />} />
         <Route path="/emergency-support" element={<EmergencySupport />} />
 
@@ -79,3 +122,4 @@ export default function App() {
     </BrowserRouter>
   );
 }
+{/* Premium Features */ }
