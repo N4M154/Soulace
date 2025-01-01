@@ -154,7 +154,7 @@ const SubscribePage = () => {
                 <li>✔️ Track Your Progress</li>
                 <li>✔️ Connect with a Specialist</li>
               </ul>
-              
+              <div className="text-teal-800 text-3xl font-bold mt-6">---<span className="text-lg font-medium"></span></div>
               <button
                 onClick={startFreeTrial}
                 className="mt-6 bg-teal-600 text-white py-2 px-6 rounded-lg hover:bg-teal-700 transition duration-300"
@@ -177,7 +177,7 @@ const SubscribePage = () => {
               </ul>
               <div className="text-teal-800 text-3xl font-bold mt-6">$10<span className="text-lg font-medium">/month</span></div>
               <Link
-                to="/monthly-plan"
+                to="/payment"
                 className="mt-6 bg-teal-600 text-white py-2 px-6 rounded-lg hover:bg-teal-700 transition duration-300"
               >
                 Subscribe Monthly
@@ -199,7 +199,7 @@ const SubscribePage = () => {
               </ul>
               <div className="text-yellow-800 text-3xl font-bold mt-6">$96<span className="text-lg font-medium">/year</span></div>
               <Link
-                to="/yearly-plan"
+                to="/payment"
                 className="mt-6 bg-yellow-600 text-white py-2 px-6 rounded-lg hover:bg-yellow-700 transition duration-300"
               >
                 Subscribe Yearly

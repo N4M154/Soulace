@@ -35,6 +35,7 @@ import ChatSpecialist from "./pages/ChatSpecialist";
 import EmergencySupport from "./pages/EmergencySupport";
 import AchievementDashboard from "./pages/Achievements";
 import PremiumRoute from "./components/PremiumRoute";
+import PaymentPage from "./pages/PaymentPage";
 export default function App() {
   return (
     <BrowserRouter>
@@ -117,6 +118,8 @@ export default function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
         </Route>
+
+        <Route path="/payment" element={<PaymentPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
