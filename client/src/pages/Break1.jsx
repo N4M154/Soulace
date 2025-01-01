@@ -1,12 +1,13 @@
 // ColorGrid.jsx
 import React from "react";
 import Header from "../components/Header";
-
+import SideButtons from "../components/SideButtons";
 const ColorGrid = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 flex flex-col items-center">
       <Header />
-
+{/* Side Buttons */}
+<SideButtons />
       {/* Main Content */}
       <main className="flex flex-col items-center">
         <h1 className="text-3xl font-bold text-gray-700 mb-12">Colorful Circles</h1>

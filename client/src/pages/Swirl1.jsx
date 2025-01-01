@@ -1,11 +1,13 @@
 import React from "react";
 import Header from "../components/Header";
-
+import SideButtons from "../components/SideButtons";
 const Swirl = () => {
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center">
+     
       <Header />
-
+      {/* Side Buttons */}
+      <SideButtons />
       {/* Main Content */}
       <main className="flex flex-col items-center">
         <h1 className="text-3xl font-bold text-gray-700 mb-6">Swirl Visualization</h1>
