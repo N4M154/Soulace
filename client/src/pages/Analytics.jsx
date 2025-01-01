@@ -19,6 +19,7 @@ import {
 } from "../redux/user/userSlice";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
+import SideButtons from "../components/SideButtons";
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -120,6 +121,7 @@ export default function Profile() {
     <div className="bg-white min-h-screen">
       {/* Header */}
       <Header />
+      <SideButtons/>
 
       <div className="p-6 max-w-4xl mx-auto bg-gray-50 shadow-lg rounded-lg mt-10">
         <h1 className="text-4xl font-bold text-center text-teal-700 mb-8">
