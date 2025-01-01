@@ -1,3 +1,6 @@
+
+
+
 import { Mic, MicOff, Moon, Sun } from 'lucide-react';
 import React, { useState } from 'react';
 import Header from "../components/Header.jsx";
@@ -13,11 +16,14 @@ const BreathingGame = () => {
 
   const synth = window.speechSynthesis;
 
+
+  
+
   const phases = [
-    { name: 'Inhale', duration: 4000, color: 'from-cyan-400 to-blue-500' },
-    { name: 'Hold', duration: 4000, color: 'from-blue-500 to-indigo-600' },
-    { name: 'Exhale', duration: 4000, color: 'from-indigo-600 to-purple-700' },
-    { name: 'Rest', duration: 2000, color: 'from-purple-700 to-pink-600' },
+    { name: 'Inhale', duration: 4000, color: 'from-[#005057] to-[#00777E]' },
+    { name: 'Hold', duration: 4000, color: 'from-[#4B3217] to-[#785230]' },
+    { name: 'Exhale', duration: 4000, color: 'from-[#AE9276] to-[#005057]' },
+    { name: 'Rest', duration: 2000, color: 'from-[#00777E] to-[#4B3217]' },
   ];
 
   React.useEffect(() => {
@@ -153,7 +159,7 @@ const GratitudeGame = () => {
 
   return (
     <div className="text-center">
-      <h1 className="text-4xl font-bold mb-4">Gratitude Journal</h1>
+      <h1 className="text-4xl font-bold mb-4">Gratitude Diary</h1>
       <p className="mb-4">Write down things you are grateful for today:</p>
       <div className="mb-4">
         <input
@@ -215,7 +221,7 @@ const AffirmationGame = () => {
     <div className="text-center">
       <h1 className="text-4xl font-bold mb-4">Affirmation Exercise</h1>
       <p className="mb-6">Focus on these positive affirmations to boost your mood and confidence:</p>
-      <div className="p-6 bg-blue-100 rounded shadow-md inline-block">
+      <div className="p-6 bg-teal-10 rounded shadow-md inline-block">
         <p className="text-lg font-semibold">{currentAffirmation}</p>
       </div>
       <button
@@ -228,99 +234,137 @@ const AffirmationGame = () => {
   );
 };
 
-const MemoryGame = () => {
-  const [sequence, setSequence] = useState([]);
-  const [userInput, setUserInput] = useState([]);
-  const [message, setMessage] = useState('');
 
-  const generateSequence = () => {
-    const newSequence = [...sequence, Math.floor(Math.random() * 4)];
-    setSequence(newSequence);
-    setUserInput([]);
-    setMessage('Follow the sequence!');
+const MemoryGame = () => {
+  const [cards, setCards] = useState(shuffleCards());
+  const [flippedCards, setFlippedCards] = useState([]);
+  const [matchedCards, setMatchedCards] = useState([]);
+  const [message, setMessage] = useState("Flip the cards to find matches!");
+
+  function shuffleCards() {
+    const cardValues = [1, 2, 3, 4, 5, 6, 7, 8];
+    const deck = [...cardValues, ...cardValues].sort(() => Math.random() - 0.5);
+    return deck.map((value, index) => ({ id: index, value, flipped: false }));
+  }
+
+  const handleCardClick = (id) => {
+    if (flippedCards.length === 2 || matchedCards.includes(id)) return;
+
+    const updatedCards = cards.map((card) =>
+      card.id === id ? { ...card, flipped: true } : card
+    );
+    setCards(updatedCards);
+
+    const newFlippedCards = [...flippedCards, id];
+    setFlippedCards(newFlippedCards);
+
+    if (newFlippedCards.length === 2) {
+      checkForMatch(newFlippedCards, updatedCards);
+    }
   };
 
-  const handleUserInput = (num) => {
-    const newInput = [...userInput, num];
-    setUserInput(newInput);
-    if (newInput.join('') === sequence.join('').slice(0, newInput.length)) {
-      if (newInput.length === sequence.length) {
-        setMessage('Well done! Generate the next sequence.');
-      }
+  const checkForMatch = (flipped, updatedCards) => {
+    const [firstId, secondId] = flipped;
+    const firstCard = updatedCards.find((card) => card.id === firstId);
+    const secondCard = updatedCards.find((card) => card.id === secondId);
+
+    if (firstCard.value === secondCard.value) {
+      setMatchedCards((prev) => [...prev, firstId, secondId]);
+      setMessage("Match found! Keep going!");
     } else {
-      setMessage('Oops! Try again.');
-      setSequence([]);
+      setTimeout(() => {
+        setCards((prevCards) =>
+          prevCards.map((card) =>
+            flipped.includes(card.id) ? { ...card, flipped: false } : card
+          )
+        );
+      }, 1000);
+      setMessage("No match. Try again!");
     }
+
+    setFlippedCards([]);
+  };
+
+  const resetGame = () => {
+    setCards(shuffleCards());
+    setFlippedCards([]);
+    setMatchedCards([]);
+    setMessage("Flip the cards to find matches!");
   };
 
   return (
     <div className="text-center">
       <h1 className="text-4xl font-bold mb-4">Memory Game</h1>
       <p className="mb-4">{message}</p>
-      <div className="grid grid-cols-2 gap-4 w-48 mx-auto">
-        {[0, 1, 2, 3].map((num) => (
+      <div className="grid grid-cols-4 gap-4 w-64 mx-auto">
+        {cards.map((card) => (
           <button
-            key={num}
-            onClick={() => handleUserInput(num)}
-            className="w-20 h-20 bg-gray-300 rounded-full hover:bg-gray-400"
+            key={card.id}
+            onClick={() => handleCardClick(card.id)}
+            className={`w-16 h-20 text-xl font-bold rounded shadow-md flex items-center justify-center
+              ${card.flipped || matchedCards.includes(card.id) ? "bg-teal-500 text-white" : "bg-gray-300"}`}
           >
-            {num}
+            {card.flipped || matchedCards.includes(card.id) ? card.value : ""}
           </button>
         ))}
       </div>
       <button
-        onClick={generateSequence}
+        onClick={resetGame}
         className="mt-4 px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-700"
       >
-        Generate Sequence
+        Reset Game
       </button>
     </div>
   );
 };
 
+
+
 const GameSelector = () => {
-  const [selectedGame, setSelectedGame] = useState('Breathing');
+  const [selectedGame, setSelectedGame] = useState("Breathing");
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <Header />
-      <SideButtons /> {/* Added SideButtons for navigation */}
-      <div className="flex flex-col md:flex-row">
-        <div className="flex flex-col w-full md:w-[80%] mx-auto p-4">
-          <div className="flex justify-center gap-4 mt-8">
-            <button
-              onClick={() => setSelectedGame('Breathing')}
-              className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600"
-            >
-              Breathing Game
-            </button>
-            <button
-              onClick={() => setSelectedGame('Gratitude')}
-              className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600"
-            >
-              Gratitude Game
-            </button>
-            <button
-              onClick={() => setSelectedGame('Affirmation')}
-              className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600"
-            >
-              Affirmation Game
-            </button>
-            <button
-              onClick={() => setSelectedGame('Memory')}
-              className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600"
-            >
-              Memory Game
-            </button>
-          </div>
-          <div className="mt-8">
-            {selectedGame === 'Breathing' && <BreathingGame />}
-            {selectedGame === 'Gratitude' && <GratitudeGame />}
-            {selectedGame === 'Affirmation' && <AffirmationGame />}
-            {selectedGame === 'Memory' && <MemoryGame />}
-          </div>
+      <SideButtons />
+      <div className="flex flex-col flex-grow">
+        <div className="flex justify-center gap-4 mt-8">
+          <button
+            onClick={() => setSelectedGame("Breathing")}
+            className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600"
+          >
+            Breathing Exercise
+          </button>
+          <button
+            onClick={() => setSelectedGame("Gratitude")}
+            className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600"
+          >
+            Gratitude
+          </button>
+          <button
+            onClick={() => setSelectedGame("Memory")}
+            className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600"
+          >
+            Memory Game
+          </button>
+          <button
+            onClick={() => setSelectedGame("Affirmation")}
+            className="px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600"
+          >
+            Affirmation
+          </button>
+        
+        </div>
+        <div className="mt-8 flex-grow">
+          {selectedGame === "Breathing" && <BreathingGame />}
+          {selectedGame === "Gratitude" && <GratitudeGame />}
+          {selectedGame === "Affirmation" && <AffirmationGame />}
+          {selectedGame === "Memory" && <MemoryGame />}
         </div>
       </div>
+      {/* <footer className="mt-auto py-4 bg-gray-200 text-center">
+        <p className="text-gray-600">© 2024 Soulace. All rights reserved.</p>
+      </footer> */}
     </div>
   );
 };
