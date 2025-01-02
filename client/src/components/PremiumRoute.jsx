@@ -8,7 +8,7 @@ const PremiumRoute = ({ children }) => {
   useEffect(() => {
     const checkTrialStatus = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/user/trial-status", {
+        const response = await fetch("https://soulace-backend-kappa.vercel.app/api/user/trial-status", {
           method: "GET",
           credentials: "include",
         });
