@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import FloatingChatbot from "./components/Chatbot";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import SignIn from "./pages/SignIn";
@@ -121,7 +122,9 @@ export default function App() {
           
         <Route path="/payment" element={<PaymentPage />} />
       </Routes>
+      
       <Footer />
+      <FloatingChatbot iconSrc="/chatbot.png"/>
     </BrowserRouter>
   );
 }

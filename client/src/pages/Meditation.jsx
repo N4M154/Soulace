@@ -62,3 +62,5 @@ export default MeditationPage;
 
 
 //changed the name : swirl to Spiral burst , switch to Flip Flick and break to Pulse Pop
+
+

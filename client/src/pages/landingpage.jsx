@@ -200,7 +200,7 @@ function FAQItem({ question, answer }) {
                 navigate(`/${feature.name.toLowerCase().replace(/ /g, "-")}`);
               } else {
                 // Navigate to Sign-In page if not logged in
-                navigate("/sign-in");
+                navigate("/Mood-Tracker");
               }
             }}
           >
@@ -544,7 +544,7 @@ Gain valuable insights, strategies, and practical tips for managing stress, anxi
           <div className="mt-6">
             <button
               className="px-8 py-4 bg-teal-600 text-white font-bold text-lg rounded-full hover:bg-teal-500 transition-transform transform hover:scale-105 shadow-lg"
-              onClick={() => navigate('/chatbot')}
+              onClick={() => navigate('/home')}
             >
               Chat Now
             </button>

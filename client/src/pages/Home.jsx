@@ -5,7 +5,7 @@ import { Brain, ChevronLeft, ChevronRight, Crown, Heart, Shield, Sparkles, Star 
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import FloatingChatbot from "../components/Chatbot";
+
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
 
@@ -101,7 +101,7 @@ export default function Home() {
       <SideButtons />
       
       <div className="ml-48 px-4">
-        <FloatingChatbot iconSrc="/chatbot.png"/>
+        
         
         {/* Hero Section with Services Slider */}
         <section className="pt-4 pb-20">

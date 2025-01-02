@@ -22,7 +22,7 @@ const sidebarItems = [
   { name: "Meditation", icon: Brain, route: "/meditation" },
   { name: "Joke of the Day", icon: Smile, route: "/jokeoftheday" },
   { name: "Music Recommendation", icon: Music2, route: "/musicrecommendation" },
-  { name: "Chatbot", icon: Bot, route: "/chatbot" },
+  // { name: "Chatbot", icon: Bot, route: "/chatbot" },
   { name: "Mood-Sleep Tracker", icon: Moon, route: "/Mood-Tracker" },
   { name: "Daily Journal", icon: BookOpen, route: "/daily-journal" },
   { name: "Need a specialist?", icon: UserRound, route: "/specialist" },

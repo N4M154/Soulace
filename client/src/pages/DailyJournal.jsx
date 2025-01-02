@@ -254,11 +254,11 @@ const DailyJournal = () => {
                     <p className="text-sm text-gray-400 mt-2">
                       {new Date(note.date).toLocaleString()}
                     </p>
-                    <p className="text-sm text-teal-400 mt-1">Mood: {note.mood}</p>{" "}
-                    {/* Display mood */}
+                    {/* <p className="text-sm text-teal-400 mt-1">Mood: {note.mood}</p>{" "}
+                    
                     <p className="text-sm text-gray-300 mt-1">
                       Analysis: {note.analysis}
-                    </p>{" "}
+                    </p>{" "} */}
                   </div>
                 ))}
               </div>
