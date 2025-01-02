@@ -9,6 +9,7 @@ import blogRoutes from "./routes/blog.route.js"; // Import the blog routes
 import journalRoutes from "./routes/journal.route.js"; // Import the journal routes
 import musicRoutes from "./routes/music.route.js"; // Import the music routes
 import userRoutes from "./routes/user.route.js";
+import MoodLogRoutes from "./routes/moodLog.route.js"; // Import the user routes
 
 dotenv.config();
 
@@ -82,6 +83,9 @@ app.use((err, req, res, next) => {
     statusCode,
   });
 });
+
+app.use("/api/mood-logs", MoodLogRoutes); //mood log routes
+
 
 // Start the server
 app.listen(3000, () => {
