@@ -1,25 +1,13 @@
-// import express from "express";
-// import { saveJournal, getJournals } from "../controllers/journalController.js";
-
-// const router = express.Router();
-
-// // POST route to save a journal entry
-// router.post("/", saveJournal);
-
-// // GET route to fetch journal entries with pagination
-// router.get("/", getJournals);
-
-// export default router;
-
 import express from "express";
 import { saveJournal, getJournals } from "../controllers/journalController.js";
+import { verifyToken } from "../utils/verifyUser.js";
 
 const router = express.Router();
 
 // POST route to save a journal entry
-router.post("/", saveJournal);
+router.post("/", verifyToken, saveJournal);
 
 // GET route to fetch journal entries with pagination
-router.get("/", getJournals);
+router.get("/",verifyToken, getJournals);
 
 export default router;

@@ -24,7 +24,11 @@ const DailyJournal = () => {
   const fetchNotes = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/journal?page=${page}`);
+      const response = await fetch(`/api/journal?page=${page}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include", // Ensure cookies are sent
+      });
       const data = await response.json();
       setNotes((prevNotes) => [...prevNotes, ...data.notes.reverse()]); // Ensure correct order and avoid duplicates
     } catch (err) {
@@ -56,16 +60,16 @@ const DailyJournal = () => {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!journal.trim()) {
-    alert("Please write something in your journal before saving.");
-    return;
-  }
+    if (!journal.trim()) {
+      alert("Please write something in your journal before saving.");
+      return;
+    }
 
-  setLoading(true);
+    setLoading(true);
 
- try {
+    try {
       // Perform comprehensive mood analysis
       const { mood, analysis } = await analyzeMood(journal);
 
@@ -73,25 +77,25 @@ const DailyJournal = () => {
       const response = await fetch("http://localhost:5173/api/journal", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content: journal, mood, analysis }),
+        body: JSON.stringify({ userId: currentUser._id, content: journal, mood, analysis }),
       });
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error("Error response from server:", errorData);
-      throw new Error("Failed to save journal entry");
-    }
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Error response from server:", errorData);
+        throw new Error("Failed to save journal entry");
+      }
 
-    const newNote = await response.json();
-    setNotes((prevNotes) => [newNote, ...prevNotes]); // Add new note at the top
-    setJournal("");
-  } catch (err) {
-    console.error("Error saving journal:", err.message);
-    alert("Failed to save the journal entry. Please try again.");
-  } finally {
-    setLoading(false);
-  }
-};
+      const newNote = await response.json();
+      setNotes((prevNotes) => [newNote, ...prevNotes]); // Add new note at the top
+      setJournal("");
+    } catch (err) {
+      console.error("Error saving journal:", err.message);
+      alert("Failed to save the journal entry. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
   // Load more notes
   const loadMoreNotes = async () => {
     if (loading) return;
@@ -182,9 +186,8 @@ const DailyJournal = () => {
       {/* Main Content */}
       <div
         id="main-content"
-        className={`flex-1 transition-all duration-300 ${
-          isSidebarExpanded ? "ml-64" : "ml-20"
-        }`}
+        className={`flex-1 transition-all duration-300 ${isSidebarExpanded ? "ml-64" : "ml-20"
+          }`}
       >
         <Header />
         <div
@@ -229,9 +232,8 @@ const DailyJournal = () => {
                 />
                 <button
                   type="submit"
-                  className={`py-2 px-4 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition duration-200 ${
-                    loading ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
+                  className={`py-2 px-4 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition duration-200 ${loading ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
                   disabled={loading}
                 >
                   {loading ? "Saving..." : "Save"}
@@ -253,19 +255,19 @@ const DailyJournal = () => {
                       {new Date(note.date).toLocaleString()}
                     </p>
                     <p className="text-sm text-teal-400 mt-1">Mood: {note.mood}</p>{" "}
-                {/* Display mood */}
-                <p className="text-sm text-gray-300 mt-1">
-                  Analysis: {note.analysis}
-                </p>{" "}
+                    {/* Display mood */}
+                    <p className="text-sm text-gray-300 mt-1">
+                      Analysis: {note.analysis}
+                    </p>{" "}
                   </div>
                 ))}
               </div>
               <button
-            onClick={loadMoreNotes}
-            className="mt-4 w-full py-2 bg-transparent text-teal-600 font-bold rounded-lg hover:text-white transition duration-300 text-sm"
-          >
-            {loading ? "Loading..." : "Load More"}
-          </button>
+                onClick={loadMoreNotes}
+                className="mt-4 w-full py-2 bg-transparent text-teal-600 font-bold rounded-lg hover:text-white transition duration-300 text-sm"
+              >
+                {loading ? "Loading..." : "Load More"}
+              </button>
             </div>
           </div>
         </div>
