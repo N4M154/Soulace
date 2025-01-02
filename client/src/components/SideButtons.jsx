@@ -13,9 +13,9 @@ import {
   UserRound,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { signOut } from "../redux/user/userSlice";
-import { useDispatch } from "react-redux";
 
 const sidebarItems = [
   { name: "Relaxation Games", icon: Gamepad2, route: "/breathinggame" },
@@ -286,7 +286,9 @@ const SideButtons = () => {
           </button>
 
           <div className="menu-header">
-            <img src="/Logo.png" alt="Logo" className="logo" />
+            <Link to="/home">
+              <img src="/Logo.png" alt="Logo" className="logo" />
+            </Link>
           </div>
 
           <div className="menu-items">
