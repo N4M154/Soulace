@@ -1,3 +1,13 @@
+// 
+
+
+//------------------------------new
+
+
+//----------------------------------------------
+
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, Heart, Image as ImageIcon, PenSquare, Send, ThumbsUp, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import Header from "../components/Header.jsx";
 import SideButtons from "../components/SideButtons.jsx";
@@ -9,9 +19,9 @@ const CommunityPage = () => {
   const [error, setError] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [mediaPreview, setMediaPreview] = useState(null);
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false); // State for sidebar
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
-  // Fetch blogs from the API
+  // Existing fetch blogs useEffect...
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
@@ -36,13 +46,12 @@ const CommunityPage = () => {
     fetchBlogs();
   }, []);
 
-  // Handle input changes for the new blog form
+  // Existing handlers...
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewBlog((prevBlog) => ({ ...prevBlog, [name]: value }));
   };
 
-  // Handle file input change for media upload and preview
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setNewBlog((prevBlog) => ({ ...prevBlog, media: file }));
@@ -55,7 +64,6 @@ const CommunityPage = () => {
     }
   };
 
-  // Submit a new blog to the API
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -89,185 +97,254 @@ const CommunityPage = () => {
     }
   };
 
-  // Toggle sidebar state
   const toggleSidebar = () => {
     setSidebarCollapsed(!sidebarCollapsed);
   };
 
   if (loading) {
-    return <div className="text-center text-lg text-gray-600 animate-pulse">Loading blogs...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-50 to-white">
+        <div className="space-y-4 text-center">
+          <div className="w-16 h-16 border-4 border-teal-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+          <p className="text-lg text-teal-800 font-medium">Loading amazing content...</p>
+        </div>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="text-center text-lg text-red-600">Error: {error}</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-red-50">
+        <div className="bg-white p-8 rounded-xl shadow-lg text-center max-w-md">
+          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <X className="w-8 h-8 text-red-500" />
+          </div>
+          <h2 className="text-2xl font-bold text-red-700 mb-2">Oops!</h2>
+          <p className="text-gray-600">{error}</p>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="flex">
-      {/* Sidebar */}
-       <SideButtons/>
+    <div className="flex min-h-screen bg-gradient-to-br from-teal-50 to-white">
+      <SideButtons />
 
-      {/* Main Content */}
-      <div
-        className={`transition-all flex-1 ${
-          sidebarCollapsed ? "ml-16" : "ml-64"
-        }`}
-      >
+      <div className={`transition-all duration-300 flex-1 ${sidebarCollapsed ? "ml-16" : "ml-64"}`}>
         <Header />
-        <div className="bg-gradient-to-r from-teal-200 to-teal-100 text-teal-900 text-center py-4 rounded-lg shadow-md mb-6">
-          <h1 className="text-4xl font-bold mb-1">Read, Share, and Post Your Thoughts</h1>
-          <p>Explore ideas, share your creativity, and contribute to the community!</p>
+        
+        {/* Hero Section */}
+        <div className="relative overflow-hidden bg-gradient-to-r from-teal-500 to-emerald-500 text-white py-16 px-8 rounded-2xl shadow-lg mx-4 mt-6">
+          <div className="relative z-10">
+            <h1 className="text-5xl font-bold mb-4 leading-tight">
+              Share Your Story<br />With The World
+            </h1>
+            <p className="text-xl text-teal-50 max-w-2xl">
+              Join our vibrant community of writers, thinkers, and creators. Your voice matters.
+            </p>
+          </div>
+          <div className="absolute right-0 top-0 w-1/3 h-full opacity-10">
+            <PenSquare className="w-full h-full" />
+          </div>
         </div>
 
-        {/* Blog Form Toggle */}
-        <div className="flex items-center justify-center w-full space-x-4">
-          <button
+        {/* Action Buttons */}
+        <div className="flex items-center justify-center gap-6 mt-8 px-4">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => setShowForm(!showForm)}
-            className="bg-teal-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-teal-500 transition"
+            className="flex items-center gap-2 bg-teal-600 text-white px-8 py-4 rounded-xl shadow-lg hover:bg-teal-500 transition-all duration-300"
           >
-            {showForm ? "Close It" : "Create Blogs"}
-          </button>
-          <a
+            {showForm ? <X className="w-5 h-5" /> : <PenSquare className="w-5 h-5" />}
+            {showForm ? "Close Editor" : "Write a Blog"}
+          </motion.button>
+          
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             href="#latest-blogs"
-            className="bg-teal-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-teal-500 transition"
+            className="flex items-center gap-2 bg-white text-teal-600 px-8 py-4 rounded-xl shadow-lg hover:bg-teal-50 transition-all duration-300"
           >
-            Latest Blogs
-          </a>
+            <ChevronDown className="w-5 h-5" />
+            Browse Posts
+          </motion.a>
         </div>
 
         {/* Blog Form */}
-        {showForm && (
-          <div className="flex flex-col md:flex-row justify-between items-start gap-8 mt-6">
-            <div className="flex-1 bg-white p-6 shadow-lg rounded-lg">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">Create a Blog Post</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-4">
-                  <input
-                    type="text"
-                    name="title"
-                    value={newBlog.title}
-                    onChange={handleChange}
-                    placeholder="Blog Title"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-teal-300"
-                    required
-                  />
-                  <textarea
-                    name="content"
-                    value={newBlog.content}
-                    onChange={handleChange}
-                    placeholder="Blog Content"
-                    rows="4"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-teal-300"
-                    required
-                  ></textarea>
-                  <input
-                    type="text"
-                    name="author"
-                    value={newBlog.author}
-                    onChange={handleChange}
-                    placeholder="Your Name"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-teal-300"
-                    required
-                  />
-                  <input
-                    type="file"
-                    name="media"
-                    accept="image/*,video/*"
-                    onChange={handleFileChange}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-teal-300"
-                  />
+        <AnimatePresence>
+          {showForm && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 px-4"
+            >
+              <div className="bg-white p-8 rounded-2xl shadow-lg">
+                <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                  <PenSquare className="w-6 h-6 text-teal-500" />
+                  Create Your Blog
+                </h2>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="space-y-4">
+                    <input
+                      type="text"
+                      name="title"
+                      value={newBlog.title}
+                      onChange={handleChange}
+                      placeholder="Give your blog a catchy title"
+                      className="w-full p-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all duration-300"
+                      required
+                    />
+                    <textarea
+                      name="content"
+                      value={newBlog.content}
+                      onChange={handleChange}
+                      placeholder="Share your thoughts..."
+                      rows="6"
+                      className="w-full p-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all duration-300"
+                      required
+                    ></textarea>
+                    <input
+                      type="text"
+                      name="author"
+                      value={newBlog.author}
+                      onChange={handleChange}
+                      placeholder="Your name"
+                      className="w-full p-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all duration-300"
+                      required
+                    />
+                    <div className="relative">
+                      <input
+                        type="file"
+                        name="media"
+                        accept="image/*,video/*"
+                        onChange={handleFileChange}
+                        className="hidden"
+                        id="media-upload"
+                      />
+                      <label
+                        htmlFor="media-upload"
+                        className="flex items-center gap-2 cursor-pointer w-full p-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition-all duration-300"
+                      >
+                        <ImageIcon className="w-5 h-5 text-gray-500" />
+                        <span className="text-gray-500">Add media (optional)</span>
+                      </label>
+                    </div>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    type="submit"
+                    className="w-full py-4 bg-teal-600 text-white text-lg font-semibold rounded-xl hover:bg-teal-500 transition-all duration-300 flex items-center justify-center gap-2"
+                  >
+                    <Send className="w-5 h-5" />
+                    Publish Blog
+                  </motion.button>
+                </form>
+              </div>
+
+              <div className="bg-white p-8 rounded-2xl shadow-lg">
+                <h2 className="text-2xl font-bold text-gray-800 mb-6">Preview</h2>
+                <div className="prose max-w-none">
+                  <h3 className="text-3xl font-bold text-gray-800 mb-4">
+                    {newBlog.title || "Your Title Will Appear Here"}
+                  </h3>
+                  <p className="text-gray-600 mb-4 whitespace-pre-wrap">
+                    {newBlog.content || "Your content will appear here..."}
+                  </p>
+                  <p className="text-sm text-gray-500">By {newBlog.author || "Your Name"}</p>
+                  {mediaPreview && (
+                    <div className="mt-6 rounded-xl overflow-hidden">
+                      {mediaPreview.startsWith("data:video") ? (
+                        <video controls className="w-full rounded-xl">
+                          <source src={mediaPreview} type="video/mp4" />
+                        </video>
+                      ) : (
+                        <img
+                          src={mediaPreview}
+                          alt="Preview"
+                          className="w-full h-64 object-cover rounded-xl"
+                        />
+                      )}
+                    </div>
+                  )}
                 </div>
-                <button
-                  type="submit"
-                  className="w-full py-3 bg-teal-600 text-white text-lg font-semibold rounded-lg hover:bg-teal-500 transition"
-                >
-                  Publish Blog
-                </button>
-              </form>
-            </div>
-            <div className="flex-1 bg-white p-6 shadow-lg rounded-lg">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">Live Preview</h2>
-              <div>
-                <h3 className="text-2xl font-semibold text-gray-800">
-                  {newBlog.title || "Blog Title"}
-                </h3>
-                <p className="text-gray-700">{newBlog.content || "Blog content will appear here..."}</p>
-                <p className="text-sm text-gray-500">By {newBlog.author || "Your Name"}</p>
-                {mediaPreview && (
-                  <div className="mt-4">
-                    {mediaPreview.endsWith(".mp4") ? (
-                      <video controls className="w-full rounded-lg">
-                        <source src={mediaPreview} type="video/mp4" />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Blog Posts */}
+        <div id="latest-blogs" className="mt-16 px-4 pb-16">
+          <h2 className="text-4xl font-bold mb-12 text-gray-800 text-center">
+            Latest Stories
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+            {blogs.map((blog) => (
+              <motion.div
+                key={blog._id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -5 }}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+              >
+                {blog.media && (
+                  <div className="aspect-video overflow-hidden">
+                    {blog.media.endsWith(".mp4") ? (
+                      <video controls className="w-full h-full object-cover">
+                        <source src={blog.media} type="video/mp4" />
                       </video>
                     ) : (
                       <img
-                        src={mediaPreview}
-                        alt="Media Preview"
-                        className="w-full h-40 object-cover rounded-lg"
+                        src={blog.media}
+                        alt="Blog Media"
+                        className="w-full h-full object-cover"
                       />
                     )}
                   </div>
                 )}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Blog Posts */}
-        <div id="latest-blogs" className="mt-8">
-          <h2 className="text-4xl font-bold mb-8 text-gray-800">Latest Blogs</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            {blogs.map((blog) => (
-              <div
-                key={blog._id}
-                className="bg-gray-50 bg-opacity-80 shadow-lg rounded-lg p-6 flex flex-col items-start space-y-4 hover:shadow-xl hover:bg-opacity-90 transition"
-              >
-                <div className="w-full">
-                  {blog.media && blog.media.endsWith(".mp4") ? (
-                    <video controls className="w-full rounded-lg">
-                      <source src={blog.media} type="video/mp4" />
-                    </video>
-                  ) : (
-                    blog.media && (
-                      <img
-                        src={blog.media}
-                        alt="Blog Media"
-                        className="w-full h-40 object-cover rounded-lg"
-                      />
-                    )
-                  )}
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4 line-clamp-2">
+                    {blog.title}
+                  </h3>
+                  <p className="text-gray-600 mb-6 line-clamp-3">{blog.content}</p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex gap-4">
+                      <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        className="flex items-center gap-2 text-gray-500 hover:text-teal-500 transition-colors"
+                        onClick={() =>
+                          setBlogs((prevBlogs) =>
+                            prevBlogs.map((b) =>
+                              b._id === blog._id ? { ...b, likes: b.likes + 1 } : b
+                            )
+                          )
+                        }
+                      >
+                        <ThumbsUp className="w-5 h-5" />
+                        <span>{blog.likes}</span>
+                      </motion.button>
+                      <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        className="flex items-center gap-2 text-gray-500 hover:text-red-500 transition-colors"
+                        onClick={() =>
+                          setBlogs((prevBlogs) =>
+                            prevBlogs.map((b) =>
+                              b._id === blog._id ? { ...b, loves: b.loves + 1 } : b
+                            )
+                          )
+                        }
+                      >
+                        <Heart className="w-5 h-5" />
+                        <span>{blog.loves}</span>
+                      </motion.button>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-800 mb-2">{blog.title}</h3>
-                <p className="text-gray-700 line-clamp-3">{blog.content}</p>
-                <div className="flex space-x-6">
-                  <button
-                    className="flex items-center space-x-2 text-teal-400 hover:text-teal-500"
-                    onClick={() =>
-                      setBlogs((prevBlogs) =>
-                        prevBlogs.map((b) =>
-                          b._id === blog._id ? { ...b, likes: b.likes + 1 } : b
-                        )
-                      )
-                    }
-                  >
-                    <span>👍</span>
-                    <span>{blog.likes}</span>
-                  </button>
-                  <button
-                    className="flex items-center space-x-2 text-red-400 hover:text-red-500"
-                    onClick={() =>
-                      setBlogs((prevBlogs) =>
-                        prevBlogs.map((b) =>
-                          b._id === blog._id ? { ...b, loves: b.loves + 1 } : b
-                        )
-                      )
-                    }
-                  >
-                    <span>❤️</span>
-                    <span>{blog.loves}</span>
-                  </button>
-                </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
