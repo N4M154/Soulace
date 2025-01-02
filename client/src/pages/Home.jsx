@@ -10,14 +10,9 @@ import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
 
 const services = [
+ 
   {
-    name: "AI Chatbot Support",
-    description: "24/7 emotional support and guidance from our AI companion.",
-    image: "/chatbot.png",
-    route: "/chatbot"
-  },
-  {
-    name: "Community Support",
+    name: "Community Portal",
     description: "Connect with others on similar wellness journeys.",
     image: "/com.png",
     route: "/community"
@@ -33,6 +28,12 @@ const services = [
     description: "Find peace with guided meditation practices.",
     image: "/med.png",
     route: "/meditation"
+  },
+  {
+    name: "AI Chatbot Support",
+    description: "24/7 emotional support and guidance from our AI companion.",
+    image: "/chatbot.png",
+    route: "/chatbot"
   },
   {
     name: "Mood Tracker",
@@ -328,7 +329,7 @@ export default function Home() {
               >
                 <button
                   onClick={() => navigate("/subscribe")}
-                  className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+                  className="px-8 py-4 bg-gradient-to-r from-gray-600 to-teal-600 text-white text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
                 >
                   Start Your Premium Journey
                 </button>
