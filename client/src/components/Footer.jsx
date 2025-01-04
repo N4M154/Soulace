@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="mb-4">
           <p className="text-lg font-semibold">© 2024 SOULACE. All rights reserved.</p>
           <p className="text-sm mt-2">
-            Developed by: Ahmed Alfey Sani, Faiza Maliat, Namisa Najah Raisa, Md H R Alif
+            Developed by: Ahmed Alfey Sani, Faiza Maliat, Md H R Alif
           </p>
         </div>
 

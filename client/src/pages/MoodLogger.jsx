@@ -87,9 +87,9 @@ const MoodLogger = () => {
         messages: inputData,
       });
 
-      const aiResponse = chatCompletion.choices[0]?.message?.content || "Unavailable";
+      const aiResponse = chatCompletion.choices[0]?.message?.content || "Unavailable (Log Again)";
       const matches = aiResponse.match(/Rating: (\d+)/i);
-      const rating = matches ? parseInt(matches[1], 10) : "Unavailable";
+      const rating = matches ? parseInt(matches[1], 10) : "Unavailable (Log Again)";
       setMentalHealthRating(rating);
     } catch (error) {
       console.error("Error fetching mental health rating:", error);
