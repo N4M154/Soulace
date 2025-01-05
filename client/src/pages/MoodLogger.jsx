@@ -72,7 +72,7 @@ const MoodLogger = () => {
 
   const fetchMentalHealthRating = async () => {
     const inputData = [
-      { role: "system", content: "You are a mental health analyst. Provide a rating for mental health based on mood and sleep data." },
+      { role: "system", content: "You are a mental health analyst. Provide a numerical rating for mental health based on mood and sleep data. The rating should be a whole number between 1 and 10, where 1 represents very poor mental health and 10 represents excellent mental health." },
       {
         role: "user",
         content: `Mood Data: ${JSON.stringify(mood)}, Sleep Data: ${JSON.stringify(sleep)}`,
@@ -88,7 +88,7 @@ const MoodLogger = () => {
       });
 
       const aiResponse = chatCompletion.choices[0]?.message?.content || "Unavailable (Log Again)";
-      const matches = aiResponse.match(/Rating: (\d+)/i);
+      const matches = aiResponse.match(/(\d+)/i);
       const rating = matches ? parseInt(matches[1], 10) : "Unavailable (Log Again)";
       setMentalHealthRating(rating);
     } catch (error) {
