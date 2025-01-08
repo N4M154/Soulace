@@ -16,7 +16,7 @@ dotenv.config();
 // Enable CORS for frontend access
 const app = express();
 app.use(cors({
-  origin: "https://soulace.vercel.app/", // Frontend origin
+  origin: "https://soulace.vercel.app", // Frontend origin
   credentials: true, // Allow credentials (cookies)
 }));
 
