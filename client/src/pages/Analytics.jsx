@@ -109,7 +109,7 @@ export default function Profile() {
 
   const handleSignOut = async () => {
     try {
-      await fetch("/api/auth/signout");
+      await fetch("https://soulace-backend.onrender.com/api/auth/signout");
       dispatch(signOut());
       navigate("/");
     } catch (error) {
