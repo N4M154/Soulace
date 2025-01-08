@@ -43,6 +43,12 @@ const AboutPage = () => {
                     description:
                       "Faiza focuses on creating seamless user interfaces and conducting quality assurance to ensure the platform runs smoothly.",
                   },
+                   {
+                    name: "Namisa Najah",
+                    role: "Backend Developer ",
+                    description:
+                      "Namisa Najah is a jack of all trades. She focuses on the backend more.",
+                  },
                   
                   {
                     name: "Md H R Alif",
