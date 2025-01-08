@@ -66,6 +66,7 @@ export const google = async (req, res, next) => {
       res
         .cookie("access_token", token, {
           httpOnly: true,
+          secure: true,
           expires: expiryDate,
         })
         .status(200)
