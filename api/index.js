@@ -9,15 +9,25 @@ import blogRoutes from "./routes/blog.route.js"; // Import the blog routes
 import journalRoutes from "./routes/journal.route.js"; // Import the journal routes
 import musicRoutes from "./routes/music.route.js"; // Import the music routes
 import userRoutes from "./routes/user.route.js";
+import MoodLogRoutes from "./routes/moodLog.route.js"; // Import the user routes
 
 dotenv.config();
 
 // Enable CORS for frontend access
 const app = express();
 app.use(cors({
-  origin: "http://localhost:5173", // Frontend origin
+  origin: "https://soulace.vercel.app", // Frontend origin
   credentials: true, // Allow credentials (cookies)
 }));
+
+app.options("*", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", req.headers.origin || "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.sendStatus(200);
+});
+
 
 // MongoDB connection
 mongoose
@@ -82,6 +92,9 @@ app.use((err, req, res, next) => {
     statusCode,
   });
 });
+
+app.use("/api/mood-logs", MoodLogRoutes); //mood log routes
+
 
 // Start the server
 app.listen(3000, () => {

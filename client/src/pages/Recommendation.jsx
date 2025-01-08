@@ -106,7 +106,7 @@
 
 // Recommendation.jsx
 
-import React from "react";
+
 import { useLocation, useNavigate } from "react-router-dom"; // Import useLocation and useNavigate
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";

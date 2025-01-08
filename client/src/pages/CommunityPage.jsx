@@ -25,7 +25,7 @@ const CommunityPage = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch("http://localhost:5173/api/blog");
+        const response = await fetch("https://soulace-backend.onrender.com/api/blog");
         if (!response.ok) {
           throw new Error("Failed to fetch blogs");
         }
@@ -75,7 +75,7 @@ const CommunityPage = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:5173/api/blog", {
+      const response = await fetch("https://soulace-backend.onrender.com/api/blog", {
         method: "POST",
         body: formData,
       });

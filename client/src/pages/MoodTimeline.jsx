@@ -68,7 +68,7 @@ const MoodTimeline = () => {
     setLoading(true);
     setError(null);
     try {
-      let url = `http://localhost:5173/api/journal?page=1`;
+      let url = `https://soulace-backend.onrender.com/api/journal?page=1`;
 
       if (timeframe !== "All Time") {
         const startDate = calculateDateRange(timeframe);

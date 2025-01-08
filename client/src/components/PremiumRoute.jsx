@@ -8,7 +8,7 @@ const PremiumRoute = ({ children }) => {
   useEffect(() => {
     const checkTrialStatus = async () => {
       try {
-        const response = await fetch("/api/user/trial-status", {
+        const response = await fetch("https://soulace-backend.onrender.com/api/user/trial-status", {
           method: "GET",
           credentials: "include",
         });
