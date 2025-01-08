@@ -17,7 +17,7 @@ export default function SignUp() {
     try {
       setLoading(true);
       setError(false);
-      const res = await fetch("https://soulace-backend-snowy.vercel.app/api/auth/signup", {
+      const res = await fetch("https://soulace-backend.onrender.com/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
