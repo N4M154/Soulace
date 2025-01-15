@@ -1,7 +1,6 @@
 import {
   Bell,
   BookOpen,
-  Bot,
   Brain,
   ChevronLeft,
   Gamepad2,
@@ -10,9 +9,9 @@ import {
   Moon,
   Music2,
   Smile,
-  UserRound,
+  UserRound
 } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { signOut } from "../redux/user/userSlice";
@@ -56,6 +55,9 @@ const SideButtons = () => {
       console.log(error);
     }
   };
+
+
+  
 
   return (
     <>
