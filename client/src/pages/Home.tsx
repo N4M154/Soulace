@@ -691,15 +691,15 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           className="relative h-[50vh] mb-12 overflow-hidden"
         >
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 rounded-2xl">
             <img
               src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000"
               alt="Peaceful meditation"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-2xl"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30" />
           </div>
-          <div className="relative h-full flex items-center px-8 md:px-16 max-w-7xl mx-auto">
+          <div className="relative h-full flex items-center px-8 md:px-16 max-w-7xl mx-auto rounded-2xl">
             <div className="text-white max-w-2xl">
               <h1 className="text-5xl font-bold mb-4">
                 Welcome back, {currentUser.username}

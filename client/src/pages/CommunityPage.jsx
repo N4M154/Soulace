@@ -20,6 +20,8 @@ const CommunityPage = () => {
   const [showForm, setShowForm] = useState(false);
   const [mediaPreview, setMediaPreview] = useState(null);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
+  
 
   // Existing fetch blogs useEffect...
   useEffect(() => {
@@ -127,11 +129,14 @@ const CommunityPage = () => {
   }
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-teal-50 to-white">
-      <SideButtons />
-
-      <div className={`transition-all duration-300 flex-1 ${sidebarCollapsed ? "ml-16" : "ml-64"}`}>
-        <Header />
+    <div className="flex min-h-screen bg-gray-50">
+    <SideButtons />
+    <div
+      id="main-content"
+      className="flex-1 transition-all duration-300"
+      style={{ marginLeft: isExpanded ? "260px" : "80px" }}
+    >
+      <Header />
         
         {/* Hero Section */}
         <div className="relative overflow-hidden bg-gradient-to-r from-teal-600 to-white text-teal-900 text-white py-16 px-8 rounded-2xl shadow-lg mx-4 mt-6">
