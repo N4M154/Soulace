@@ -74,7 +74,7 @@ const DailyJournal = () => {
       const { mood, analysis } = await analyzeMood(journal);
 
       // Save journal entry with content, mood, and analysis
-      const response = await fetch("http://localhost:3000/api/journal", {
+      const response = await fetch("/api/journal", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: currentUser._id, content: journal, mood, analysis }),
