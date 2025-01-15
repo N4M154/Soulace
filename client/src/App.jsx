@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import FloatingChatbot from "./components/Chatbot";
-import About from "./pages/About";
+import About from "./pages/About.tsx";
 import Home from "./pages/Home.tsx";
 import Profile from "./pages/Profile";
 import SignIn from "./pages/SignIn";
