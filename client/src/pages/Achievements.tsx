@@ -218,12 +218,12 @@ const Achievements: React.FC = () => {
       >
         <Header />
         {/* Hero Section */}
-        <div className="relative overflow-hidden bg-gradient-to-r from-teal-600 to-white text-teal-900 py-16 px-8 rounded-2xl shadow-lg mx-4 mt-6">
+        <div className="relative overflow-hidden bg-gradient-to-r from-teal-600 to-white text-teal-900 text-white py-16 px-8 rounded-2xl shadow-lg mx-4 mt-6">
           <div className="relative z-10">
             <h1 className="text-5xl font-bold mb-4 leading-tight">
               Celebrate Your Wins<br />Fuel Your Next Victory
             </h1>
-            <p className="text-xl text-teal-800 max-w-2xl">
+            <p className="text-xl text-white max-w-2xl">
               Every achievement is a step forward. Let your progress inspire your next challenge.
             </p>
           </div>

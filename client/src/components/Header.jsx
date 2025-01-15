@@ -31,7 +31,7 @@ export default function Header() {
       onClick={handleServicesDropdownToggle}
       className="text-teal-700 hover:text-teal-500 transition duration-300 font-semibold mt-2"
     >
-      Services
+      
     </button>
     {isServicesDropdownOpen && (
       <div className="absolute mt-2 bg-white border border-teal-300 rounded shadow-lg w-[450px]">
