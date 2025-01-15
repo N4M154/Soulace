@@ -49,7 +49,7 @@ const SideButtons = () => {
 
   const handleLogout = async () => {
     try {
-      await fetch("https://soulace-backend.onrender.com/api/auth/signout");
+      await fetch("https://localhost:3000/api/auth/signout");
       dispatch(signOut());
       navigate("/");
     } catch (error) {

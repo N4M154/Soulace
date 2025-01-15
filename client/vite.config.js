@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://soulace.vercel.app/',
+        target: 'https://localhost:5173/',
         secure: false,
       },
     },
