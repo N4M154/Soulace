@@ -134,7 +134,7 @@ const CommunityPage = () => {
         <Header />
         
         {/* Hero Section */}
-        <div className="relative overflow-hidden bg-gradient-to-r from-teal-500 to-emerald-500 text-white py-16 px-8 rounded-2xl shadow-lg mx-4 mt-6">
+        <div className="relative overflow-hidden bg-gradient-to-r from-teal-600 to-white text-teal-900 text-white py-16 px-8 rounded-2xl shadow-lg mx-4 mt-6">
           <div className="relative z-10">
             <h1 className="text-5xl font-bold mb-4 leading-tight">
               Share Your Story<br />With The World

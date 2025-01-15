@@ -20,7 +20,7 @@ import MoodLogger from "./pages/MoodLogger";
 import SubscribePage from "./pages/Subscribe";
 // import Chatbot from "./pages/Chatbot";
 import PremiumRoute from "./components/PremiumRoute";
-import AchievementDashboard from "./pages/Achievements";
+import AchievementDashboard from "./pages/Achievements.tsx";
 import Break from "./pages/Break";
 import Break1 from "./pages/Break1";
 import ChatSpecialist from "./pages/ChatSpecialist";

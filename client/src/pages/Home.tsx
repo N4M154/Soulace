@@ -536,14 +536,13 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  ArrowRight,
   Brain,
   ChevronLeft,
   ChevronRight,
   Moon,
   Smile,
   Star,
-  TrendingUp,
+  TrendingUp
 } from "lucide-react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -951,45 +950,66 @@ export default function Home() {
               ))}
             </div>
           </motion.section>
+          <div className="container mx-auto px-12 py-24">
+            
+      {/* Quick Actions */}
+      <div className="flex flex-col gap-20 mb-24">
+        {/* Mood Logger */}
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          className="flex items-center p-6 bg-gradient-to-r from-teal-600 to-teal-700 rounded-xl text-white"
+          onClick={() => navigate("/mood-tracker")}
+        >
+          <img
+            src="/image/Mood & Sleep Map.png" // Directly using image path
+            alt="Mood Logger"
+            className="w-1/3 rounded-lg mr-4"
+          />
+          <div>
+            <h3 className="text-lg font-semibold mb-2">Mood-Sleep Logger</h3>
+            <p className="text-sm opacity-90">Time to log your mood, let’s dive in!</p>
+          </div>
+        </motion.div>
 
-          {/* Quick Actions */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              onClick={() => navigate("/mood-tracker")}
-              className="p-6 bg-gradient-to-r from-teal-600 to-teal-700 rounded-xl text-white text-left"
-            >
-              <h3 className="text-lg font-semibold mb-2">Mood-Sleep Logger</h3>
-              <p className="text-sm opacity-90">
-                To log daily mood and get personalized suggestion
-              </p>
-              <ArrowRight className="mt-4" />
-            </motion.button>
+        {/* Daily Journal */}
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          className="flex items-center p-6 bg-gradient-to-r from-teal-700 to-teal-800 rounded-xl text-white"
+          onClick={() => navigate("/journal")}
+        >
+          <div className="mr-4">
+            <h3 className="text-lg font-semibold mb-2">Daily Journal</h3>
+            <p className="text-sm opacity-90">Express yourself with sentiment analysis.</p>
+          </div>
+          <img
+            src="/image/journal.png" // Directly using image path
+            alt="Daily Journal"
+            className="w-1/3 rounded-lg"
+          />
+        </motion.div>
 
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              onClick={() => navigate("/journal")}
-              className="p-6 bg-gradient-to-r from-teal-700 to-teal-800 rounded-xl text-white text-left"
-            >
-              <h3 className="text-lg font-semibold mb-2">Daily Journal</h3>
-              <p className="text-sm opacity-90">Sentiment Analysis</p>
-              <ArrowRight className="mt-4" />
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              onClick={() => navigate("/test")}
-              className="p-6 bg-gradient-to-r from-teal-800 to-teal-900 rounded-xl text-white text-left"
-            >
-              <h3 className="text-lg font-semibold mb-2">Take a Test</h3>
-              <p className="text-sm opacity-90">
-                Need specialist? Take a test, test using ML
-              </p>
-              <ArrowRight className="mt-4" />
-            </motion.button>
+        {/* Take a Test */}
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          className="flex items-center p-6 bg-gradient-to-r from-teal-800 to-teal-900 rounded-xl text-white"
+          onClick={() => navigate("/test")}
+        >
+          <img
+            src="/image/Schedule.png" // Directly using image path
+            alt="Take a Test"
+            className="w-1/3 rounded-lg mr-4"
+          />
+          <div>
+            <h3 className="text-lg font-semibold mb-2">Take a Test</h3>
+            <p className="text-sm opacity-90">Need insights? Take a test using ML.</p>
+          </div>
+        </motion.div>
           </div>
         </div>
       </div>
-    </div>
+      </div>
+   </div>
   );
 }
+
+
