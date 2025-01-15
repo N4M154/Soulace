@@ -48,7 +48,7 @@ const SideButtons = () => {
 
   const handleLogout = async () => {
     try {
-      await fetch("https://localhost:3000/api/auth/signout");
+      await fetch("/api/auth/signout");
       dispatch(signOut());
       navigate("/");
     } catch (error) {
