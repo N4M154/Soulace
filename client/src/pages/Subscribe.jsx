@@ -110,7 +110,7 @@ const SubscribePage = () => {
 
   const startFreeTrial = async () => {
     try {
-      const response = await fetch("https://soulace-backend.onrender.com/api/user/start-trial", {
+      const response = await fetch("/api/user/start-trial", {
         method: "POST",
         credentials: "include",
       });
