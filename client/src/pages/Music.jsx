@@ -1,196 +1,11 @@
-// import axios from "axios";
-// import React, { useState } from "react";
-// import Header from "../components/Header";
-// import SideButtons from "../components/SideButtons";
-
-// const MusicRecommendation = () => {
-//   const [selectedMood, setSelectedMood] = useState("");
-//   const [recommendations, setRecommendations] = useState([]);
-//   const [error, setError] = useState("");
-//   const [page, setPage] = useState(1);
-//   const [loading, setLoading] = useState(false);
-//   const moods = ["happy", "sad", "relax", "party", "energetic"];
-
-//   const fetchRecommendations = async () => {
-//     if (!selectedMood) {
-//       setError("Please select a mood to get recommendations!");
-//       return;
-//     }
-//     setError("");
-//     setLoading(true);
-//     try {
-//       const response = await axios.get("https://ws.audioscrobbler.com/2.0/", {
-//         params: {
-//           method: "tag.getTopTracks",
-//           tag: selectedMood,
-//           api_key: import.meta.env.VITE_LASTFM_API_KEY, // Ensure this is correct
-//           format: "json",
-//           page: page,
-//           limit: 5, // Fetch 5 songs per request
-//         },
-//       });
-//       if (response.data.tracks && response.data.tracks.track) {
-//         setRecommendations(response.data.tracks.track);
-//         setPage((prevPage) => prevPage + 1);
-//       } else {
-//         setError("No recommendations found for the selected mood.");
-//       }
-//     } catch (err) {
-//       console.error("API Error:", err);
-//       setError("Failed to fetch recommendations. Please try again later.");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <Header />
-
-//       {/* Side Buttons */}
-//       <SideButtons />
-//       <div
-//         style={{
-//           display: "flex",
-//           flexDirection: "row",
-//           alignItems: "flex-start",
-//           justifyContent: "space-between",
-//           minHeight: "100vh",
-//           background: "white",
-//           color: "#004d40",
-//           fontFamily: "'Roboto', sans-serif",
-//           padding: "20px",
-//         }}
-//       >
-//         {/* Mood Selection Box */}
-//         <div
-//           style={{
-//             backgroundColor: "#d2e9d9",
-//             padding: "30px",
-//             borderRadius: "15px",
-//             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-//             maxWidth: "600px",
-//             width: "100%",
-//             textAlign: "center",
-//             marginTop: "100px",
-//             marginLeft: "260px", // Shifted to the right
-//           }}
-//         >
-//           <h1 style={{ fontSize: "2.5rem", marginBottom: "20px", color: "#004d40" }}>
-//             Music Recommendations
-//           </h1>
-//           <p style={{ fontSize: "1.2rem", marginBottom: "20px", color: "#004d40" }}>
-//             Select a mood and discover the perfect tracks for your vibe!
-//           </p>
-//           <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
-//             <select
-//               style={{
-//                 padding: "10px",
-//                 border: "1px solid #ccc",
-//                 borderRadius: "8px",
-//                 flex: "1",
-//                 fontSize: "1rem",
-//                 color: "#004d40",
-//               }}
-//               value={selectedMood}
-//               onChange={(e) => setSelectedMood(e.target.value)}
-//             >
-//               <option value="">Select Mood</option>
-//               {moods.map((mood) => (
-//                 <option key={mood} value={mood}>
-//                   {mood.charAt(0).toUpperCase() + mood.slice(1)}
-//                 </option>
-//               ))}
-//             </select>
-//             <button
-//               onClick={() => {
-//                 setPage(1);
-//                 fetchRecommendations();
-//               }}
-//               style={{
-//                 padding: "10px 20px",
-//                 backgroundColor: "#00796b",
-//                 color: "#fff",
-//                 border: "none",
-//                 borderRadius: "8px",
-//                 cursor: "pointer",
-//                 fontSize: "1rem",
-//               }}
-//             >
-//               Get Recommendations
-//             </button>
-//           </div>
-//           {error && (
-//             <p style={{ color: "#d32f2f", marginBottom: "20px" }}>{error}</p>
-//           )}
-//         </div>
-
-//         {/* Music Recommendations Box */}
-//         <div
-//           style={{
-//             backgroundColor: "#d2e9d9",
-//             padding: "20px",
-//             borderRadius: "15px",
-//             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-//             maxWidth: "600px",
-//             width: "100%",
-//             marginLeft: "20px",
-//           }}
-//         >
-//           {recommendations.length > 0 ? (
-//             <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
-//               {recommendations.map((rec, idx) => (
-//                 <li
-//                   key={idx}
-//                   style={{
-//                     background: "#ffffff",
-//                     color: "#004d40",
-//                     padding: "10px",
-//                     borderRadius: "8px",
-//                     marginBottom: "10px",
-//                   }}
-//                 >
-//                   <p style={{ fontSize: "1rem", fontWeight: "bold" }}>{rec.name}</p>
-//                   <p style={{ fontSize: "0.9rem", color: "#00796b" }}>{rec.artist.name}</p>
-//                 </li>
-//               ))}
-//             </ul>
-//           ) : (
-//             <p style={{ fontSize: "1.1rem", color: "#004d40" }}>No music recommendations yet.</p>
-//           )}
-//           {recommendations.length > 0 && (
-//             <button
-//               onClick={() => fetchRecommendations()}
-//               style={{
-//                 padding: "10px 20px",
-//                 color: "teal",
-//                 border: "none",
-//                 borderRadius: "8px",
-//                 cursor: "pointer",
-//                 fontSize: "1rem",
-//                 display: "block",
-//                 width: "100%",
-//               }}
-//             >
-//               {loading ? "Loading..." : "Load More"}
-//             </button>
-//           )}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default MusicRecommendation;
 
 
-
-//----------------------------------------
+///------------------------------------
 
 
 // import axios from "axios";
 // import { AnimatePresence, motion } from "framer-motion";
-// import React, { useState } from "react";
+// import { useState } from "react";
 // import { BiHappyBeaming, BiParty, BiSad } from "react-icons/bi";
 // import { FaHeadphones, FaMusic, FaSpinner } from "react-icons/fa";
 // import { MdOutlineEnergySavingsLeaf } from "react-icons/md";
@@ -204,13 +19,14 @@
 //   const [error, setError] = useState("");
 //   const [page, setPage] = useState(1);
 //   const [loading, setLoading] = useState(false);
+//   const [isExpanded, setIsExpanded] = useState(true);
 
 //   const moods = [
-//     { value: "happy", icon: <BiHappyBeaming className="text-xl" />, label: "Happy" },
-//     { value: "sad", icon: <BiSad className="text-xl" />, label: "Sad" },
-//     { value: "relax", icon: <RiMentalHealthLine className="text-xl" />, label: "Relax" },
-//     { value: "party", icon: <BiParty className="text-xl" />, label: "Party" },
-//     { value: "energetic", icon: <MdOutlineEnergySavingsLeaf className="text-xl" />, label: "Energetic" }
+//     { value: "happy", icon: <BiHappyBeaming className="text-2xl" />, label: "Happy" },
+//     { value: "sad", icon: <BiSad className="text-2xl" />, label: "Sad" },
+//     { value: "relax", icon: <RiMentalHealthLine className="text-2xl" />, label: "Relax" },
+//     { value: "party", icon: <BiParty className="text-2xl" />, label: "Party" },
+//     { value: "energetic", icon: <MdOutlineEnergySavingsLeaf className="text-2xl" />, label: "Energetic" },
 //   ];
 
 //   const fetchRecommendations = async () => {
@@ -248,17 +64,20 @@
 //   const selectedMoodIcon = moods.find(mood => mood.value === selectedMood)?.icon;
 
 //   return (
-//     <div className="min-h-screen bg-gradient-to-br from-[#004d40] to-[#00796b]">
-//       <Header />
+//     <div className="flex min-h-screen bg-gray-50">
 //       <SideButtons />
-      
-//       <div className="ml-[60px] sm:ml-[80px] p-4 sm:p-6">
-//         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-4 mt-12">
+//       <div
+//         id="main-content"
+//         className="flex-1 transition-all duration-300"
+//         style={{ marginLeft: isExpanded ? "260px" : "80px" }}
+//       >
+//         <Header />
+//         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-6 mt-12">
 //           {/* Mood Selection Section */}
 //           <motion.div
 //             initial={{ opacity: 0, y: 20 }}
 //             animate={{ opacity: 1, y: 0 }}
-//             className="lg:w-1/2 bg-white/10 backdrop-blur-md rounded-xl shadow-lg p-6"
+//             className="lg:w-1/2 bg-gray-100 rounded-xl shadow-lg p-6"
 //           >
 //             <motion.div 
 //               className="text-center mb-6"
@@ -271,32 +90,32 @@
 //                 transition={{ duration: 0.5 }}
 //                 className="inline-block mb-3"
 //               >
-//                 <FaMusic className="text-4xl text-white mx-auto" />
+//                 <FaMusic className="text-4xl text-teal-500 mx-auto" />
 //               </motion.div>
-//               <h1 className="text-2xl font-bold text-white mb-2">
+//               <h1 className="text-2xl font-bold text-gray-800 mb-2">
 //                 Music Recommendations
 //               </h1>
-//               <p className="text-white/80 text-sm">
+//               <p className="text-gray-600 text-sm">
 //                 Select your mood and discover the perfect tracks!
 //               </p>
 //             </motion.div>
 
 //             <div className="space-y-4">
-//               <div className="grid grid-cols-3 gap-2 mb-4">
+//               <div className="flex justify-center gap-6 mb-6">
 //                 {moods.map(({ value, icon, label }) => (
 //                   <motion.button
 //                     key={value}
-//                     whileHover={{ scale: 1.03 }}
-//                     whileTap={{ scale: 0.97 }}
+//                     whileHover={{ scale: 1.1 }}
+//                     whileTap={{ scale: 0.9 }}
 //                     onClick={() => setSelectedMood(value)}
-//                     className={`p-2 rounded-lg flex flex-col items-center gap-1 transition-colors ${
+//                     className={`w-16 h-16 flex flex-col items-center justify-center rounded-full transition-colors shadow-lg ${
 //                       selectedMood === value
-//                         ? 'bg-white text-[#004d40]'
-//                         : 'bg-white/10 text-white hover:bg-white/20'
+//                         ? 'bg-teal-500 text-white'
+//                         : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
 //                     }`}
 //                   >
 //                     {icon}
-//                     <span className="text-xs font-medium">{label}</span>
+//                     <span className="text-xs font-medium mt-1">{label}</span>
 //                   </motion.button>
 //                 ))}
 //               </div>
@@ -308,7 +127,7 @@
 //                   setPage(1);
 //                   fetchRecommendations();
 //                 }}
-//                 className="w-full bg-white text-[#004d40] py-3 px-4 rounded-lg font-semibold hover:bg-white/90 transition-colors flex items-center justify-center gap-2 text-sm"
+//                 className="w-full bg-teal-500 text-white py-3 px-4 rounded-lg font-semibold hover:bg-teal-600 transition-colors flex items-center justify-center gap-2 text-sm"
 //                 disabled={loading}
 //               >
 //                 {loading ? (
@@ -325,7 +144,7 @@
 //                 <motion.p
 //                   initial={{ opacity: 0 }}
 //                   animate={{ opacity: 1 }}
-//                   className="text-red-300 text-center text-sm mt-2"
+//                   className="text-red-500 text-center text-sm mt-2"
 //                 >
 //                   {error}
 //                 </motion.p>
@@ -337,7 +156,7 @@
 //           <motion.div
 //             initial={{ opacity: 0, x: 20 }}
 //             animate={{ opacity: 1, x: 0 }}
-//             className="lg:w-1/2 bg-white/10 backdrop-blur-md rounded-xl shadow-lg p-6"
+//             className="lg:w-1/2 bg-gray-100 rounded-xl shadow-lg p-6"
 //           >
 //             <AnimatePresence mode="wait">
 //               {recommendations.length > 0 ? (
@@ -349,20 +168,20 @@
 //                       animate={{ opacity: 1, x: 0 }}
 //                       exit={{ opacity: 0, x: 20 }}
 //                       transition={{ delay: idx * 0.1 }}
-//                       className="bg-white/10 p-3 rounded-lg hover:bg-white/20 transition-all duration-300 group"
+//                       className="bg-gray-200 p-3 rounded-lg hover:bg-gray-300 transition-all duration-300 group"
 //                     >
 //                       <div className="flex items-center gap-3">
 //                         <motion.div
 //                           whileHover={{ scale: 1.1, rotate: 360 }}
 //                           transition={{ duration: 0.5 }}
 //                         >
-//                           <FaHeadphones className="text-white text-lg" />
+//                           <FaHeadphones className="text-teal-500 text-lg" />
 //                         </motion.div>
 //                         <div>
-//                           <h3 className="font-semibold text-white text-sm group-hover:text-white/90">
+//                           <h3 className="font-semibold text-gray-800 text-sm group-hover:text-gray-900">
 //                             {rec.name}
 //                           </h3>
-//                           <p className="text-white/70 text-xs group-hover:text-white/80">
+//                           <p className="text-gray-600 text-xs group-hover:text-gray-700">
 //                             {rec.artist.name}
 //                           </p>
 //                         </div>
@@ -376,8 +195,8 @@
 //                   animate={{ opacity: 1 }}
 //                   className="text-center py-6"
 //                 >
-//                   <FaMusic className="text-3xl text-white/50 mx-auto mb-3" />
-//                   <p className="text-white/70 text-sm">
+//                   <FaMusic className="text-3xl text-gray-300 mx-auto mb-3" />
+//                   <p className="text-gray-600 text-sm">
 //                     Select a mood to get music recommendations
 //                   </p>
 //                 </motion.div>
@@ -389,7 +208,7 @@
 //                 whileHover={{ scale: 1.02 }}
 //                 whileTap={{ scale: 0.98 }}
 //                 onClick={fetchRecommendations}
-//                 className="w-full mt-4 bg-white/10 text-white py-2 px-4 rounded-lg text-sm font-semibold hover:bg-white/20 transition-colors flex items-center justify-center gap-2"
+//                 className="w-full mt-4 bg-gray-200 text-gray-700 py-2 px-4 rounded-lg text-sm font-semibold hover:bg-gray-300 transition-colors flex items-center justify-center gap-2"
 //                 disabled={loading}
 //               >
 //                 {loading ? (
@@ -408,33 +227,98 @@
 
 // export default MusicRecommendation;
 
-///------------------------------------
+
+// //--------------------------------------------------------------
+
 
 
 import axios from "axios";
-import { AnimatePresence, motion } from "framer-motion";
-import React, { useState } from "react";
-import { BiHappyBeaming, BiParty, BiSad } from "react-icons/bi";
-import { FaHeadphones, FaMusic, FaSpinner } from "react-icons/fa";
-import { MdOutlineEnergySavingsLeaf } from "react-icons/md";
-import { RiMentalHealthLine } from "react-icons/ri";
+import { motion } from "framer-motion";
+import {
+  Headphones,
+  Heart,
+  Loader,
+  Music,
+  Pause,
+  Play,
+  RefreshCw,
+  Share2,
+  Sparkles
+} from "lucide-react";
+import { useRef, useState } from "react";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
 
-const MusicRecommendation = () => {
+const featuredTracks = [
+  
+  {
+    id: 1,
+    title: "Forest Rain",
+    artist: "Ambient Nature",
+    mood: "relax",
+    url: "./assets/rain.mp3",
+    image: "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f",
+  },
+  {
+    id: 2,
+    title: "Meditation Bell",
+    artist: "Zen Masters",
+    mood: "relax",
+    url: "./assets/meditation.mp3",
+    image: "https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83",
+  },
+  {
+    id: 3,
+    title: "Gentle Piano",
+    artist: "Classical Calm",
+    mood: "relax",
+    url: "./assets/piano.mp3",
+    image: "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0",
+  },
+  {
+    id: 4,
+    title: "Ocean Waves",
+    artist: "Nature Sounds",
+    mood: "relax",
+    url: "./assets/wave.mp3",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+  },
+  {
+    id: 5,
+    title: "Night Cricket",
+    artist: "Nature's Symphony",
+    mood: "relax",
+    url: "./assets/cricket.mp3",
+    image: "https://images.unsplash.com/photo-1511497584788-876760111969",
+  },
+  {
+    id: 6,
+    title: "Mountain Stream",
+    artist: "Pure Nature",
+    mood: "relax",
+    url: "./assets/stream.mp3",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
+  },
+];
+
+const moods = [
+  { value: "happy", icon: "🌟", label: "Happy" },
+  { value: "sad", icon: "💙", label: "Sad" },
+  { value: "relax", icon: "🌊", label: "Relax" },
+  { value: "party", icon: "🎉", label: "Party" },
+  { value: "energetic", icon: "⚡", label: "Energetic" },
+];
+
+export default function MusicRecommendation() {
+  const [isExpanded, setIsExpanded] = useState(true);
   const [selectedMood, setSelectedMood] = useState("");
   const [recommendations, setRecommendations] = useState([]);
   const [error, setError] = useState("");
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-
-  const moods = [
-    { value: "happy", icon: <BiHappyBeaming className="text-2xl" />, label: "Happy" },
-    { value: "sad", icon: <BiSad className="text-2xl" />, label: "Sad" },
-    { value: "relax", icon: <RiMentalHealthLine className="text-2xl" />, label: "Relax" },
-    { value: "party", icon: <BiParty className="text-2xl" />, label: "Party" },
-    { value: "energetic", icon: <MdOutlineEnergySavingsLeaf className="text-2xl" />, label: "Energetic" },
-  ];
+  const [currentTrack, setCurrentTrack] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(new Audio());
 
   const fetchRecommendations = async () => {
     if (!selectedMood) {
@@ -468,165 +352,280 @@ const MusicRecommendation = () => {
     }
   };
 
-  const selectedMoodIcon = moods.find(mood => mood.value === selectedMood)?.icon;
+  const handlePlayPause = (track) => {
+    if (currentTrack?.id === track.id) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    } else {
+      if (currentTrack) {
+        audioRef.current.pause();
+      }
+      audioRef.current.src = track.url;
+      audioRef.current.play();
+      setCurrentTrack(track);
+      setIsPlaying(true);
+    }
+  };
+
+  const connectSpotify = () => {
+    alert("Spotify integration would be implemented here!");
+  };
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
+    <div className="flex min-h-screen bg-gray-50 ">
       <SideButtons />
+      <div
+        id="main-content"
+        className="flex-1 transition-all duration-300 "
+        style={{ marginLeft: isExpanded ? "260px" : "80px" }}
+      >
+        <Header />
+       {/* Hero Section */}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  className="max-w-8xl mx-auto px-4 py-8"
+>
+<div className="relative overflow-hidden bg-gradient-to-r from-teal-600 to-white text-teal-900 text-white py-1 px-8 rounded-2xl shadow-lg mx-4 mt-6 mb-12">
+    <div className="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1614149162883-504ce4d13909"
+        alt="Music Background"
+        className="w-full h-full object-cover mix-blend-overlay opacity-20"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-white/40"></div>
+    </div>
+    <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between p-8 lg:p-16 gap-8">
+      <div className="text-left lg:w-1/2">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 }}
+          className="mb-8"
+        >
+          <h1 className="text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-teal-600 to-teal-800 bg-clip-text text-transparent">
+            Discover Your Mood Music
+          </h1>
+          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            Let your emotions guide you to the perfect soundtrack. Experience music that resonates with your every mood.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={connectSpotify}
+              className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-4 rounded-xl font-semibold flex items-center gap-2 shadow-lg shadow-teal-500/20"
+            >
+              <Music className="w-5 h-5" />
+              Connect with Spotify
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white hover:bg-gray-50 text-teal-600 px-8 py-4 rounded-xl font-semibold flex items-center gap-2 shadow-lg"
+            >
+              <Headphones className="w-5 h-5" />
+              Start Listening
+            </motion.button>
+          </div>
+        </motion.div>
+      </div>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.4 }}
+        className="lg:w-1/2 flex justify-center"
+      >
+        <div className="relative w-72 h-72 lg:w-96 lg:h-96">
+          <motion.div
+            animate={{
+              rotate: 360,
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="absolute inset-0 rounded-full border-2 border-teal-500/20"
+          ></motion.div>
+          <motion.div
+            animate={{
+              rotate: -360,
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="absolute inset-8 rounded-full border-2 border-teal-500/30"
+          ></motion.div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="bg-white p-8 rounded-full shadow-xl">
+              <Music className="w-16 h-16 text-teal-500" />
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</motion.div>
 
-      <div className="ml-[60px] md:ml-[260px] p-4 sm:p-6 transition-all">
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-6 mt-12">
-          {/* Mood Selection Section */}
+        {/* Featured Tracks Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-7xl mx-auto px-4 py-12"
+        >
+          <h2 className="text-3xl font-bold mb-8 text-gray-800">Featured Music</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featuredTracks.map((track) => (
+              <motion.div
+                key={track.id}
+                whileHover={{ y: -5 }}
+                className="bg-white rounded-xl overflow-hidden shadow-lg"
+              >
+                <img
+                  src={track.image}
+                  alt={track.title}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="font-semibold text-lg mb-1 text-gray-800">{track.title}</h3>
+                  <p className="text-gray-600 text-sm mb-4">{track.artist}</p>
+                  <div className="flex items-center justify-between">
+                    <button
+                      onClick={() => handlePlayPause(track)}
+                      className="bg-teal-500 hover:bg-teal-600 p-2 rounded-full text-white"
+                    >
+                      {currentTrack?.id === track.id && isPlaying ? (
+                        <Pause className="w-5 h-5" />
+                      ) : (
+                        <Play className="w-5 h-5" />
+                      )}
+                    </button>
+                    <div className="flex gap-2">
+                      <button className="p-2 text-gray-600 hover:text-teal-500">
+                        <Heart className="w-5 h-5" />
+                      </button>
+                      <button className="p-2 text-gray-600 hover:text-teal-500">
+                        <Share2 className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Music Recommendations Section */}
+        <div className="max-w-7xl mx-auto px-4 py-12 bg-gray-100">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="lg:w-1/2 bg-gray-100 rounded-xl shadow-lg p-6"
+            className="mb-12"
           >
-            <motion.div 
-              className="text-center mb-6"
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: 360 }}
-                transition={{ duration: 0.5 }}
-                className="inline-block mb-3"
-              >
-                <FaMusic className="text-4xl text-teal-500 mx-auto" />
-              </motion.div>
-              <h1 className="text-2xl font-bold text-gray-800 mb-2">
-                Music Recommendations
-              </h1>
-              <p className="text-gray-600 text-sm">
-                Select your mood and discover the perfect tracks!
-              </p>
-            </motion.div>
-
-            <div className="space-y-4">
-              <div className="flex justify-center gap-6 mb-6">
-                {moods.map(({ value, icon, label }) => (
-                  <motion.button
-                    key={value}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => setSelectedMood(value)}
-                    className={`w-16 h-16 flex flex-col items-center justify-center rounded-full transition-colors shadow-lg ${
-                      selectedMood === value
-                        ? 'bg-teal-500 text-white'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    {icon}
-                    <span className="text-xs font-medium mt-1">{label}</span>
-                  </motion.button>
-                ))}
-              </div>
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => {
-                  setPage(1);
-                  fetchRecommendations();
-                }}
-                className="w-full bg-teal-500 text-white py-3 px-4 rounded-lg font-semibold hover:bg-teal-600 transition-colors flex items-center justify-center gap-2 text-sm"
-                disabled={loading}
-              >
-                {loading ? (
-                  <FaSpinner className="animate-spin text-lg" />
-                ) : (
-                  <>
-                    {selectedMoodIcon || <FaHeadphones className="text-lg" />}
-                    Get Recommendations
-                  </>
-                )}
-              </motion.button>
-
-              {error && (
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="text-red-500 text-center text-sm mt-2"
+            <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
+              How are you feeling today?
+            </h2>
+            <div className="flex flex-wrap justify-center gap-4">
+              {moods.map(({ value, icon, label }) => (
+                <motion.button
+                  key={value}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setSelectedMood(value)}
+                  className={`${
+                    selectedMood === value
+                      ? "bg-teal-500 text-white"
+                      : "bg-white text-gray-700 hover:bg-gray-50"
+                  } px-6 py-3 rounded-full flex items-center gap-2 transition-colors shadow-md`}
                 >
-                  {error}
-                </motion.p>
-              )}
+                  <span className="text-2xl">{icon}</span>
+                  <span className="font-medium">{label}</span>
+                </motion.button>
+              ))}
             </div>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={fetchRecommendations}
+              className="mt-8 bg-teal-500 hover:bg-teal-600 text-white px-8 py-3 rounded-full font-semibold flex items-center gap-2 mx-auto"
+              disabled={loading}
+            >
+              {loading ? (
+                <Loader className="w-5 h-5 animate-spin" />
+              ) : (
+                <>
+                  <Sparkles className="w-5 h-5" />
+                  Get Recommendations
+                </>
+              )}
+            </motion.button>
           </motion.div>
 
-          {/* Recommendations Section */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="lg:w-1/2 bg-gray-100 rounded-xl shadow-lg p-6"
-          >
-            <AnimatePresence mode="wait">
-              {recommendations.length > 0 ? (
-                <motion.ul className="space-y-3">
-                  {recommendations.map((rec, idx) => (
-                    <motion.li
-                      key={`${rec.name}-${idx}`}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: 20 }}
-                      transition={{ delay: idx * 0.1 }}
-                      className="bg-gray-200 p-3 rounded-lg hover:bg-gray-300 transition-all duration-300 group"
-                    >
-                      <div className="flex items-center gap-3">
-                        <motion.div
-                          whileHover={{ scale: 1.1, rotate: 360 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <FaHeadphones className="text-teal-500 text-lg" />
-                        </motion.div>
-                        <div>
-                          <h3 className="font-semibold text-gray-800 text-sm group-hover:text-gray-900">
-                            {rec.name}
-                          </h3>
-                          <p className="text-gray-600 text-xs group-hover:text-gray-700">
-                            {rec.artist.name}
-                          </p>
-                        </div>
+          {/* API Recommendations */}
+          {recommendations.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-white rounded-xl p-6 shadow-lg"
+            >
+              <h2 className="text-3xl font-bold mb-6 text-gray-800">Recommended Tracks</h2>
+              <div className="space-y-4">
+                {recommendations.map((rec, idx) => (
+                  <motion.div
+                    key={`${rec.name}-${idx}`}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="bg-gray-50 p-4 rounded-lg flex items-center justify-between group hover:bg-gray-100 transition-colors"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center text-white">
+                        <Headphones className="w-6 h-6" />
                       </div>
-                    </motion.li>
-                  ))}
-                </motion.ul>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="text-center py-6"
-                >
-                  <FaMusic className="text-3xl text-gray-300 mx-auto mb-3" />
-                  <p className="text-gray-600 text-sm">
-                    Select a mood to get music recommendations
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {recommendations.length > 0 && (
+                      <div>
+                        <h3 className="font-semibold text-gray-800">{rec.name}</h3>
+                        <p className="text-gray-600 text-sm">{rec.artist.name}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <button className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-600 hover:text-teal-500">
+                        <Heart className="w-5 h-5" />
+                      </button>
+                      <button className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-600 hover:text-teal-500">
+                        <Share2 className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={fetchRecommendations}
-                className="w-full mt-4 bg-gray-200 text-gray-700 py-2 px-4 rounded-lg text-sm font-semibold hover:bg-gray-300 transition-colors flex items-center justify-center gap-2"
+                className="mt-6 w-full bg-gray-50 hover:bg-gray-100 text-gray-700 py-3 rounded-lg font-semibold flex items-center justify-center gap-2"
                 disabled={loading}
               >
                 {loading ? (
-                  <FaSpinner className="animate-spin text-lg" />
+                  <Loader className="w-5 h-5 animate-spin" />
                 ) : (
-                  "Load More"
+                  <>
+                    <RefreshCw className="w-5 h-5" />
+                    Load More
+                  </>
                 )}
               </motion.button>
-            )}
-          </motion.div>
+            </motion.div>
+          )}
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default MusicRecommendation;
