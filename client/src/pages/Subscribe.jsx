@@ -101,12 +101,14 @@
 // export default SubscribePage;
 
 //--------------------------------------------------------------------
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header.jsx";
 import SideButtons from "../components/SideButtons";
 
 const SubscribePage = () => {
   const navigate = useNavigate();
+  const [isExpanded, setIsExpanded] = useState(true);
 
   const startFreeTrial = async () => {
     try {
@@ -129,16 +131,15 @@ const SubscribePage = () => {
   };
 
   return (
-    <div>
-<Header />
-
-    
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-green-50 via-white to-teal-50">
-      {/* Header */}
-      
-      {/* Side Buttons */}
-      <SideButtons />
-      <main className="flex-grow ml-40">
+    <div className="flex min-h-screen bg-gray-50 ">
+    <SideButtons />
+    <div
+      id="main-content"
+      className="flex-1 transition-all duration-300 "
+      style={{ marginLeft: isExpanded ? "260px" : "80px" }}
+    >
+      <Header />
+     
         <div className="max-w-6xl mx-auto mt-16 bg-white shadow-2xl rounded-xl overflow-hidden">
           <div className="bg-gradient-to-r from-teal-600 to-teal-400 text-white text-center py-8">
             <h2 className="text-4xl font-bold">Choose Your Plan</h2>
@@ -212,7 +213,7 @@ const SubscribePage = () => {
 
           </div>
         </div>
-      </main>
+      
       {/* Footer */}
 
     </div>
