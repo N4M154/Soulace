@@ -384,13 +384,13 @@ export default function MusicRecommendation() {
         style={{ marginLeft: isExpanded ? "260px" : "80px" }}
       >
         <Header />
-       {/* Hero Section */}
+        /* Hero Section */
 <motion.div
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
-  className="max-w-8xl mx-auto px-4 py-8"
+  className="max-w-8xl mx-auto px-4 py-4"
 >
-<div className="relative overflow-hidden bg-gradient-to-r from-teal-600 to-white text-teal-900 text-white py-1 px-8 rounded-2xl shadow-lg mx-4 mt-6 mb-12">
+  <div className="relative overflow-hidden bg-gradient-to-r from-teal-600 to-white text-teal-900 text-white py-16 px-8 rounded-2xl shadow-lg mx-4 mt-6">
     <div className="absolute inset-0">
       <img
         src="https://images.unsplash.com/photo-1614149162883-504ce4d13909"
@@ -399,18 +399,18 @@ export default function MusicRecommendation() {
       />
       <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-white/40"></div>
     </div>
-    <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between p-8 lg:p-16 gap-8">
+    <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
       <div className="text-left lg:w-1/2">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
-          className="mb-8"
+          className="mb-4"
         >
-          <h1 className="text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-teal-600 to-teal-800 bg-clip-text text-transparent">
+          <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-teal-600 to-teal-800 bg-clip-text text-white leading-tight">
             Discover Your Mood Music
           </h1>
-          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+          <p className="text-xl text-white mb-8 leading-relaxed max-w-2xl">
             Let your emotions guide you to the perfect soundtrack. Experience music that resonates with your every mood.
           </p>
           <div className="flex flex-wrap gap-4">
@@ -440,7 +440,7 @@ export default function MusicRecommendation() {
         transition={{ delay: 0.4 }}
         className="lg:w-1/2 flex justify-center"
       >
-        <div className="relative w-72 h-72 lg:w-96 lg:h-96">
+        <div className="relative w-56 h-56 lg:w-72 lg:h-72">
           <motion.div
             animate={{
               rotate: 360,
@@ -464,7 +464,7 @@ export default function MusicRecommendation() {
             className="absolute inset-8 rounded-full border-2 border-teal-500/30"
           ></motion.div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="bg-white p-8 rounded-full shadow-xl">
+            <div className="bg-white p-6 rounded-full shadow-xl">
               <Music className="w-16 h-16 text-teal-500" />
             </div>
           </div>
@@ -474,13 +474,14 @@ export default function MusicRecommendation() {
   </div>
 </motion.div>
 
+
         {/* Featured Tracks Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="max-w-7xl mx-auto px-4 py-12"
         >
-          <h2 className="text-3xl font-bold mb-8 text-gray-800">Featured Music</h2>
+          <h2 className="text-3xl font-bold mb-4 text-gray-800">Featured Music</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredTracks.map((track) => (
               <motion.div
