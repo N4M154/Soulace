@@ -417,65 +417,93 @@ export default function Home() {
               ))}
             </div>
           </motion.section>
-          <div className="container mx-auto px-12 py-24">
-            
-      {/* Quick Actions */}
-      <div className="flex flex-col gap-20 mb-24">
-        {/* Mood Logger */}
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          className="flex items-center p-6 bg-gradient-to-r from-teal-600 to-teal-700 rounded-xl text-white"
-          onClick={() => navigate("/mood-tracker")}
-        >
-          <img
-            src="/image/Mood & Sleep Map.png" // Directly using image path
-            alt="Mood Logger"
-            className="w-1/3 rounded-lg mr-4"
-          />
-          <div>
-            <h3 className="text-lg font-semibold mb-2">Mood-Sleep Logger</h3>
-            <p className="text-sm opacity-90">Time to log your mood, let’s dive in!</p>
-          </div>
-        </motion.div>
+         
+      {/* Quick Actions Section */}
+      <motion.section 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-16"
+          >
+            <h2 className="text-3xl font-bold text-teal-800 mb-8">Quick Actions</h2>
+            <div className="space-y-6">
+              {/* Mood Logger */}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer"
+                onClick={() => navigate("/mood-tracker")}
+              >
+                <div className="flex items-stretch">
+                  <div className="w-1/3 relative">
+                    <img
+                      src="https://images.unsplash.com/photo-1512757776214-26d36777b513?auto=format&fit=crop&w=800"
+                      alt="Mood Tracking"
+                      className="w-full h-full object-cover absolute inset-0"
+                    />
+                  </div>
+                  <div className="w-2/3 p-8 bg-gradient-to-r from-teal-600 to-teal-700 text-white">
+                    <h3 className="text-2xl font-bold mb-3">Mood & Sleep Logger</h3>
+                    <p className="text-lg opacity-90">
+                      Track your daily emotional journey and sleep patterns. Your personal 
+                      wellness diary awaits - let's capture how you're feeling today.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
 
-        {/* Daily Journal */}
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          className="flex items-center p-6 bg-gradient-to-r from-teal-700 to-teal-800 rounded-xl text-white"
-          onClick={() => navigate("/journal")}
-        >
-          <div className="mr-4">
-            <h3 className="text-lg font-semibold mb-2">Daily Journal</h3>
-            <p className="text-sm opacity-90">Express yourself with sentiment analysis.</p>
-          </div>
-          <img
-            src="/image/journal.png" // Directly using image path
-            alt="Daily Journal"
-            className="w-1/3 rounded-lg"
-          />
-        </motion.div>
+              {/* Daily Journal */}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer"
+                onClick={() => navigate("/journal")}
+              >
+                <div className="flex items-stretch">
+                  <div className="w-2/3 p-8 bg-gradient-to-r from-teal-700 to-teal-800 text-white">
+                    <h3 className="text-2xl font-bold mb-3">Daily Journal</h3>
+                    <p className="text-lg opacity-90">
+                      Express yourself freely with our AI-powered journal. Get insights into 
+                      your thoughts and emotions through advanced sentiment analysis.
+                    </p>
+                  </div>
+                  <div className="w-1/3 relative">
+                    <img
+                      src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=800"
+                      alt="Journaling"
+                      className="w-full h-full object-cover absolute inset-0"
+                    />
+                  </div>
+                </div>
+              </motion.div>
 
-        {/* Take a Test */}
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          className="flex items-center p-6 bg-gradient-to-r from-teal-800 to-teal-900 rounded-xl text-white"
-          onClick={() => navigate("/test")}
-        >
-          <img
-            src="/image/Schedule.png" // Directly using image path
-            alt="Take a Test"
-            className="w-1/3 rounded-lg mr-4"
-          />
-          <div>
-            <h3 className="text-lg font-semibold mb-2">Take a Test</h3>
-            <p className="text-sm opacity-90">Need insights? Take a test using ML.</p>
-          </div>
-        </motion.div>
+              {/* Take a Test */}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer"
+                onClick={() => navigate("/test")}
+              >
+                <div className="flex items-stretch">
+                  <div className="w-1/3 relative">
+                    <img
+                      src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800"
+                      alt="Mental Health Test"
+                      className="w-full h-full object-cover absolute inset-0"
+                    />
+                  </div>
+                  <div className="w-2/3 p-8 bg-gradient-to-r from-teal-800 to-teal-900 text-white">
+                    <h3 className="text-2xl font-bold mb-3">Take a test?</h3>
+                    <p className="text-lg opacity-90">
+                      Get personalized insights with our ML-powered assessment. Understand 
+                      your mental well-being better through scientific analysis.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </motion.section>
           </div>
         </div>
       </div>
-      </div>
-   </div>
+    
+  
   );
 }
 

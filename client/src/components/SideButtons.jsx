@@ -17,8 +17,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { signOut } from "../redux/user/userSlice";
 
 const sidebarItems = [
-  { name: "Relaxation Games", icon: Gamepad2, route: "/breathinggame" },
-  { name: "Meditation", icon: Brain, route: "/meditation" },
+  { name: "Relaxation", icon: Gamepad2, route: "/breathinggame" },
+  { name: "Meditation ", icon: Brain, route: "/meditation" },
   { name: "Joke of the Day", icon: Smile, route: "/jokeoftheday" },
   { name: "Music Recommendation", icon: Music2, route: "/musicrecommendation" },
   // { name: "Chatbot", icon: Bot, route: "/chatbot" },
