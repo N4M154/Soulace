@@ -384,7 +384,7 @@ export default function MusicRecommendation() {
         style={{ marginLeft: isExpanded ? "260px" : "80px" }}
       >
         <Header />
-        /* Hero Section */
+       
 <motion.div
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
