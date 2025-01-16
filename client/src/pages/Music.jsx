@@ -1,7 +1,4 @@
-
-
 ///------------------------------------
-
 
 // import axios from "axios";
 // import { AnimatePresence, motion } from "framer-motion";
@@ -79,7 +76,7 @@
 //             animate={{ opacity: 1, y: 0 }}
 //             className="lg:w-1/2 bg-gray-100 rounded-xl shadow-lg p-6"
 //           >
-//             <motion.div 
+//             <motion.div
 //               className="text-center mb-6"
 //               initial={{ scale: 0.9 }}
 //               animate={{ scale: 1 }}
@@ -227,10 +224,7 @@
 
 // export default MusicRecommendation;
 
-
 // //--------------------------------------------------------------
-
-
 
 import axios from "axios";
 import { motion } from "framer-motion";
@@ -243,20 +237,19 @@ import {
   Play,
   RefreshCw,
   Share2,
-  Sparkles
+  Sparkles,
 } from "lucide-react";
 import { useRef, useState } from "react";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
 
 const featuredTracks = [
-  
   {
     id: 1,
     title: "Forest Rain",
     artist: "Ambient Nature",
     mood: "relax",
-    url: "./assets/rain.mp3",
+    url: "/rain.mp3",
     image: "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f",
   },
   {
@@ -264,7 +257,7 @@ const featuredTracks = [
     title: "Meditation Bell",
     artist: "Zen Masters",
     mood: "relax",
-    url: "./assets/meditation.mp3",
+    url: "/meditation.mp3",
     image: "https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83",
   },
   {
@@ -272,7 +265,7 @@ const featuredTracks = [
     title: "Gentle Piano",
     artist: "Classical Calm",
     mood: "relax",
-    url: "./assets/piano.mp3",
+    url: "/piano.mp3",
     image: "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0",
   },
   {
@@ -280,7 +273,7 @@ const featuredTracks = [
     title: "Ocean Waves",
     artist: "Nature Sounds",
     mood: "relax",
-    url: "./assets/wave.mp3",
+    url: "/wave.mp3",
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
   },
   {
@@ -288,7 +281,7 @@ const featuredTracks = [
     title: "Night Cricket",
     artist: "Nature's Symphony",
     mood: "relax",
-    url: "./assets/cricket.mp3",
+    url: "/cricket.mp3",
     image: "https://images.unsplash.com/photo-1511497584788-876760111969",
   },
   {
@@ -296,7 +289,7 @@ const featuredTracks = [
     title: "Mountain Stream",
     artist: "Pure Nature",
     mood: "relax",
-    url: "./assets/stream.mp3",
+    url: "/stream.mp3",
     image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
   },
 ];
@@ -384,96 +377,96 @@ export default function MusicRecommendation() {
         style={{ marginLeft: isExpanded ? "260px" : "80px" }}
       >
         <Header />
-       
-<motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  className="max-w-8xl mx-auto px-4 py-4"
->
-  <div className="relative overflow-hidden bg-gradient-to-r from-teal-600 to-white text-teal-900 text-white py-16 px-8 rounded-2xl shadow-lg mx-4 mt-6">
-    <div className="absolute inset-0">
-      <img
-        src="https://images.unsplash.com/photo-1614149162883-504ce4d13909"
-        alt="Music Background"
-        className="w-full h-full object-cover mix-blend-overlay opacity-20"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-white/40"></div>
-    </div>
-    <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
-      <div className="text-left lg:w-1/2">
+
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2 }}
-          className="mb-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-8xl mx-auto px-4 py-4"
         >
-          <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-teal-600 to-teal-800 bg-clip-text text-white leading-tight">
-            Discover Your Mood Music
-          </h1>
-          <p className="text-xl text-white mb-8 leading-relaxed max-w-2xl">
-            Let your emotions guide you to the perfect soundtrack. Experience music that resonates with your every mood.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={connectSpotify}
-              className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-4 rounded-xl font-semibold flex items-center gap-2 shadow-lg shadow-teal-500/20"
-            >
-              <Music className="w-5 h-5" />
-              Connect with Spotify
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white hover:bg-gray-50 text-teal-600 px-8 py-4 rounded-xl font-semibold flex items-center gap-2 shadow-lg"
-            >
-              <Headphones className="w-5 h-5" />
-              Start Listening
-            </motion.button>
-          </div>
-        </motion.div>
-      </div>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.4 }}
-        className="lg:w-1/2 flex justify-center"
-      >
-        <div className="relative w-56 h-56 lg:w-72 lg:h-72">
-          <motion.div
-            animate={{
-              rotate: 360,
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="absolute inset-0 rounded-full border-2 border-teal-500/20"
-          ></motion.div>
-          <motion.div
-            animate={{
-              rotate: -360,
-            }}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="absolute inset-8 rounded-full border-2 border-teal-500/30"
-          ></motion.div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="bg-white p-6 rounded-full shadow-xl">
-              <Music className="w-16 h-16 text-teal-500" />
+          <div className="relative overflow-hidden bg-gradient-to-r from-teal-600 to-white text-teal-900 text-white py-16 px-8 rounded-2xl shadow-lg mx-4 mt-6">
+            <div className="absolute inset-0">
+              <img
+                src="https://images.unsplash.com/photo-1614149162883-504ce4d13909"
+                alt="Music Background"
+                className="w-full h-full object-cover mix-blend-overlay opacity-20"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-white/40"></div>
+            </div>
+            <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+              <div className="text-left lg:w-1/2">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="mb-4"
+                >
+                  <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-teal-600 to-teal-800 bg-clip-text text-white leading-tight">
+                    Discover Your Mood Music
+                  </h1>
+                  <p className="text-xl text-white mb-8 leading-relaxed max-w-2xl">
+                    Let your emotions guide you to the perfect soundtrack.
+                    Experience music that resonates with your every mood.
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={connectSpotify}
+                      className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-4 rounded-xl font-semibold flex items-center gap-2 shadow-lg shadow-teal-500/20"
+                    >
+                      <Music className="w-5 h-5" />
+                      Connect with Spotify
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="bg-white hover:bg-gray-50 text-teal-600 px-8 py-4 rounded-xl font-semibold flex items-center gap-2 shadow-lg"
+                    >
+                      <Headphones className="w-5 h-5" />
+                      Start Listening
+                    </motion.button>
+                  </div>
+                </motion.div>
+              </div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.4 }}
+                className="lg:w-1/2 flex justify-center"
+              >
+                <div className="relative w-56 h-56 lg:w-72 lg:h-72">
+                  <motion.div
+                    animate={{
+                      rotate: 360,
+                    }}
+                    transition={{
+                      duration: 20,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                    className="absolute inset-0 rounded-full border-2 border-teal-500/20"
+                  ></motion.div>
+                  <motion.div
+                    animate={{
+                      rotate: -360,
+                    }}
+                    transition={{
+                      duration: 15,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                    className="absolute inset-8 rounded-full border-2 border-teal-500/30"
+                  ></motion.div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="bg-white p-6 rounded-full shadow-xl">
+                      <Music className="w-16 h-16 text-teal-500" />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </div>
-        </div>
-      </motion.div>
-    </div>
-  </div>
-</motion.div>
-
+        </motion.div>
 
         {/* Featured Tracks Section */}
         <motion.div
@@ -481,7 +474,9 @@ export default function MusicRecommendation() {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-7xl mx-auto px-4 py-12"
         >
-          <h2 className="text-3xl font-bold mb-4 text-gray-800">Featured Music</h2>
+          <h2 className="text-3xl font-bold mb-4 text-gray-800">
+            Featured Music
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredTracks.map((track) => (
               <motion.div
@@ -495,7 +490,9 @@ export default function MusicRecommendation() {
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-4">
-                  <h3 className="font-semibold text-lg mb-1 text-gray-800">{track.title}</h3>
+                  <h3 className="font-semibold text-lg mb-1 text-gray-800">
+                    {track.title}
+                  </h3>
                   <p className="text-gray-600 text-sm mb-4">{track.artist}</p>
                   <div className="flex items-center justify-between">
                     <button
@@ -576,7 +573,9 @@ export default function MusicRecommendation() {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white rounded-xl p-6 shadow-lg"
             >
-              <h2 className="text-3xl font-bold mb-6 text-gray-800">Recommended Tracks</h2>
+              <h2 className="text-3xl font-bold mb-6 text-gray-800">
+                Recommended Tracks
+              </h2>
               <div className="space-y-4">
                 {recommendations.map((rec, idx) => (
                   <motion.div
@@ -591,8 +590,12 @@ export default function MusicRecommendation() {
                         <Headphones className="w-6 h-6" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-800">{rec.name}</h3>
-                        <p className="text-gray-600 text-sm">{rec.artist.name}</p>
+                        <h3 className="font-semibold text-gray-800">
+                          {rec.name}
+                        </h3>
+                        <p className="text-gray-600 text-sm">
+                          {rec.artist.name}
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
@@ -629,4 +632,3 @@ export default function MusicRecommendation() {
     </div>
   );
 }
-
