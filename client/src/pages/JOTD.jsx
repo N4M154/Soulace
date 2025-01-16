@@ -129,7 +129,7 @@
 
 //------------------------------
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaLaugh, FaSpinner } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import Header from "../components/Header";
@@ -140,6 +140,7 @@ const JokeOfTheDay = () => {
   const [showJoke, setShowJoke] = useState(false);
   const [loading, setLoading] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   const fetchJoke = async () => {
     setLoading(true);
@@ -157,11 +158,16 @@ const JokeOfTheDay = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
+    <div className="flex min-h-screen bg-gray-50">
       <SideButtons />
+      <div
+        id="main-content"
+        className="flex-1 transition-all duration-300"
+        style={{ marginLeft: isExpanded ? "260px" : "80px" }}
+      >
+        <Header />
 
-      <div className="ml-[60px] md:ml-[260px] p-6 transition-all">
+     
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-6 mt-12 bg-gray-100 rounded-xl shadow-lg p-8">
           <div className="text-center">
             <div className="inline-block mb-4">
@@ -201,6 +207,7 @@ const JokeOfTheDay = () => {
         </div>
       </div>
     </div>
+  
   );
 };
 

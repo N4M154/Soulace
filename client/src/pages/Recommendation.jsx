@@ -107,6 +107,7 @@
 // Recommendation.jsx
 
 
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom"; // Import useLocation and useNavigate
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
@@ -116,6 +117,7 @@ const Recommendation = () => {
   const navigate = useNavigate();
 
   const { state } = location;
+  const [isExpanded, setIsExpanded] = useState(true);
 
   // If state or probability is undefined, redirect back to form
   if (!state || typeof state.probability !== "number") {
@@ -135,10 +137,14 @@ const Recommendation = () => {
   };
 
   return (
-    <div>
+    <div className="flex min-h-screen bg-gray-50">
+    <SideButtons />
+    <div
+      id="main-content"
+      className="flex-1 transition-all duration-300"
+      style={{ marginLeft: isExpanded ? "260px" : "80px" }}
+    >
       <Header />
-      {/* Side Buttons */}
-      <SideButtons />
       <div className="min-h-screen bg-white flex flex-col items-center p-6">
         <div className="bg-teal-50 shadow-lg rounded-lg p-8 max-w-3xl w-full text-center">
           <h2 className="text-2xl font-bold text-purple-800 mb-4">
@@ -202,6 +208,7 @@ const Recommendation = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

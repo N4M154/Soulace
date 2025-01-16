@@ -314,7 +314,7 @@ const MentalHealthContent = () => {
                         href={article.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-teal-600 hover:text-teal-700 font-medium"
+                        className="inline-flex items-center text-teal-800 hover:text-teal-700 font-medium"
                       >
                         Read more
                         <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
