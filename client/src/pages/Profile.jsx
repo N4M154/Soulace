@@ -1,5 +1,5 @@
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import {
@@ -8,18 +8,7 @@ import {
   ref,
   uploadBytesResumable,
 } from "firebase/storage";
-import { app } from "../firebase";
 import { useDispatch } from "react-redux";
-import {
-  updateUserStart,
-  updateUserSuccess,
-  updateUserFailure,
-  deleteUserStart,
-  deleteUserSuccess,
-  deleteUserFailure,
-  signOut,
-} from "../redux/user/userSlice";
-import Header from "../components/Header";
 import {
   Bar,
   BarChart,
@@ -34,7 +23,17 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
+import { app } from "../firebase";
+import {
+  deleteUserFailure,
+  deleteUserStart,
+  deleteUserSuccess,
+  updateUserFailure,
+  updateUserStart,
+  updateUserSuccess
+} from "../redux/user/userSlice";
 
 const ProfileAnalytics = () => {
   const dispatch = useDispatch();
@@ -45,7 +44,7 @@ const ProfileAnalytics = () => {
   const [formData, setFormData] = useState({});
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [updateSuccess, setUpdateSuccess] = useState(false);
-
+  const [isExpanded, setIsExpanded] = useState(true);
   const { currentUser, loading, error } = useSelector((state) => state.user);
 
   // Example data for additional charts
@@ -147,9 +146,15 @@ const ProfileAnalytics = () => {
   };
 
   return (
-    <div><Header />
-      <SideButtons/>
-    <div className="bg-white min-h-screen ml-52">
+    <div className="flex min-h-screen bg-gray-50 ">
+      <SideButtons />
+      <div
+        id="main-content"
+        className="flex-1 transition-all duration-300 "
+        style={{ marginLeft: isExpanded ? "260px" : "80px" }}
+      >
+        <Header />
+    
       
 
       <div className="p-4 max-w-6xl mx-auto ">
@@ -264,6 +269,7 @@ const ProfileAnalytics = () => {
       </div>
     </div>
     </div>
+  
   );
 };
 
