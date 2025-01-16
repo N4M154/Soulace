@@ -17,15 +17,31 @@ const MoodTimeline = () => {
   const [error, setError] = useState(null);
 
   // Define a mapping from mood to numerical values for graphing
+  // const moodValues = {
+  //   Happy: 5,
+  //   Excited: 4,
+  //   Calm: 3,
+  //   Neutral: 2,
+  //   Anxious: 1,
+  //   Sad: 0,
+  //   Frustrated: -1,
+  //   Angry: -2,
+  // };
+
   const moodValues = {
-    Happy: 5,
-    Excited: 4,
+    Happy: 6,
+    Excited: 5,
+    Grateful: 4,
     Calm: 3,
-    Neutral: 2,
-    Anxious: 1,
-    Sad: 0,
-    Frustrated: -1,
-    Angry: -2,
+    Neutral: 2, // If you still want to keep "Neutral" as an option
+    Nostalgic: 1,
+    Confused: 0,
+    Stressed: -1,
+    Anxious: -2,
+    Sad: -3,
+    Frustrated: -4,
+    Angry: -5,
+    Depressed: -6,
   };
 
   // Reverse mapping for tooltip
@@ -134,18 +150,31 @@ const MoodTimeline = () => {
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={data}>
             <CartesianGrid stroke="#ccc" />
-            <XAxis dataKey="date" />
-            <YAxis
+            <XAxis dataKey="date" tick={{ fill: "#fff" }} />
+            {/* <YAxis
               type="number"
               domain={[-2, 5]} // Based on moodValues
               ticks={[-2, -1, 0, 1, 2, 3, 4, 5]}
               tickFormatter={(tick) => valueToMood[tick] || ""}
+            /> */}
+            <YAxis
+              type="number"
+              domain={[-6, 6]}
+              ticks={[-6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6]}
+              tickFormatter={(tick) => valueToMood[tick] || ""}
+              tick={{ fill: "#fff" }}
+              width={100}
             />
             <Tooltip
               labelFormatter={(label) => `Date: ${label}`}
               formatter={(value) => valueToMood[value] || ""}
             />
-            <Line type="monotone" dataKey="mood" stroke="#8884d8" />
+            <Line
+              type="monotone"
+              dataKey="mood"
+              stroke="#8884d8"
+              strokeWidth={2}
+            />
           </LineChart>
         </ResponsiveContainer>
       ) : (

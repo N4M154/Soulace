@@ -24,13 +24,13 @@ const DailyJournal = () => {
   const fetchNotes = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/journal?page=${page}`, {
+      const response = await fetch(`/api/journal?page=${page}&limit=3`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         credentials: "include", // Ensure cookies are sent
       });
       const data = await response.json();
-      setNotes((prevNotes) => [...prevNotes, ...data.notes.reverse()]); // Ensure correct order and avoid duplicates
+      setNotes((prevNotes) => [...prevNotes, ...data.notes]); // Ensure correct order and avoid duplicates
     } catch (err) {
       console.error("Error fetching notes:", err);
     } finally {
@@ -77,7 +77,12 @@ const DailyJournal = () => {
       const response = await fetch("/api/journal", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId: currentUser._id, content: journal, mood, analysis }),
+        body: JSON.stringify({
+          userId: currentUser._id,
+          content: journal,
+          mood,
+          analysis,
+        }),
       });
 
       if (!response.ok) {
@@ -103,22 +108,102 @@ const DailyJournal = () => {
   };
 
   // Comprehensive Mood Analysis Function
+  // const analyzeMood = async (text) => {
+  //   if (!text.trim()) {
+  //     throw new Error("Journal entry is empty.");
+  //   }
+
+  //   try {
+  //     // Send the journal entry to Groq for mood analysis with instructions for one-word mood and detailed analysis
+  //     const response = await groq.chat.completions.create({
+  //       model: "llama-3.3-70b-versatile", // Replace with the appropriate model if different
+  //       temperature: 0.0, // Lower temperature for more deterministic responses
+  //       max_tokens: 150, // Adjust as needed for detailed analysis
+  //       messages: [
+  //         {
+  //           role: "system",
+  //           content:
+  //             'You are an assistant that analyzes the mood of a given text. Provide your response in the following JSON format:\n{\n  "mood": "SingleWordMood",\n  "analysis": "Detailed analysis of the mood based on the journal entry."\n}',
+  //         },
+  //         {
+  //           role: "user",
+  //           content: text,
+  //         },
+  //       ],
+  //     });
+
+  //     // Extract mood and analysis from AI response
+  //     const aiResponse = response.choices[0]?.message?.content.trim();
+
+  //     // Parse the JSON response
+  //     let parsedResponse;
+  //     try {
+  //       parsedResponse = JSON.parse(aiResponse);
+  //     } catch (parseError) {
+  //       console.error("Error parsing AI response as JSON:", parseError);
+  //       throw new Error("Failed to parse mood analysis.");
+  //     }
+
+  //     let { mood, analysis } = parsedResponse;
+
+  //     // Validate that the mood is a single word
+  //     if (!mood || mood.split(" ").length > 1) {
+  //       mood = "Neutral"; // Default mood if validation fails
+  //     }
+
+  //     // Optionally, map mood to a predefined set
+  //     const validMoods = [
+  //       "Happy",
+  //       "Sad",
+  //       "Anxious",
+  //       "Neutral",
+  //       "Excited",
+  //       "Frustrated",
+  //       "Calm",
+  //       "Angry",
+  //     ];
+  //     if (!validMoods.includes(mood)) {
+  //       mood = "Neutral"; // Default to Neutral if mood is unrecognized
+  //     }
+
+  //     // Ensure analysis is present
+  //     if (!analysis) {
+  //       analysis = "No detailed analysis available.";
+  //     }
+
+  //     return { mood, analysis };
+  //   } catch (error) {
+  //     console.error("Error analyzing mood with Groq:", error);
+  //     throw new Error("Failed to analyze mood.");
+  //   }
+  // };
+
+  // Comprehensive Mood Analysis Function
   const analyzeMood = async (text) => {
     if (!text.trim()) {
       throw new Error("Journal entry is empty.");
     }
 
     try {
-      // Send the journal entry to Groq for mood analysis with instructions for one-word mood and detailed analysis
       const response = await groq.chat.completions.create({
-        model: "llama-3.3-70b-versatile", // Replace with the appropriate model if different
-        temperature: 0.0, // Lower temperature for more deterministic responses
-        max_tokens: 150, // Adjust as needed for detailed analysis
+        model: "llama-3.3-70b-versatile",
+        temperature: 0.0,
+        max_tokens: 150,
         messages: [
           {
             role: "system",
-            content:
-              'You are an assistant that analyzes the mood of a given text. Provide your response in the following JSON format:\n{\n  "mood": "SingleWordMood",\n  "analysis": "Detailed analysis of the mood based on the journal entry."\n}',
+            content: `You are an advanced AI assistant analyzing the mood of a given text. 
+Please choose exactly ONE best-fit mood from the following list:
+[Happy, Sad, Anxious, Calm, Angry, Frustrated, Excited, Depressed, Nostalgic, Grateful, Confused, Stressed, Relaxed]
+
+Output your answer in strictly valid JSON with only these fields:
+
+{
+  "mood": "OneOfTheAboveList",
+  "analysis": "Detailed explanation..."
+}
+
+No extra keys, no additional formatting.`,
           },
           {
             role: "user",
@@ -127,11 +212,10 @@ const DailyJournal = () => {
         ],
       });
 
-      // Extract mood and analysis from AI response
+      // Extract JSON from AI response
       const aiResponse = response.choices[0]?.message?.content.trim();
-
-      // Parse the JSON response
       let parsedResponse;
+
       try {
         parsedResponse = JSON.parse(aiResponse);
       } catch (parseError) {
@@ -141,27 +225,31 @@ const DailyJournal = () => {
 
       let { mood, analysis } = parsedResponse;
 
-      // Validate that the mood is a single word
-      if (!mood || mood.split(" ").length > 1) {
-        mood = "Neutral"; // Default mood if validation fails
-      }
-
-      // Optionally, map mood to a predefined set
+      // Validate that the mood is in our finite set
       const validMoods = [
         "Happy",
         "Sad",
         "Anxious",
-        "Neutral",
-        "Excited",
-        "Frustrated",
         "Calm",
         "Angry",
+        "Frustrated",
+        "Excited",
+        "Depressed",
+        "Nostalgic",
+        "Grateful",
+        "Confused",
+        "Stressed",
+        "Relaxed",
       ];
+
       if (!validMoods.includes(mood)) {
-        mood = "Neutral"; // Default to Neutral if mood is unrecognized
+        // Option 1: throw an error
+        throw new Error(`Invalid mood detected: ${mood}.`);
+        // Option 2: fallback to something else (e.g., "Neutral") if you prefer:
+        // mood = "Neutral";
       }
 
-      // Ensure analysis is present
+      // Make sure analysis is present
       if (!analysis) {
         analysis = "No detailed analysis available.";
       }
@@ -172,8 +260,6 @@ const DailyJournal = () => {
       throw new Error("Failed to analyze mood.");
     }
   };
-
-
 
   return (
     <div className="flex">
@@ -186,8 +272,9 @@ const DailyJournal = () => {
       {/* Main Content */}
       <div
         id="main-content"
-        className={`flex-1 transition-all duration-300 ${isSidebarExpanded ? "ml-64" : "ml-20"
-          }`}
+        className={`flex-1 transition-all duration-300 ${
+          isSidebarExpanded ? "ml-64" : "ml-20"
+        }`}
       >
         <Header />
         <div
@@ -232,8 +319,9 @@ const DailyJournal = () => {
                 />
                 <button
                   type="submit"
-                  className={`py-2 px-4 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition duration-200 ${loading ? "opacity-50 cursor-not-allowed" : ""
-                    }`}
+                  className={`py-2 px-4 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition duration-200 ${
+                    loading ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
                   disabled={loading}
                 >
                   {loading ? "Saving..." : "Save"}
@@ -246,19 +334,28 @@ const DailyJournal = () => {
 
             {/* Journal Notes */}
             <div className="w-full md:w-6/12 mt-6 md:mt-0">
-              <h2 className="text-xl font-bold text-white mb-4">See Older Posts</h2>
+              <h2 className="text-xl font-bold text-white mb-4">
+                See Older Posts
+              </h2>
               <div className="space-y-4">
                 {notes.map((note, index) => (
-                  <div key={index} className="bg-gray-900 shadow-md rounded-lg p-3">
-                    <p className="text-sm text-white">{note.content}</p>
+                  <div
+                    key={index}
+                    className="bg-gray-900 shadow-md rounded-lg p-3"
+                  >
+                    <p className="text-md font-bold text-white">
+                      "{note.content}"
+                    </p>
                     <p className="text-sm text-gray-400 mt-2">
                       {new Date(note.date).toLocaleString()}
                     </p>
-                    {/* <p className="text-sm text-teal-400 mt-1">Mood: {note.mood}</p>{" "}
-                    
+                    {/* <p className="text-sm text-teal-400 mt-1">Mood: {note.mood}</p>{" "} */}
                     <p className="text-sm text-gray-300 mt-1">
-                      Analysis: {note.analysis}
-                    </p>{" "} */}
+                      <span className="text-teal-300 font-semibold">
+                        Analysis:{" "}
+                      </span>
+                      {note.analysis}
+                    </p>{" "}
                   </div>
                 ))}
               </div>
