@@ -291,7 +291,7 @@ No extra keys, no additional formatting.`,
             <div className="flex items-center justify-between w-full">
               <h1 className="text-4xl font-bold text-white">Daily Journal</h1>
               <img
-                src={musicPlaying ? "/pausemusic.gif" : "/playmusic.gif"}
+                src={musicPlaying ? "/playmusic.gif" : "/playmusic.gif"}
                 alt={musicPlaying ? "Pause Music" : "Play Music"}
                 onClick={toggleMusic}
                 className="w-20 h-20 cursor-pointer transition-transform duration-300 hover:scale-110"

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
-
+import Footer from "../components/Footer.jsx";
 const MeditationPage = ({ currentUser }) => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 flex flex-col items-center">
@@ -11,7 +11,7 @@ const MeditationPage = ({ currentUser }) => {
       <SideButtons />
 
       {/* Main Content */}
-      <main className="flex flex-col items-center mt-12">
+      <main className="flex flex-col items-center mt-12 mb-48">
         <h1 className="text-3xl font-bold text-gray-700 mb-12">Select Your Game</h1>
 
         <div className="relative flex flex-col items-center w-full">
@@ -52,7 +52,9 @@ const MeditationPage = ({ currentUser }) => {
             </Link>
           </div>
         </div>
+        
       </main>
+       <Footer></Footer>
     </div>
   );
 };

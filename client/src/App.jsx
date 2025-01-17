@@ -64,7 +64,7 @@ export default function App() {
 
 
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/analytics" element={<Analytics />} />
+        <Route path="/editprofile" element={<Analytics />} />
         <Route path="/meditation" element={<Meditation />} />
         <Route path="/subscribe" element={<SubscribePage />} />
 
