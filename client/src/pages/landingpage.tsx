@@ -375,21 +375,21 @@ function SDGSection() {
       title: "Bangladesh Focus",
       description: "Addressing critical mental health needs in Bangladesh by providing accessible and stigma-free support.",
       stats: "16.8% of adults in Bangladesh face mental health challenges",
-      color: "from-green-600 to-green-400"
+      color: "from-teal-600 to-teal-400"
     },
     {
       icon: Heart,
       title: "SDG 3 Alignment",
       description: "Supporting the UN's Sustainable Development Goal 3 through digital mental health solutions.",
       stats: "Promoting well-being for all ages",
-      color: "from-red-600 to-red-400"
+      color: "from-blue-600 to-blue-400"
     },
     {
       icon: LineChart,
       title: "Measurable Impact",
       description: "Tracking and improving mental health outcomes through data-driven approaches.",
       stats: "Reducing treatment gaps in mental healthcare",
-      color: "from-purple-600 to-purple-400"
+      color: "from-teal-600 to-teal-400"
     }
   ];
 
@@ -456,9 +456,10 @@ function SDGSection() {
               alt="SDG 3 Icon" 
               className="w-8 h-8"
             />
-            <span className="text-teal-700 font-medium">
-              Proud contributor to UN Sustainable Development Goal 3
-            </span>
+           <span className="text-teal-700 font-bold text-xl">
+    Proud contributor to UN Sustainable Development Goal 3
+</span>
+
           </div>
         </motion.div>
       </div>
