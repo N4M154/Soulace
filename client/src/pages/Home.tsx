@@ -456,7 +456,7 @@ export default function Home() {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer"
-                onClick={() => navigate("/journal")}
+                onClick={() => navigate("/daily-journal")}
               >
                 <div className="flex items-stretch">
                   <div className="w-2/3 p-8 bg-gradient-to-r from-teal-700 to-teal-800 text-white">
@@ -480,7 +480,7 @@ export default function Home() {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer"
-                onClick={() => navigate("/test")}
+                onClick={() => navigate("/specialist")}
               >
                 <div className="flex items-stretch">
                   <div className="w-1/3 relative">
