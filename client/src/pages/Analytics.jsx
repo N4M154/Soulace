@@ -1,25 +1,26 @@
-import { useSelector } from "react-redux";
-import { useRef, useState, useEffect } from "react";
 import {
   getDownloadURL,
   getStorage,
   ref,
   uploadBytesResumable,
 } from "firebase/storage";
+import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer.jsx";
+import Header from "../components/Header";
+import SideButtons from "../components/SideButtons";
 import { app } from "../firebase";
-import { useDispatch } from "react-redux";
 import {
-  updateUserStart,
-  updateUserSuccess,
-  updateUserFailure,
+  deleteUserFailure,
   deleteUserStart,
   deleteUserSuccess,
-  deleteUserFailure,
   signOut,
+  updateUserFailure,
+  updateUserStart,
+  updateUserSuccess,
 } from "../redux/user/userSlice";
-import Header from "../components/Header";
-import { useNavigate } from "react-router-dom";
-import SideButtons from "../components/SideButtons";
+
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -212,6 +213,8 @@ export default function Profile() {
         <p className="text-teal-600 mt-6 text-center font-semibold">
           {updateSuccess && "User is updated successfully!"}
         </p>
+       
+<Footer></Footer>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import Profile from "./pages/Profile";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 //import Header from "./components/Header";
-import Footer from "./components/Footer";
+//import Footer from "./components/Footer";
 import PrivateRoute from "./components/PrivateRoute";
 import BreathingGame from "./pages/BreathingGame";
 import Community from "./pages/CommunityPage";
@@ -123,7 +123,7 @@ export default function App() {
         <Route path="/payment" element={<PaymentPage />} />
       </Routes>
       
-      <Footer />
+      
       <FloatingChatbot iconSrc="/chatbot.png"/>
     </BrowserRouter>
   );

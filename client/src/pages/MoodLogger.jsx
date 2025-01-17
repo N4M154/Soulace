@@ -363,6 +363,7 @@ import {
 import { useState } from "react";
 import { Bar, Radar } from "react-chartjs-2";
 import Swal from "sweetalert2";
+import Footer from "../components/Footer.jsx";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
 
@@ -790,6 +791,8 @@ const MoodLogger = () => {
             )}
           </div>
         </div>
+        
+        <Footer></Footer>
       </div>
     </div>
   );

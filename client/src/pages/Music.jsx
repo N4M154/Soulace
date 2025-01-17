@@ -240,8 +240,11 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useRef, useState } from "react";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
+
+
 
 const featuredTracks = [
   {
@@ -407,8 +410,8 @@ export default function MusicRecommendation() {
                     Let your emotions guide you to the perfect soundtrack.
                     Experience music that resonates with your every mood.
                   </p>
-                  <div className="flex flex-wrap gap-4">
-                    <motion.button
+                  <div className="flex flex-wrap gap-4 ">
+                    {/* <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={connectSpotify}
@@ -416,17 +419,13 @@ export default function MusicRecommendation() {
                     >
                       <Music className="w-5 h-5" />
                       Connect with Spotify
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="bg-white hover:bg-gray-50 text-teal-600 px-8 py-4 rounded-xl font-semibold flex items-center gap-2 shadow-lg"
-                    >
-                      <Headphones className="w-5 h-5" />
-                      Start Listening
-                    </motion.button>
+                    </motion.button> */}
+                
+                <div className="text-2xl italic text-white">Start Listening</div>
+
+                               
                   </div>
-                </motion.div>
+                  </motion.div> 
               </div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -628,7 +627,8 @@ export default function MusicRecommendation() {
             </motion.div>
           )}
         </div>
+   <Footer></Footer>
       </div>
-    </div>
+  </div>
   );
 }

@@ -152,8 +152,10 @@ import { faMedal } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
+import Footer from "../components/Footer.jsx";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
+
 
 const Achievements: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(true);
@@ -269,6 +271,8 @@ const Achievements: React.FC = () => {
             ))}
           </div>
         </motion.section>
+     
+<Footer></Footer>
       </div>
     </div>
   );

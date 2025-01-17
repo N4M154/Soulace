@@ -103,8 +103,11 @@
 //--------------------------------------------------------------------
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.jsx";
 import SideButtons from "../components/SideButtons";
+
+
 
 const SubscribePage = () => {
   const navigate = useNavigate();
@@ -214,7 +217,8 @@ const SubscribePage = () => {
           </div>
         </div>
       
-      {/* Footer */}
+    
+     <Footer></Footer>
 
     </div>
     </div>

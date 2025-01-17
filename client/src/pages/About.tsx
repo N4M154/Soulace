@@ -164,12 +164,19 @@
 //   );
 // };
 
+
+
+
+
+
 // export default AboutPage;
 
 
 import { useState } from "react";
+import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.jsx";
 import SideButtons from "../components/SideButtons.jsx";
+
 
 type Developer = {
   name: string;
@@ -325,6 +332,8 @@ const AboutPage = () => {
             </section>
           </div>
         </div>
+        
+<Footer></Footer>
       </div>
     </div>
   );

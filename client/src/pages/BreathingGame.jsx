@@ -374,8 +374,11 @@
 //-------------------------------------------------------------------------------------
 import { Brain, Mic, MicOff, Moon, Pencil, Sparkles, Sun, Wind } from 'lucide-react';
 import React, { useState } from 'react';
+import Footer from "../components/Footer.jsx";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
+
+
 
 // Journey Logger component (previously Mood Tracker)
 const JourneyLogger = () => {
@@ -780,12 +783,15 @@ const GameSelector = () => {
               </div>
             </div>
           </div>
+      
+<Footer></Footer>
         </div>
-      </div>
 
-      <footer className="bg-white border-t border-gray-100 py-6 text-center">
-       
-      </footer>
+
+      </div>
+  
+
+     
     </div>
     
   );

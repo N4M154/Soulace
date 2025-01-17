@@ -208,8 +208,10 @@
 //-----------------------------------------------------------------------------------
 
 import { useEffect, useState } from "react";
+import Footer from "../components/Footer.jsx";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
+
 
 const MentalHealthContent = () => {
   const [articles, setArticles] = useState([]);
@@ -398,6 +400,8 @@ const MentalHealthContent = () => {
             </div>
           </section>
         </div>
+          
+        <Footer></Footer>
       </div>
     </div>
   );

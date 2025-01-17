@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import MoodTimeline from "./MoodTimeline";
-import SideButtons from "../components/SideButtons";
-import Header from "../components/Header";
 import { Groq } from "groq-sdk"; // Import Groq SDK
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import Footer from "../components/Footer.jsx";
+import Header from "../components/Header";
+import SideButtons from "../components/SideButtons";
+import MoodTimeline from "./MoodTimeline";
+
 
 const DailyJournal = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -368,6 +370,8 @@ No extra keys, no additional formatting.`,
             </div>
           </div>
         </div>
+        
+        <Footer></Footer>
       </div>
     </div>
   );

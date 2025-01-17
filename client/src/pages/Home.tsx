@@ -15,8 +15,10 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import Footer from "../components/Footer.jsx";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
+
 
 const services = [
   {
@@ -500,6 +502,8 @@ export default function Home() {
             </div>
           </motion.section>
           </div>
+        
+          <Footer></Footer>
         </div>
       </div>
     

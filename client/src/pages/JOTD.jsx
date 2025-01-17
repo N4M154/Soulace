@@ -132,8 +132,10 @@
 import { useState } from "react";
 import { FaLaugh, FaSpinner } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import Footer from "../components/Footer.jsx";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
+
 
 const JokeOfTheDay = () => {
   const [joke, setJoke] = useState("");
@@ -205,6 +207,8 @@ const JokeOfTheDay = () => {
             {loading ? <FaSpinner className="animate-spin" /> : "Tell Me a Joke!"}
           </button>
         </div>
+        
+        <Footer></Footer>
       </div>
     </div>
   

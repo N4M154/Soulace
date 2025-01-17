@@ -9,8 +9,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Heart, Image as ImageIcon, PenSquare, Send, ThumbsUp, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.jsx";
 import SideButtons from "../components/SideButtons.jsx";
+
 
 const CommunityPage = () => {
   const [blogs, setBlogs] = useState([]);
@@ -353,6 +355,8 @@ const CommunityPage = () => {
             ))}
           </div>
         </div>
+          
+        <Footer></Footer>
       </div>
     </div>
   );

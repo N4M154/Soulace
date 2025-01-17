@@ -7,8 +7,10 @@ import axios from "axios";
 import { Brain, Heart, Shield } from 'lucide-react';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import Footer from "../components/Footer.jsx";
 import Header from "../components/Header"; // Ensure Header component is correctly imported
 import SideButtons from "../components/SideButtons";
+
 
 const MentalHealthForm = () => {
   const [formData, setFormData] = useState({
@@ -472,6 +474,8 @@ const MentalHealthForm = () => {
             </div>
           )}
         </div>
+          
+        <Footer></Footer>
       </div>
     </div>
   );

@@ -23,7 +23,9 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import Footer from "../components/Footer.jsx";
 import Header from "../components/Header";
+
 import SideButtons from "../components/SideButtons";
 import { app } from "../firebase";
 import {
@@ -267,6 +269,8 @@ const ProfileAnalytics = () => {
           </div>
         </div>
       </div>
+        
+      <Footer></Footer>
     </div>
     </div>
   
