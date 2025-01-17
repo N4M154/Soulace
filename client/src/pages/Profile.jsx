@@ -168,7 +168,7 @@ const ProfileAnalytics = () => {
 
         <div className="flex flex-col bg-gray-50 p-8 rounded-lg shadow-md">
           <Link
-    to="/analytics"
+    to="/editprofile"
     className="ml-auto flex gap-2 text-black"
   >
     {/* Pencil Icon */}
