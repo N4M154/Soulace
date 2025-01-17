@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer.jsx";
 
 const images = [
   {
@@ -786,6 +787,7 @@ Discover Features Designed Just for You
         <FAQ />
       </main>
       <Foooter />
+      <Footer></Footer>
     </div>
   );
 }
