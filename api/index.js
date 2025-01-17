@@ -15,19 +15,23 @@ dotenv.config();
 
 // Enable CORS for frontend access
 const app = express();
-app.use(cors({
-  origin: "https://localhost:3000", // Frontend origin
-  credentials: true, // Allow credentials (cookies)
-}));
+app.use(
+  cors({
+    origin: "https://localhost:3000", // Frontend origin
+    credentials: true, // Allow credentials (cookies)
+  })
+);
 
 app.options("*", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", req.headers.origin || "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS"
+  );
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.sendStatus(200);
 });
-
 
 // MongoDB connection
 mongoose
@@ -71,7 +75,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api/blog", blogRoutes); // Blog routes
 app.use("/api/user", userRoutes); // User routes
 app.use("/api/auth", authRoutes); // Auth routes
-app.use("/api/journal",journalRoutes); // Journal routes
+app.use("/api/journal", journalRoutes); // Journal routes
 app.use("/api/music", musicRoutes); // Music routes
 
 // Serve static files (React frontend)
@@ -94,7 +98,6 @@ app.use((err, req, res, next) => {
 });
 
 app.use("/api/mood-logs", MoodLogRoutes); //mood log routes
-
 
 // Start the server
 app.listen(3000, () => {

@@ -7,7 +7,6 @@
 //   const [videos, setVideos] = useState([]);
 //   const [loadingArticles, setLoadingArticles] = useState(false);
 //   const [loadingVideos, setLoadingVideos] = useState(false);
-  
 
 //   const fetchArticles = async () => {
 //     setLoadingArticles(true);
@@ -66,7 +65,7 @@
 //       style={{ marginLeft: isExpanded ? "260px" : "80px" }}
 //     >
 //       <Header />
-        
+
 //         <div style={{ fontFamily: "Arial, sans-serif", backgroundColor: "white", padding: "20px" }}>
 //           <div style={{ maxWidth: "2000px" }}>
 //             <div style={{ backgroundColor: "#d2e9d9", padding: "10px", borderRadius: "5px", marginBottom: "20px" }}>
@@ -198,12 +197,11 @@
 //         </div>
 //       </div>
 //     </div>
-    
+
 //   );
 // };
 
 // export default MentalHealthContent;
-
 
 //-----------------------------------------------------------------------------------
 
@@ -228,7 +226,9 @@ const MentalHealthContent = () => {
       );
       const data = await response.json();
       if (data.articles && data.articles.length > 0) {
-        const randomArticles = data.articles.sort(() => 0.5 - Math.random()).slice(0, 3);
+        const randomArticles = data.articles
+          .sort(() => 0.5 - Math.random())
+          .slice(0, 3);
         setArticles(randomArticles);
       } else {
         setArticles([]);
@@ -275,7 +275,7 @@ const MentalHealthContent = () => {
         style={{ marginLeft: isExpanded ? "260px" : "80px" }}
       >
         <Header />
-        
+
         <div className="p-6 font-sans">
           {/* Articles Section */}
           <section className="mb-12">
@@ -284,13 +284,16 @@ const MentalHealthContent = () => {
                 Discover the Power of Reading
               </h1>
               <p className="text-gray-600 text-center text-lg">
-                Reading can help relax your mind, reduce stress, and improve mental well-being.
+                Reading can help relax your mind, reduce stress, and improve
+                mental well-being.
               </p>
             </div>
 
             {loadingArticles ? (
               <div className="flex justify-center items-center h-40">
-                <div className="animate-pulse text-lg text-gray-600">Loading articles...</div>
+                <div className="animate-pulse text-lg text-gray-600">
+                  Loading articles...
+                </div>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -319,8 +322,18 @@ const MentalHealthContent = () => {
                         className="inline-flex items-center text-teal-800 hover:text-teal-700 font-medium"
                       >
                         Read more
-                        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        <svg
+                          className="w-4 h-4 ml-2"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          />
                         </svg>
                       </a>
                     </div>
@@ -346,13 +359,16 @@ const MentalHealthContent = () => {
                 Explore the World of Videos
               </h1>
               <p className="text-gray-600 text-center text-lg">
-                Videos can provide inspiration, practical tips, and insights to boost your mental well-being.
+                Videos can provide inspiration, practical tips, and insights to
+                boost your mental well-being.
               </p>
             </div>
 
             {loadingVideos ? (
               <div className="flex justify-center items-center h-40">
-                <div className="animate-pulse text-lg text-gray-600">Loading videos...</div>
+                <div className="animate-pulse text-lg text-gray-600">
+                  Loading videos...
+                </div>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -380,8 +396,18 @@ const MentalHealthContent = () => {
                         className="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-medium"
                       >
                         Watch now
-                        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        <svg
+                          className="w-4 h-4 ml-2"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          />
                         </svg>
                       </a>
                     </div>
