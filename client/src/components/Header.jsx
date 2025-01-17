@@ -142,7 +142,7 @@ export default function Header() {
       to="/about"
       className="text-teal-700 hover:text-teal-500 transition duration-300 font-semibold mt-2"
     >
-      About
+      About Us
     </Link>
   )}
 

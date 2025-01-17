@@ -160,7 +160,7 @@ function App() {
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-2">
                   <Sparkles className="h-6 w-6 text-teal-500" />
-                  <h2 className="text-2xl font-bold text-gray-800">Joke of the Day</h2>
+                  <h2 className=" text-2xl font-bold text-gray-800">Joke of the Day</h2>
                 </div>
                 <RefreshCw 
                   className={`h-6 w-6 text-teal-500 cursor-pointer hover:rotate-180 transition-transform duration-500 ${loading ? 'animate-spin' : ''}`}

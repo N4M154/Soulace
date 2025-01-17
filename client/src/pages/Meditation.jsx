@@ -1,14 +1,23 @@
-import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer.jsx";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
-import Footer from "../components/Footer.jsx";
+
+
 const MeditationPage = ({ currentUser }) => {
+  const [isExpanded, setIsExpanded] = useState(true);
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 flex flex-col items-center">
+    <div className="flex min-h-screen w-full">
+    <SideButtons/>
+    <div
+      id="main-content"
+      className="flex-1 transition-all duration-300 min-h-screen"
+      style={{
+        marginLeft: isExpanded ? "260px" : "80px",
+      }}
+    >
       <Header />
-      {/* Side Buttons */}
-      <SideButtons />
 
       {/* Main Content */}
       <main className="flex flex-col items-center mt-12 mb-48">
@@ -56,6 +65,7 @@ const MeditationPage = ({ currentUser }) => {
       </main>
        <Footer></Footer>
     </div>
+    </div>
   );
 };
 
@@ -63,6 +73,6 @@ export default MeditationPage;
 
 
 
-//changed the name : swirl to Spiral burst , switch to Flip Flick and break to Pulse Pop
+
 
 
