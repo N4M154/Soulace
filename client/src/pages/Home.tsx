@@ -386,7 +386,7 @@ export default function Home() {
                 Recent Journal Entries
               </h2>
               <button
-                onClick={() => navigate("/journal")}
+                onClick={() => navigate("/daily-journal")}
                 className="text-teal-600 hover:text-teal-700 font-medium"
               >
                 View All

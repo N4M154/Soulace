@@ -509,7 +509,7 @@ const MoodLogger = () => {
   };
 
   const handleNext = () => {
-    if (currentStep < questions.length - 1) {
+    if (currentStep < questions.length - 1 ) {
       setCurrentStep(prev => prev + 1);
     }
   };
@@ -524,7 +524,7 @@ const MoodLogger = () => {
     const inputData = [
       {
         role: "system",
-        content: "You are a mental health analyst. Based on the provided mood and sleep data, provide a concise analysis in the following format: 1. A numerical rating between 1-10 (where 1 is poor and 10 is excellent) 2. A brief, empathetic 2-3 sentence explanation of the rating that acknowledges the user's current state and offers gentle encouragement."
+        content: "You are a mental health analyst. Based on the provided mood and sleep data, provide a concise analysis in the following format: 1. A numerical rating between 1-10 (where 1 is poor and 10 is excellent) 2. A brief, empathetic 2-3 sentence explanation of the rating that acknowledges the user's current state and offers gentle encouragement.Do not just summerize the inputs , give me a persinalized recommendation on mental well being based on the given inputs."
       },
       {
         role: "user",

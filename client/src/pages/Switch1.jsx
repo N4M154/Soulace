@@ -116,13 +116,13 @@
 
 
 // DotsGrid.jsx
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
 
 const DotsGrid = () => {
   const [switchStates, setSwitchStates] = useState(
-    Array.from({ length: 50 }, () => false)
+    Array.from({ length: 15 }, () => false)
   );
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
@@ -145,7 +145,7 @@ const DotsGrid = () => {
 
   const handleStart = () => {
     setStartTime(new Date());
-    setSwitchStates(Array.from({ length: 50 }, () => false));
+    setSwitchStates(Array.from({ length: 15 }, () => false));
     setEndTime(null);
     setShowModal(false);
     setDuration(0);
