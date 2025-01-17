@@ -907,14 +907,14 @@ function StatsSection() {
       delay: 0.1 
     },
     { 
-      label: "Deep Breaths Taken Together", 
-      value: "10M+", 
+      label: "Availability", 
+      value: "24/7", 
       color: "from-purple-500 to-purple-300", 
       delay: 0.2 
     },
     { 
-      label: "Happy Minds Engaged", 
-      value: "1K+", 
+      label: "User Experience", 
+      value: "9/10", 
       color: "from-pink-500 to-pink-300", 
       delay: 0.3 
     },
