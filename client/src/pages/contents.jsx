@@ -216,50 +216,13 @@ const MentalHealthContent = () => {
   const [loadingVideos, setLoadingVideos] = useState(false);
   const [isExpanded, setIsExpanded] = useState(true);
 
-  // const fetchArticles = async () => {
-  //   setLoadingArticles(true);
-  //   try {
-  //     const response = await fetch(
-  //       "https://newsapi.org/v2/everything?q=mental%20health&apiKey=690c534bd52c4d1e8353e4c34b64eb97"
-  //     );
-  //     const data = await response.json();
-  //     if (data.articles && data.articles.length > 0) {
-  //       const randomArticles = data.articles
-  //         .sort(() => 0.5 - Math.random())
-  //         .slice(0, 3);
-  //       setArticles(randomArticles);
-  //     } else {
-  //       setArticles([]);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching articles:", error);
-  //     setArticles([]);
-  //   } finally {
-  //     setLoadingArticles(false);
-  //   }
-  // };
-
   const fetchArticles = async () => {
     setLoadingArticles(true);
     try {
       const response = await fetch(
-        "https://newsapi.org/v2/everything?q=mental%20health&apiKey=690c534bd52c4d1e8353e4c34b64eb97",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+        "https://newsapi.org/v2/everything?q=mental%20health&apiKey=690c534bd52c4d1e8353e4c34b64eb97"
       );
-
-      // Check for non-200 HTTP response
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
       const data = await response.json();
-
-      // Check if articles exist
       if (data.articles && data.articles.length > 0) {
         const randomArticles = data.articles
           .sort(() => 0.5 - Math.random())
@@ -270,7 +233,7 @@ const MentalHealthContent = () => {
       }
     } catch (error) {
       console.error("Error fetching articles:", error);
-      setArticles([]); // Fallback to an empty list
+      setArticles([]);
     } finally {
       setLoadingArticles(false);
     }
