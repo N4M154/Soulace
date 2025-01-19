@@ -174,7 +174,7 @@ const SubscribePage = () => {
             <div className="flex flex-col items-center border border-teal-400 shadow-xl rounded-xl p-8 bg-gradient-to-br from-teal-200 to-teal-50">
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Monthly Plan</h3>
               <p className="text-gray-700 text-center mb-6">
-                Unlock all premium features for just $10/month.
+                Unlock all premium features for just ৳200/month.
               </p>
               <ul className="text-gray-700 space-y-4 text-left">
                 <li>✔️ Personalized Content Recommendations</li>
@@ -183,7 +183,7 @@ const SubscribePage = () => {
                 <li>✔️ Track Your Progress</li>
                 <li>✔️ Connect with a Specialist</li>
               </ul>
-              <div className="text-teal-800 text-3xl font-bold mt-6">$10<span className="text-lg font-medium">/month</span></div>
+              <div className="text-teal-800 text-3xl font-bold mt-6">৳200<span className="text-lg font-medium">/month</span></div>
               <Link
                 to="/payment"
                 className="mt-6 bg-teal-600 text-white py-2 px-6 rounded-lg hover:bg-teal-700 transition duration-300"
@@ -196,7 +196,7 @@ const SubscribePage = () => {
             <div className="flex flex-col items-center border border-teal-400 shadow-xl rounded-xl p-8 bg-gradient-to-br from-yellow-200 to-yellow-50">
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Yearly Plan</h3>
               <p className="text-gray-700 text-center mb-6">
-                Save 20% with our yearly subscription at $96/year.
+                Save 20% with our yearly subscription at ৳2000/year.
               </p>
               <ul className="text-gray-700 space-y-4 text-left">
                 <li>✔️ Personalized Content Recommendations</li>
@@ -205,7 +205,7 @@ const SubscribePage = () => {
                 <li>✔️ Track Your Progress</li>
                 <li>✔️ Connect with a Specialist</li>
               </ul>
-              <div className="text-yellow-800 text-3xl font-bold mt-6">$96<span className="text-lg font-medium">/year</span></div>
+              <div className="text-yellow-800 text-3xl font-bold mt-6">৳2000<span className="text-lg font-medium">/year</span></div>
               <Link
                 to="/payment"
                 className="mt-6 bg-yellow-600 text-white py-2 px-6 rounded-lg hover:bg-yellow-700 transition duration-300"
