@@ -366,6 +366,7 @@ import Swal from "sweetalert2";
 import Footer from "../components/Footer.jsx";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
+import ReactMarkdown from "react-markdown";
 
 ChartJS.register(
   RadialLinearScale,
@@ -778,7 +779,7 @@ const MoodLogger = () => {
           </div>
           {recommendation && (
             <p className="text-gray-700 dark:text-[#f5f5f5] text-lg leading-relaxed text-center">
-              {recommendation}
+              <ReactMarkdown>{recommendation}</ReactMarkdown>
             </p>
           )}
         </div>
