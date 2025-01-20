@@ -672,6 +672,14 @@ const MoodLogger = () => {
     plugins: {
       legend: {
         position: "bottom",
+        labels: {
+          padding: 20, // Adds spacing around legend items
+        },
+      },
+    },
+    layout: {
+      padding: {
+        bottom: 20, // Adds extra margin below the legend
       },
     },
   };
@@ -748,8 +756,8 @@ const MoodLogger = () => {
           </h3>
           <Radar data={moodChartData} options={chartOptions} />
         </div>
-        <div className="bg-white p-6 rounded-xl shadow-lg h-[400px]">
-          <h3 className="text-xl font-semibold mb-4 text-gray-800 text-center">
+        <div className="bg-white dark:bg-transparent border dark:border-teal-700 p-6 rounded-xl shadow-lg dark:shadow-black h-[400px]">
+          <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-300 text-center">
             Sleep Analysis
           </h3>
           <Bar data={sleepChartData} options={chartOptions} />
@@ -757,19 +765,19 @@ const MoodLogger = () => {
       </div>
 
       {mentalHealthRating !== null && (
-        <div className="bg-white p-8 rounded-xl shadow-lg">
+        <div className="bg-white dark:bg-transparent dark:border dark:border-teal-700 p-8 rounded-xl shadow-lg">
           <div className="flex items-center justify-center mb-6">
             <div className="relative">
-              <div className="text-6xl font-bold text-teal-500">
+              <div className="text-6xl font-bold text-teal-500 dark:text-teal-300">
                 {mentalHealthRating}
               </div>
-              <div className="text-gray-500 text-sm absolute -right-4 top-2">
+              <div className="text-gray-500 dark:text-white text-sm absolute -right-4 top-2">
                 /10
               </div>
             </div>
           </div>
           {recommendation && (
-            <p className="text-gray-700 text-lg leading-relaxed text-center">
+            <p className="text-gray-700 dark:text-[#f5f5f5] text-lg leading-relaxed text-center">
               {recommendation}
             </p>
           )}
