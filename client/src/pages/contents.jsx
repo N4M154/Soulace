@@ -221,7 +221,9 @@ const MentalHealthContent = () => {
     setLoadingArticles(true);
     try {
       const response = await fetch(
-        "https://newsapi.org/v2/everything?q=mental%20health&apiKey=690c534bd52c4d1e8353e4c34b64eb97"
+        `https://newsapi.org/v2/everything?q=mental%20health&apiKey=${
+          import.meta.env.VITE_NEWS_API_KEY
+        }`
       );
       const data = await response.json();
       if (data.articles && data.articles.length > 0) {
