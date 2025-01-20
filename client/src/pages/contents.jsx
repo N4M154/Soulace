@@ -246,7 +246,9 @@ const MentalHealthContent = () => {
     setLoadingVideos(true);
     try {
       const response = await fetch(
-        "https://www.googleapis.com/youtube/v3/search?part=snippet&q=mental%20health&type=video&maxResults=3&key=AIzaSyCkLns1-totD5VbO3sRwUHFwDspAKCLyN4"
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&q=mental%20health&type=video&maxResults=3&key=${
+          import.meta.env.VITE_GOOGLE_UTUBE_API_KEY
+        }`
       );
       const data = await response.json();
       if (data.items && data.items.length > 0) {
