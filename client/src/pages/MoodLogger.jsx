@@ -367,6 +367,7 @@ import Footer from "../components/Footer.jsx";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
 import ReactMarkdown from "react-markdown";
+import { color } from "framer-motion";
 
 ChartJS.register(
   RadialLinearScale,
@@ -663,7 +664,7 @@ const MoodLogger = () => {
           color: "rgba(45, 212, 191, 0.1)",
         },
         pointLabels: {
-          color: "#374151",
+          color: "gray",
         },
         ticks: {
           backdropColor: "transparent",
