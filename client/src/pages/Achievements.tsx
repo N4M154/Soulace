@@ -19,13 +19,13 @@
 //   };
 
 //   const allBadges = [
-    // "Mood Master",
-    // "Sleep Star",
-    // "Mindful Explorer",
-    // "Community Connector",
-    // "Breathing Champion",
-    // "Gratitude Guru",
-    // "Stress Buster",
+// "Mood Master",
+// "Sleep Star",
+// "Mindful Explorer",
+// "Community Connector",
+// "Breathing Champion",
+// "Gratitude Guru",
+// "Stress Buster",
 //   ];
 
 //   const isBadgeEarned = (badge) => {
@@ -156,11 +156,12 @@ import Footer from "../components/Footer.jsx";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
 
-
 const Achievements: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(true);
 
-  const mockUserData: { achievements: { title: string; description: string; progress: number }[] } = {
+  const mockUserData: {
+    achievements: { title: string; description: string; progress: number }[];
+  } = {
     achievements: [
       {
         title: "Mood Master",
@@ -204,14 +205,15 @@ const Achievements: React.FC = () => {
       },
       {
         title: "Energy Enthusiast",
-        description: "Kept a high energy level with consistent exercise for two weeks.",
+        description:
+          "Kept a high energy level with consistent exercise for two weeks.",
         progress: 85,
       },
     ],
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gray-50 dark:bg-[#2c2c2c]">
       <SideButtons />
       <div
         id="main-content"
@@ -220,18 +222,27 @@ const Achievements: React.FC = () => {
       >
         <Header />
         {/* Hero Section */}
-        <div className="relative overflow-hidden bg-gradient-to-r from-teal-600 to-white text-teal-900 text-white py-16 px-8 rounded-2xl shadow-lg mx-4 mt-6">
+        <div className="relative overflow-hidden bg-gradient-to-r from-teal-600 dark:from-teal-950 to-white dark:to-teal-700 text-white py-16 px-8 rounded-2xl shadow-xl dark:shadow-black mx-4 mt-6">
           <div className="relative z-10">
             <h1 className="text-5xl font-bold mb-4 leading-tight">
-              Celebrate Your Wins<br />Fuel Your Next Victory
+              Celebrate Your Wins
+              <br />
+              Fuel Your Next Victory
             </h1>
             <p className="text-xl text-white max-w-2xl">
-              Every achievement is a step forward. Let your progress inspire your next challenge.
+              Every achievement is a step forward. Let your progress inspire
+              your next challenge.
             </p>
           </div>
           <div className="absolute right-0 top-0 w-1/3 h-full opacity-10">
             {/* Placeholder for an illustrative icon */}
-            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <svg
+              className="w-full h-full"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+            >
               <circle cx="12" cy="12" r="10" stroke-width="2" />
             </svg>
           </div>
@@ -242,37 +253,40 @@ const Achievements: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           className="mb-12"
         >
-          <h2 className="text-2xl font-bold text-teal-800 mb-6">
-          
-          </h2>
+          <h2 className="text-2xl font-bold text-teal-800 mb-6"></h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {mockUserData.achievements.map((achievement, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-xl shadow-sm border border-teal-100"
+                className="bg-white dark:bg-teal-950/20 p-6 rounded-xl shadow-lg dark:shadow-black border border-teal-100 dark:border-teal-700"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <FontAwesomeIcon icon={faMedal} className="text-teal-500 text-2xl" />
-                  <h3 className="font-semibold text-teal-800">
+                  <FontAwesomeIcon
+                    icon={faMedal}
+                    className="text-teal-500 text-2xl"
+                  />
+                  <h3 className="font-semibold text-teal-800 dark:text-teal-300">
                     {achievement.title}
                   </h3>
                 </div>
-                <p className="text-gray-600 mb-4">{achievement.description}</p>
+                <p className="text-gray-600 dark:text-gray-200 mb-4">
+                  {achievement.description}
+                </p>
                 <div className="w-full bg-gray-200 rounded-full h-2">
                   <div
                     className="bg-teal-500 h-2 rounded-full"
                     style={{ width: `${achievement.progress}%` }}
                   />
                 </div>
-                <p className="text-sm text-gray-500 mt-2">
+                <p className="text-sm text-gray-500 dark:text-gray-300 mt-2">
                   {achievement.progress}% completed
                 </p>
               </div>
             ))}
           </div>
         </motion.section>
-     
-<Footer></Footer>
+
+        <Footer></Footer>
       </div>
     </div>
   );

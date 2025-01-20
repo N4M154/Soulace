@@ -210,7 +210,6 @@ import Footer from "../components/Footer.jsx";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
 
-
 const MentalHealthContent = () => {
   const [articles, setArticles] = useState([]);
   const [videos, setVideos] = useState([]);
@@ -267,7 +266,7 @@ const MentalHealthContent = () => {
   }, []);
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gray-50 dark:bg-[#2c2c2c]">
       <SideButtons />
       <div
         id="main-content"
@@ -279,11 +278,11 @@ const MentalHealthContent = () => {
         <div className="p-6 font-sans">
           {/* Articles Section */}
           <section className="mb-12">
-            <div className="bg-gradient-to-r from-teal-500 to-teal-30 rounded-xl p-8 mb-8 shadow-sm">
+            <div className="bg-gradient-to-r from-teal-500 dark:from-teal-950 dark:to-teal-600 to-teal-30 rounded-xl p-8 mb-8 shadow-sm dark:shadow-black">
               <h1 className="text-3xl font-bold text-gray-800 text-center mb-3">
                 Discover the Power of Reading
               </h1>
-              <p className="text-gray-600 text-center text-lg">
+              <p className="text-gray-600 dark:text-white text-center text-lg">
                 Reading can help relax your mind, reduce stress, and improve
                 mental well-being.
               </p>
@@ -291,7 +290,7 @@ const MentalHealthContent = () => {
 
             {loadingArticles ? (
               <div className="flex justify-center items-center h-40">
-                <div className="animate-pulse text-lg text-gray-600">
+                <div className="animate-pulse text-lg text-gray-600 dark:text-white">
                   Loading articles...
                 </div>
               </div>
@@ -300,7 +299,7 @@ const MentalHealthContent = () => {
                 {articles.map((article, index) => (
                   <div
                     key={index}
-                    className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+                    className="bg-white dark:bg-teal-950 rounded-xl overflow-hidden shadow-lg dark:shadow-black hover:shadow-xl dark:hover:shadow-black transition-shadow duration-300"
                   >
                     {article.urlToImage && (
                       <div className="relative h-48 overflow-hidden">
@@ -312,14 +311,14 @@ const MentalHealthContent = () => {
                       </div>
                     )}
                     <div className="p-6">
-                      <h3 className="text-xl font-semibold text-gray-800 mb-4 line-clamp-2">
+                      <h3 className="text-xl font-semibold text-gray-800 dark:text-[#f5f5f5] mb-4 line-clamp-2">
                         {article.title}
                       </h3>
                       <a
                         href={article.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-teal-800 hover:text-teal-700 font-medium"
+                        className="inline-flex items-center text-teal-800 dark:text-teal-600 hover:text-teal-700 dark:hover:text-teal-500 font-medium"
                       >
                         Read more
                         <svg
@@ -345,7 +344,7 @@ const MentalHealthContent = () => {
             <div className="text-center mt-8">
               <button
                 onClick={fetchArticles}
-                className="bg-teal-50 text-teal-600 px-8 py-3 rounded-full font-semibold hover:bg-teal-100 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2"
+                className="bg-teal-50 dark:bg-teal-950 text-teal-600 dark:text-teal-400 px-8 py-3 rounded-full font-semibold dark:border dark:border-teal-700 hover:bg-teal-100 dark:hover:bg-teal-100 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2"
               >
                 Load More Articles
               </button>
@@ -354,11 +353,11 @@ const MentalHealthContent = () => {
 
           {/* Videos Section */}
           <section>
-            <div className="bg-gradient-to-r from-blue-100 to-indigo-50 rounded-xl p-8 mb-8 shadow-sm">
-              <h1 className="text-3xl font-bold text-gray-800 text-center mb-3">
+            <div className="bg-gradient-to-r from-blue-100 dark:from-black dark:to-blue-950 to-indigo-50 rounded-xl p-8 mb-8 shadow-sm dark:shadow-black">
+              <h1 className="text-3xl font-bold text-gray-800 dark:text-white text-center mb-3">
                 Explore the World of Videos
               </h1>
-              <p className="text-gray-600 text-center text-lg">
+              <p className="text-gray-600 dark:text-gray-300 text-center text-lg">
                 Videos can provide inspiration, practical tips, and insights to
                 boost your mental well-being.
               </p>
@@ -366,7 +365,7 @@ const MentalHealthContent = () => {
 
             {loadingVideos ? (
               <div className="flex justify-center items-center h-40">
-                <div className="animate-pulse text-lg text-gray-600">
+                <div className="animate-pulse text-lg text-gray-600 dark:text-white">
                   Loading videos...
                 </div>
               </div>
@@ -375,7 +374,7 @@ const MentalHealthContent = () => {
                 {videos.map((video, index) => (
                   <div
                     key={index}
-                    className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+                    className="bg-white dark:bg-black rounded-xl overflow-hidden shadow-lg dark:shadow-black hover:shadow-xl dark:hover:shadow-black transition-shadow duration-300"
                   >
                     <div className="relative h-48 overflow-hidden group">
                       <img
@@ -386,14 +385,14 @@ const MentalHealthContent = () => {
                       <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-opacity duration-300" />
                     </div>
                     <div className="p-6">
-                      <h3 className="text-xl font-semibold text-gray-800 mb-4 line-clamp-2">
+                      <h3 className="text-xl font-semibold text-gray-800 dark:text-blue-100 mb-4 line-clamp-2">
                         {video.snippet.title}
                       </h3>
                       <a
                         href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-medium"
+                        className="inline-flex items-center text-indigo-600 dark:text-indigo-400 dark:hover:text-indigo-300 hover:text-indigo-700 font-medium"
                       >
                         Watch now
                         <svg
@@ -419,14 +418,14 @@ const MentalHealthContent = () => {
             <div className="text-center mt-8">
               <button
                 onClick={fetchVideos}
-                className="bg-indigo-50 text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-indigo-100 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
+                className="bg-indigo-50 dark:bg-blue-950 dark:border dark:border-blue-700 text-indigo-600 px-8 py-3 rounded-full font-semibold dark:hover:bg-indigo-100 hover:bg-indigo-100 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
               >
                 Load More Videos
               </button>
             </div>
           </section>
         </div>
-          
+
         <Footer></Footer>
       </div>
     </div>

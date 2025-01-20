@@ -32,11 +32,6 @@
 
 // // export default ColorGrid;
 
-
-
-
-
-
 // // ColorGrid.jsx
 // import React, { useState } from "react";
 // import Header from "../components/Header";
@@ -46,7 +41,7 @@
 //   const boxSize = 400; // Define the size of the box
 //   const initialCircle = {
 //     id: "root",
-//     size: boxSize, 
+//     size: boxSize,
 //     position: { x: boxSize / 2, y: boxSize / 2 }, // Centered in the box
 //     color: "bg-[#005057]",
 //   };
@@ -151,7 +146,6 @@
 
 // export default ColorGrid;
 
-
 //----------------------------------------------------
 
 // ColorGrid.jsx
@@ -163,7 +157,7 @@ const ColorGrid = () => {
   const boxSize = 400; // Define the size of the box
   const initialCircle = {
     id: "root",
-    size: boxSize, 
+    size: boxSize,
     position: { x: boxSize / 2, y: boxSize / 2 }, // Centered in the box
     color: "bg-[#005057]",
   };
@@ -171,11 +165,19 @@ const ColorGrid = () => {
   const [circles, setCircles] = useState([initialCircle]);
   const [isCompleted, setIsCompleted] = useState(false);
 
-  const colors = ["bg-[#005057]", "bg-[#00777E]", "bg-[#4B3217]", "bg-[#785230]", "bg-[#AE9276]"];
+  const colors = [
+    "bg-[#005057]",
+    "bg-[#00777E]",
+    "bg-[#4B3217]",
+    "bg-[#785230]",
+    "bg-[#AE9276]",
+  ];
 
   const handleCircleClick = (circleId) => {
     setCircles((prevCircles) => {
-      const clickedCircle = prevCircles.find((circle) => circle.id === circleId);
+      const clickedCircle = prevCircles.find(
+        (circle) => circle.id === circleId
+      );
       if (!clickedCircle || clickedCircle.size <= 16) return prevCircles;
 
       const smallerSize = clickedCircle.size / 2;
@@ -231,15 +233,17 @@ const ColorGrid = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 flex flex-col items-center">
+    <div className="min-h-screen bg-white dark:bg-[#2c2c2c] flex flex-col items-center">
       <Header />
       {/* Side Buttons */}
       <SideButtons />
       {/* Main Content */}
       <main className="flex flex-col items-center">
-        <h1 className="text-3xl font-bold text-gray-700 mb-12">Colorful Circles</h1>
+        <h1 className="mt-20 text-3xl font-bold text-gray-700 dark:text-white mb-12">
+          Colorful Circles
+        </h1>
         <div
-          className="relative bg-gray-200 border border-gray-300 rounded-lg"
+          className="relative bg-gray-200 dark:bg-transparent border dark:border-transparent border-gray-300 rounded-lg"
           style={{ width: `${boxSize}px`, height: `${boxSize}px` }}
         >
           {circles.map((circle) => (
@@ -259,25 +263,30 @@ const ColorGrid = () => {
         </div>
 
         {isCompleted && (
-          <div className="mt-8 text-2xl font-bold text-green-600">Congratulations! You've completed the Pulse Pop!</div>
+          <div className="mt-8 text-2xl font-bold text-green-600 dark:text-teal-300">
+            Congratulations! You've completed the Pulse Pop!
+          </div>
         )}
       </main>
 
       {/* How to Play Section */}
-      <aside className="absolute right-0 top-60 p-4 w-64 bg-gray-50 shadow-md rounded-lg">
-        <h2 className="text-xl font-bold text-gray-700 mb-4">How to Play</h2>
-        <p className="text-gray-600 text-sm">
-          1. Click on a circle to split it into smaller circles.
-        </p>
-        <p className="text-gray-600 text-sm mt-2">
-          2. Keep clicking circles until all circles are reduced to the smallest size.
-        </p>
-        <p className="text-gray-600 text-sm mt-2">
-          3. The game is complete when all circles are at their smallest size.
-        </p>
-        <p className="text-gray-600 text-sm mt-2">
-          4. Try to complete the game as quickly as possible!
-        </p>
+      <aside className="absolute right-0 top-60 p-4 w-64 bg-gray-50 dark:bg-transparent shadow-lg dark:shadow-black rounded-lg border dark:border-teal-700">
+        <h2 className="text-xl font-bold text-gray-700 dark:text-white mb-4">
+          How to Play
+        </h2>
+        <ol className="text-gray-600 dark:text-gray-300 text-sm list-decimal list-inside">
+          <li>Click on a circle to split it into smaller circles.</li>
+          <li className="mt-2">
+            Keep clicking circles until all circles are reduced to the smallest
+            size.
+          </li>
+          <li className="mt-2">
+            The game is complete when all circles are at their smallest size.
+          </li>
+          <li className="mt-2">
+            Try to complete the game as quickly as possible!
+          </li>
+        </ol>
       </aside>
     </div>
   );

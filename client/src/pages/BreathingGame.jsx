@@ -1,4 +1,3 @@
-
 // import { Mic, MicOff, Moon, Sun } from 'lucide-react';
 // import React, { useState } from 'react';
 // import Header from "../components/Header.jsx";
@@ -13,9 +12,6 @@
 //   const [isTTSEnabled, setIsTTSEnabled] = useState(false);
 
 //   const synth = window.speechSynthesis;
-
-
-  
 
 //   const phases = [
 //     { name: 'Inhale', duration: 4000, color: 'from-[#005057] to-[#00777E]' },
@@ -89,7 +85,7 @@
 //   };
 
 //   return (
-     
+
 //     <div className="text-center">
 //       <h1 className="text-4xl font-bold mb-4">Breathing Exercise</h1>
 //       <p className="text-lg">Completed Cycles: {cycles}</p>
@@ -97,8 +93,8 @@
 //         {phases.map((p) => (
 //           <div
 //             key={p.name}
-//             className={`absolute top-0 left-0 w-full h-full rounded-full flex justify-center items-center shadow-lg transition-all duration-1000 ease-in-out 
-//               bg-gradient-to-br ${p.color} 
+//             className={`absolute top-0 left-0 w-full h-full rounded-full flex justify-center items-center shadow-lg transition-all duration-1000 ease-in-out
+//               bg-gradient-to-br ${p.color}
 //               ${phase === p.name ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
 //             style={{ zIndex: phase === p.name ? 10 : 0 }}
 //           >
@@ -207,7 +203,6 @@
 //     "I am aligned with the energy of abundance."
 // ];
 
-
 //   const [currentAffirmation, setCurrentAffirmation] = useState(affirmations[0]);
 
 //   const showNextAffirmation = () => {
@@ -231,7 +226,6 @@
 //     </div>
 //   );
 // };
-
 
 // const MemoryGame = () => {
 //   const [cards, setCards] = useState(shuffleCards());
@@ -316,8 +310,6 @@
 //   );
 // };
 
-
-
 // const GameSelector = () => {
 //   const [selectedGame, setSelectedGame] = useState("Breathing");
 
@@ -351,7 +343,7 @@
 //           >
 //             Affirmation
 //           </button>
-        
+
 //         </div>
 //         <div className="mt-8 flex-grow">
 //           {selectedGame === "Breathing" && <BreathingGame />}
@@ -369,47 +361,57 @@
 
 // export default GameSelector;
 
-
-
 //-------------------------------------------------------------------------------------
-import { Brain, Mic, MicOff, Moon, Pencil, Sparkles, Sun, Wind } from 'lucide-react';
-import React, { useState } from 'react';
+import {
+  Brain,
+  Mic,
+  MicOff,
+  Moon,
+  Pencil,
+  Sparkles,
+  Sun,
+  Wind,
+} from "lucide-react";
+import React, { useState } from "react";
 import Footer from "../components/Footer.jsx";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
 
-
-
 // Journey Logger component (previously Mood Tracker)
 const JourneyLogger = () => {
-  const [entry, setEntry] = useState('');
+  const [entry, setEntry] = useState("");
   const [entries, setEntries] = useState([]);
-  const [mood, setMood] = useState('');
+  const [mood, setMood] = useState("");
 
-  const moods = ['🌟 Inspired', '🌸 Peaceful', '💭 Reflective', '🌊 Overwhelmed', '🍃 Growing'];
+  const moods = [
+    "🌟 Inspired",
+    "🌸 Peaceful",
+    "💭 Reflective",
+    "🌊 Overwhelmed",
+    "🍃 Growing",
+  ];
 
   const addEntry = () => {
-    if (entry.trim() !== '') {
-      setEntries([
-        { text: entry, mood, timestamp: new Date() },
-        ...entries
-      ]);
-      setEntry('');
+    if (entry.trim() !== "") {
+      setEntries([{ text: entry, mood, timestamp: new Date() }, ...entries]);
+      setEntry("");
     }
   };
 
   return (
-    <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
-      <h3 className="text-2xl font-semibold mb-4 text-gray-800">Mindfulness Journal</h3>
+    <div className="bg-white dark:bg-[#2c2c2c] rounded-xl p-6 shadow-lg dark:shadow-black border border-gray-100 dark:border-teal-700">
+      <h3 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-300">
+        Mindfulness Journal
+      </h3>
       <div className="flex flex-wrap gap-2 mb-4">
         {moods.map((m) => (
           <button
             key={m}
             onClick={() => setMood(m)}
             className={`px-4 py-2 rounded-lg transition-all duration-300 ${
-              mood === m 
-                ? 'bg-teal-500 text-white shadow-lg scale-105' 
-                : 'bg-gray-50 hover:bg-gray-100 text-gray-700'
+              mood === m
+                ? "bg-teal-500 text-white shadow-lg scale-105"
+                : "bg-gray-50 dark:bg-gray-300 hover:bg-gray-100 dark:hover:bg-gray-50 text-gray-700 dark:text-black"
             }`}
           >
             {m}
@@ -421,7 +423,7 @@ const JourneyLogger = () => {
           value={entry}
           onChange={(e) => setEntry(e.target.value)}
           placeholder="Write your thoughts..."
-          className="w-full h-24 bg-gray-50 border border-gray-200 rounded-lg p-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500/50"
+          className="w-full h-24 bg-gray-50 dark:bg-gray-300 border-gray-200 rounded-lg p-3 text-gray-700 dark:text-black placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500/50"
         />
         <button
           onClick={addEntry}
@@ -433,14 +435,20 @@ const JourneyLogger = () => {
       </div>
       <div className="mt-6 space-y-4">
         {entries.map((item, idx) => (
-          <div key={idx} className="bg-gray-50 rounded-lg p-4 border border-gray-100">
+          <div
+            key={idx}
+            className="bg-gray-50 dark:bg-gray-300 rounded-lg p-4 border border-gray-100"
+          >
             <div className="flex justify-between items-start mb-2">
               <span className="text-lg">{item.mood}</span>
-              <span className="text-sm text-gray-500">
-                {item.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+              <span className="text-sm text-gray-500 dark:text-black">
+                {item.timestamp.toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
               </span>
             </div>
-            <p className="text-gray-700">{item.text}</p>
+            <p className="text-gray-700 dark:text-black">{item.text}</p>
           </div>
         ))}
       </div>
@@ -448,10 +456,9 @@ const JourneyLogger = () => {
   );
 };
 
-
 // Breathing Game component
 const BreathingGame = () => {
-  const [phase, setPhase] = useState('Inhale');
+  const [phase, setPhase] = useState("Inhale");
   const [progress, setProgress] = useState(0);
   const [cycles, setCycles] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -461,10 +468,10 @@ const BreathingGame = () => {
   const synth = window.speechSynthesis;
 
   const phases = [
-    { name: 'Inhale', duration: 4000, color: 'from-teal-400 to-teal-500' },
-    { name: 'Hold', duration: 4000, color: 'from-teal-500 to-teal-600' },
-    { name: 'Exhale', duration: 4000, color: 'from-teal-600 to-teal-700' },
-    { name: 'Rest', duration: 2000, color: 'from-teal-700 to-teal-800' },
+    { name: "Inhale", duration: 4000, color: "from-teal-400 to-teal-500" },
+    { name: "Hold", duration: 4000, color: "from-teal-500 to-teal-600" },
+    { name: "Exhale", duration: 4000, color: "from-teal-600 to-teal-700" },
+    { name: "Rest", duration: 2000, color: "from-teal-700 to-teal-800" },
   ];
 
   React.useEffect(() => {
@@ -483,7 +490,7 @@ const BreathingGame = () => {
       }
 
       interval = setInterval(() => {
-        currentProgress += (100 / (phases[currentPhase].duration / 100));
+        currentProgress += 100 / (phases[currentPhase].duration / 100);
         setProgress(currentProgress);
 
         if (currentProgress >= 100) {
@@ -507,7 +514,7 @@ const BreathingGame = () => {
   const togglePlayPause = () => setIsPlaying(!isPlaying);
   const resetGame = () => {
     setIsPlaying(false);
-    setPhase('Inhale');
+    setPhase("Inhale");
     setProgress(0);
     setCycles(0);
   };
@@ -519,16 +526,24 @@ const BreathingGame = () => {
   };
 
   return (
-    <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-100">
-      <h2 className="text-3xl font-bold mb-6 text-gray-800">Breathing Exercise</h2>
-      <p className="text-lg mb-4 text-gray-600">Completed Cycles: {cycles}</p>
+    <div className="bg-white dark:bg-[#2c2c2c] rounded-xl p-8 shadow-lg dark:shadow-black border border-gray-100 dark:border-teal-700">
+      <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-300">
+        Breathing Exercise
+      </h2>
+      <p className="text-lg mb-4 text-gray-600 dark:text-gray-300">
+        Completed Cycles: {cycles}
+      </p>
       <div className="relative w-80 h-80 mx-auto my-8">
         {phases.map((p) => (
           <div
             key={p.name}
             className={`absolute top-0 left-0 w-full h-full rounded-full flex justify-center items-center shadow-lg transition-all duration-1000 ease-in-out 
               bg-gradient-to-br ${p.color} 
-              ${phase === p.name ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+              ${
+                phase === p.name
+                  ? "opacity-100 scale-100"
+                  : "opacity-0 scale-90"
+              }`}
             style={{ zIndex: phase === p.name ? 10 : 0 }}
           >
             <p className="text-2xl font-bold text-white">{p.name}</p>
@@ -548,15 +563,15 @@ const BreathingGame = () => {
           onClick={togglePlayPause}
           className="px-6 py-3 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
-          {isPlaying ? 'Pause' : 'Play'}
+          {isPlaying ? "Pause" : "Play"}
         </button>
         <button
           onClick={resetGame}
-          className="px-6 py-3 bg-purple-500/80 text-white rounded-lg hover:bg-red-600/80 transition-all duration-300 shadow-lg hover:shadow-xl"
+          className="px-6 py-3 bg-purple-500/80 text-white rounded-lg hover:bg-purple-600/80 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
           Reset
         </button>
-        <button
+        {/* <button
           onClick={toggleDarkMode}
           className="px-6 py-3 bg-gray-700/80 text-white rounded-lg hover:bg-gray-800/80 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
@@ -567,12 +582,11 @@ const BreathingGame = () => {
           className="px-6 py-3 bg-teal-600/80 text-white rounded-lg hover:bg-teal-700/80 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
           {isTTSEnabled ? <MicOff size={18} /> : <Mic size={18} />}
-        </button>
+        </button> */}
       </div>
     </div>
   );
 };
-
 
 const AffirmationGame = () => {
   const affirmations = [
@@ -595,22 +609,29 @@ const AffirmationGame = () => {
     "I am a magnet for positivity and success.",
     "I am resilient and can handle life's challenges.",
     "I choose to see the good in every situation.",
-    "I am aligned with the energy of abundance."
+    "I am aligned with the energy of abundance.",
   ];
 
   const [currentAffirmation, setCurrentAffirmation] = useState(affirmations[0]);
 
   const showNextAffirmation = () => {
-    const nextIndex = (affirmations.indexOf(currentAffirmation) + 1) % affirmations.length;
+    const nextIndex =
+      (affirmations.indexOf(currentAffirmation) + 1) % affirmations.length;
     setCurrentAffirmation(affirmations[nextIndex]);
   };
 
   return (
-    <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-100">
-      <h2 className="text-3xl font-bold mb-6 text-gray-800">Daily Affirmations</h2>
-      <p className="text-lg mb-8 text-teal-900">Center yourself with positive affirmations:</p>
-      <div className="bg-white/5 rounded-xl p-8 border border-teal-500/20 mb-8 transform hover:scale-105 transition-all duration-300">
-        <p className="text-2xl font-medium text-teal-800">{currentAffirmation}</p>
+    <div className="bg-white dark:bg-[#2c2c2c] rounded-xl p-8 shadow-lg dark:shadow-black border border-gray-100 dark:border-teal-700">
+      <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-300">
+        Daily Affirmations
+      </h2>
+      <p className="text-lg mb-8 text-teal-900 dark:text-teal-500">
+        Center yourself with positive affirmations:
+      </p>
+      <div className="bg-white/5 dark:bg-transparent rounded-xl p-8 border border-teal-500/20 dark:border-teal-500 mb-8 transform hover:scale-105 transition-all duration-300">
+        <p className="text-2xl font-medium text-teal-800 dark:text-teal-500">
+          {currentAffirmation}
+        </p>
       </div>
       <button
         onClick={showNextAffirmation}
@@ -627,7 +648,9 @@ const MemoryGame = () => {
   const [cards, setCards] = useState(shuffleCards());
   const [flippedCards, setFlippedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
-  const [message, setMessage] = useState("Match the cards to train your memory!");
+  const [message, setMessage] = useState(
+    "Match the cards to train your memory!"
+  );
 
   function shuffleCards() {
     const cardValues = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -681,18 +704,23 @@ const MemoryGame = () => {
   };
 
   return (
-    <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-100">
-      <h2 className="text-3xl font-bold mb-6 text-gray-800">Memory Challenge</h2>
-      <p className="text-lg mb-8 text-teal-800">{message}</p>
+    <div className="bg-white dark:bg-[#2c2c2c] rounded-xl p-8 shadow-lg dark:shadow-black border border-gray-100 dark:border-teal-700">
+      <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-300">
+        Memory Challenge
+      </h2>
+      <p className="text-lg mb-8 text-teal-800  dark:text-teal-500">
+        {message}
+      </p>
       <div className="grid grid-cols-4 gap-4 max-w-sm mx-auto mb-8">
         {cards.map((card) => (
           <button
             key={card.id}
             onClick={() => handleCardClick(card.id)}
             className={`aspect-square rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105
-              ${card.flipped || matchedCards.includes(card.id)
-                ? "bg-teal-500 text-white"
-                : "bg-white/5 border border-teal-500/20"
+              ${
+                card.flipped || matchedCards.includes(card.id)
+                  ? "bg-teal-500 text-white"
+                  : "bg-white/5 dark:bg-white/25 border border-teal-500/20"
               }`}
           >
             <span className="text-2xl font-bold">
@@ -716,7 +744,7 @@ const GameSelector = () => {
   const [isExpanded, setIsExpanded] = useState(true);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-[#2c2c2c]">
       <Header />
       <div className="flex">
         <SideButtons />
@@ -727,48 +755,55 @@ const GameSelector = () => {
             marginLeft: isExpanded ? "260px" : "80px",
           }}
         >
-{/* Hero Section */}
-<div className="relative overflow-hidden bg-gradient-to-r from-teal-600 to-white text-teal-900 text-white py-16 px-8 rounded-2xl shadow-lg mx-4 mt-6 mb-12">
-  <div className="relative z-10">
-    <h1 className="text-5xl font-bold mb-4 leading-tight">
-      Your Journey to Inner Peace
-    </h1>
-    <p className="text-xl text-teal-50 max-w-2xl">
-      Discover mindfulness practices and relaxation techniques designed to bring balance to your daily life.
-    </p>
-  </div>
-  <div className="absolute right-0 top-0 w-1/3 h-full opacity-10">
-    {/* Placeholder for an illustrative icon */}
-    <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <circle cx="12" cy="12" r="10" strokeWidth="2" />
-    </svg>
-  </div>
-</div>
+          {/* Hero Section */}
+          <div className="relative overflow-hidden bg-gradient-to-r from-teal-600 dark:from-teal-800 to-gray-300 dark:to-gray-500 text-white py-16 px-8 rounded-2xl shadow-lg dark:shadow-black mx-4 mt-6 mb-12">
+            <div className="relative z-10">
+              <h1 className="text-5xl font-bold mb-4 leading-tight">
+                Your Journey to Inner Peace
+              </h1>
+              <p className="text-xl text-teal-50 max-w-2xl">
+                Discover mindfulness practices and relaxation techniques
+                designed to bring balance to your daily life.
+              </p>
+            </div>
+            <div className="absolute right-0 top-0 w-1/3 h-full opacity-10">
+              {/* Placeholder for an illustrative icon */}
+              <svg
+                className="w-full h-full"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <circle cx="12" cy="12" r="10" strokeWidth="2" />
+              </svg>
+            </div>
+          </div>
 
-{/* Navigation */}
-<div className="px-4 mb-8">
-  <div className="flex flex-wrap gap-4">
-    {[
-      { name: "Breathing", icon: Wind },
-      { name: "Memory", icon: Brain },
-      { name: "Affirmation", icon: Sparkles }
-    ].map(({ name, icon: Icon }) => (
-      <button
-        key={name}
-        onClick={() => setSelectedGame(name)}
-        className={`px-6 py-3 rounded-lg transition-all duration-300 flex items-center gap-2
-          ${selectedGame === name
-            ? "bg-teal-500 text-white shadow-md"
-            : "bg-white hover:bg-gray-50 text-gray-700 border border-gray-200"
+          {/* Navigation */}
+          <div className="px-4 mb-8">
+            <div className="flex flex-wrap gap-4">
+              {[
+                { name: "Breathing", icon: Wind },
+                { name: "Memory", icon: Brain },
+                { name: "Affirmation", icon: Sparkles },
+              ].map(({ name, icon: Icon }) => (
+                <button
+                  key={name}
+                  onClick={() => setSelectedGame(name)}
+                  className={`px-6 py-3 rounded-lg transition-all duration-300 flex items-center gap-2
+          ${
+            selectedGame === name
+              ? "bg-teal-500 dark:bg-teal-800 text-white shadow-md"
+              : "bg-white dark:bg-[#f5f5f5] hover:bg-gray-50 dark:hover:bg-gray-300 text-gray-700 border border-gray-200"
           }`}
-      >
-        <Icon size={18} />
-        {name}
-      </button>
-    ))}
-  </div>
-</div>
-
+                >
+                  <Icon size={18} />
+                  {name}
+                </button>
+              ))}
+            </div>
+          </div>
 
           {/* Main Content */}
           <div className="px-4 mb-12">
@@ -783,17 +818,11 @@ const GameSelector = () => {
               </div>
             </div>
           </div>
-      
-<Footer></Footer>
+
+          <Footer></Footer>
         </div>
-
-
       </div>
-  
-
-     
     </div>
-    
   );
 };
 

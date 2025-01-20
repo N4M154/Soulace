@@ -7,6 +7,7 @@ import {
 } from "../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import OAuth from "../components/OAuth";
+import ThemeToggle from "../components/ThemeToggle";
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
@@ -44,13 +45,15 @@ export default function SignIn() {
 
   return (
     <div
-      className=" min-h-screen flex flex-col md:flex-row" 
+      className="min-h-screen flex flex-col md:flex-row bg-[url('/signinbg.png')] dark:bg-[url('/signin-dark.png')]"
       style={{
-        backgroundImage: "url('/signinbg.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
+      <div className="absolute top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
       {/* Logo Section */}
       <div className="w-full md:w-1/2  flex flex-col items-center justify-center">
         <img
@@ -62,16 +65,17 @@ export default function SignIn() {
             transformOrigin: "bottom",
           }}
         />
-        <p className="text-teal-700 text-lg font-medium">
+
+        <p className="dark:text-teal-400 text-teal-700 text-lg font-medium">
           Welcome to Soulace, Your Mental Help.
         </p>
-        <p> please sign in to continue.</p>
+        <p className="dark:text-white"> please sign in to continue.</p>
       </div>
 
       {/* Sign-in Form Section */}
       <div className=" md:w-1/2  flex items-center ">
-        <div className="p-8 max-w-md w-full  border border-gray-300 rounded-lg shadow-md">
-          <h1 className="text-3xl text-center font-semibold mb-7 text-gray-800">
+        <div className="p-8 max-w-md w-full  border dark:border-teal-600 border-gray-300 rounded-lg shadow-xl dark:shadow-black">
+          <h1 className="text-3xl text-center font-semibold mb-7 dark:text-[#f5f5f5] text-gray-800">
             Sign In
           </h1>
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -79,14 +83,14 @@ export default function SignIn() {
               type="email"
               placeholder="Email"
               id="email"
-              className="bg-white p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 text-black"
+              className="dark:bg-teal-100 bg-white p-3 rounded-lg focus:outline-none focus:ring-2 dark:focus:ring-teal-600 focus:ring-blue-300 text-black"
               onChange={handleChange}
             />
             <input
               type="password"
               placeholder="Password"
               id="password"
-              className="bg-white p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
+              className="dark:bg-teal-100 bg-white p-3 rounded-lg focus:outline-none focus:ring-2 dark:focus:ring-teal-600 focus:ring-blue-300 text-black"
               onChange={handleChange}
             />
             <button
@@ -98,11 +102,11 @@ export default function SignIn() {
             <OAuth />
           </form>
           <div className="flex items-center justify-center mt-5">
-            <p className="text-gray-600 font-semibold">
+            <p className="dark:text-gray-300 text-gray-600 font-semibold">
               Don't have an account?
             </p>
             <Link to="/sign-up">
-              <span className="text-blue-500 font-bold text-lg ml-1 hover:underline">
+              <span className="dark:text-blue-300 text-blue-500 font-bold text-lg ml-1 hover:underline">
                 Sign Up
               </span>
             </Link>

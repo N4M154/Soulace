@@ -1,4 +1,3 @@
-
 // // Swirl.jsx
 // import React, { useEffect, useState } from "react";
 // import Header from "../components/Header";
@@ -72,8 +71,6 @@
 
 // export default Swirl;
 
-
-
 //-----------------------------
 
 // Swirl.jsx
@@ -84,7 +81,9 @@ import SideButtons from "../components/SideButtons";
 const Swirl = () => {
   const totalSegments = 15; // Number of spirals
   const colors = ["#005057", "#00777E", "#4B3217", "#785230", "#AE9276"]; // Color palette
-  const [segments, setSegments] = useState(Array.from({ length: totalSegments }, (_, i) => i));
+  const [segments, setSegments] = useState(
+    Array.from({ length: totalSegments }, (_, i) => i)
+  );
   const [rotation, setRotation] = useState(0);
 
   // Animate the spiral rotation
@@ -104,7 +103,7 @@ const Swirl = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-white dark:bg-[#2c2c2c] flex flex-col">
       <Header />
       <SideButtons />
 
@@ -124,8 +123,12 @@ const Swirl = () => {
                 d={`
                   M100,100
                   m-${10 * (index + 1)},0
-                  a${10 * (index + 1)},${10 * (index + 1)} 0 1,1 ${20 * (index + 1)},0
-                  a${10 * (index + 1)},${10 * (index + 1)} 0 1,1 -${20 * (index + 1)},0
+                  a${10 * (index + 1)},${10 * (index + 1)} 0 1,1 ${
+                  20 * (index + 1)
+                },0
+                  a${10 * (index + 1)},${10 * (index + 1)} 0 1,1 -${
+                  20 * (index + 1)
+                },0
                 `}
                 fill="none"
                 stroke={colors[index % colors.length]}
@@ -138,37 +141,46 @@ const Swirl = () => {
         </div>
 
         {/* Game Instructions */}
-        <div className="lg:w-1/3 p-6 bg-white shadow-xl rounded-lg border border-gray-200 lg:ml-32">
-          <h2 className="text-2xl font-bold text-gray-700 mb-4">How to Play : Spiral Burst</h2>
-          <p className="text-gray-600 text-sm leading-relaxed">
-            Welcome to Spiral Burst! Your goal is to click on each spiral segment to remove it. 
-            The spiral rotates continuously, making it more challenging. Keep clicking until all 
-            segments are cleared. Complete the game to reveal a congratulatory message!
+        <div className="lg:w-1/3 p-6 bg-white dark:bg-transparent shadow-xl dark:shadow-black rounded-lg border dark:border-teal-700 border-gray-200 lg:ml-32">
+          <h2 className="text-2xl font-bold text-gray-700 dark:text-white mb-4">
+            How to Play : Spiral Burst
+          </h2>
+          <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+            Welcome to Spiral Burst! Your goal is to click on each spiral
+            segment to remove it. The spiral rotates continuously, making it
+            more challenging. Keep clicking until all segments are cleared.
+            Complete the game to reveal a congratulatory message!
           </p>
-          <p className="text-teal-600 mt-4 text-sm font-medium">
+          <p className="text-teal-600 dark:text-teal-400 mt-4 text-sm font-medium">
             Tip: Be precise! Click directly on the segments to remove them.
           </p>
-          <h3 className="text-xl font-semibold text-gray-700 mt-6">Benefits</h3>
-          <p className="text-gray-600 text-sm mt-2">
-            This game helps improve focus and mindfulness by requiring precise attention to detail. 
-            The rotating spiral promotes a meditative state as you concentrate on the task, making 
-            it a great exercise for stress relief and enhancing mental clarity.
+          <h3 className="text-xl font-semibold text-gray-700 dark:text-teal-500 mt-6">
+            Benefits
+          </h3>
+          <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
+            This game helps improve focus and mindfulness by requiring precise
+            attention to detail. The rotating spiral promotes a meditative state
+            as you concentrate on the task, making it a great exercise for
+            stress relief and enhancing mental clarity.
           </p>
-          <h3 className="text-xl font-semibold text-gray-700 mt-6">How It Helps</h3>
-          <p className="text-gray-600 text-sm mt-2">
-            Playing Spiral Burst engages your mind and body in a calming activity, fostering 
-            relaxation and reducing stress. It aids in enhancing hand-eye coordination, 
-            promoting patience, and achieving a meditative state through focused interaction.
+          <h3 className="text-xl font-semibold text-gray-700 dark:text-teal-500 mt-6">
+            How It Helps
+          </h3>
+          <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
+            Playing Spiral Burst engages your mind and body in a calming
+            activity, fostering relaxation and reducing stress. It aids in
+            enhancing hand-eye coordination, promoting patience, and achieving a
+            meditative state through focused interaction.
           </p>
         </div>
       </main>
 
       {segments.length === 0 && (
-  <div className="fixed inset-x-0 bottom-12 flex justify-center">
-    <p className="text-2xl font-bold text-teal-600">
-      Congratulations! You've completed the meditation!
-    </p>
-  </div>
+        <div className="fixed inset-x-0 bottom-12 flex justify-center">
+          <p className="text-2xl font-bold text-teal-600 dark:text-teal-300 ">
+            Congratulations! You've completed the meditation!
+          </p>
+        </div>
       )}
     </div>
   );
