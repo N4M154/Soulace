@@ -256,7 +256,7 @@ const featuredTracks = [
   {
     id: 2,
     title: "Meditation Bell",
-    artist: "Zen Masters",
+    artist: "Beautiful Nature",
     mood: "relax",
     url: "/meditation.mp3",
     image: "https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83",
