@@ -1,4 +1,3 @@
-
 //besttt
 
 import { AnimatePresence, motion } from "framer-motion";
@@ -9,7 +8,7 @@ import {
   Moon,
   Smile,
   Star,
-  TrendingUp
+  TrendingUp,
 } from "lucide-react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -18,7 +17,6 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer.jsx";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
-
 
 const services = [
   {
@@ -146,7 +144,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50 ">
+    <div className="flex min-h-screen bg-gray-50 dark:bg-[#2c2c2c]">
       <SideButtons />
       <div
         id="main-content"
@@ -166,7 +164,7 @@ export default function Home() {
               alt="Peaceful meditation"
               className="w-full h-full object-cover rounded-2xl"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30" />
           </div>
           <div className="relative h-full flex items-center px-8 md:px-16 max-w-7xl mx-auto rounded-2xl">
             <div className="text-white max-w-2xl">
@@ -194,52 +192,62 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12"
           >
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-teal-100 hover:shadow-md transition-shadow">
+            <div className="bg-white dark:bg-transparent p-6 rounded-xl shadow-lg dark:shadow-black border border-teal-100 dark:border-teal-500 hover:shadow-xl dark:hover:shadow-black transition-shadow">
               <div className="flex items-center gap-3 mb-2">
                 <Moon className="text-teal-500" />
-                <h3 className="font-semibold text-gray-700">Sleep Quality</h3>
+                <h3 className="font-semibold text-gray-700 dark:text-white">
+                  Sleep Quality
+                </h3>
               </div>
-              <p className="text-2xl font-bold text-gray-800">
+              <p className="text-2xl font-bold text-gray-800 dark:text-[#f5f5f5]">
                 {mockUserData.sleepHours}h
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 dark:text-gray-300">
                 Quality: {mockUserData.averageSleepQuality}
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-teal-100 hover:shadow-md transition-shadow">
+            <div className="bg-white dark:bg-transparent p-6 rounded-xl shadow-lg dark:shadow-black border border-teal-100 dark:border-teal-500 hover:shadow-xl dark:hover:shadow-black transition-shadow">
               <div className="flex items-center gap-3 mb-2">
                 <Smile className="text-teal-500" />
-                <h3 className="font-semibold text-gray-700">Current Mood</h3>
+                <h3 className="font-semibold text-gray-700 dark:text-white">
+                  Current Mood
+                </h3>
               </div>
-              <p className="text-2xl font-bold text-gray-800">
+              <p className="text-2xl font-bold text-gray-800 dark:text-[#f5f5f5]">
                 {mockUserData.currentMood}
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 dark:text-gray-300">
                 Avg: {mockUserData.averageMood}
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-teal-100 hover:shadow-md transition-shadow">
+            <div className="bg-white dark:bg-transparent p-6 rounded-xl shadow-lg dark:shadow-black border border-teal-100 dark:border-teal-500 hover:shadow-xl dark:hover:shadow-black transition-shadow">
               <div className="flex items-center gap-3 mb-2">
                 <Brain className="text-teal-500" />
-                <h3 className="font-semibold text-gray-700">Meditation</h3>
+                <h3 className="font-semibold text-gray-700 dark:text-white">
+                  Meditation
+                </h3>
               </div>
-              <p className="text-2xl font-bold text-gray-800">
+              <p className="text-2xl font-bold dark:text-[#f5f5f5]">
                 {mockUserData.meditationMinutes}min
               </p>
-              <p className="text-sm text-gray-500">Today's session</p>
+              <p className="text-sm text-gray-500 dark:text-gray-300">
+                Today's session
+              </p>
             </div>
 
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-teal-100 hover:shadow-md transition-shadow">
+            <div className="bg-white dark:bg-transparent p-6 rounded-xl shadow-lg dark:shadow-black border border-teal-100 dark:border-teal-500 hover:shadow-xl dark:hover:shadow-black transition-shadow">
               <div className="flex items-center gap-3 mb-2">
                 <TrendingUp className="text-teal-500" />
-                <h3 className="font-semibold text-gray-700">Streak</h3>
+                <h3 className="font-semibold text-gray-700 dark:text-white">
+                  Streak
+                </h3>
               </div>
-              <p className="text-2xl font-bold text-gray-800">
+              <p className="text-2xl font-bold text-gray-800 dark:text-[#f5f5f5]">
                 {mockUserData.streakDays} days
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 dark:text-gray-300">
                 {mockUserData.totalSessions} total sessions
               </p>
             </div>
@@ -247,13 +255,13 @@ export default function Home() {
 
           {/* Services Carousel */}
           <section className="mb-16">
-            <h2 className="text-3xl font-bold text-teal-800 mb-8 text-center">
+            <h2 className="text-3xl font-bold text-teal-800 dark:text-teal-500 mb-8 text-center">
               Explore Our Services
             </h2>
             <div className="relative">
               <button
                 onClick={prevSlide}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-white/90 rounded-full shadow-lg hover:bg-white transition-all"
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-white/90 dark:bg-[#716d6d] rounded-full shadow-lg dark:shadow-black hover:bg-white dark:hover:bg-white transition-all"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
@@ -273,7 +281,7 @@ export default function Home() {
                       className="flex-1 cursor-pointer"
                       onClick={() => navigate(service.route)}
                     >
-                      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                      <div className="dark:bg-[#191818] bg-white rounded-xl shadow-lg dark:shadow-black overflow-hidden">
                         <div className="h-48 relative">
                           <img
                             src={service.image}
@@ -283,20 +291,21 @@ export default function Home() {
                           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                         </div>
                         <div className="p-6">
-                          <h3 className="text-xl font-bold text-teal-800 mb-2">
+                          <h3 className="text-xl font-bold text-teal-800 dark:text-teal-500 mb-2">
                             {service.name}
                           </h3>
-                          <p className="text-gray-600">{service.description}</p>
+                          <p className="text-gray-600 dark:text-gray-400">
+                            {service.description}
+                          </p>
                         </div>
                       </div>
                     </motion.div>
                   ))}
                 </AnimatePresence>
               </div>
-
               <button
                 onClick={nextSlide}
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-white/90 rounded-full shadow-lg hover:bg-white transition-all"
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-white/90 dark:bg-[#716d6d] rounded-full shadow-lg dark:shadow-black hover:bg-white dark:hover:bg-white transition-all"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
@@ -308,16 +317,18 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="bg-white p-6 rounded-xl shadow-sm border border-teal-100"
+              className="bg-white dark:bg-teal-950 p-6 rounded-xl shadow-md dark:shadow-black border border-teal-100 dark:border-teal-800"
             >
-              <h2 className="text-xl font-bold text-teal-800 mb-4">
+              <h2 className="text-xl font-bold text-teal-800 dark:text-teal-500 mb-4">
                 Today's Focus
               </h2>
               <ul className="space-y-3">
                 {mockUserData.todoList.map((item, index) => (
                   <li key={index} className="flex items-center gap-3">
                     <input type="checkbox" className="rounded text-teal-500" />
-                    <span className="text-gray-700">{item}</span>
+                    <span className="text-gray-700 dark:text-gray-300">
+                      {item}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -326,12 +337,12 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="bg-white p-6 rounded-xl shadow-sm border border-teal-100"
+              className="bg-white dark:bg-teal-950 p-6 rounded-xl shadow-md dark:shadow-black border border-teal-100 dark:border-teal-800"
             >
-              <h2 className="text-xl font-bold text-teal-800 mb-4">
+              <h2 className="text-xl font-bold text-teal-800 dark:text-teal-500 mb-4">
                 Daily Inspiration
               </h2>
-              <blockquote className="text-gray-700 italic border-l-4 border-teal-500 pl-4">
+              <blockquote className="text-gray-700 dark:text-gray-300 italic border-l-4 border-teal-500 pl-4">
                 {quote}
               </blockquote>
             </motion.div>
@@ -343,22 +354,22 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             className="mb-12"
           >
-            <h2 className="text-2xl font-bold text-teal-800 mb-6">
+            <h2 className="text-2xl font-bold text-teal-800 dark:text-teal-500 mb-6">
               Your Achievements
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {mockUserData.achievements.map((achievement, index) => (
                 <div
                   key={index}
-                  className="bg-white p-6 rounded-xl shadow-sm border border-teal-100"
+                  className="bg-white dark:bg-transparent p-6 rounded-xl shadow-sm border border-teal-100 dark:border-teal-700"
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <Star className="text-teal-500" />
-                    <h3 className="font-semibold text-teal-800">
+                    <h3 className="font-semibold text-teal-800 dark:text-teal-500">
                       {achievement.title}
                     </h3>
                   </div>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
                     {achievement.description}
                   </p>
                   <div className="w-full bg-gray-200 rounded-full h-2">
@@ -367,7 +378,7 @@ export default function Home() {
                       style={{ width: `${achievement.progress}%` }}
                     />
                   </div>
-                  <p className="text-sm text-gray-500 mt-2">
+                  <p className="text-sm text-gray-500 dark:text-gray-300 mt-2">
                     {achievement.progress}% completed
                   </p>
                 </div>
@@ -379,15 +390,15 @@ export default function Home() {
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white p-6 rounded-xl shadow-sm border border-teal-100 mb-12"
+            className="bg-white dark:bg-teal-950 p-6 rounded-xl shadow-sm border border-teal-100 dark:border-teal-700 mb-12"
           >
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-bold text-teal-800">
+              <h2 className="text-xl font-bold text-teal-800 dark:text-teal-500">
                 Recent Journal Entries
               </h2>
               <button
                 onClick={() => navigate("/daily-journal")}
-                className="text-teal-600 hover:text-teal-700 font-medium"
+                className="text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300 font-medium"
               >
                 View All
               </button>
@@ -396,10 +407,10 @@ export default function Home() {
               {mockUserData.journalEntries.map((entry, index) => (
                 <div
                   key={index}
-                  className="border-b border-gray-100 pb-4 last:border-0"
+                  className="border-b border-gray-100 dark:border-teal-700 pb-4 last:border-0"
                 >
                   <div className="flex justify-between items-center mb-2">
-                    <h3 className="font-medium text-gray-800">
+                    <h3 className="font-medium text-gray-800 dark:text-gray-400">
                       {entry.date} • {entry.time}
                     </h3>
                     <span
@@ -414,24 +425,28 @@ export default function Home() {
                       {entry.mood}
                     </span>
                   </div>
-                  <p className="text-gray-600">{entry.content}</p>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {entry.content}
+                  </p>
                 </div>
               ))}
             </div>
           </motion.section>
-         
-      {/* Quick Actions Section */}
-      <motion.section 
+
+          {/* Quick Actions Section */}
+          <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-16"
           >
-            <h2 className="text-3xl font-bold text-teal-800 mb-8">Quick Actions</h2>
+            <h2 className="text-3xl font-bold text-teal-800 dark:text-teal-500 mb-8">
+              Quick Actions
+            </h2>
             <div className="space-y-6">
               {/* Mood Logger */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer"
+                className="bg-white rounded-xl shadow-xl dark:shadow-black overflow-hidden cursor-pointer"
                 onClick={() => navigate("/mood-tracker")}
               >
                 <div className="flex items-stretch">
@@ -443,10 +458,13 @@ export default function Home() {
                     />
                   </div>
                   <div className="w-2/3 p-8 bg-gradient-to-r from-teal-600 to-teal-700 text-white">
-                    <h3 className="text-2xl font-bold mb-3">Mood & Sleep Logger</h3>
+                    <h3 className="text-2xl font-bold mb-3">
+                      Mood & Sleep Logger
+                    </h3>
                     <p className="text-lg opacity-90">
-                      Track your daily emotional journey and sleep patterns. Your personal 
-                      wellness diary awaits - let's capture how you're feeling today.
+                      Track your daily emotional journey and sleep patterns.
+                      Your personal wellness diary awaits - let's capture how
+                      you're feeling today.
                     </p>
                   </div>
                 </div>
@@ -455,15 +473,16 @@ export default function Home() {
               {/* Daily Journal */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer"
+                className="bg-white rounded-xl shadow-xl dark:shadow-black overflow-hidden cursor-pointer"
                 onClick={() => navigate("/daily-journal")}
               >
                 <div className="flex items-stretch">
                   <div className="w-2/3 p-8 bg-gradient-to-r from-teal-700 to-teal-800 text-white">
                     <h3 className="text-2xl font-bold mb-3">Daily Journal</h3>
                     <p className="text-lg opacity-90">
-                      Express yourself freely with our AI-powered journal. Get insights into 
-                      your thoughts and emotions through advanced sentiment analysis.
+                      Express yourself freely with our AI-powered journal. Get
+                      insights into your thoughts and emotions through advanced
+                      sentiment analysis.
                     </p>
                   </div>
                   <div className="w-1/3 relative">
@@ -479,7 +498,7 @@ export default function Home() {
               {/* Take a Test */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer"
+                className="bg-white rounded-xl shadow-xl dark:shadow-black overflow-hidden cursor-pointer"
                 onClick={() => navigate("/specialist")}
               >
                 <div className="flex items-stretch">
@@ -493,22 +512,19 @@ export default function Home() {
                   <div className="w-2/3 p-8 bg-gradient-to-r from-teal-800 to-teal-900 text-white">
                     <h3 className="text-2xl font-bold mb-3">Take a test?</h3>
                     <p className="text-lg opacity-90">
-                      Get personalized insights with our ML-powered assessment. Understand 
-                      your mental well-being better through scientific analysis.
+                      Get personalized insights with our ML-powered assessment.
+                      Understand your mental well-being better through
+                      scientific analysis.
                     </p>
                   </div>
                 </div>
               </motion.div>
             </div>
           </motion.section>
-          </div>
-        
-          <Footer></Footer>
         </div>
+
+        <Footer></Footer>
       </div>
-    
-  
+    </div>
   );
 }
-
-

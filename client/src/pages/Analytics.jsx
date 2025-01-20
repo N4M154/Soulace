@@ -21,7 +21,6 @@ import {
   updateUserSuccess,
 } from "../redux/user/userSlice";
 
-
 export default function Profile() {
   const dispatch = useDispatch();
   const fileRef = useRef(null);
@@ -119,13 +118,13 @@ export default function Profile() {
   };
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white dark:bg-[#2c2c2c] min-h-screen">
       {/* Header */}
       <Header />
-      <SideButtons/>
+      <SideButtons />
 
-      <div className="p-6 max-w-4xl mx-auto bg-gray-50 shadow-lg rounded-lg mt-10">
-        <h1 className="text-4xl font-bold text-center text-teal-700 mb-8">
+      <div className="p-6 max-w-4xl mx-auto bg-gray-50 dark:bg-teal-900/20 shadow-xl dark:shadow-black dark:border dark:border-teal-700 rounded-lg mt-10">
+        <h1 className="text-4xl font-bold text-center text-teal-700 dark:text-teal-500 mb-8">
           Edit Your Profile
         </h1>
 
@@ -143,7 +142,7 @@ export default function Profile() {
             <img
               src={formData.profilePicture || currentUser.profilePicture}
               alt="profile"
-              className="h-28 w-28 cursor-pointer rounded-full object-cover border-4 border-teal-500"
+              className="h-28 w-28 cursor-pointer rounded-full object-cover"
               onClick={() => fileRef.current.click()}
             />
           </div>
@@ -153,9 +152,11 @@ export default function Profile() {
                 Error uploading image (file size must be less than 2 MB)
               </span>
             ) : imagePercent > 0 && imagePercent < 100 ? (
-              <span className="text-gray-600">{`Uploading: ${imagePercent}%`}</span>
+              <span className="text-gray-600 dark:text-white">{`Uploading: ${imagePercent}%`}</span>
             ) : imagePercent === 100 ? (
-              <span className="text-teal-700">Image uploaded successfully</span>
+              <span className="text-teal-700 dark:text-teal-500">
+                Image uploaded successfully
+              </span>
             ) : (
               ""
             )}
@@ -167,7 +168,7 @@ export default function Profile() {
             type="text"
             id="username"
             placeholder="Username"
-            className="bg-gray-100 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+            className="bg-gray-100 dark:placeholder:text-black dark:bg-gray-400 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
             onChange={handleChange}
           />
           <input
@@ -175,14 +176,14 @@ export default function Profile() {
             type="email"
             id="email"
             placeholder="Email"
-            className="bg-gray-100 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+            className="bg-gray-100 dark:placeholder:text-black dark:bg-gray-400 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
             onChange={handleChange}
           />
           <input
             type="password"
             id="password"
             placeholder="Password"
-            className="bg-gray-100 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+            className="bg-gray-100 dark:placeholder:text-black dark:bg-gray-400 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
             onChange={handleChange}
           />
           <button className="bg-teal-600 text-white font-semibold p-4 rounded-lg uppercase hover:bg-teal-500">
@@ -210,11 +211,9 @@ export default function Profile() {
         <p className="text-red-600 mt-6 text-center font-semibold">
           {error && "Something went wrong!"}
         </p>
-        <p className="text-teal-600 mt-6 text-center font-semibold">
+        <p className="text-teal-600 dark:text-teal-500 mt-6 text-center font-semibold">
           {updateSuccess && "User is updated successfully!"}
         </p>
-       
-
       </div>
       <Footer></Footer>
     </div>

@@ -34,7 +34,7 @@ import {
   deleteUserSuccess,
   updateUserFailure,
   updateUserStart,
-  updateUserSuccess
+  updateUserSuccess,
 } from "../redux/user/userSlice";
 
 const ProfileAnalytics = () => {
@@ -148,7 +148,7 @@ const ProfileAnalytics = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50 ">
+    <div className="flex min-h-screen bg-gray-50 dark:bg-[#2c2c2c]">
       <SideButtons />
       <div
         id="main-content"
@@ -156,124 +156,99 @@ const ProfileAnalytics = () => {
         style={{ marginLeft: isExpanded ? "260px" : "80px" }}
       >
         <Header />
-    
-      
 
-      <div className="p-4 max-w-6xl mx-auto ">
-        {/* Profile Section */}
-        <div className="flex items-center justify-between ">
-  {/* Content on the left */}
-    
-</div>
-
-        <div className="flex flex-col bg-gray-50 p-8 rounded-lg shadow-md">
-          <Link
-    to="/editprofile"
-    className="ml-auto flex gap-2 text-black"
-  >
-    {/* Pencil Icon */}
-    <img
-      src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png"
-      alt="Edit Icon"
-      className="h-5 w-5"
-    />
-    Edit your public profile
-  </Link>
-  
-
-  {/* Profile Info */}
-  <div className="flex ">
-    {/* Profile Picture */}
-    <img
-      src={formData.profilePicture || currentUser.profilePicture}
-      alt="profile"
-      className="h-32 w-32 rounded-full object-cover border-2 border-gray-300"
-    />
-
-    {/* User Details */}
-    <div className="ml-6 flex flex-col justify-center">
-      <h2 className="text-3xl font-bold text-gray-900">
-        {currentUser.username }
-      </h2>
-      <p className="text-gray-600 mt-1">I am a cloud enthusiast :3</p>
-      <ul className="mt-4 text-gray-700 space-y-1">
-        <li>
-          <i className="fas fa-user-circle mr-2"></i> Pronouns: he/him
-        </li>
-        <li>
-          <i className="fas fa-graduation-cap mr-2"></i> Student at Islamic
-          University of Technology
-        </li>
-        <li>
-          <i className="fas fa-map-marker-alt mr-2"></i> Dhaka, Dhaka Division,
-          Bangladesh
-        </li>
-        <li>
-          <i className="fas fa-calendar-alt mr-2"></i> Joined 8 months ago •
-          last seen in the past day
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-
-        {/* Analytics Section */}
-        <div className="mt-10 space-y-10">
-          <h2 className="text-3xl font-bold text-gray-800 text-center">
-            Progress Analytics
-          </h2>
-          <div className="flex gap-6">
-            <ResponsiveContainer width="50%" height={300}>
-              <BarChart data={barData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="day" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="stress" fill="#8884d8" />
-                <Bar dataKey="happiness" fill="#82ca9d" />
-              </BarChart>
-            </ResponsiveContainer>
-
-            <ResponsiveContainer width="50%" height={300}>
-              <LineChart data={lineData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="month" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Line type="monotone" dataKey="mood" stroke="#8884d8" />
-                <Line type="monotone" dataKey="energy" stroke="#82ca9d" />
-              </LineChart>
-            </ResponsiveContainer>
+        <div className="p-4 max-w-6xl mx-auto ">
+          {/* Profile Section */}
+          <div className="flex items-center justify-between ">
+            {/* Content on the left */}
           </div>
 
-          <div>
-            <h2 className="text-xl font-bold text-center text-gray-800">
-              Mood Distribution
+          <div className="flex flex-col bg-gray-50 dark:bg-teal-800 p-8 rounded-lg shadow-lg dark:shadow-black">
+            <Link to="/editprofile" className="ml-auto flex gap-2 text-black">
+              {/* Pencil Icon */}
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png"
+                alt="Edit Icon"
+                className="h-5 w-5"
+              />
+              <span className="dark:text-black dark:font-semibold">
+                Edit your public profile
+              </span>
+            </Link>
+
+            {/* Profile Info */}
+            <div className="flex ">
+              {/* Profile Picture */}
+              <img
+                src={formData.profilePicture || currentUser.profilePicture}
+                alt="profile"
+                className="h-32 w-32 rounded-full object-cover border-2 border-gray-300"
+              />
+
+              {/* User Details */}
+              <div className="ml-6 flex flex-col justify-center">
+                <h2 className="text-4xl font-bold text-gray-900">
+                  Hey, {currentUser.username}!
+                </h2>
+              </div>
+            </div>
+          </div>
+
+          {/* Analytics Section */}
+          <div className="mt-10 space-y-10">
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-300 text-center">
+              Progress Analytics
             </h2>
-            <ResponsiveContainer width="100%" height={300}>
-              <PieChart>
-                <Pie
-                  data={pieData}
-                  dataKey="value"
-                  nameKey="name"
-                  outerRadius={100}
-                  fill="#82ca9d"
-                  label
-                />
-                <Tooltip />
-              </PieChart>
-            </ResponsiveContainer>
+            <div className="flex gap-6">
+              <ResponsiveContainer width="50%" height={300}>
+                <BarChart data={barData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="day" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="stress" fill="#8884d8" />
+                  <Bar dataKey="happiness" fill="#82ca9d" />
+                </BarChart>
+              </ResponsiveContainer>
+
+              <ResponsiveContainer width="50%" height={300}>
+                <LineChart data={lineData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="month" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Line type="monotone" dataKey="mood" stroke="#8884d8" />
+                  <Line type="monotone" dataKey="energy" stroke="#82ca9d" />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-bold text-center text-gray-800">
+                Mood Distribution
+              </h2>
+              <ResponsiveContainer width="100%" height={300}>
+                <PieChart>
+                  <Pie
+                    data={pieData}
+                    dataKey="value"
+                    nameKey="name"
+                    outerRadius={100}
+                    fill="#82ca9d"
+                    label
+                  />
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
           </div>
         </div>
+
+        <Footer></Footer>
       </div>
-        
-      <Footer></Footer>
     </div>
-    </div>
-  
   );
 };
 

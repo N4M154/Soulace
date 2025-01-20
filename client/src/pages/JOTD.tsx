@@ -1,4 +1,3 @@
-
 // //------------------------------
 
 // import { useState } from "react";
@@ -7,7 +6,6 @@
 // import Footer from "../components/Footer.jsx";
 // import Header from "../components/Header";
 // import SideButtons from "../components/SideButtons";
-
 
 // const JokeOfTheDay = () => {
 //   const [joke, setJoke] = useState("");
@@ -41,7 +39,6 @@
 //       >
 //         <Header />
 
-     
 //         <div className="max-w-4xl mx-auto flex flex-col items-center gap-6 mt-12 bg-gray-100 rounded-xl shadow-lg p-8">
 //           <div className="text-center">
 //             <div className="inline-block mb-4">
@@ -79,11 +76,11 @@
 //             {loading ? <FaSpinner className="animate-spin" /> : "Tell Me a Joke!"}
 //           </button>
 //         </div>
-        
+
 //         <Footer></Footer>
 //       </div>
 //     </div>
-  
+
 //   );
 // };
 
@@ -106,7 +103,9 @@ function App() {
   const fetchJoke = async () => {
     setLoading(true);
     try {
-      const response = await fetch("https://official-joke-api.appspot.com/random_joke");
+      const response = await fetch(
+        "https://official-joke-api.appspot.com/random_joke"
+      );
       const data = await response.json();
       setJoke(`${data.setup} - ${data.punchline}`);
       setShowJoke(true);
@@ -119,8 +118,8 @@ function App() {
   };
 
   return (
-    <div className="flex min-h-screen w-full">
-      <SideButtons/>
+    <div className="flex min-h-screen w-full dark:bg-[#2c2c2c]">
+      <SideButtons />
       <div
         id="main-content"
         className="flex-1 transition-all duration-300 min-h-screen"
@@ -129,9 +128,9 @@ function App() {
         }}
       >
         <Header />
-   
+
         {/* Hero Section */}
-        <div className="relative overflow-hidden bg-gradient-to-r from-teal-600 to-white text-teal-900 text-white py-16 px-8 rounded-2xl shadow-lg mx-4 mt-6">
+        <div className="relative overflow-hidden bg-gradient-to-r from-teal-600 dark:from-teal-800 to-white dark:to-teal-600 text-white py-16 px-8 rounded-2xl shadow-lg dark:shadow-black mx-4 mt-6">
           <div className="absolute inset-0">
             <img
               src="https://images.unsplash.com/photo-1517242027094-631f8c218a0f?auto=format&fit=crop&q=80"
@@ -146,7 +145,8 @@ function App() {
                 Daily Dose of Laughter
               </h1>
               <p className="mt-6 max-w-2xl mx-auto text-xl text-teal-100">
-                Start your day with a smile! Our curated collection of jokes will brighten up your mood.
+                Start your day with a smile! Our curated collection of jokes
+                will brighten up your mood.
               </p>
             </div>
           </div>
@@ -155,41 +155,48 @@ function App() {
         {/* Main Content */}
         <div className="w-full px-4 py-12">
           {/* Joke Card */}
-          <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+          <div className="max-w-6xl mx-auto bg-white dark:bg-transparent dark:border dark:border-teal-700 rounded-2xl shadow-xl dark:shadow-black overflow-hidden">
             <div className="p-8">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-2">
                   <Sparkles className="h-6 w-6 text-teal-500" />
-                  <h2 className=" text-2xl font-bold text-gray-800">Joke of the Day</h2>
+                  <h2 className=" text-2xl font-bold text-gray-800 dark:text-gray-300">
+                    Joke of the Day
+                  </h2>
                 </div>
-                <RefreshCw 
-                  className={`h-6 w-6 text-teal-500 cursor-pointer hover:rotate-180 transition-transform duration-500 ${loading ? 'animate-spin' : ''}`}
+                <RefreshCw
+                  className={`h-6 w-6 text-teal-500 cursor-pointer hover:rotate-180 transition-transform duration-500 ${
+                    loading ? "animate-spin" : ""
+                  }`}
                   onClick={fetchJoke}
                 />
               </div>
 
-              <div className="min-h-[120px] flex items-center justify-center bg-gray-50 rounded-xl p-8 mb-6">
+              <div className="min-h-[120px] flex items-center justify-center bg-gray-50 dark:bg-teal-950 rounded-xl p-8 mb-6">
                 {loading ? (
                   <div className="flex items-center space-x-3">
                     <Loader className="h-6 w-6 text-teal-500 animate-spin" />
-                    <p className="text-teal-500 text-lg font-medium">Loading your daily laugh...</p>
+                    <p className="text-teal-500 text-lg font-medium">
+                      Loading your daily laugh...
+                    </p>
                   </div>
                 ) : showJoke ? (
-                  <p className="text-xl font-medium text-gray-700 text-center leading-relaxed">
+                  <p className="text-xl font-medium text-gray-700 dark:text-teal-500 text-center leading-relaxed">
                     {joke}
                   </p>
                 ) : (
-                  <p className="text-gray-500 text-lg">
-                    Ready to brighten your day? Click the refresh icon for a joke!
+                  <p className="text-gray-500 dark:text-teal-500 text-lg">
+                    Ready to brighten your day? Click the refresh icon for a
+                    joke!
                   </p>
                 )}
               </div>
 
               {/* Love Button */}
               <div className="flex items-center justify-center">
-                <button 
-                  onClick={() => setLikes(prev => prev + 1)}
-                  className="flex items-center space-x-2 text-gray-600 hover:text-red-500 transition-colors group"
+                <button
+                  onClick={() => setLikes((prev) => prev + 1)}
+                  className="flex items-center space-x-2 text-gray-600 dark:text-cyan-300 hover:text-red-500 transition-colors group"
                 >
                   <Heart className="h-6 w-6 group-hover:fill-current" />
                   <span>{likes}</span>
@@ -198,19 +205,31 @@ function App() {
             </div>
 
             {/* Global Laughter Stats */}
-            <div className="bg-gray-50 px-8 py-6">
+            <div className="bg-gray-50 dark:bg-teal-900 px-8 py-6">
               <div className="grid grid-cols-3 gap-8 text-center">
-                <div className="p-4 bg-white rounded-xl shadow-sm">
-                  <p className="font-semibold text-teal-500 text-lg">Stress Reduction</p>
-                  <p className="mt-2 text-2xl font-bold text-gray-700">68% decrease</p>
+                <div className="p-4 bg-white dark:bg-transparent dark:border dark:border-teal-700 rounded-xl shadow-sm dark:shadow-black">
+                  <p className="font-semibold text-teal-500 text-md">
+                    Stress Reduction
+                  </p>
+                  <p className="mt-2 text-xl font-bold text-gray-700 dark:text-gray-400">
+                    68% decrease
+                  </p>
                 </div>
-                <div className="p-4 bg-white rounded-xl shadow-sm">
-                  <p className="font-semibold text-teal-500 text-lg">Immune System Boost</p>
-                  <p className="mt-2 text-2xl font-bold text-gray-700">+43% function</p>
+                <div className="p-4 bg-white dark:bg-transparent dark:border dark:border-teal-700 rounded-xl shadow-sm dark:shadow-black">
+                  <p className="font-semibold text-teal-500 text-lg">
+                    Immune System Boost
+                  </p>
+                  <p className="mt-2 text-xl font-bold text-gray-700 dark:text-gray-400">
+                    +43% function
+                  </p>
                 </div>
-                <div className="p-4 bg-white rounded-xl shadow-sm">
-                  <p className="font-semibold text-teal-500 text-lg">Mental Well-being</p>
-                  <p className="mt-2 text-2xl font-bold text-gray-700">87% improved</p>
+                <div className="p-4 bg-white dark:bg-transparent dark:border dark:border-teal-700 rounded-xl shadow-sm dark:shadow-black">
+                  <p className="font-semibold text-teal-500 text-lg">
+                    Mental Well-being
+                  </p>
+                  <p className="mt-2 text-xl font-bold text-gray-700 dark:text-gray-400">
+                    87% improved
+                  </p>
                 </div>
               </div>
             </div>

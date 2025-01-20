@@ -44,7 +44,7 @@
 //   return (
 //     <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 flex flex-col items-center relative">
 //       <Header />
-     
+
 //       {/* Side Buttons */}
 //       <SideButtons />
 //       {/* Main Content */}
@@ -111,10 +111,6 @@
 
 // export default DotsGrid;
 
-
-
-
-
 // DotsGrid.jsx
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
@@ -160,15 +156,17 @@ const DotsGrid = () => {
   }, [endTime]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 flex flex-col items-center relative">
+    <div className="min-h-screen bg-white dark:bg-[#2c2c2c] flex flex-col items-center relative">
       <Header />
-      
+
       {/* Side Buttons */}
       <SideButtons />
-      
+
       {/* Main Content */}
       <main className="flex flex-col items-center">
-        <h1 className="text-3xl font-bold text-gray-700 mb-8">Keep turning the switches on</h1>
+        <h1 className="mt-20 text-3xl font-bold text-gray-700 dark:text-white mb-8">
+          Keep turning the switches on
+        </h1>
         <div className="flex items-center space-x-4 mb-8">
           <button
             onClick={handleStart}
@@ -177,7 +175,7 @@ const DotsGrid = () => {
             Start
           </button>
           {startTime && !endTime && (
-            <div className="text-black px-4 py-2 rounded text-lg font-semibold">
+            <div className="text-black dark:text-white px-4 py-2 rounded text-lg font-semibold">
               Timer: {Math.floor((new Date() - startTime) / 1000)}s
             </div>
           )}
@@ -207,21 +205,24 @@ const DotsGrid = () => {
         </div>
       </main>
 
-       {/* How to Play Section */}
-       <aside className="absolute right-0 top-60 p-4 w-64 bg-gray-50 shadow-md rounded-lg">
-        <h2 className="text-xl font-bold text-gray-700 mb-4">How to Play</h2>
-        <p className="text-gray-600 text-sm">
-          1. Click the "Start" button to begin the game.
-        </p>
-        <p className="text-gray-600 text-sm mt-2">
-          2. Toggle all the switches to the "on" position as quickly as possible.
-        </p>
-        <p className="text-gray-600 text-sm mt-2">
-          3. The timer starts as soon as you press "Start" and stops when all switches are on.
-        </p>
-        <p className="text-gray-600 text-sm mt-2">
-          4. Try to complete the task in the shortest time possible!
-        </p>
+      {/* How to Play Section */}
+      <aside className="absolute right-0 top-60 p-4 w-64 bg-gray-50 dark:bg-transparent shadow-lg dark:shadow-black border dark:border-teal-700 rounded-lg">
+        <h2 className="text-xl font-bold text-gray-700 dark:text-white mb-4">
+          How to Play
+        </h2>
+        <ol className="text-gray-600 dark:text-gray-300 text-sm list-decimal list-inside">
+          <li>Click the "Start" button to begin the game.</li>
+          <li className="mt-2">
+            Toggle all the switches to the "on" position as quickly as possible.
+          </li>
+          <li className="mt-2">
+            The timer starts as soon as you press "Start" and stops when all
+            switches are on.
+          </li>
+          <li className="mt-2">
+            Try to complete the task in the shortest time possible!
+          </li>
+        </ol>
       </aside>
 
       {/* Completion Modal */}

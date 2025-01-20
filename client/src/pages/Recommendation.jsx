@@ -106,7 +106,6 @@
 
 // Recommendation.jsx
 
-
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom"; // Import useLocation and useNavigate
 import Header from "../components/Header";
@@ -137,78 +136,80 @@ const Recommendation = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
-    <SideButtons />
-    <div
-      id="main-content"
-      className="flex-1 transition-all duration-300"
-      style={{ marginLeft: isExpanded ? "260px" : "80px" }}
-    >
-      <Header />
-      <div className="min-h-screen bg-white flex flex-col items-center p-6">
-        <div className="bg-teal-50 shadow-lg rounded-lg p-8 max-w-3xl w-full text-center">
-          <h2 className="text-2xl font-bold text-purple-800 mb-4">
-            Assessment Results
-          </h2>
-          <p className="text-gray-700 mb-6">{getMessage()}</p>
+    <div className="flex min-h-screen bg-gray-50 dark:bg-[#2c2c2c]">
+      <SideButtons />
+      <div
+        id="main-content"
+        className="flex-1 transition-all duration-300"
+        style={{ marginLeft: isExpanded ? "260px" : "80px" }}
+      >
+        <Header />
+        <div className="min-h-screen bg-white dark:bg-transparent flex flex-col items-center p-6">
+          <div className="bg-teal-50 dark:bg-transparent shadow-lg dark:shadow-black rounded-lg border dark:border-teal-700 p-8 max-w-3xl w-full text-center">
+            <h2 className="text-2xl font-bold text-purple-800 dark:text-teal-500 mb-4">
+              Assessment Results
+            </h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">
+              {getMessage()}
+            </p>
 
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">
-            Here are your next steps:
-          </h3>
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-teal-200 mb-4">
+              Here are your next steps:
+            </h3>
 
-          {/* Buttons or Links for Next Steps */}
-          <div className="flex flex-col md:flex-row justify-center space-x-0 md:space-x-8 mt-4">
-            <a
-              href="mailto:help@mentalhealth.com"
-              className="flex flex-col items-center mb-4 md:mb-0"
-            >
-              <img
-                src="/Schedule.png" // Ensure this image exists in your public directory
-                alt="Schedule Consultation"
-                className="w-24 h-24 object-contain hover:scale-110 transition transform duration-300"
-              />
-              <span className="mt-2 text-sm text-gray-700">
-                Schedule a Consultation
-              </span>
-            </a>
+            {/* Buttons or Links for Next Steps */}
+            <div className="flex flex-col md:flex-row justify-center space-x-0 md:space-x-8 mt-4">
+              <a
+                href="mailto:help@mentalhealth.com"
+                className="flex flex-col items-center mb-4 md:mb-0"
+              >
+                <img
+                  src="/Schedule.png" // Ensure this image exists in your public directory
+                  alt="Schedule Consultation"
+                  className="w-24 h-24 object-contain hover:scale-110 transition transform duration-300"
+                />
+                <span className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+                  Schedule a Consultation
+                </span>
+              </a>
 
-            <a
-              href="https://www.mentalhealth.com/chat"
-              className="flex flex-col items-center mb-4 md:mb-0"
-            >
-              <img
-                src="/chat-doctor.png" // Ensure this image exists in your public directory
-                alt="Chat with Specialist"
-                className="w-24 h-24 object-contain hover:scale-110 transition transform duration-300"
-              />
-              <span className="mt-2 text-sm text-gray-700">
-                Chat with Specialist
-              </span>
-            </a>
+              <a
+                href="https://www.mentalhealth.com/chat"
+                className="flex flex-col items-center mb-4 md:mb-0"
+              >
+                <img
+                  src="/chat-doctor.png" // Ensure this image exists in your public directory
+                  alt="Chat with Specialist"
+                  className="mt-5 w-24 h-24 object-contain hover:scale-110 transition transform duration-300"
+                />
+                <span className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+                  Chat with Specialist
+                </span>
+              </a>
 
-            <a href="tel:911" className="flex flex-col items-center">
-              <img
-                src="/emergency.png" // Ensure this image exists in your public directory
-                alt="Emergency Support"
-                className="w-24 h-24 object-contain hover:scale-110 transition transform duration-300"
-              />
-              <span className="mt-2 text-sm text-gray-700">
-                Emergency Support
-              </span>
-            </a>
-          </div>
+              <a href="tel:911" className="flex flex-col items-center">
+                <img
+                  src="/emergency.png" // Ensure this image exists in your public directory
+                  alt="Emergency Support"
+                  className="mt-5 w-20 h-20 object-contain hover:scale-110 transition transform duration-300"
+                />
+                <span className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+                  Emergency Support
+                </span>
+              </a>
+            </div>
 
-          <div className="mt-6">
-            <button
-              onClick={() => navigate("/specialist")}
-              className="text-purple-600 hover:text-purple-800 transition underline"
-            >
-              Take the test again
-            </button>
+            <div className="mt-6">
+              <button
+                onClick={() => navigate("/specialist")}
+                className="text-purple-600 dark:text-teal-300 hover:text-purple-800 dark:hover:text-teal-100 transition underline"
+              >
+                Take the test again
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };

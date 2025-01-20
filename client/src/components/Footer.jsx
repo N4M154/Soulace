@@ -2,13 +2,16 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="w-full py-6 bg-white text-teal-600">
+    <footer className="w-full py-6 dark:bg-[#2c2c2c] bg-white dark:text-teal-300 text-teal-600">
       <div className="container mx-auto px-6 md:px-12 text-center">
         {/* Footer Main Content */}
         <div className="mb-4">
-          <p className="text-lg font-semibold">© 2024 SOULACE. All rights reserved.</p>
+          <p className="text-lg font-semibold">
+            © 2024 SOULACE. All rights reserved.
+          </p>
           <p className="text-sm mt-2">
-            Developed by: Ahmed Alfey Sani, Faiza Maliat, Namisa Najah, Md H R Alif
+            Developed by: Ahmed Alfey Sani, Faiza Maliat, Namisa Najah, Md H R
+            Alif
           </p>
         </div>
 
@@ -49,7 +52,7 @@ export default function Footer() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="mt-8 text-sm text-gray-500">
+        <div className="mt-8 text-sm dark:text-gray-300 text-gray-500">
           <p>Terms of Service | Privacy Policy</p>
         </div>
       </div>

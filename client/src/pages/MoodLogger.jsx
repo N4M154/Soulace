@@ -5,7 +5,7 @@
 // import Swal from "sweetalert2";
 // import DiscreteSliderMarks from "../DiscreteSliderMarks";
 // import SideButtons from "../components/SideButtons";
-// import Header from "../components/Header"; 
+// import Header from "../components/Header";
 // import {
 //   Chart as ChartJS,
 //   RadialLinearScale,
@@ -358,7 +358,7 @@ import {
   SmilePlus,
   Star,
   Sun,
-  Zap
+  Zap,
 } from "lucide-react";
 import { useState } from "react";
 import { Bar, Radar } from "react-chartjs-2";
@@ -381,11 +381,26 @@ ChartJS.register(
 
 const MoodLogger = () => {
   const moodOptions = {
-    veryPoor: { label: "Very Poor", value: 20, icon: Frown, color: "text-red-500" },
+    veryPoor: {
+      label: "Very Poor",
+      value: 20,
+      icon: Frown,
+      color: "text-red-500",
+    },
     poor: { label: "Poor", value: 40, icon: Meh, color: "text-orange-500" },
-    moderate: { label: "Moderate", value: 60, icon: Smile, color: "text-yellow-500" },
+    moderate: {
+      label: "Moderate",
+      value: 60,
+      icon: Smile,
+      color: "text-yellow-500",
+    },
     good: { label: "Good", value: 80, icon: SmilePlus, color: "text-teal-500" },
-    excellent: { label: "Excellent", value: 100, icon: Heart, color: "text-green-500" },
+    excellent: {
+      label: "Excellent",
+      value: 100,
+      icon: Heart,
+      color: "text-green-500",
+    },
   };
 
   const sleepDurationOptions = {
@@ -430,7 +445,8 @@ const MoodLogger = () => {
       question: "How are your stress levels today?",
       field: "stress",
       type: "mood",
-      description: "Consider your current stress levels and any factors affecting them",
+      description:
+        "Consider your current stress levels and any factors affecting them",
       icon: Brain,
     },
     {
@@ -500,23 +516,23 @@ const MoodLogger = () => {
 
   const handleOptionSelect = (field, value) => {
     if (field === "duration") {
-      setSleep(prev => ({ ...prev, [field]: value }));
+      setSleep((prev) => ({ ...prev, [field]: value }));
     } else if (field === "quality") {
-      setSleep(prev => ({ ...prev, [field]: value }));
+      setSleep((prev) => ({ ...prev, [field]: value }));
     } else {
-      setMood(prev => ({ ...prev, [field]: value }));
+      setMood((prev) => ({ ...prev, [field]: value }));
     }
   };
 
   const handleNext = () => {
-    if (currentStep < questions.length - 1 ) {
-      setCurrentStep(prev => prev + 1);
+    if (currentStep < questions.length - 1) {
+      setCurrentStep((prev) => prev + 1);
     }
   };
 
   const handlePrevious = () => {
     if (currentStep > 0) {
-      setCurrentStep(prev => prev - 1);
+      setCurrentStep((prev) => prev - 1);
     }
   };
 
@@ -524,7 +540,8 @@ const MoodLogger = () => {
     const inputData = [
       {
         role: "system",
-        content: "You are a mental health analyst. Based on the provided mood and sleep data, provide a concise analysis in the following format: 1. A numerical rating between 1-10 (where 1 is poor and 10 is excellent) 2. A brief, empathetic 2-3 sentence explanation of the rating that acknowledges the user's current state and offers gentle encouragement.Do not just summerize the inputs , give me a persinalized recommendation on mental well being based on the given inputs."
+        content:
+          "You are a mental health analyst. Based on the provided mood and sleep data, provide a concise analysis in the following format: 1. A numerical rating between 1-10 (where 1 is poor and 10 is excellent) 2. A brief, empathetic 2-3 sentence explanation of the rating that acknowledges the user's current state and offers gentle encouragement.Do not just summerize the inputs , give me a persinalized recommendation on mental well being based on the given inputs.",
       },
       {
         role: "user",
@@ -543,8 +560,8 @@ const MoodLogger = () => {
         - Duration: ${sleep.duration} hours
         - Quality: ${sleep.quality}%
         
-        Additional Notes: ${notes}`
-      }
+        Additional Notes: ${notes}`,
+      },
     ];
 
     try {
@@ -555,13 +572,14 @@ const MoodLogger = () => {
         messages: inputData,
       });
 
-      const aiResponse = chatCompletion.choices[0]?.message?.content || "Unavailable";
+      const aiResponse =
+        chatCompletion.choices[0]?.message?.content || "Unavailable";
       const ratingMatch = aiResponse.match(/\b([1-9]|10)\b/);
       const rating = ratingMatch ? parseInt(ratingMatch[0], 10) : null;
-      
+
       if (rating) {
         setMentalHealthRating(rating);
-        setRecommendation(aiResponse.replace(/\b([1-9]|10)\b/, '').trim());
+        setRecommendation(aiResponse.replace(/\b([1-9]|10)\b/, "").trim());
       } else {
         throw new Error("Could not extract rating from response");
       }
@@ -585,7 +603,16 @@ const MoodLogger = () => {
   };
 
   const moodChartData = {
-    labels: ["Stress", "Happiness", "Energy", "Focus", "Calmness", "Motivation", "Anxiety", "Social"],
+    labels: [
+      "Stress",
+      "Happiness",
+      "Energy",
+      "Focus",
+      "Calmness",
+      "Motivation",
+      "Anxiety",
+      "Social",
+    ],
     datasets: [
       {
         label: "Current Mood",
@@ -597,11 +624,11 @@ const MoodLogger = () => {
           mood.calmness,
           mood.motivation,
           mood.anxiety,
-          mood.socialConnection
+          mood.socialConnection,
         ],
         backgroundColor: "rgba(45, 212, 191, 0.2)",
         borderColor: "rgba(45, 212, 191, 1)",
-        borderWidth: 2,
+        borderWidth: 1,
         pointBackgroundColor: "rgba(45, 212, 191, 1)",
         pointBorderColor: "#fff",
         pointHoverBackgroundColor: "#fff",
@@ -651,42 +678,55 @@ const MoodLogger = () => {
 
   const renderQuestion = () => {
     const currentQuestion = questions[currentStep];
-    const options = currentQuestion.type === 'sleep-duration' ? sleepDurationOptions : moodOptions;
+    const options =
+      currentQuestion.type === "sleep-duration"
+        ? sleepDurationOptions
+        : moodOptions;
     const QuestionIcon = currentQuestion.icon;
 
     return (
-      <div className="bg-white p-8 rounded-xl shadow-lg">
+      <div className="bg-white dark:bg-[#2c2c2c] p-8 rounded-xl shadow-xl dark:shadow-black border dark:border-teal-700 mb-10">
         <div className="flex items-center justify-center mb-4">
           <div className="w-full bg-gray-200 rounded-full h-2.5">
-            <div 
+            <div
               className="bg-teal-500 h-2.5 rounded-full transition-all duration-500"
-              style={{ width: `${((currentStep + 1) / questions.length) * 100}%` }}
+              style={{
+                width: `${((currentStep + 1) / questions.length) * 100}%`,
+              }}
             ></div>
           </div>
-          <span className="ml-4 text-sm text-gray-600">
+          <span className="ml-4 text-sm text-gray-600 dark:text-gray-400">
             {currentStep + 1}/{questions.length}
           </span>
         </div>
-        
+
         <div className="flex items-center justify-center mb-6">
           <QuestionIcon className="w-8 h-8 text-teal-500 mr-3" />
-          <h3 className="text-2xl font-semibold text-gray-800">{currentQuestion.question}</h3>
+          <h3 className="text-2xl font-semibold text-gray-800 dark:text-teal-100">
+            {currentQuestion.question}
+          </h3>
         </div>
-        
-        <p className="text-gray-600 mb-6 text-center">{currentQuestion.description}</p>
-        
+
+        <p className="text-gray-600 dark:text-gray-300 mb-6 text-center">
+          {currentQuestion.description}
+        </p>
+
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           {Object.entries(options).map(([key, option]) => {
             const Icon = option.icon;
             return (
               <button
                 key={key}
-                onClick={() => handleOptionSelect(currentQuestion.field, option.value)}
+                onClick={() =>
+                  handleOptionSelect(currentQuestion.field, option.value)
+                }
                 className={`p-4 rounded-lg transition-all transform hover:scale-105 text-sm md:text-base flex flex-col items-center gap-2 ${
-                  (currentQuestion.type === 'sleep-duration' && sleep[currentQuestion.field] === option.value) ||
-                  (currentQuestion.type !== 'sleep-duration' && mood[currentQuestion.field] === option.value)
-                    ? 'bg-teal-500 text-white shadow-md'
-                    : 'bg-gray-50 text-gray-700 hover:bg-teal-50 hover:text-teal-600'
+                  (currentQuestion.type === "sleep-duration" &&
+                    sleep[currentQuestion.field] === option.value) ||
+                  (currentQuestion.type !== "sleep-duration" &&
+                    mood[currentQuestion.field] === option.value)
+                    ? "bg-teal-500 text-white shadow-md"
+                    : "bg-gray-50 dark:bg-teal-900 text-gray-700 dark:text-teal-300 hover:bg-teal-50 hover:text-teal-600 dark:hover:bg-teal-950 dark:hover:text-teal-500"
                 }`}
               >
                 <Icon className="w-6 h-6" />
@@ -702,12 +742,16 @@ const MoodLogger = () => {
   const renderResults = () => (
     <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-white p-6 rounded-xl shadow-lg h-[400px]">
-          <h3 className="text-xl font-semibold mb-4 text-gray-800 text-center">Mood Analysis</h3>
+        <div className="bg-white dark:bg-transparent border dark:border-teal-700 p-6 rounded-xl shadow-lg dark:shadow-black h-[400px]">
+          <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-300 text-center">
+            Mood Analysis
+          </h3>
           <Radar data={moodChartData} options={chartOptions} />
         </div>
         <div className="bg-white p-6 rounded-xl shadow-lg h-[400px]">
-          <h3 className="text-xl font-semibold mb-4 text-gray-800 text-center">Sleep Analysis</h3>
+          <h3 className="text-xl font-semibold mb-4 text-gray-800 text-center">
+            Sleep Analysis
+          </h3>
           <Bar data={sleepChartData} options={chartOptions} />
         </div>
       </div>
@@ -716,8 +760,12 @@ const MoodLogger = () => {
         <div className="bg-white p-8 rounded-xl shadow-lg">
           <div className="flex items-center justify-center mb-6">
             <div className="relative">
-              <div className="text-6xl font-bold text-teal-500">{mentalHealthRating}</div>
-              <div className="text-gray-500 text-sm absolute -right-4 top-2">/10</div>
+              <div className="text-6xl font-bold text-teal-500">
+                {mentalHealthRating}
+              </div>
+              <div className="text-gray-500 text-sm absolute -right-4 top-2">
+                /10
+              </div>
             </div>
           </div>
           {recommendation && (
@@ -743,7 +791,7 @@ const MoodLogger = () => {
   );
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gray-50 dark:bg-[#2c2c2c]">
       <SideButtons isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
       <div
         id="main-content"
@@ -752,10 +800,10 @@ const MoodLogger = () => {
       >
         <Header />
         <div className="pt-20 p-6 md:p-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 text-gray-800">
+          <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 text-gray-800 dark:text-gray-300">
             Daily Mood & Sleep Logger
           </h1>
-          
+
           <div className="max-w-5xl mx-auto">
             {!analysisComplete ? (
               <>
@@ -791,7 +839,7 @@ const MoodLogger = () => {
             )}
           </div>
         </div>
-        
+
         <Footer></Footer>
       </div>
     </div>

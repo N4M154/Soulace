@@ -244,8 +244,6 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
 
-
-
 const featuredTracks = [
   {
     id: 1,
@@ -372,7 +370,7 @@ export default function MusicRecommendation() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50 ">
+    <div className="flex min-h-screen bg-gray-50 dark:bg-[#2c2c2c]">
       <SideButtons />
       <div
         id="main-content"
@@ -386,7 +384,7 @@ export default function MusicRecommendation() {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-8xl mx-auto px-4 py-4"
         >
-          <div className="relative overflow-hidden bg-gradient-to-r from-teal-600 to-white text-teal-900 text-white py-16 px-8 rounded-2xl shadow-lg mx-4 mt-6">
+          <div className="relative overflow-hidden bg-gradient-to-r from-teal-600 dark:from-teal-800 to-white dark:to-teal-600 text-white py-16 px-8 rounded-2xl shadow-lg dark:shadow-black mx-4 mt-6">
             <div className="absolute inset-0">
               <img
                 src="https://images.unsplash.com/photo-1614149162883-504ce4d13909"
@@ -420,12 +418,12 @@ export default function MusicRecommendation() {
                       <Music className="w-5 h-5" />
                       Connect with Spotify
                     </motion.button> */}
-                
-                <div className="text-2xl italic text-white">Start Listening</div>
 
-                               
+                    <div className="text-2xl italic text-white">
+                      Start Listening
+                    </div>
                   </div>
-                  </motion.div> 
+                </motion.div>
               </div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -457,7 +455,7 @@ export default function MusicRecommendation() {
                     className="absolute inset-8 rounded-full border-2 border-teal-500/30"
                   ></motion.div>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-white p-6 rounded-full shadow-xl">
+                    <div className="bg-white p-6 rounded-full shadow-xl dark:shadow-black">
                       <Music className="w-16 h-16 text-teal-500" />
                     </div>
                   </div>
@@ -473,7 +471,7 @@ export default function MusicRecommendation() {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-7xl mx-auto px-4 py-12"
         >
-          <h2 className="text-3xl font-bold mb-4 text-gray-800">
+          <h2 className="text-3xl font-bold mb-4 text-gray-800 dark:text-gray-300">
             Featured Music
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -481,7 +479,7 @@ export default function MusicRecommendation() {
               <motion.div
                 key={track.id}
                 whileHover={{ y: -5 }}
-                className="bg-white rounded-xl overflow-hidden shadow-lg"
+                className="bg-white dark:bg-teal-950 rounded-xl overflow-hidden shadow-lg dark:shadow-black"
               >
                 <img
                   src={track.image}
@@ -489,10 +487,12 @@ export default function MusicRecommendation() {
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-4">
-                  <h3 className="font-semibold text-lg mb-1 text-gray-800">
+                  <h3 className="font-semibold text-lg mb-1 text-gray-800 dark:text-gray-300">
                     {track.title}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-4">{track.artist}</p>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                    {track.artist}
+                  </p>
                   <div className="flex items-center justify-between">
                     <button
                       onClick={() => handlePlayPause(track)}
@@ -505,10 +505,10 @@ export default function MusicRecommendation() {
                       )}
                     </button>
                     <div className="flex gap-2">
-                      <button className="p-2 text-gray-600 hover:text-teal-500">
+                      <button className="p-2 text-gray-600 dark:text-teal-400 dark:hover:text-teal-600 hover:text-teal-500">
                         <Heart className="w-5 h-5" />
                       </button>
-                      <button className="p-2 text-gray-600 hover:text-teal-500">
+                      <button className="p-2 text-gray-600 dark:text-teal-400 dark:hover:text-teal-600 hover:text-teal-500">
                         <Share2 className="w-5 h-5" />
                       </button>
                     </div>
@@ -520,13 +520,13 @@ export default function MusicRecommendation() {
         </motion.div>
 
         {/* Music Recommendations Section */}
-        <div className="max-w-7xl mx-auto px-4 py-12 bg-gray-100">
+        <div className="max-w-7xl mx-auto px-4 py-12 bg-gray-100 dark:bg-gradient-to-b dark:to-black dark:from-teal-950 dark:border dark:border-teal-700 dark:rounded-2xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-12"
           >
-            <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
+            <h2 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-teal-400">
               How are you feeling today?
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
@@ -539,8 +539,8 @@ export default function MusicRecommendation() {
                   className={`${
                     selectedMood === value
                       ? "bg-teal-500 text-white"
-                      : "bg-white text-gray-700 hover:bg-gray-50"
-                  } px-6 py-3 rounded-full flex items-center gap-2 transition-colors shadow-md`}
+                      : "bg-white dark:bg-gray-300 text-gray-700 hover:bg-gray-50"
+                  } px-6 py-3 rounded-full flex items-center gap-2 transition-colors shadow-md dark:shadow-black`}
                 >
                   <span className="text-2xl">{icon}</span>
                   <span className="font-medium">{label}</span>
@@ -570,9 +570,9 @@ export default function MusicRecommendation() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-white rounded-xl p-6 shadow-lg"
+              className="bg-white dark:bg-transparent dark:border dark:border-teal-800 rounded-xl p-6 shadow-lg dark:shadow-black"
             >
-              <h2 className="text-3xl font-bold mb-6 text-gray-800">
+              <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-300">
                 Recommended Tracks
               </h2>
               <div className="space-y-4">
@@ -582,26 +582,26 @@ export default function MusicRecommendation() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.1 }}
-                    className="bg-gray-50 p-4 rounded-lg flex items-center justify-between group hover:bg-gray-100 transition-colors"
+                    className="bg-gray-50 dark:bg-teal-600 p-4 rounded-lg flex items-center justify-between group hover:bg-gray-100 dark:hover:bg-teal-800 transition-colors"
                   >
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center text-white">
+                      <div className="w-12 h-12 bg-teal-500 dark:bg-teal-900 rounded-full flex items-center justify-center text-white">
                         <Headphones className="w-6 h-6" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-800">
+                        <h3 className="font-semibold text-gray-800 dark:text-black">
                           {rec.name}
                         </h3>
-                        <p className="text-gray-600 text-sm">
+                        <p className="text-gray-600 dark:text-gray-900 text-sm">
                           {rec.artist.name}
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
-                      <button className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-600 hover:text-teal-500">
+                      <button className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-600 dark:text-teal-200 hover:text-teal-500 dark:hover:text-teal-500">
                         <Heart className="w-5 h-5" />
                       </button>
-                      <button className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-600 hover:text-teal-500">
+                      <button className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-600 dark:text-teal-200 hover:text-teal-500 dark:hover:text-teal-500">
                         <Share2 className="w-5 h-5" />
                       </button>
                     </div>
@@ -627,8 +627,8 @@ export default function MusicRecommendation() {
             </motion.div>
           )}
         </div>
-   <Footer></Footer>
+        <Footer></Footer>
       </div>
-  </div>
+    </div>
   );
 }

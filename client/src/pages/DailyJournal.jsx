@@ -6,7 +6,6 @@ import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
 import MoodTimeline from "./MoodTimeline";
 
-
 const DailyJournal = () => {
   const { currentUser } = useSelector((state) => state.user);
 
@@ -264,114 +263,116 @@ No extra keys, no additional formatting.`,
   };
 
   return (
-    <div className="flex">
-      {/* Sidebar */}
-      <SideButtons
-        isExpanded={isSidebarExpanded}
-        setIsExpanded={setIsSidebarExpanded}
-      />
+    <div className="dark:bg-[#2c2c2c]">
+      <div className="flex">
+        {/* Sidebar */}
+        <SideButtons
+          isExpanded={isSidebarExpanded}
+          setIsExpanded={setIsSidebarExpanded}
+        />
 
-      {/* Main Content */}
-      <div
-        id="main-content"
-        className={`flex-1 transition-all duration-300 ${
-          isSidebarExpanded ? "ml-64" : "ml-20"
-        }`}
-      >
-        <Header />
+        {/* Main Content */}
         <div
-          className="container mx-auto p-8 bg-cover bg-center min-h-screen overflow-auto"
-          style={{
-            backgroundImage: "url('/journal-bg.jpg')",
-            backgroundAttachment: "fixed",
-          }}
+          id="main-content"
+          className={`flex-1 transition-all duration-300 ${
+            isSidebarExpanded ? "ml-64" : "ml-20"
+          }`}
         >
-          {/* Page Title */}
-          <div className="mt-16 w-full flex flex-col items-start mb-6">
-            <div className="flex items-center justify-between w-full">
-              <h1 className="text-4xl font-bold text-white">Daily Journal</h1>
-              <img
-                src={musicPlaying ? "/playmusic.gif" : "/playmusic.gif"}
-                alt={musicPlaying ? "Pause Music" : "Play Music"}
-                onClick={toggleMusic}
-                className="w-20 h-20 cursor-pointer transition-transform duration-300 hover:scale-110"
-              />
-              <audio id="relaxing-music" src="/relaxing-music.mp3" />
-            </div>
-            <h2 className="text-gray-400 text-lg">
-              Your Daily Thoughts: Reflect, Release, and Recharge
-            </h2>
-          </div>
-
-          {/* Main Content */}
-          <div className="flex flex-wrap md:flex-nowrap w-full max-w-6xl gap-20">
-            {/* Journal Writing Section */}
-            <div className="w-full md:w-10/12 bg-transparent backdrop-blur- shadow-lg rounded-xl p-6">
-              <h2 className="text-2xl text-yellow-100 font-bold mb-4">
-                Hey, how was your day?
-              </h2>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <textarea
-                  value={journal}
-                  onChange={(e) => setJournal(e.target.value)}
-                  rows="5"
-                  className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-500 bg-transparent text-white"
-                  placeholder="Feel free to jot down what's on your mind, I'm here to listen!"
-                  required
+          <Header />
+          <div
+            className="container mx-auto p-8 bg-cover bg-center min-h-screen overflow-auto"
+            style={{
+              backgroundImage: "url('/journal-bg.jpg')",
+              backgroundAttachment: "fixed",
+            }}
+          >
+            {/* Page Title */}
+            <div className="mt-16 w-full flex flex-col items-start mb-6">
+              <div className="flex items-center justify-between w-full">
+                <h1 className="text-4xl font-bold text-white">Daily Journal</h1>
+                <img
+                  src={musicPlaying ? "/playmusic.gif" : "/playmusic.gif"}
+                  alt={musicPlaying ? "Pause Music" : "Play Music"}
+                  onClick={toggleMusic}
+                  className="w-20 h-20 cursor-pointer transition-transform duration-300 hover:scale-110"
                 />
-                <button
-                  type="submit"
-                  className={`py-2 px-4 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition duration-200 ${
-                    loading ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
-                  disabled={loading}
-                >
-                  {loading ? "Saving..." : "Save"}
-                </button>
-              </form>
-
-              {/* Mood Timeline Graph */}
-              <MoodTimeline />
+                <audio id="relaxing-music" src="/relaxing-music.mp3" />
+              </div>
+              <h2 className="text-gray-400 text-lg">
+                Your Daily Thoughts: Reflect, Release, and Recharge
+              </h2>
             </div>
 
-            {/* Journal Notes */}
-            <div className="w-full md:w-6/12 mt-6 md:mt-0">
-              <h2 className="text-xl font-bold text-white mb-4">
-                See Older Posts
-              </h2>
-              <div className="space-y-4">
-                {notes.map((note, index) => (
-                  <div
-                    key={index}
-                    className="bg-gray-900 shadow-md rounded-lg p-3"
+            {/* Main Content */}
+            <div className="flex flex-wrap md:flex-nowrap w-full max-w-6xl gap-20">
+              {/* Journal Writing Section */}
+              <div className="w-full md:w-10/12 bg-transparent backdrop-blur- shadow-lg rounded-xl p-6">
+                <h2 className="text-2xl text-yellow-100 font-bold mb-4">
+                  Hey, how was your day?
+                </h2>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <textarea
+                    value={journal}
+                    onChange={(e) => setJournal(e.target.value)}
+                    rows="5"
+                    className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-500 bg-transparent text-white"
+                    placeholder="Feel free to jot down what's on your mind, I'm here to listen!"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    className={`py-2 px-4 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition duration-200 ${
+                      loading ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
+                    disabled={loading}
                   >
-                    <p className="text-md font-bold text-white">
-                      "{note.content}"
-                    </p>
-                    <p className="text-sm text-gray-400 mt-2">
-                      {new Date(note.date).toLocaleString()}
-                    </p>
-                    {/* <p className="text-sm text-teal-400 mt-1">Mood: {note.mood}</p>{" "} */}
-                    <p className="text-sm text-gray-300 mt-1">
-                      <span className="text-teal-300 font-semibold">
-                        Analysis:{" "}
-                      </span>
-                      {note.analysis}
-                    </p>{" "}
-                  </div>
-                ))}
+                    {loading ? "Saving..." : "Save"}
+                  </button>
+                </form>
+
+                {/* Mood Timeline Graph */}
+                <MoodTimeline />
               </div>
-              <button
-                onClick={loadMoreNotes}
-                className="mt-4 w-full py-2 bg-transparent text-teal-600 font-bold rounded-lg hover:text-white transition duration-300 text-sm"
-              >
-                {loading ? "Loading..." : "Load More"}
-              </button>
+
+              {/* Journal Notes */}
+              <div className="w-full md:w-6/12 mt-6 md:mt-0">
+                <h2 className="text-xl font-bold text-white mb-4">
+                  See Older Posts
+                </h2>
+                <div className="space-y-4">
+                  {notes.map((note, index) => (
+                    <div
+                      key={index}
+                      className="bg-gray-900 shadow-md rounded-lg p-3"
+                    >
+                      <p className="text-md font-bold text-white">
+                        "{note.content}"
+                      </p>
+                      <p className="text-sm text-gray-400 mt-2">
+                        {new Date(note.date).toLocaleString()}
+                      </p>
+                      {/* <p className="text-sm text-teal-400 mt-1">Mood: {note.mood}</p>{" "} */}
+                      <p className="text-sm text-gray-300 mt-1">
+                        <span className="text-teal-300 font-semibold">
+                          Analysis:{" "}
+                        </span>
+                        {note.analysis}
+                      </p>{" "}
+                    </div>
+                  ))}
+                </div>
+                <button
+                  onClick={loadMoreNotes}
+                  className="mt-4 w-full py-2 bg-transparent text-teal-600 font-bold rounded-lg hover:text-white transition duration-300 text-sm"
+                >
+                  {loading ? "Loading..." : "Load More"}
+                </button>
+              </div>
             </div>
           </div>
+
+          <Footer></Footer>
         </div>
-        
-        <Footer></Footer>
       </div>
     </div>
   );
