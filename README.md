@@ -58,31 +58,31 @@ We built Soulace with you in mind. It’s designed to be intuitive and empowerin
 
 ### Languages & Frameworks
 
-![JavaScript](https://img.shields.io/badge/-JavaScript-000000?style=for-the-badge&logo=javascript&logoColor=yellow)
-![React](https://img.shields.io/badge/-React-000000?style=for-the-badge&logo=react&logoColor=blue) 
-![Node.js](https://img.shields.io/badge/-Node.js-000000?style=for-the-badge&logo=nodedotjs&logoColor=green) 
-![Express.js](https://img.shields.io/badge/-Express.js-000000?style=for-the-badge&logo=express&logoColor=white) 
-![Tailwind CSS](https://img.shields.io/badge/-Tailwind%20CSS-000000?style=for-the-badge&logo=tailwindcss&logoColor=blue)
+![JavaScript](https://img.shields.io/badge/-JavaScript-2c2c2c?style=for-the-badge&logo=javascript&logoColor=yellow)
+![React](https://img.shields.io/badge/-React-2c2c2c?style=for-the-badge&logo=react&logoColor=blue) 
+![Node.js](https://img.shields.io/badge/-Node.js-2c2c2c?style=for-the-badge&logo=nodedotjs&logoColor=green) 
+![Express.js](https://img.shields.io/badge/-Express.js-2c2c2c?style=for-the-badge&logo=express&logoColor=white) 
+![Tailwind CSS](https://img.shields.io/badge/-Tailwind%20CSS-2c2c2c?style=for-the-badge&logo=tailwindcss&logoColor=blue)
 
 
 ### Tools & Platforms
 
 ![MongoDB](https://img.shields.io/badge/-MongoDB-003000?style=for-the-badge&logo=mongodb&logoColor=white)
-![Redux](https://img.shields.io/badge/-Redux-000000?style=for-the-badge&logo=redux&logoColor=blue)
+![Redux](https://img.shields.io/badge/-Redux-2c2c2c?style=for-the-badge&logo=redux&logoColor=blue)
 ![Visual Studio Code](https://img.shields.io/badge/-VS%20Code-290c5e?style=for-the-badge&logo=visualstudiocode&logoColor=black)
-![Git](https://img.shields.io/badge/-Git-000000?style=for-the-badge&logo=git&logoColor=orange)
+![Git](https://img.shields.io/badge/-Git-2c2c2c?style=for-the-badge&logo=git&logoColor=orange)
 
 ### APIs
 
-![Last.fm](https://img.shields.io/badge/-Last.fm-D51007?style=for-the-badge&logo=lastdotfm&logoColor=black): Mood-based music generation.
-![Official Joke API](https://img.shields.io/badge/-Official%20Joke%20API-290c5e?style=for-the-badge): Joke generation.
-[NewsAPI.org](https://img.shields.io/badge/-NewsAPI.org-000000?style=for-the-badge&logo=newsapi&logoColor=white): Articles related to mental health.
-![Cloudinary](https://img.shields.io/badge/-Cloudinary-000000?style=for-the-badge&logo=cloudinary&logoColor=blue): Media storage.
-![YouTube Data API V3](https://img.shields.io/badge/-YouTube%20Data%20API-000000?style=for-the-badge&logo=youtube&logoColor=red): Videos related to mental health.
+- ![Last.fm](https://img.shields.io/badge/-Last.fm-2c2c2c?style=for-the-badge&logo=lastdotfm&logoColor=red): Mood-based music generation.
+- ![Official Joke API](https://img.shields.io/badge/-Official%20Joke%20API-290c5e?style=for-the-badge): Joke generation.
+- [NewsAPI.org](https://img.shields.io/badge/-NewsAPI.org-2c2c2c?style=for-the-badge&logo=newsapi&logoColor=white): Articles related to mental health.
+- ![Cloudinary](https://img.shields.io/badge/-Cloudinary-2c2c2c?style=for-the-badge&logo=cloudinary&logoColor=blue): Media storage.
+- ![YouTube Data API V3](https://img.shields.io/badge/-YouTube%20Data%20API-2c2c2c?style=for-the-badge&logo=youtube&logoColor=red): Videos related to mental health.
 
 ### AI
 
-![Groq](https://img.shields.io/badge/-Groq-000000?style=for-the-badge&logo=groq&logoColor=white): AI support.
+- ![Groq](https://img.shields.io/badge/-Groq-2c2c2c?style=for-the-badge&logo=groq&logoColor=white): AI support.
 
 ### Machine learning
 
