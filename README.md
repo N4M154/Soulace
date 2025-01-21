@@ -74,7 +74,7 @@ We built Soulace with you in mind. It’s designed to be intuitive and empowerin
 
    - **Talk to Experts:** Get recommendations for professional help based on your inputs.
 
-<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/test.png" alt="test" width="500"/> <img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/test%20assessment.png" alt="test assessment" width="600"/>
+<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/test.png" alt="test" width="500"/> <img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/test%20assessment.png" alt="test assessment" width="500"/>
 
 
 ### 6. **Mood-Based Features**
