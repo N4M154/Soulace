@@ -9,6 +9,7 @@ At **Soulace**, we are committed to supporting mental well-being, which is a cru
 
 We built Soulace with you in mind. It’s designed to be intuitive and empowering, helping you work on your mental health and live your best, balanced life. Start your journey with us today!
 
+<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/landing.png" alt="landing"/>
 
 ## ⚡ Quick Start Guide
 
@@ -22,36 +23,76 @@ We built Soulace with you in mind. It’s designed to be intuitive and empowerin
 
 ### 1. **Personalized Profiles & Security**
    - **Safe & Simple Login:** Your mental health journey, your way. Create an account to get started.
+
+<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/login.png" alt="login"/>
+
    - **Custom Profiles:** Add your personal info to get tailored recommendations just for you.
 
-<img src="https://github.com/N4M154/Soulace-N/blob/fa85d36b6c78836292dddf2036296f2c46c79cfe/client/public/ss/achievement.png" alt="achievements" width="200"/>
+<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/home.png" alt="home"/>
 
 
 ### 2. **Mental Health Resources**
    - **Guided Exercises:** Dive into mood trackers, mindfulness activities, breathing techniques, and guided meditations.
+
+<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/moodlogger.png" alt="moodlogger"/>
+
+
    - **Blogs & Articles:** Check out articles on everything from stress relief to coping with anxiety and more.
+
+<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/contents.png" alt="contents"/>
 
 ### 3. **Self-Care Tools**
    - **Interactive Tools:** Use mood and sleep trackers, plus fun tools like breathing exercises to take care of yourself.
+
+<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/relaxation.png" alt="relaxation"/>
+
    - **Joke Generator:** Need a laugh? We’ve got you covered with funny jokes to lighten your mood.
+
+<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/jotd.png" alt="joke of the day"/>
+
    - **Relaxation Games:** Try memory games, breathing exercises, and positive affirmations to unwind.
+
+<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/meditation.png" alt="meditation"/>
 
 ### 4. **Community Support**
    - **Discussion Forums:** Share your experiences, connect with others, and find support in a safe space.
+
+<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/blog.png" alt="community"/>
+
    - **Chatbot:** Need some instant advice or support? Chat with our AI assistant anytime for personalized tips.
+
+<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/chatbot.png" alt="chatbot"/>
 
 ### 5. **Track Your Progress**
    - **Wellness Tracker:** Check your progress with mood charts, daily logs, and sentiment analysis.
+
+<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/moodlogger%20analysis.png" alt="moodlogger analysis"/>
+
    - **Achievement Dashboard:** Celebrate your wins! Earn badges as you hit your emotional milestones.
+
+<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/achievement.png" alt="achievements"/>
+
    - **Talk to Experts:** Get recommendations for professional help based on your inputs.
+
+<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/test.png" alt="test"/>
+
+<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/test%20assessment.png" alt="test assessment"/>
+
 
 ### 6. **Mood-Based Features**
    - **Music Recommendations:** Find music that suits your mood, and let the tunes help lift your spirits.
+
+<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/music.png" alt="music"/>
+
    - **Content Tailored to You:** Access articles and videos based on your mental health needs.
 
 ### 7. **Meditation & Journaling**
    - **Meditation Exercises:** Choose from different guided meditations to help relax your mind and body.
+
+<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/progress%20analytics.png" alt="progress analytics"/>
+
    - **Daily Journal:** Keep a reflective diary to track your thoughts and feelings over time.
+<img src="https://github.com/N4M154/Soulace-N/blob/500b5e950fbba956c1cdae1d20cc0c50fa4ddd9b/client/public/ss/journal.png" alt="journal"/>
 
 
 ## Tools & Tech Behind Soulace 💻
@@ -59,24 +100,28 @@ We built Soulace with you in mind. It’s designed to be intuitive and empowerin
 ### Languages & Frameworks
 
 ![JavaScript](https://img.shields.io/badge/-JavaScript-2c2c2c?style=for-the-badge&logo=javascript&logoColor=yellow)
-![React](https://img.shields.io/badge/-React-2c2c2c?style=for-the-badge&logo=react&logoColor=blue) 
+![TypeScript](https://img.shields.io/badge/-TypeScript-290c5e?style=for-the-badge&logo=typescript&logoColor=sky)
 ![Node.js](https://img.shields.io/badge/-Node.js-2c2c2c?style=for-the-badge&logo=nodedotjs&logoColor=green) 
 ![Express.js](https://img.shields.io/badge/-Express.js-2c2c2c?style=for-the-badge&logo=express&logoColor=white) 
+![React](https://img.shields.io/badge/-React-2c2c2c?style=for-the-badge&logo=react&logoColor=blue) 
 ![Tailwind CSS](https://img.shields.io/badge/-Tailwind%20CSS-2c2c2c?style=for-the-badge&logo=tailwindcss&logoColor=blue)
+![HTML](https://img.shields.io/badge/-HTML5-2c2c2c?style=for-the-badge&logo=html5&logoColor=red)
+![CSS](https://img.shields.io/badge/-CSS3-2c2c2c?style=for-the-badge&logo=css3&logoColor=white)
 
 
 ### Tools & Platforms
 
-![MongoDB](https://img.shields.io/badge/-MongoDB-003000?style=for-the-badge&logo=mongodb&logoColor=white)
+![MongoDB](https://img.shields.io/badge/-MongoDB-003000?style=for-the-badge&logo=mongodb&logoColor=green)
 ![Redux](https://img.shields.io/badge/-Redux-2c2c2c?style=for-the-badge&logo=redux&logoColor=blue)
 ![Visual Studio Code](https://img.shields.io/badge/-VS%20Code-290c5e?style=for-the-badge&logo=visualstudiocode&logoColor=black)
-![Git](https://img.shields.io/badge/-Git-2c2c2c?style=for-the-badge&logo=git&logoColor=orange)
+![Git](https://img.shields.io/badge/-Git-2c2c2c?style=for-the-badge&logo=git&logoColor=yellow)
+![Postman](https://img.shields.io/badge/-Postman-2c2c2c?style=for-the-badge&logo=postman&logoColor=orange)
 
 ### APIs
 
 - ![Last.fm](https://img.shields.io/badge/-Last.fm-2c2c2c?style=for-the-badge&logo=lastdotfm&logoColor=red): Mood-based music generation.
 - ![Official Joke API](https://img.shields.io/badge/-Official%20Joke%20API-290c5e?style=for-the-badge): Joke generation.
-- [NewsAPI.org](https://img.shields.io/badge/-NewsAPI.org-2c2c2c?style=for-the-badge&logo=newsapi&logoColor=white): Articles related to mental health.
+- ![NewsAPI.org](https://img.shields.io/badge/-NewsAPI.org-2c2c2c?style=for-the-badge&logoColor=white): Articles related to mental health.
 - ![Cloudinary](https://img.shields.io/badge/-Cloudinary-2c2c2c?style=for-the-badge&logo=cloudinary&logoColor=blue): Media storage.
 - ![YouTube Data API V3](https://img.shields.io/badge/-YouTube%20Data%20API-2c2c2c?style=for-the-badge&logo=youtube&logoColor=red): Videos related to mental health.
 
