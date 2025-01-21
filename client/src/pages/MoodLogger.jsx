@@ -517,9 +517,7 @@ const MoodLogger = () => {
   ];
 
   const handleOptionSelect = (field, value) => {
-    if (field === "duration") {
-      setSleep((prev) => ({ ...prev, [field]: value }));
-    } else if (field === "quality") {
+    if (["duration", "quality"].includes(field)) {
       setSleep((prev) => ({ ...prev, [field]: value }));
     } else {
       setMood((prev) => ({ ...prev, [field]: value }));
@@ -691,6 +689,8 @@ const MoodLogger = () => {
     const options =
       currentQuestion.type === "sleep-duration"
         ? sleepDurationOptions
+        : currentQuestion.type === "sleep-quality"
+        ? moodOptions // Or a separate set of options for sleep quality if needed
         : moodOptions;
     const QuestionIcon = currentQuestion.icon;
 
@@ -732,6 +732,8 @@ const MoodLogger = () => {
                 }
                 className={`p-4 rounded-lg transition-all transform hover:scale-105 text-sm md:text-base flex flex-col items-center gap-2 ${
                   (currentQuestion.type === "sleep-duration" &&
+                    sleep[currentQuestion.field] === option.value) ||
+                  (currentQuestion.type === "sleep-quality" &&
                     sleep[currentQuestion.field] === option.value) ||
                   (currentQuestion.type !== "sleep-duration" &&
                     mood[currentQuestion.field] === option.value)

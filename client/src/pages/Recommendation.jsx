@@ -110,6 +110,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom"; // Import useLocation and useNavigate
 import Header from "../components/Header";
 import SideButtons from "../components/SideButtons";
+import { Link } from "react-router-dom";
 
 const Recommendation = () => {
   const location = useLocation();
@@ -129,9 +130,23 @@ const Recommendation = () => {
   const getMessage = () => {
     const percentage = (probability * 100).toFixed(2);
     if (probability > 0.5) {
-      return `Based on your inputs, there's a ${percentage}% chance you might benefit from talking to a professional.`;
+      return (
+        <span style={{ color: "gray", fontWeight: "bold", fontSize: "20px" }}>
+          Based on your inputs, there's a{" "}
+          <span style={{ color: "red" }}>{percentage}%</span> chance you{" "}
+          <span style={{ color: "green" }}>might benefit</span> from talking to
+          a professional.
+        </span>
+      );
     } else {
-      return "You’re doing great! Based on your inputs, it seems like you’re in a positive mental space right now. You don't need professional help. Keep up the good work, and remember, we’re here if you ever need support!";
+      return (
+        <span style={{ color: "green", fontWeight: "bold", fontSize: "20px" }}>
+          You’re doing great! Based on your inputs, it seems like you’re in a
+          positive mental space right now. You don't need professional help.
+          Keep up the good work, and remember, we’re here if you ever need
+          support!
+        </span>
+      );
     }
   };
 
@@ -154,13 +169,13 @@ const Recommendation = () => {
             </p>
 
             <h3 className="text-lg font-semibold text-gray-800 dark:text-teal-200 mb-4">
-              Here are your next steps:
+              Here are the potential next steps you may consider taking:
             </h3>
 
             {/* Buttons or Links for Next Steps */}
             <div className="flex flex-col md:flex-row justify-center space-x-0 md:space-x-8 mt-4">
-              <a
-                href="mailto:help@mentalhealth.com"
+              <Link
+                to={"/schedule-consultation"}
                 className="flex flex-col items-center mb-4 md:mb-0"
               >
                 <img
@@ -171,10 +186,10 @@ const Recommendation = () => {
                 <span className="mt-2 text-sm text-gray-700 dark:text-gray-300">
                   Schedule a Consultation
                 </span>
-              </a>
+              </Link>
 
-              <a
-                href="https://www.mentalhealth.com/chat"
+              <Link
+                to={"/chat-specialist"}
                 className="flex flex-col items-center mb-4 md:mb-0"
               >
                 <img
@@ -185,9 +200,12 @@ const Recommendation = () => {
                 <span className="mt-2 text-sm text-gray-700 dark:text-gray-300">
                   Chat with Specialist
                 </span>
-              </a>
+              </Link>
 
-              <a href="tel:911" className="flex flex-col items-center">
+              <Link
+                to={"/emergency-support"}
+                className="flex flex-col items-center"
+              >
                 <img
                   src="/emergency.png" // Ensure this image exists in your public directory
                   alt="Emergency Support"
@@ -196,7 +214,7 @@ const Recommendation = () => {
                 <span className="mt-2 text-sm text-gray-700 dark:text-gray-300">
                   Emergency Support
                 </span>
-              </a>
+              </Link>
             </div>
 
             <div className="mt-6">

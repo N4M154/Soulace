@@ -206,7 +206,7 @@ const DotsGrid = () => {
       </main>
 
       {/* How to Play Section */}
-      <aside className="absolute right-0 top-60 p-4 w-64 bg-gray-50 dark:bg-transparent shadow-lg dark:shadow-black border dark:border-teal-700 rounded-lg">
+      <aside className="absolute right-20 top-60 p-4 w-64 bg-gray-50 dark:bg-transparent shadow-lg dark:shadow-black border dark:border-teal-700 rounded-lg">
         <h2 className="text-xl font-bold text-gray-700 dark:text-white mb-4">
           How to Play
         </h2>
