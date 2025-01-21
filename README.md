@@ -24,7 +24,7 @@ We built Soulace with you in mind. It’s designed to be intuitive and empowerin
    - **Safe & Simple Login:** Your mental health journey, your way. Create an account to get started.
    - **Custom Profiles:** Add your personal info to get tailored recommendations just for you.
 
-<img src="https://github.com/N4M154/Soulace-N/blob/fa85d36b6c78836292dddf2036296f2c46c79cfe/client/public/ss/achievement.png" alt="achievements" width="200" height="200"/>
+<img src="https://github.com/N4M154/Soulace-N/blob/fa85d36b6c78836292dddf2036296f2c46c79cfe/client/public/ss/achievement.png" alt="achievements" width="200"/>
 
 
 ### 2. **Mental Health Resources**
