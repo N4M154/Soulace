@@ -202,7 +202,7 @@ We built Soulace with you in mind. It’s designed to be intuitive and empowerin
     VITE_GOOGLE_UTUBE_API_KEY = "<your_youtube_data_api_v3_api_key>"
     ```
 
-## Check **Soulace** in action : [Soulace](https://soulace.onrender.com/)
+## Check **Soulace** in action : [Soulace](https://soul-ace.onrender.com/)
 
 ## 💬 Contribute and Be Part of the Soulace Family!
 
