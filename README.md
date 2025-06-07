@@ -201,6 +201,15 @@ We built Soulace with you in mind. It’s designed to be intuitive and empowerin
     VITE_NEWS_API_KEY = "<your_newsapi.org_api_key>"
     VITE_GOOGLE_UTUBE_API_KEY = "<your_youtube_data_api_v3_api_key>"
     ```
+8. Start the development server (client and api):
+   ```bash
+   cd client
+   npm run dev
+   ```
+   ```bash
+   cd api
+   npm run dev
+   ```
 
 ## Check **Soulace** in action : [Soulace](https://soul-ace.onrender.com/)
 
